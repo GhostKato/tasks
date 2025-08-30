@@ -1,45 +1,24 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, {useEffect} from 'react';
+import {DevSettings, NativeModules, SafeAreaView} from 'react-native';
+import RootNavigation from './src/navigation';
+import 'react-native-gesture-handler';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+function App(): React.JSX.Element {
+  useEffect(() => {
+    if (__DEV__) {
+      DevSettings.addMenuItem('Debugging With debugger', () => {
+        NativeModules.DevSettings.setIsDebuggingRemotely(true);
+      });
+      DevSettings.addMenuItem('Stop Debugging With debugger', () => {
+        NativeModules.DevSettings.setIsDebuggingRemotely(false);
+      });
+    }
+  }, []);
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <SafeAreaView style={{flex: 1}}>
+      <RootNavigation />
+    </SafeAreaView>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
