@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {DevSettings, NativeModules, SafeAreaView} from 'react-native';
+import { DevSettings, NativeModules } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
 import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
 

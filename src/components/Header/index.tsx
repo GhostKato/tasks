@@ -1,17 +1,17 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {CloseIcon, Label} from '../../assets/icons';
-import {useNavigation, DrawerActions} from '@react-navigation/native';
+import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
 
 interface IHeader {
   isOpenDrawer?: boolean;
+  navigation: DrawerNavigationProp<DrawerStackType>;
+
 }
 
-export default function Header({isOpenDrawer}: IHeader) {
-  // Використовуємо правильний хук useNavigation з DrawerNavigationProp
-  const navigation = useNavigation<DrawerNavigationProp<DrawerStackType>>();
-
+export default function Header({isOpenDrawer, navigation}: IHeader) { 
+  
   const handleOpenDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
   };

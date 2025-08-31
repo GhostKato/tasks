@@ -12,16 +12,22 @@ export default function DrawerStack() {
   return (
     <Drawer.Navigator
       initialRouteName={ScreenNames.TAB_BAR_STACK}
-      drawerContent={() => <DrawerContent />}
-      screenOptions={({navigation}) => ({
-        header: () => <Header navigation={navigation} />,
+      drawerContent={(props) => <DrawerContent {...props} />}
+      screenOptions={{
         drawerPosition: 'right',
         drawerStyle: {
           width: Dimensions.get('window').width,
         },
-      })}
+      }}
     >
-      <Drawer.Screen name={ScreenNames.TAB_BAR_STACK} component={TabBarStack} />
+      <Drawer.Screen name={ScreenNames.TAB_BAR_STACK} component={TabBarStack}
+        options={{
+          header: ({ navigation }) => <Header navigation={navigation} />, 
+        }}/>
     </Drawer.Navigator>
   );
 }
+
+
+
+

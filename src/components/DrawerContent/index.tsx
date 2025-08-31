@@ -1,12 +1,19 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Header from '../Header';
 import {fonts} from '../../constants/fonts';
-import {ArrowIcon} from '../../assets/icons';
+import { ArrowIcon } from '../../assets/icons';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {DrawerStackType} from '../../navigation/types';
 
-export default function DrawerContent() {
+
+interface Props {
+  navigation: DrawerNavigationProp<DrawerStackType>;
+}
+
+export default function DrawerContent({ navigation }: Props) {
   return (
     <View>
-      <Header isOpenDrawer={true} />
+      <Header isOpenDrawer={true} navigation={navigation} />
       <View style={styles.mainWrapper}>
         <TouchableOpacity style={styles.btnWrapper}>
           <Text style={styles.text}>Наш сайт</Text>
