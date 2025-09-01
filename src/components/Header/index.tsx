@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: 'red',
   },
   burgerBtn: {height: 20, width: 20, gap: 5},
   line: {width: '100%', height: 2, backgroundColor: 'black'},

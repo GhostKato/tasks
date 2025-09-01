@@ -4,6 +4,7 @@ import {fonts} from '../../constants/fonts';
 import { ArrowIcon } from '../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
+import ThemeSwitcher from '../ThemeSwitcher';
 
 
 interface Props {
@@ -26,6 +27,7 @@ export default function DrawerContent({ navigation }: Props) {
         <TouchableOpacity style={styles.btnWrapper}>
           <Text style={styles.text}>Вихід</Text>
         </TouchableOpacity>
+        <ThemeSwitcher />
       </View>
     </View>
   );

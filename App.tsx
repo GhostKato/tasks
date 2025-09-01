@@ -3,6 +3,7 @@ import { DevSettings, NativeModules } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
+import { ThemeProvider } from './src/context/ThemeContext';
 
 function App(): React.JSX.Element {
   useEffect(() => {
@@ -16,8 +17,10 @@ function App(): React.JSX.Element {
     }
   }, []);
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <RootNavigation />
+    <SafeAreaView style={{ flex: 1 }}>
+      <ThemeProvider>
+        <RootNavigation />
+        </ThemeProvider>
     </SafeAreaView>
   );
 }
