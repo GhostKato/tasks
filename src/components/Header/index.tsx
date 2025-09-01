@@ -3,6 +3,7 @@ import {CloseIcon, Label} from '../../assets/icons';
 import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
+import { useTheme } from '../../context/ThemeContext';
 
 interface IHeader {
   isOpenDrawer?: boolean;
@@ -10,7 +11,23 @@ interface IHeader {
 
 }
 
-export default function Header({isOpenDrawer, navigation}: IHeader) { 
+export default function Header({ isOpenDrawer, navigation }: IHeader) { 
+  
+  const { theme } = useTheme();
+
+  const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    height: 60,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: theme.backgroundTertiary,
+  },
+  burgerBtn: {height: 20, width: 20, gap: 5},
+  line: {width: '100%', height: 2, backgroundColor: theme.backgroundQuaternary},
+});
   
   const handleOpenDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
@@ -34,16 +51,4 @@ export default function Header({isOpenDrawer, navigation}: IHeader) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    width: '100%',
-    height: 60,
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'red',
-  },
-  burgerBtn: {height: 20, width: 20, gap: 5},
-  line: {width: '100%', height: 2, backgroundColor: 'black'},
-});
+

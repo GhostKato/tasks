@@ -14,7 +14,7 @@ export default function DrawerStack() {
       initialRouteName={ScreenNames.TAB_BAR_STACK}
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
-        drawerPosition: 'left',
+        drawerPosition: 'right',
         drawerStyle: {
           width: Dimensions.get('window').width,          
           borderBottomLeftRadius: 0,

@@ -6,15 +6,15 @@ export default function ThemeSwitcher() {
   const { isDark, toggleTheme, theme } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.label, { color: theme.text }]}>
-        {isDark ? '🌙 Темна тема' : '☀️ Світла тема'}
+    <View style={[styles.container, { backgroundColor: theme.backgroundSecondary }]}>
+      <Text style={[styles.label, { color: theme.textPrimary }]}>
+        {isDark ? '🌙 Dark Theme Enabled' : '☀️ Dark Theme Disabled'}
       </Text>
       <Switch
         value={isDark}
         onValueChange={toggleTheme}
-        thumbColor={isDark ? theme.primary : '#f4f3f4'}
-        trackColor={{ false: '#767577', true: theme.secondary }}
+        thumbColor={isDark ? theme.accentSecondary : theme.accentPrimary}
+        trackColor={{ false: theme.backgroundPrimary, true: theme.backgroundSecondary }}
       />
     </View>
   );
