@@ -4,8 +4,6 @@ import {fonts} from '../../constants/fonts';
 import { ArrowIcon } from '../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
-import ThemeSwitcher from '../ThemeSwitcher';
-
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -16,18 +14,19 @@ export default function DrawerContent({ navigation }: Props) {
     <View>
       <Header isOpenDrawer={true} navigation={navigation} />
       <View style={styles.mainWrapper}>
-        <TouchableOpacity style={styles.btnWrapper}>
-          <Text style={styles.text}>Наш сайт</Text>
+        <TouchableOpacity style={styles.btnWrapper}
+         onPress={() => navigation.navigate('MAIN_TAB_BAR_STACK')}>
+          <Text style={styles.text}>Tasks</Text>
+          <ArrowIcon />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btnWrapper}
+        onPress={() => navigation.navigate('SETTINGS_TAB_BAR_STACK')}>
+          <Text style={styles.text}>Settings</Text>
           <ArrowIcon />
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnWrapper}>
-          <Text style={styles.text}>Налаштування мови</Text>
-          <ArrowIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnWrapper}>
-          <Text style={styles.text}>Вихід</Text>
-        </TouchableOpacity>
-        <ThemeSwitcher />
+          <Text style={styles.text}>Exit</Text>
+        </TouchableOpacity>        
       </View>
     </View>
   );

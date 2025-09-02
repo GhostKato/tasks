@@ -3,15 +3,22 @@ export type LoggedOutStackType = {
   REGISTRATION_PAGE: undefined;
 };
 export type DrawerStackType = {
-  TAB_BAR_STACK: undefined;
+  MAIN_TAB_BAR_STACK: undefined;
+  SETTINGS_TAB_BAR_STACK: undefined,
 };
 export type LoggedInStackType = {
   DRAWER_STACK: undefined;
 };
-export type TabBarStackType = {
+export type MainTabBarStackType = {
   HOME_PAGE: undefined;
   TASKS_PAGE: undefined;
   FAVORITE_PAGE: undefined;
+};
+
+export type SettingsTabBarStackType = {
+  THEME_PAGE: undefined;
+  LANGUAGE_PAGE: undefined;
+  ABOUT_PAGE: undefined;
 };
 
 const LoggedOutStackScreens: LoggedOutStackType = {
@@ -19,7 +26,8 @@ const LoggedOutStackScreens: LoggedOutStackType = {
   REGISTRATION_PAGE: undefined,
 };
 const LoggedInStackScreens: DrawerStackType = {
-  TAB_BAR_STACK: undefined,
+  MAIN_TAB_BAR_STACK: undefined,
+  SETTINGS_TAB_BAR_STACK: undefined,
 };
 export type RootStackNavigation = {
   LOGGED_IN_STACK: {screens?: keyof typeof LoggedInStackScreens};

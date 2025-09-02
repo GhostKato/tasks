@@ -1,39 +1,43 @@
 export type ThemeColors = {
-  backgroundPrimary: string;
-  backgroundSecondary: string;
-  backgroundTertiary: string,
-  backgroundQuaternary: string,  
-  textPrimary: string;
-  textSecondary: string,
-  textTertiary: string,  
-  accentPrimary: string,
-  accentSecondary: string,  
+  primary: string;
+  secondary: string;
+  tertiary: string,
+  quaternary: string,  
+  quinary: string;
+  senary: string,
+  septenary: string,  
+  octonary: string,
+  nonary: string
+    
 };
 
 export const lightTheme: ThemeColors = {
-  backgroundPrimary: '#FFFFFF',
-  backgroundSecondary: '#8f968eff',
-  backgroundTertiary: '#852630ff',
-  backgroundQuaternary: '#000000',
+  primary: '#FFFFFF',     
+  secondary: '#852630ff',
+  tertiary: '#8f968eff',
+  quaternary: '#000000',
   
-  textPrimary: '#000000',
-  textSecondary: '#838383',
-  textTertiary: '#ff4b5c',
-  
-  accentPrimary: '#8d3333',
-  accentSecondary: '#44e70eff',
+  quinary: '#8d3333',
+  senary: '#44e70eff',
+  septenary: '#000000',
+  octonary: '#FFFFFF',
+  nonary: '#8f968eff',
 };
 
 export const darkTheme: ThemeColors = {
-  backgroundPrimary: '#2a2d32',
-  backgroundSecondary: '#1e2023',
-  backgroundTertiary: '#ff4b5c',
-  backgroundQuaternary: '#000000',
+  primary: '#2a2d32',
+  secondary: '#ff4b5c',
+  tertiary: '#1e2023',
+  quaternary: '#FFFFFF',
   
-  textPrimary: '#FFFFFF',
-  textSecondary: '#838383',
-  textTertiary: '#8d3333',
-  
-  accentPrimary: '#8d3333',  
-  accentSecondary: '#44e70eff',
+  quinary: '#8d3333',
+  senary: '#44e70eff',
+  septenary: '#000000',
+  octonary: '#FFFFFF',
+  nonary: '#8f968eff',
 };
+
+
+
+
+

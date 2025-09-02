@@ -23,10 +23,10 @@ export default function Header({ isOpenDrawer, navigation }: IHeader) {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: theme.backgroundTertiary,
+    backgroundColor: theme.tertiary,
   },
   burgerBtn: {height: 20, width: 20, gap: 5},
-  line: {width: '100%', height: 2, backgroundColor: theme.backgroundQuaternary},
+  line: {width: '100%', height: 2, backgroundColor: theme.senary},
 });
   
   const handleOpenDrawer = () => {

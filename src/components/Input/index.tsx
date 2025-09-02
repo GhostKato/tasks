@@ -2,6 +2,7 @@ import {Text, TextInput, TouchableOpacity, View, ViewStyle} from 'react-native';
 import styles from '../../screen/Auth/styles';
 import React, {useState} from 'react';
 import {HidePassIcon, ViewPassIcon} from '../../assets/icons';
+import { useTheme } from '../../context/ThemeContext';
 
 interface IInput {
   onBlur?: () => void;
@@ -19,14 +20,16 @@ export default function Input({
   onBlur,
   placeholder,
   value,
-  onChangeText,
-  placeholderColor = '#838383',
+  onChangeText,  
   error,
   secureTextEntry = false,
   additionalContainerStyle,
   additionInputStyle,
   onFocus,
 }: IInput) {
+
+  const { theme } = useTheme();
+
   const [isPassHidden, setIsPassHidden] = useState(secureTextEntry);
 
   return (
@@ -35,7 +38,7 @@ export default function Input({
         <TextInput
           placeholder={placeholder}
           style={[styles.input, additionInputStyle]}
-          placeholderTextColor={placeholderColor}
+          placeholderTextColor={theme.octonary}
           onBlur={onBlur}
           onFocus={onFocus}
           value={value}
