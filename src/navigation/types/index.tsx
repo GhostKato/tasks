@@ -10,6 +10,7 @@ export type LoggedInStackType = {
 };
 export type TabBarStackType = {
   HOME_PAGE: undefined;
+  TASKS_PAGE: undefined;
   FAVORITE_PAGE: undefined;
 };
 

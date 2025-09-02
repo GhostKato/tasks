@@ -4,16 +4,20 @@ import {ScreenNames} from '../constants/screenNames';
 import {RootStackNavigation} from './types';
 import LoggedInStack from './LogedInStack';
 import LoggedOutStack from './LoggedOutStack';
+import { useTheme } from '../context/ThemeContext';
 
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 export default function RootNavigation() {
+
+  const { theme } = useTheme();
+
   return (
     <NavigationContainer
       theme={{
         ...DefaultTheme,
         colors: {
           ...DefaultTheme.colors,
-          background: '#FAFAFA',
+          background: theme.backgroundPrimary,
         },
       }}>
       <Stack.Navigator

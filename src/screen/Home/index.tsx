@@ -11,7 +11,7 @@ export default function Home() {
       onPress={() => {
         navigation.goBack();
       }}>
-      <Text>Hello </Text>
+      <Text>Home </Text>
     </TouchableOpacity>
   );
 }
