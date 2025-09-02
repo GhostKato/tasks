@@ -1,7 +1,7 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { fonts } from '../../constants/fonts';
-import { HeartIcon, PawIcon } from '../../assets/icons';
+import { HeartIcon, HomeIcon, TasksIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
 
 export default function CustomTabBar({ state, descriptors, navigation, theme }: BottomTabBarProps & { theme: any }) {
@@ -15,11 +15,11 @@ export default function CustomTabBar({ state, descriptors, navigation, theme }: 
         let label = '';
         switch (route.name) {
           case ScreenNames.HOME_PAGE:
-            icon = <PawIcon isFocused={focused} color={theme.accentPrimary} />;
+            icon = <HomeIcon isFocused={focused} color={theme.accentPrimary} />;
             label = 'Home';
                 break;
             case ScreenNames.TASKS_PAGE:
-            icon = <PawIcon isFocused={focused} color={theme.accentPrimary} />;
+            icon = <TasksIcon isFocused={focused} color={theme.accentPrimary} />;
             label = 'Tasks';
             break;
           case ScreenNames.FAVORITE_PAGE:

@@ -1,6 +1,7 @@
 import ViewPassIcon from './ViewPassIcon';
 import HidePassIcon from './HidePassIcon';
-import PawIcon from './PawIcon';
+import HomeIcon from './HomeIcon';
+import TasksIcon from './TasksIcon';
 import HeartIcon from './HeartIcon';
 import Label from './Label';
 import CloseIcon from './CloseIcon';
@@ -9,7 +10,8 @@ import ArrowIcon from './ArrowIcon';
 export {
   ViewPassIcon,
   HidePassIcon,
-  PawIcon,
+  HomeIcon,
+  TasksIcon,
   HeartIcon,
   Label,
   CloseIcon,
