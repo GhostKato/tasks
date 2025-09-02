@@ -9,7 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 export default function RootNavigation() {
 
-  const { theme } = useTheme();
+  const { color } = useTheme();
 
   return (
     <NavigationContainer
@@ -17,7 +17,7 @@ export default function RootNavigation() {
         ...DefaultTheme,
         colors: {
           ...DefaultTheme.colors,
-          background: theme.backgroundPrimary,
+          background: color.primary,
         },
       }}>
       <Stack.Navigator

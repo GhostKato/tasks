@@ -3,18 +3,18 @@ import { View, Text, Switch, StyleSheet } from 'react-native';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function ThemeSwitcher() {
-  const { isDark, toggleTheme, theme } = useTheme();
+  const { isDark, toggleTheme, color } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.secondary }]}>
-      <Text style={[styles.label, { color: theme.septenary }]}>
+    <View style={[styles.container, { backgroundColor: color.tertiary }]}>
+      <Text style={[styles.label, { color: color.quaternary }]}>
         {isDark ? '🌙 Dark Theme Enabled' : '☀️ Dark Theme Disabled'}
       </Text>
       <Switch
         value={isDark}
         onValueChange={toggleTheme}
-        thumbColor={isDark ? theme.quinary : theme.quaternary}
-        trackColor={{ false: theme.octonary, true: theme.septenary }}
+        thumbColor={isDark ? color.senary : color.quinary}
+        trackColor={{ false: color.octonary, true: color.septenary }}
       />
     </View>
   );

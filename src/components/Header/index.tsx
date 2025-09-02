@@ -13,7 +13,7 @@ interface IHeader {
 
 export default function Header({ isOpenDrawer, navigation }: IHeader) { 
   
-  const { theme } = useTheme();
+  const { color } = useTheme();
 
   const styles = StyleSheet.create({
   wrapper: {
@@ -23,10 +23,10 @@ export default function Header({ isOpenDrawer, navigation }: IHeader) {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: theme.tertiary,
+    backgroundColor: color.secondary,
   },
   burgerBtn: {height: 20, width: 20, gap: 5},
-  line: {width: '100%', height: 2, backgroundColor: theme.senary},
+  line: {width: '100%', height: 2, backgroundColor: color.septenary},
 });
   
   const handleOpenDrawer = () => {

@@ -12,7 +12,7 @@ const Drawer = createDrawerNavigator<DrawerStackType>();
 
 export default function DrawerStack() {
 
-  const { theme } = useTheme();
+  const { color } = useTheme();
 
   return (
     <Drawer.Navigator
@@ -26,7 +26,7 @@ export default function DrawerStack() {
       borderBottomRightRadius: 0,
       elevation: 0,
       shadowOpacity: 0,
-      backgroundColor: theme.primary, 
+      backgroundColor: color.primary, 
     },    
   }}
 >

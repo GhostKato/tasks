@@ -28,7 +28,7 @@ export default function Input({
   onFocus,
 }: IInput) {
 
-  const { theme } = useTheme();
+  const { color } = useTheme();
 
   const [isPassHidden, setIsPassHidden] = useState(secureTextEntry);
 
@@ -38,7 +38,7 @@ export default function Input({
         <TextInput
           placeholder={placeholder}
           style={[styles.input, additionInputStyle]}
-          placeholderTextColor={theme.octonary}
+          placeholderTextColor={color.octonary}
           onBlur={onBlur}
           onFocus={onFocus}
           value={value}

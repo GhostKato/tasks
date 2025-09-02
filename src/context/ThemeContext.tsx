@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lightTheme, darkTheme, ThemeColors } from '../constants/theme';
 
 type ThemeContextType = {
-  theme: ThemeColors;
+  color: ThemeColors; 
   isDark: boolean;
   toggleTheme: () => void;
 };
@@ -39,7 +39,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ThemeContext.Provider
-      value={{ theme: isDark ? darkTheme : lightTheme, isDark, toggleTheme }}
+      value={{ color: isDark ? darkTheme : lightTheme, isDark, toggleTheme }}
     >
       {children}
     </ThemeContext.Provider>
