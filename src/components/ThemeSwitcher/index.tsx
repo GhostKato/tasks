@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
 import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function ThemeSwitcher() {
   const { isDark, toggleTheme, color } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View style={[styles.container, { backgroundColor: color.tertiary }]}>
       <Text style={[styles.label, { color: color.quaternary }]}>
-        {isDark ? '🌙 Dark Theme Enabled' : '☀️ Dark Theme Disabled'}
+        {isDark ? `🌙 ${t.screenTheme.darkModeEnabled}` : `☀️ ${t.screenTheme.darkModeDisabled}`}
       </Text>
       <Switch
         value={isDark}

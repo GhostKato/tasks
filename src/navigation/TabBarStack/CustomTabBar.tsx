@@ -4,10 +4,12 @@ import { fonts } from '../../constants/fonts';
 import { HeartIcon, HomeIcon, TasksIcon,ThemeIcon, LanguageIcon, AboutIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
 import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 
   const { color } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <View style={{ flexDirection: 'row', height: 60, backgroundColor: color.tertiary, alignItems: 'center', justifyContent: 'space-around' }}>
@@ -16,31 +18,31 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
         const onPress = () => navigation.navigate(route.name);
 
         let icon = null;
-        let label = '';
+        let label: string = '';
         switch (route.name) {
           case ScreenNames.HOME_PAGE:
             icon = <HomeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'Home';
+            label = t.mainTabBar.home;
                 break;
             case ScreenNames.TASKS_PAGE:
             icon = <TasksIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'Tasks';
+            label = t.mainTabBar.tasks;
             break;
           case ScreenNames.FAVORITE_PAGE:
             icon = <HeartIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'Favourite';
+            label = t.mainTabBar.favorite;
             break;
           case ScreenNames.THEME_PAGE:
             icon = <ThemeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'Theme';
+            label = t.settingsTabBar.theme;
                 break;
             case ScreenNames.LANGUAGE_PAGE:
             icon = <LanguageIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'Language';
+            label = t.settingsTabBar.language;
             break;
           case ScreenNames.ABOUT_PAGE:
             icon = <AboutIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary}/>;
-            label = 'About';
+            label = t.settingsTabBar.about;
             break;
         }
 

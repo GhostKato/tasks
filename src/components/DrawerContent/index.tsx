@@ -4,28 +4,32 @@ import {fonts} from '../../constants/fonts';
 import { ArrowIcon } from '../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
+import { useTranslation } from '../../context/LanguageContext';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
 }
 
 export default function DrawerContent({ navigation }: Props) {
+
+  const { t } = useTranslation();
+  
   return (
     <View>
       <Header isOpenDrawer={true} navigation={navigation} />
       <View style={styles.mainWrapper}>
         <TouchableOpacity style={styles.btnWrapper}
          onPress={() => navigation.navigate('MAIN_TAB_BAR_STACK')}>
-          <Text style={styles.text}>Tasks</Text>
+          <Text style={styles.text}>{t.draverBar.tasks}</Text>
           <ArrowIcon />
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnWrapper}
         onPress={() => navigation.navigate('SETTINGS_TAB_BAR_STACK')}>
-          <Text style={styles.text}>Settings</Text>
+          <Text style={styles.text}>{t.draverBar.settings}</Text>
           <ArrowIcon />
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnWrapper}>
-          <Text style={styles.text}>Exit</Text>
+          <Text style={styles.text}>{t.draverBar.exit}</Text>
         </TouchableOpacity>        
       </View>
     </View>

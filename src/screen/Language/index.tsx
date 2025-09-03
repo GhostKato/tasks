@@ -1,5 +1,5 @@
-import {Text} from 'react-native';
+import LanguageDropdown from '../../components/LanguageDropdown';
 
 export default () => {
-  return <Text>Language</Text>;
+  return <LanguageDropdown/>;
 };
