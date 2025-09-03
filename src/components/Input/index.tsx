@@ -40,7 +40,7 @@ export default function Input({
         <TextInput
           placeholder={placeholder}
           style={[styles.input, additionInputStyle]}
-          placeholderTextColor={color.octonary}
+          placeholderTextColor={color.quaternary}
           onBlur={onBlur}
           onFocus={onFocus}
           value={value}
