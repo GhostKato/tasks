@@ -12,6 +12,7 @@ import {CommonActions, useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackNavigation} from '../../../navigation/types';
 import {ScreenNames} from '../../../constants/screenNames';
+import { useTranslation } from '../../../context/LanguageContext';
 
 interface ITouched {
   email: boolean;
@@ -19,6 +20,9 @@ interface ITouched {
   confirmPassword: boolean;
 }
 export default function Registration() {
+
+  const { t } = useTranslation();
+
   const [touched, setTouched] = useState<ITouched>({
     email: false,
     password: false,
@@ -82,7 +86,7 @@ export default function Registration() {
                 onChangeText={value => {
                   setFieldValue('email', value);
                 }}
-                placeholder={'Email'}
+                placeholder={t.screenAuth.placeholderEmail}
                 error={touched.email && errors.email}
               />
               <Input
@@ -94,7 +98,7 @@ export default function Registration() {
                   setFieldValue('password', value);
                 }}
                 secureTextEntry={true}
-                placeholder={'Password'}
+                placeholder={t.screenAuth.placeholderPassword}
                 error={touched.password && errors.password}
               />
               <Input
@@ -109,7 +113,7 @@ export default function Registration() {
                   setFieldValue('confirmPassword', value);
                 }}
                 secureTextEntry={true}
-                placeholder={'Confirm password'}
+                placeholder={t.screenAuth.placeholderConfirmPassword}
                 error={touched.confirmPassword && errors.confirmPassword}
               />
             </View>
@@ -121,7 +125,7 @@ export default function Registration() {
                 !values.confirmPassword
               }
               onPress={handleSubmit}
-              text={'Зарееструватись'}
+              text={t.screenAuth.registerBtn}
             />
           </>
         )}

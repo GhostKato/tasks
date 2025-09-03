@@ -5,6 +5,7 @@ import { ArrowIcon } from '../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
 import { useTranslation } from '../../context/LanguageContext';
+import LogoutButton from '../LogoutButton';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -27,10 +28,8 @@ export default function DrawerContent({ navigation }: Props) {
         onPress={() => navigation.navigate('SETTINGS_TAB_BAR_STACK')}>
           <Text style={styles.text}>{t.draverBar.settings}</Text>
           <ArrowIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnWrapper}>
-          <Text style={styles.text}>{t.draverBar.exit}</Text>
         </TouchableOpacity>        
+        <LogoutButton/>
       </View>
     </View>
   );

@@ -1,15 +1,12 @@
-import {View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { View } from 'react-native';
+import React, { useState } from 'react';
 import styles from '../styles';
 import AuthHeader from '../components/AuthHeader/index';
 import Input from '../../../components/Input/index';
 import DefaultButton from '../../../components/DefaultButton/index';
 import AuthLayout from '../components/AuthLayout/index';
 import auth from '@react-native-firebase/auth';
-import {CommonActions, useNavigation} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackNavigation} from '../../../navigation/types';
-import {ScreenNames} from '../../../constants/screenNames';
+import { useTranslation } from '../../../context/LanguageContext';
 
 interface IInputValue {
   email: string;
@@ -19,23 +16,26 @@ interface IInputValue {
 }
 
 export default function LoginPage() {
+
+  const { t } = useTranslation();
+
   const [inputValues, setInputValues] = useState<IInputValue>({
     email: '',
     password: '',
     errorEmail: null,
     errorPassword: null,
   });
-  const navigation = useNavigation<StackNavigationProp<RootStackNavigation>>();
 
   const handleChangeInput = (
     key: 'email' | 'password' | 'errorEmail' | 'errorPassword',
     value: string | null,
   ) => {
-    setInputValues(prevState => ({...prevState, [key]: value}));
+    setInputValues(prevState => ({ ...prevState, [key]: value }));
   };
+
   const checkEmail = () => {
     const emailValidator = new RegExp(
-      '^([a-z0-9._%-]+@[a-z0-9.-]+.[a-z]{2,6})*$',
+      '^([a-z0-9._%-]+@[a-z0-9.-]+\\.[a-z]{2,6})*$',
     );
     if (!emailValidator.test(inputValues.email)) {
       handleChangeInput('errorEmail', 'Not valid email');
@@ -43,44 +43,39 @@ export default function LoginPage() {
       handleChangeInput('errorEmail', null);
     }
   };
-  const checkPassword = text => {
+
+  const checkPassword = (text: string) => {
     if (text.length < 8) {
       handleChangeInput(
         'errorPassword',
-        'Password must be more then 8 symbols ',
+        'Password must be more than 8 symbols',
       );
     } else {
       handleChangeInput('errorPassword', null);
     }
   };
-  const onLogin = async (email, password) => {
+
+  const onLogin = async (email: string, password: string) => {
     try {
-      const result = await auth().signInWithEmailAndPassword(email, password);
-      console.log('RESULT', result);
-    } catch (e) {
-      console.log('e', e);
+      await auth().signInWithEmailAndPassword(email, password);      
+    } catch (e: any) {
+      console.log('Login error', e);
+      if (e.code === 'auth/user-not-found') {
+        handleChangeInput('errorEmail', 'User not found');
+      }
+      if (e.code === 'auth/wrong-password') {
+        handleChangeInput('errorPassword', 'Wrong password');
+      }
     }
   };
+
   const isDisabledLoginBtn = Boolean(
     inputValues.errorEmail ||
       inputValues.errorPassword ||
       !inputValues.email ||
       !inputValues.password,
   );
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(user => {
-      if (user) {
-        navigation.dispatch(
-          CommonActions.reset({
-            index: 1,
-            routes: [{name: ScreenNames.LOGGED_IN_STACK}],
-          }),
-        );
-      }
-    });
 
-    return subscriber;
-  }, []);
   return (
     <AuthLayout>
       <AuthHeader activeTab={'login'} />
@@ -90,15 +85,16 @@ export default function LoginPage() {
           value={inputValues.email}
           onChangeText={text => handleChangeInput('email', text)}
           error={inputValues.errorEmail}
-          placeholder={'Email'}
+          placeholder={t.screenAuth.placeholderEmail}
         />
         <Input
-          placeholder={'Password'}
+          placeholder={t.screenAuth.placeholderPassword}
           value={inputValues.password}
           onChangeText={text => {
             handleChangeInput('password', text);
             checkPassword(text);
           }}
+          error={inputValues.errorPassword}
           secureTextEntry={true}
         />
       </View>
@@ -107,7 +103,7 @@ export default function LoginPage() {
           void onLogin(inputValues.email, inputValues.password);
         }}
         disabled={isDisabledLoginBtn}
-        text={'Увійти'}
+        text={t.screenAuth.logInBtn}
       />
     </AuthLayout>
   );
