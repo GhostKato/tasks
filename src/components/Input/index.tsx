@@ -1,5 +1,5 @@
 import {Text, TextInput, TouchableOpacity, View, ViewStyle} from 'react-native';
-import styles from '../../screen/Auth/styles';
+import {useAuthStyles} from '../../screen/Auth/useAuthStyles';
 import React, {useState} from 'react';
 import {HidePassIcon, ViewPassIcon} from '../../assets/icons';
 import { useTheme } from '../../context/ThemeContext';
@@ -28,6 +28,8 @@ export default function Input({
   onFocus,
 }: IInput) {
 
+  const styles = useAuthStyles();
+
   const { color } = useTheme();
 
   const [isPassHidden, setIsPassHidden] = useState(secureTextEntry);
@@ -52,14 +54,14 @@ export default function Input({
             }}
             hitSlop={{top: 15, bottom: 15, right: 15, left: 15}}>
             {isPassHidden ? (
-              <ViewPassIcon fill={'#000000'} />
+              <ViewPassIcon fill={color.senary} />
             ) : (
-              <HidePassIcon fill={'#a36161'} />
+              <HidePassIcon fill={color.quinary} />
             )}
           </TouchableOpacity>
         )}
       </View>
-      {!!error && <Text>{error}</Text>}
+      {!!error && <Text style={styles.errorText}>{error}</Text>}
     </>
   );
 }

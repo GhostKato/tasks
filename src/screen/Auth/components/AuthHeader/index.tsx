@@ -1,5 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native';
-import styles from '../../styles';
+import {useAuthStyles} from '../../useAuthStyles';
 import React from 'react';
 import {useNavigation} from '@react-navigation/core';
 import {ScreenNames} from '../../../../constants/screenNames';
@@ -12,7 +12,8 @@ interface IAuthHeader {
 }
 
 export default function AuthHeader({ activeTab }: IAuthHeader) {
-  
+
+  const styles = useAuthStyles();
   const { t } = useTranslation();
 
   const navigation = useNavigation<StackNavigationProp<LoggedOutStackType>>();
@@ -24,24 +25,24 @@ export default function AuthHeader({ activeTab }: IAuthHeader) {
   };
   return (
     <>
-      <View style={[styles.titleContainer]}>
-        <Text style={styles.title}>{t.screenAuth.title}</Text>
-        <Text style={styles.welcomeText}>
+      <View style={[styles.headerTitleCont]}>
+        <Text style={styles.headerTitle}>{t.screenAuth.title}</Text>
+        <Text style={styles.headerText}>
           {t.screenAuth.text}
         </Text>
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={styles.headerBtnCont}>
         <TouchableOpacity
           onPress={navigateToLogin}
-          style={activeTab === 'login' ? styles.activeTab : styles.disabledTab}>
-          <Text style={styles.authText}>{t.screenAuth.loginizationBtn}</Text>
+          style={activeTab === 'login' ? styles.headerBtnActive : styles.headerBtnDisabled}>
+          <Text style={styles.headerBtnText}>{t.screenAuth.loginizationBtn}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={navigateToRegistration}
           style={
-            activeTab === 'registration' ? styles.activeTab : styles.disabledTab
+            activeTab === 'registration' ? styles.headerBtnActive : styles.headerBtnDisabled
           }>
-          <Text style={styles.authText}>{t.screenAuth.registrationBtn}</Text>
+          <Text style={styles.headerBtnText}>{t.screenAuth.registrationBtn}</Text>
         </TouchableOpacity>
       </View>
     </>

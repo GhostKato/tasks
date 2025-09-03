@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import React, { useState } from 'react';
-import styles from '../styles';
+import {useAuthStyles} from '../useAuthStyles';
 import AuthHeader from '../components/AuthHeader/index';
 import Input from '../../../components/Input/index';
 import DefaultButton from '../../../components/DefaultButton/index';
@@ -17,6 +17,7 @@ interface IInputValue {
 
 export default function LoginPage() {
 
+  const styles = useAuthStyles();
   const { t } = useTranslation();
 
   const [inputValues, setInputValues] = useState<IInputValue>({

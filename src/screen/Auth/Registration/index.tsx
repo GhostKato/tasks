@@ -1,6 +1,6 @@
 import AuthLayout from '../components/AuthLayout/index';
 import AuthHeader from '../components/AuthHeader/index';
-import styles from '../styles';
+import {useAuthStyles} from '../useAuthStyles';
 import {View} from 'react-native';
 import Input from '../../../components/Input';
 import {Formik, FormikHelpers, FormikValues} from 'formik';
@@ -21,6 +21,7 @@ interface ITouched {
 }
 export default function Registration() {
 
+  const styles = useAuthStyles();
   const { t } = useTranslation();
 
   const [touched, setTouched] = useState<ITouched>({

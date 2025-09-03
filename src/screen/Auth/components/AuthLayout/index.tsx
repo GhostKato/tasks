@@ -5,9 +5,12 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import styles from '../../styles';
+import {useAuthStyles} from '../../useAuthStyles';
 
-export default function AuthLayout({children}) {
+export default function AuthLayout({ children }) {
+  
+  const styles = useAuthStyles();
+  
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={[styles.mainWrapper]}>

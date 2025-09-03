@@ -1,59 +1,63 @@
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {fonts} from '../../constants/fonts';
+import {useTheme} from '../../context/ThemeContext';
 
-export default StyleSheet.create({
+export const useAuthStyles = () => {
+  const {color} = useTheme();
+
+  return StyleSheet.create({
   mainWrapper: {
     margin: 20,
     flex: 1,
     justifyContent: 'center',
+    },
+  headerTitleCont: {
+    gap: 4,
   },
-  title: {
+  headerTitle: {
     fontSize: 24,
-    color: 'black',
+    color: color.quaternary,
     fontFamily: fonts.ComfortaaRegular,
   },
-  welcomeText: {
+  headerText: {
     fontSize: 16,
-    color: 'black',
+    color: color.quaternary,
     fontFamily: fonts.MontserratRegular,
   },
-  buttonContainer: {
+  headerBtnCont: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#EAE9FB',
+    backgroundColor: color.secondary,
     padding: 4,
     borderRadius: 20,
     marginTop: 32,
   },
-  activeTab: {
+  headerBtnActive: {
     alignItems: 'center',
-    backgroundColor: '#F8F8F9',
+    backgroundColor: color.tertiary,
     padding: 10,
     borderRadius: 20,
     flex: 1,
-  },
-  authText: {
-    color: '#0B0B0B',
-    fontSize: 14,
-    fontFamily: fonts.MontserratRegular,
-  },
-  disabledTab: {
+  },  
+  headerBtnDisabled: {
     alignItems: 'center',
     padding: 10,
     borderRadius: 20,
     flex: 1,
     opacity: 0.7,
-  },
-  titleContainer: {
-    gap: 4,
-  },
+    },
+  headerBtnText: {
+    color: color.octonary,
+    fontSize: 14,
+    fontFamily: fonts.MontserratRegular,
+  },  
 
   inputContainer: {
     borderWidth: 1,
     borderRadius: 25,
     marginVertical: 4,
     paddingHorizontal: 24,
-    borderColor: '#A0A0A0',
+    borderColor: color.quaternary,
     paddingVertical: Platform.select({
       android: 12,
       ios: 14,
@@ -62,30 +66,26 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  activePasswordBtn: {
-    height: 15,
-    width: 15,
-    backgroundColor: '#6a932d',
-  },
-  disablePasswordBtn: {
-    height: 15,
-    width: 15,
-    backgroundColor: '#7a5143',
-  },
+  },  
+  
   formContainer: {marginTop: 28, marginBottom: 68},
   input: {
     padding: 0,
     flex: 1,
+    color: color.quaternary,
     fontFamily: fonts.MontserratRegular,
   },
-  loginBtnContainer: {
+  BtnContainer: {
     borderRadius: 25,
-    backgroundColor: '#7A71BA',
+    backgroundColor: color.secondary,
     paddingVertical: 12,
     alignItems: 'center',
   },
-  loginText: {
-    color: 'white',
+  btnText: {
+    color: color.octonary,
+    },
+  errorText: {
+    color: color.quinary,
   },
 });
+};

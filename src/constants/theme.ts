@@ -21,8 +21,8 @@ const baseColors = {
 
 export const lightTheme: ThemeColors = {
   primary: '#FFFFFF',     
-  secondary: '#852630ff',
-  tertiary: '#8f968eff',
+  secondary: '#93242fff',
+  tertiary: '#c3c5c2a9',
   quaternary: '#000000',
   ...baseColors,
   
