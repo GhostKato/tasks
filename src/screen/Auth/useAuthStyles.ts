@@ -34,17 +34,18 @@ export const useAuthStyles = () => {
   },
   headerBtnActive: {
     alignItems: 'center',
-    backgroundColor: color.tertiary,
+    backgroundColor: color.secondary,
     padding: 10,
     borderRadius: 20,
+    borderWidth: 2,
+    borderColor: color.octonary,
     flex: 1,
   },  
   headerBtnDisabled: {
     alignItems: 'center',
     padding: 10,
     borderRadius: 20,
-    flex: 1,
-    opacity: 0.7,
+    flex: 1,    
     },
   headerBtnText: {
     color: color.octonary,

@@ -5,7 +5,7 @@ import { RootStackNavigation } from './types';
 import LoggedInStack from './LogedInStack';
 import LoggedOutStack from './LoggedOutStack';
 import { useTheme } from '../context/ThemeContext';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { getAuth, onAuthStateChanged, FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
@@ -17,11 +17,13 @@ export default function RootNavigation() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(currentUser => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });
-    return subscriber;
+
+    return unsubscribe; 
   }, []);
 
   if (loading) {

@@ -19,10 +19,10 @@ const baseColors = {
   nonary: '#8f968eff',
 };
 
-export const lightTheme: ThemeColors = {
-  primary: '#FFFFFF',     
+export const lightTheme: ThemeColors = {  
+  primary: '#ffff', 
   secondary: '#93242fff',
-  tertiary: '#c3c5c2a9',
+  tertiary: '#947112ff',
   quaternary: '#000000',
   ...baseColors,
   

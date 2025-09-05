@@ -17,7 +17,7 @@ export default function DefaultButton({
 
   return (
     <TouchableOpacity
-      style={[styles.BtnContainer, disabled && {opacity: 0.5}]}
+      style={styles.BtnContainer}
       disabled={disabled}
       onPress={onPress}>
       <Text style={styles.btnText}>{text}</Text>

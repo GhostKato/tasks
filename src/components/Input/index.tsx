@@ -54,9 +54,9 @@ export default function Input({
             }}
             hitSlop={{top: 15, bottom: 15, right: 15, left: 15}}>
             {isPassHidden ? (
-              <ViewPassIcon fill={color.senary} />
+              <ViewPassIcon fill={color.tertiary} />
             ) : (
-              <HidePassIcon fill={color.quinary} />
+              <HidePassIcon fill={color.tertiary} />
             )}
           </TouchableOpacity>
         )}

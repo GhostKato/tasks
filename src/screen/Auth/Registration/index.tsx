@@ -1,58 +1,60 @@
 import AuthLayout from '../components/AuthLayout/index';
 import AuthHeader from '../components/AuthHeader/index';
-import {useAuthStyles} from '../useAuthStyles';
-import {View} from 'react-native';
+import { useAuthStyles } from '../useAuthStyles';
+import { View } from 'react-native';
 import Input from '../../../components/Input';
-import {Formik, FormikHelpers, FormikValues} from 'formik';
-import {RegistrationSchema} from '../utils/validations';
+import { Formik, FormikHelpers, FormikValues } from 'formik';
+import { RegistrationSchema } from '../utils/validations';
 import DefaultButton from '../../../components/DefaultButton/index';
-import {useState} from 'react';
-import auth from '@react-native-firebase/auth';
-import {CommonActions, useNavigation} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackNavigation} from '../../../navigation/types';
-import {ScreenNames} from '../../../constants/screenNames';
+import { useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword } from '@react-native-firebase/auth';
+import { CommonActions, useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackNavigation } from '../../../navigation/types';
+import { ScreenNames } from '../../../constants/screenNames';
 import { useTranslation } from '../../../context/LanguageContext';
 
-interface ITouched {
+type InputValueType = {
   email: boolean;
   password: boolean;
   confirmPassword: boolean;
-}
-export default function Registration() {
+};
 
+export default function Registration() {
   const styles = useAuthStyles();
   const { t } = useTranslation();
 
-  const [touched, setTouched] = useState<ITouched>({
+  const [touched, setTouched] = useState<InputValueType>({
     email: false,
     password: false,
     confirmPassword: false,
   });
+
   const navigation = useNavigation<StackNavigationProp<RootStackNavigation>>();
+
   const registrateUser = async (
     email: string,
     password: string,
     formikHelpers: FormikHelpers<FormikValues>,
   ) => {
     try {
-      const result = await auth().createUserWithEmailAndPassword(
-        email,
-        password,
-      );
+      const auth = getAuth();
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+
       console.log('result', result);
+
       if (result.user) {
         navigation.dispatch(
           CommonActions.reset({
             index: 1,
-            routes: [{name: ScreenNames.LOGGED_IN_STACK}],
+            routes: [{ name: ScreenNames.LOGGED_IN_STACK }],
           }),
         );
       }
-    } catch (e) {
+    } catch (e: any) {
       console.log('e', e);
       if (e.code === 'auth/email-already-in-use') {
-        formikHelpers.setErrors({email: 'email-already-in-use'});
+        formikHelpers.setErrors({ email: 'email-already-in-use' });
       }
     }
   };
@@ -69,7 +71,8 @@ export default function Registration() {
         onSubmit={(value, formikHelpers) => {
           void registrateUser(value.email, value.password, formikHelpers);
         }}
-        validationSchema={RegistrationSchema()}>
+        validationSchema={RegistrationSchema()}
+      >
         {({
           values,
           setFieldValue,
@@ -81,7 +84,7 @@ export default function Registration() {
             <View style={styles.formContainer}>
               <Input
                 onFocus={() =>
-                  setTouched(prevState => ({...prevState, email: true}))
+                  setTouched(prevState => ({ ...prevState, email: true }))
                 }
                 value={values.email}
                 onChangeText={value => {
@@ -92,7 +95,7 @@ export default function Registration() {
               />
               <Input
                 onFocus={() =>
-                  setTouched(prevState => ({...prevState, password: true}))
+                  setTouched(prevState => ({ ...prevState, password: true }))
                 }
                 value={values.password}
                 onChangeText={value => {

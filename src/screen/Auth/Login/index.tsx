@@ -1,35 +1,34 @@
 import { View } from 'react-native';
 import React, { useState } from 'react';
-import {useAuthStyles} from '../useAuthStyles';
+import { useAuthStyles } from '../useAuthStyles';
 import AuthHeader from '../components/AuthHeader/index';
 import Input from '../../../components/Input/index';
 import DefaultButton from '../../../components/DefaultButton/index';
 import AuthLayout from '../components/AuthLayout/index';
-import auth from '@react-native-firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from '@react-native-firebase/auth';
 import { useTranslation } from '../../../context/LanguageContext';
 
-interface IInputValue {
+type InputValueType = {
   email: string;
   password: string;
-  errorEmail: null | string;
-  errorPassword: null | string;
+  errorEmail?: string;      
+  errorPassword?: string;  
 }
 
 export default function LoginPage() {
-
   const styles = useAuthStyles();
   const { t } = useTranslation();
 
-  const [inputValues, setInputValues] = useState<IInputValue>({
+  const [inputValues, setInputValues] = useState<InputValueType>({
     email: '',
     password: '',
-    errorEmail: null,
-    errorPassword: null,
+    errorEmail: undefined,
+    errorPassword: undefined,
   });
 
   const handleChangeInput = (
-    key: 'email' | 'password' | 'errorEmail' | 'errorPassword',
-    value: string | null,
+    key: keyof InputValueType,
+    value: string | undefined,
   ) => {
     setInputValues(prevState => ({ ...prevState, [key]: value }));
   };
@@ -41,7 +40,7 @@ export default function LoginPage() {
     if (!emailValidator.test(inputValues.email)) {
       handleChangeInput('errorEmail', 'Not valid email');
     } else {
-      handleChangeInput('errorEmail', null);
+      handleChangeInput('errorEmail', undefined);
     }
   };
 
@@ -52,13 +51,14 @@ export default function LoginPage() {
         'Password must be more than 8 symbols',
       );
     } else {
-      handleChangeInput('errorPassword', null);
+      handleChangeInput('errorPassword', undefined);
     }
   };
 
   const onLogin = async (email: string, password: string) => {
     try {
-      await auth().signInWithEmailAndPassword(email, password);      
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (e: any) {
       console.log('Login error', e);
       if (e.code === 'auth/user-not-found') {
