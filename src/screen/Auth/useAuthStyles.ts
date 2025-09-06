@@ -34,24 +34,27 @@ export const useAuthStyles = () => {
   },
   headerBtnActive: {
     alignItems: 'center',
-    backgroundColor: color.secondary,
+    backgroundColor: color.octonary,
     padding: 10,
-    borderRadius: 20,
-    borderWidth: 2,
-    borderColor: color.octonary,
+    borderRadius: 20,  
     flex: 1,
   },  
   headerBtnDisabled: {
-    alignItems: 'center',
+    alignItems: 'center',    
     padding: 10,
     borderRadius: 20,
     flex: 1,    
     },
-  headerBtnText: {
+  headerBtnTextActive: {
+    color: color.quinary,    
+    fontSize: 14,
+    fontFamily: fonts.MontserratRegular,
+    },
+  headerBtnTextDisabled: {    
     color: color.octonary,
     fontSize: 14,
     fontFamily: fonts.MontserratRegular,
-  },  
+  },    
 
   inputContainer: {
     borderWidth: 1,

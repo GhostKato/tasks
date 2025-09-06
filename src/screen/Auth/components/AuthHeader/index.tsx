@@ -8,10 +8,10 @@ import {LoggedOutStackType} from '../../../../navigation/types';
 import { useTranslation } from '../../../../context/LanguageContext';
 
 interface IAuthHeader {
-  activeTab: 'login' | 'registration';
+  activeBtn: 'login' | 'registration';
 }
 
-export default function AuthHeader({ activeTab }: IAuthHeader) {
+export default function AuthHeader({ activeBtn }: IAuthHeader) {
 
   const styles = useAuthStyles();
   const { t } = useTranslation();
@@ -34,15 +34,14 @@ export default function AuthHeader({ activeTab }: IAuthHeader) {
       <View style={styles.headerBtnCont}>
         <TouchableOpacity
           onPress={navigateToLogin}
-          style={activeTab === 'login' ? styles.headerBtnActive : styles.headerBtnDisabled}>
-          <Text style={styles.headerBtnText}>{t.screenAuth.loginizationBtn}</Text>
+          style={activeBtn === 'login' ? styles.headerBtnActive : styles.headerBtnDisabled}>
+          <Text style={activeBtn === 'login' ? styles.headerBtnTextActive : styles.headerBtnTextDisabled}>{t.screenAuth.loginizationBtn}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={navigateToRegistration}
-          style={
-            activeTab === 'registration' ? styles.headerBtnActive : styles.headerBtnDisabled
+          style={activeBtn === 'registration' ? styles.headerBtnActive : styles.headerBtnDisabled
           }>
-          <Text style={styles.headerBtnText}>{t.screenAuth.registrationBtn}</Text>
+          <Text style={activeBtn === 'registration' ? styles.headerBtnTextActive : styles.headerBtnTextDisabled}>{t.screenAuth.registrationBtn}</Text>
         </TouchableOpacity>
       </View>
     </>

@@ -61,7 +61,7 @@ export default function Registration() {
 
   return (
     <AuthLayout>
-      <AuthHeader activeTab={'registration'} />
+      <AuthHeader activeBtn={'registration'} />
       <Formik
         initialValues={{
           email: '',

@@ -79,7 +79,7 @@ export default function LoginPage() {
 
   return (
     <AuthLayout>
-      <AuthHeader activeTab={'login'} />
+      <AuthHeader activeBtn={'login'} />
       <View style={styles.formContainer}>
         <Input
           onBlur={checkEmail}
