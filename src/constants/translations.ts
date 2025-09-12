@@ -58,6 +58,9 @@ export type Translations = {
     };
     showVariationsBtn: string,
   };
+  screenTasks: {
+    AddBtn: string;    
+  };
 };
 
 export const en: Translations = {
@@ -119,7 +122,10 @@ export const en: Translations = {
       learning: 'Learning',
     },
     showVariationsBtn: 'Show variations',
-    },
+  },
+  screenTasks: {
+    AddBtn: 'Add task',    
+  },
 };
 
 export const ua: Translations = {
@@ -181,7 +187,10 @@ export const ua: Translations = {
       learning: 'Навчання',
     },
     showVariationsBtn: 'Показати варіанти',
-    },
+  },
+  screenTasks: {
+    AddBtn: 'Додати завдання',    
+  },
 };
 
 export const pl: Translations = {
@@ -243,5 +252,8 @@ export const pl: Translations = {
       learning: 'Nauka',
     },
     showVariationsBtn: 'Pokaż opcje',
-    },
+  },
+  screenTasks: {
+    AddBtn: 'Dodaj zadanie',    
+  },
 };

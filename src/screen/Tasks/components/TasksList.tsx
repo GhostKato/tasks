@@ -14,6 +14,29 @@ interface ITasksListProps {
 }
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
+  const renderTask = ({ item }: { item: ITask }) => {
+    const deadlineDate = item.deadline.toDate();
+    const formattedDeadline = `${deadlineDate.toLocaleDateString()} ${deadlineDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+
+    return (
+      <TouchableOpacity
+        style={styles.item}
+        activeOpacity={0.7}
+        onPress={() => onTaskPress && onTaskPress(item)}
+      >
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{item.title}</Text>
+          <Text style={styles.info}>
+            Статус: {item.status} | Пріоритет: {item.priority}
+          </Text>
+          <Text style={styles.info}>
+            Категорія: {item.category} | Дедлайн: {formattedDeadline}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.flex}>
       <FlatList
@@ -21,21 +44,9 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         style={styles.mainContainer}
         numColumns={1} 
         keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => onTaskPress && onTaskPress(item)}
-          >
-            <View style={styles.textContainer}>
-              <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.info}>
-                Статус: {item.status} | Пріоритет: {item.priority}
-              </Text>
-              <Text style={styles.info}>
-                Категорія: {item.category} | Дата: {item.date}
-              </Text>
-            </View>
-          </TouchableOpacity>
+        renderItem={renderTask}
+        ListEmptyComponent={() => (
+          <Text style={styles.emptyText}>Немає задач</Text>
         )}
       />
     </View>
@@ -54,15 +65,24 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 8,
   },
-  textContainer: { gap: 5 },
+  textContainer: { marginBottom: 5 },
   name: {
     fontFamily: fonts.MontserratSemiBold,
     fontSize: 16,
     color: '#0B0B0B',
+    marginBottom: 4,
   },
   info: {
     fontFamily: fonts.MontserratRegular,
     fontSize: 14,
     color: '#333',
+    marginBottom: 2,
+  },
+  emptyText: {
+    fontFamily: fonts.MontserratRegular,
+    fontSize: 16,
+    color: '#999',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });

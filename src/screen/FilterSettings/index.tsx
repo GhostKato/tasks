@@ -13,9 +13,10 @@ import { useNavigation } from '@react-navigation/core';
 import { FilterSettingsNavigationProp } from '../../navigation/types'; 
 import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from '../../context/LanguageContext';
+import { ScreenNames } from '../../constants/screenNames';
 
 export interface ISettings {
-  timeStamp: boolean;
+  timeStamp: boolean; // локальний прапорець сортування
   status: 'done' | 'undone' | 'inProgress' | null;
   priority: 'high' | 'medium' | 'low' | null;
   date: 'today' | 'week' | 'overdue' | null;
@@ -23,34 +24,32 @@ export interface ISettings {
 }
 
 export default function FilterSettings() {
-
   const { color } = useTheme();
-   const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const styles = StyleSheet.create({
-  sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
-  activeSortByTime: {
-    borderRadius: 50,
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderColor: color.secondary,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checkedSortByTime: {
-    borderRadius: 50,
-    width: 10,
-    height: 10,
-    backgroundColor: color.secondary,
-  },
-  sortByTimeText: {
-    fontFamily: fonts.MontserratRegular,
-    color: color.quaternary,
-  },
-  btnText: { fontFamily: fonts.MontserratRegular, color: color.quaternary },
-});
-
+    sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
+    activeSortByTime: {
+      borderRadius: 50,
+      width: 15,
+      height: 15,
+      borderWidth: 1,
+      borderColor: color.secondary,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    checkedSortByTime: {
+      borderRadius: 50,
+      width: 10,
+      height: 10,
+      backgroundColor: color.secondary,
+    },
+    sortByTimeText: {
+      fontFamily: fonts.MontserratRegular,
+      color: color.quaternary,
+    },
+    btnText: { fontFamily: fonts.MontserratRegular, color: color.quaternary },
+  });
 
   const navigation = useNavigation<FilterSettingsNavigationProp>();
   const [settings, setSettings] = useState<ISettings>({
@@ -61,21 +60,12 @@ export default function FilterSettings() {
     category: null,
   });
 
-  const handleSwitch = <T extends keyof ISettings>(
-    key: T,
-    value: ISettings[T],
-  ) => {
-    setSettings(prev => ({
-      ...prev,
-      [key]: value,
-    }));
+  const handleSwitch = <T extends keyof ISettings>(key: T, value: ISettings[T]) => {
+    setSettings(prev => ({ ...prev, [key]: value }));
   };
 
   const onSortByTime = () => {
-    setSettings(prevState => ({
-      ...prevState,
-      timeStamp: !prevState.timeStamp,
-    }));
+    setSettings(prev => ({ ...prev, timeStamp: !prev.timeStamp }));
   };
 
   return (
@@ -86,13 +76,11 @@ export default function FilterSettings() {
           <View style={styles.activeSortByTime}>
             {settings.timeStamp && <View style={styles.checkedSortByTime} />}
           </View>
-          <Text style={styles.sortByTimeText}>
-            Сортувати за датою додавання
-          </Text>
+          <Text style={styles.sortByTimeText}>{t.screenFilterSettings.sortByDate}</Text>
         </TouchableOpacity>
 
         {/* За статусом */}
-        <Text style={styles.btnText}>{ t.screenFilterSettings.byStatusTitle}</Text>
+        <Text style={styles.btnText}>{t.screenFilterSettings.byStatusTitle}</Text>
         <SwitchBtn
           handleSwitch={item => handleSwitch('status', item.id)}
           active={settings.status}
@@ -142,8 +130,7 @@ export default function FilterSettings() {
         {/* Кнопка застосувати */}
         <DefaultButton
           onPress={() => {
-            // Передаємо settings у TASKS_PAGE
-            navigation.navigate('TASKS_PAGE', { settings });
+            navigation.navigate(ScreenNames.TASKS_PAGE, { settings });
           }}
           text={t.screenFilterSettings.showVariationsBtn}
         />
@@ -151,4 +138,3 @@ export default function FilterSettings() {
     </ScrollView>
   );
 }
-

@@ -1,59 +1,118 @@
 import { ActivityIndicator, View } from 'react-native';
-import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import { useEffect, useState } from 'react';
 import TasksList from './components/TasksList';
 import SearchBar from './components/SearchBar';
 import { ISettings } from '../FilterSettings';
 import { RouteProp, useRoute } from '@react-navigation/core';
-// import { addTasks } from '../../utils/tasksSeeder';
+import { ScreenNames } from '../../constants/screenNames';
+import { useNavigation } from '@react-navigation/core';
+import { AddTaskNavigationProp } from '../../navigation/types'; 
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  startAt,
+  endAt,
+  Timestamp,
+  QueryDocumentSnapshot,
+  DocumentData,
+} from '@react-native-firebase/firestore';
+
+import { addTasks } from '../../utils/tasksSeeder';
+import DefaultButton from '../../components/DefaultButton';
+import { useTranslation } from '../../context/LanguageContext';
 
 export interface ITask {
   id: string;
-  name: string;
-  status: 'Виконано' | 'Невиконано' | 'У прогресі';
-  priority: 'Високий' | 'Середній' | 'Низький';
-  category: 'Робота' | 'Особисте' | 'Навчання';
-  date: string;
+  title: string;
+  description: string;
+  status: 'done' | 'undone' | 'inProgress';
+  priority: 'high' | 'medium' | 'low';
+  category: 'work' | 'personal' | 'study';
+  deadline: Timestamp; // дата дедлайну
   isFavorite: boolean;
   ownerId: string;
 }
 
 export default function Tasks() {
+  const { t } = useTranslation();
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [loading, setLoading] = useState(true);
   const route = useRoute<RouteProp<{ params: { settings: ISettings } }>>();
 
-  // Наповнення бази даних (тільки один раз для тесту)
-  // useEffect(() => {
-  //   addTasks();
-  // }, []);
+  const db = getFirestore();
+  const tasksRef = collection(db, 'tasks');
 
+  // Seeder для тестових задач
+  useEffect(() => {
+    addTasks();
+  }, []);
+
+  // Fetch tasks з фільтрами
   useEffect(() => {
     const fetchTasks = async () => {
       setLoading(true);
       try {
-        let query: FirebaseFirestoreTypes.Query<FirebaseFirestoreTypes.DocumentData> =
-          firestore().collection('tasks');
+        let q = query(tasksRef);
 
-        // Фільтрування по settings
         if (route?.params?.settings) {
-          (Object.entries(route.params.settings) as [keyof ISettings, string | null][]).forEach(
-            ([key, value]) => {
-              if (value !== null && key !== 'timeStamp') {
-                query = query.where(key, '==', value);
-              }
-            }
-          );
+          const { status, priority, category } = route.params.settings;
+          if (status) q = query(q, where('status', '==', status));
+          if (priority) q = query(q, where('priority', '==', priority));
+          if (category) q = query(q, where('category', '==', category));
         }
 
-        const result = await query.get();
+        const snapshot = await getDocs(q);
 
-        const temp: ITask[] = result.docs.map((doc) => {
-          const data = doc.data() as Omit<ITask, 'id'>;
-          return { id: doc.id, ...data };
-        });
+        const temp: ITask[] = snapshot.docs.map(
+          (doc: QueryDocumentSnapshot<DocumentData>) => {
+            const data = doc.data() as Omit<ITask, 'id'>;
+            return { id: doc.id, ...data };
+          }
+        );
 
-        setTasks(temp);
+        // Фільтр по дедлайну
+        if (route?.params?.settings?.date) {
+          const now = new Date();
+          const filtered = temp.filter(task => {
+            const taskDate = task.deadline.toDate();
+            switch (route.params.settings.date) {
+              case 'today':
+                return (
+                  taskDate.getDate() === now.getDate() &&
+                  taskDate.getMonth() === now.getMonth() &&
+                  taskDate.getFullYear() === now.getFullYear()
+                );
+              case 'week':
+                const startOfWeek = new Date(now);
+                startOfWeek.setDate(now.getDate() - now.getDay()); // початок тижня
+                const endOfWeek = new Date(startOfWeek);
+                endOfWeek.setDate(startOfWeek.getDate() + 6); // кінець тижня
+                return taskDate >= startOfWeek && taskDate <= endOfWeek;
+              case 'overdue':
+                return taskDate < now;
+              default:
+                return true;
+            }
+          });
+          setTasks(filtered);
+        } else {
+          setTasks(temp);
+        }
+
+        // Сортування по дедлайну, якщо включено timeStamp
+        if (route?.params?.settings?.timeStamp) {
+          setTasks(prev =>
+            [...prev].sort(
+              (a, b) => b.deadline.toDate().getTime() - a.deadline.toDate().getTime()
+            )
+          );
+        }
       } catch (e) {
         console.log('Firestore error:', e);
       } finally {
@@ -62,27 +121,28 @@ export default function Tasks() {
     };
 
     fetchTasks();
-  }, [route?.params?.settings]);
+  }, [route?.params?.settings, tasksRef]);
 
+  // Пошук
   const handleSearch = async (text: string) => {
     try {
-      const result = await firestore()
-        .collection('tasks')
-        .orderBy('name')
-        .startAt(text)
-        .endAt(text + '\uf8ff')
-        .get();
+      const q = query(tasksRef, orderBy('title'), startAt(text), endAt(text + '\uf8ff'));
+      const snapshot = await getDocs(q);
 
-      const temp: ITask[] = result.docs.map((doc) => {
-        const data = doc.data() as Omit<ITask, 'id'>;
-        return { id: doc.id, ...data };
-      });
+      const temp: ITask[] = snapshot.docs.map(
+        (doc: QueryDocumentSnapshot<DocumentData>) => {
+          const data = doc.data() as Omit<ITask, 'id'>;
+          return { id: doc.id, ...data };
+        }
+      );
 
       setTasks(temp);
     } catch (e) {
       console.log('Firestore search error:', e);
     }
   };
+
+  const navigation = useNavigation<AddTaskNavigationProp>();  
 
   return (
     <View style={{ flex: 1 }}>
@@ -94,6 +154,12 @@ export default function Tasks() {
       ) : (
         <TasksList tasks={tasks} />
       )}
+      <DefaultButton
+                onPress={() => {
+                  navigation.navigate(ScreenNames.ADD_TASK_PAGE, {});
+                }}
+                text={t.screenTasks.AddBtn}
+              />
     </View>
   );
 }
