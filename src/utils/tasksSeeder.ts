@@ -8,6 +8,12 @@ const tasks = [
   { name: 'Написати звіт', status: 'У прогресі', priority: 'Високий', category: 'Робота', date: '2025-09-12', isFavorite: false },
   { name: 'Купити продукти', status: 'Невиконано', priority: 'Середній', category: 'Особисте', date: '2025-09-11', isFavorite: true },
   { name: 'Підготувати презентацію', status: 'Виконано', priority: 'Високий', category: 'Робота', date: '2025-09-10', isFavorite: false },
+  { name: 'Написати звіт', status: 'У прогресі', priority: 'Високий', category: 'Робота', date: '2025-09-12', isFavorite: false },
+  { name: 'Купити продукти', status: 'Невиконано', priority: 'Середній', category: 'Особисте', date: '2025-09-11', isFavorite: true },
+  { name: 'Підготувати презентацію', status: 'Виконано', priority: 'Високий', category: 'Робота', date: '2025-09-10', isFavorite: false },
+  { name: 'Написати звіт', status: 'У прогресі', priority: 'Високий', category: 'Робота', date: '2025-09-12', isFavorite: false },
+  { name: 'Купити продукти', status: 'Невиконано', priority: 'Середній', category: 'Особисте', date: '2025-09-11', isFavorite: true },
+  { name: 'Підготувати презентацію', status: 'Виконано', priority: 'Високий', category: 'Робота', date: '2025-09-10', isFavorite: false },
 ];
 
 export async function addTasks() {

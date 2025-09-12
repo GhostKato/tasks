@@ -11,6 +11,8 @@ import SwitchBtn from '../../components/SwitchButton';
 import DefaultButton from '../../components/DefaultButton';
 import { useNavigation } from '@react-navigation/core';
 import { FilterSettingsNavigationProp } from '../../navigation/types'; 
+import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from '../../context/LanguageContext';
 
 export interface ISettings {
   timeStamp: boolean;
@@ -21,6 +23,35 @@ export interface ISettings {
 }
 
 export default function FilterSettings() {
+
+  const { color } = useTheme();
+   const { t } = useTranslation();
+
+  const styles = StyleSheet.create({
+  sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
+  activeSortByTime: {
+    borderRadius: 50,
+    width: 15,
+    height: 15,
+    borderWidth: 1,
+    borderColor: color.secondary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkedSortByTime: {
+    borderRadius: 50,
+    width: 10,
+    height: 10,
+    backgroundColor: color.secondary,
+  },
+  sortByTimeText: {
+    fontFamily: fonts.MontserratRegular,
+    color: color.quaternary,
+  },
+  btnText: { fontFamily: fonts.MontserratRegular, color: color.quaternary },
+});
+
+
   const navigation = useNavigation<FilterSettingsNavigationProp>();
   const [settings, setSettings] = useState<ISettings>({
     timeStamp: false,
@@ -61,50 +92,50 @@ export default function FilterSettings() {
         </TouchableOpacity>
 
         {/* За статусом */}
-        <Text style={styles.btnText}>За статусом</Text>
+        <Text style={styles.btnText}>{ t.screenFilterSettings.byStatusTitle}</Text>
         <SwitchBtn
           handleSwitch={item => handleSwitch('status', item.id)}
           active={settings.status}
           items={[
-            { text: 'Виконано', id: 'done' },
-            { text: 'Невиконано', id: 'undone' },
-            { text: 'У прогресі', id: 'inProgress' },
+            { text: t.screenFilterSettings.byStatus.done, id: 'done' },
+            { text: t.screenFilterSettings.byStatus.undone, id: 'undone' },
+            { text: t.screenFilterSettings.byStatus.inProgress, id: 'inProgress' },
           ]}
         />
 
         {/* За пріоритетом */}
-        <Text style={styles.btnText}>За пріоритетом</Text>
+        <Text style={styles.btnText}>{t.screenFilterSettings.byPriorityTitle}</Text>
         <SwitchBtn
           handleSwitch={item => handleSwitch('priority', item.id)}
           active={settings.priority}
           items={[
-            { text: 'Високий', id: 'high' },
-            { text: 'Середній', id: 'medium' },
-            { text: 'Низький', id: 'low' },
+            { text: t.screenFilterSettings.byPriority.high, id: 'high' },
+            { text: t.screenFilterSettings.byPriority.medium, id: 'medium' },
+            { text: t.screenFilterSettings.byPriority.low, id: 'low' },
           ]}
         />
 
         {/* За датами */}
-        <Text style={styles.btnText}>За датами</Text>
+        <Text style={styles.btnText}>{t.screenFilterSettings.byDatesTitle}</Text>
         <SwitchBtn
           handleSwitch={item => handleSwitch('date', item.id)}
           active={settings.date}
           items={[
-            { text: 'Сьогодні', id: 'today' },
-            { text: 'На цьому тижні', id: 'week' },
-            { text: 'Прострочені', id: 'overdue' },
+            { text: t.screenFilterSettings.byDates.today, id: 'today' },
+            { text: t.screenFilterSettings.byDates.thisWeek, id: 'week' },
+            { text: t.screenFilterSettings.byDates.overdue, id: 'overdue' },
           ]}
         />
 
-        {/* За категоріями / проєктами */}
-        <Text style={styles.btnText}>За категоріями / проєктами</Text>
+        {/* За категоріями */}
+        <Text style={styles.btnText}>{t.screenFilterSettings.byCategoriesTitle}</Text>
         <SwitchBtn
           handleSwitch={item => handleSwitch('category', item.id)}
           active={settings.category}
           items={[
-            { text: 'Робота', id: 'work' },
-            { text: 'Особисте', id: 'personal' },
-            { text: 'Навчання', id: 'study' },
+            { text: t.screenFilterSettings.byCategories.work, id: 'work' },
+            { text: t.screenFilterSettings.byCategories.personal, id: 'personal' },
+            { text: t.screenFilterSettings.byCategories.learning, id: 'study' },
           ]}
         />
 
@@ -114,33 +145,10 @@ export default function FilterSettings() {
             // Передаємо settings у TASKS_PAGE
             navigation.navigate('TASKS_PAGE', { settings });
           }}
-          text={'Показати варіанти'}
+          text={t.screenFilterSettings.showVariationsBtn}
         />
       </View>
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
-  activeSortByTime: {
-    borderRadius: 50,
-    width: 15,
-    height: 15,
-    borderWidth: 1,
-    borderColor: '#7A71BA',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checkedSortByTime: {
-    borderRadius: 50,
-    width: 10,
-    height: 10,
-    backgroundColor: '#7A71BA',
-  },
-  sortByTimeText: {
-    fontFamily: fonts.MontserratRegular,
-    color: 'black',
-  },
-  btnText: { fontFamily: fonts.MontserratRegular, color: '#0B0B0B' },
-});

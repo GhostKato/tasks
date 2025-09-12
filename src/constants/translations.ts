@@ -28,7 +28,36 @@ export type Translations = {
   screenTheme: {
     darkModeEnabled: string;
     darkModeDisabled: string;
-  };   
+  };
+  screenFilterSettings: {
+    headerTitle: string;
+    sortByDate: string;
+    byStatusTitle: string;
+    byStatus: {
+      done: string,
+      undone: string,
+      inProgress: string,
+    },
+    byPriorityTitle: string;
+    byPriority: {
+      high: string,
+      medium: string,
+      low: string,
+    };
+    byDatesTitle: string;
+    byDates: {
+      today: string,
+      thisWeek: string,
+      overdue: string,
+    };
+    byCategoriesTitle: string;
+    byCategories: {
+      work: string,
+      personal: string,
+      learning: string,
+    };
+    showVariationsBtn: string,
+  };
 };
 
 export const en: Translations = {
@@ -61,6 +90,35 @@ export const en: Translations = {
   screenTheme: {
     darkModeEnabled: 'Dark mode: Enabled',
     darkModeDisabled: 'Dark mode: Disabled',
+  },
+  screenFilterSettings: {
+     headerTitle: 'Filters',
+     sortByDate: 'Sort by date added',
+     byStatusTitle: 'By status',
+    byStatus: {
+      done: 'Done',
+      undone: 'Undone',
+      inProgress: 'In progress',
+     },
+    byPriorityTitle: 'By priority',
+    byPriority: {
+      high: 'High',
+      medium: 'Medium',
+      low: 'Low',
+     },
+    byDatesTitle: 'By dates',
+    byDates: {
+      today: 'Today',
+      thisWeek: 'This week',
+      overdue: 'Overdue',
+     },
+    byCategoriesTitle: 'By categories',
+    byCategories: {
+      work: 'Work',
+      personal: 'Personal',
+      learning: 'Learning',
+    },
+    showVariationsBtn: 'Show variations',
     },
 };
 
@@ -94,6 +152,35 @@ export const ua: Translations = {
   screenTheme: {
     darkModeEnabled: 'Темний режим: Увімкнено',
     darkModeDisabled: 'Темний режим: Вимкнено',
+  },
+  screenFilterSettings: {
+     headerTitle: 'Фільтри',
+     sortByDate: 'Сортувати за датою додавання',
+    byStatusTitle: 'За статусом',
+    byStatus: {
+      done: 'Виконано',
+      undone: 'Невиконано',
+      inProgress: 'У прогресі',
+     },
+    byPriorityTitle: 'За пріоритетом',
+    byPriority: {
+      high: 'Високий',
+      medium: 'Середній',
+      low: 'Низький',
+     },
+    byDatesTitle: 'За датами',
+    byDates: {
+      today: 'Сьогодні',
+      thisWeek: 'На цьому тижні',
+      overdue: 'Прострочені',
+     },
+    byCategoriesTitle: 'За категоріями',
+    byCategories: {
+      work: 'Робота',
+      personal: 'Особисте',
+      learning: 'Навчання',
+    },
+    showVariationsBtn: 'Показати варіанти',
     },
 };
 
@@ -127,5 +214,34 @@ export const pl: Translations = {
   screenTheme: {
     darkModeEnabled: 'Tryb ciemny: Włączony',
     darkModeDisabled: 'Tryb ciemny: Wyłączony',
+  },
+  screenFilterSettings: {
+     headerTitle: 'Filtry',
+     sortByDate: 'Sortuj według dodanej daty',
+     byStatusTitle: 'Według stanu',
+     byStatus: {
+      done: 'Zrobione',
+      undone: 'Niespełniony',
+      inProgress: 'W toku',
+     },
+      byPriorityTitle: 'Według priorytetu',
+    byPriority: {
+      high: 'Wysoki',
+      medium: 'Średnia',
+      low: 'Niski',
+     },
+    byDatesTitle: 'Według dat',
+    byDates: {
+      today: 'Dzisiaj',
+      thisWeek: 'Ten tydzień',
+      overdue: 'Zaległy',
+     },
+    byCategoriesTitle: 'Według kategorii',
+    byCategories: {
+      work: 'Praca',
+      personal: 'Osobisty',
+      learning: 'Nauka',
+    },
+    showVariationsBtn: 'Pokaż opcje',
     },
 };
