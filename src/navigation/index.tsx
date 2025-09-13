@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator<RootStackNavigation>();
 export default function RootNavigation() {
   const { color } = useTheme();
   const user = useAppSelector(selectUser);
-  const loading = useAppSelector(selectLoading);  
+  const loading = useAppSelector(selectLoading);
 
   if (loading) {
     return (
@@ -36,15 +36,9 @@ export default function RootNavigation() {
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          <Stack.Screen
-            name={ScreenNames.LOGGED_IN_STACK}
-            component={LoggedInStack}
-          />
+          <Stack.Screen name={ScreenNames.LOGGED_IN_STACK} component={LoggedInStack} />
         ) : (
-          <Stack.Screen
-            name={ScreenNames.LOGGED_OUT_STACK}
-            component={LoggedOutStack}
-          />
+          <Stack.Screen name={ScreenNames.LOGGED_OUT_STACK} component={LoggedOutStack} />
         )}
       </Stack.Navigator>
     </NavigationContainer>

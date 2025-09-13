@@ -53,7 +53,7 @@ export default function LoginPage() {
   };
 
   const onLogin = () => {
-    dispatch(loginUser(inputValues.email, inputValues.password));
+    dispatch(loginUser({ email: inputValues.email, password: inputValues.password }));
   };
 
   const isDisabledLoginBtn = Boolean(

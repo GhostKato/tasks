@@ -1,51 +1,62 @@
-import { AppDispatch } from '../store';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { setUser, setLoading, setError, logout} from './slice';
-import { serializeUser } from '../../utils/serializeUser';
+import { serializeUser, SerializedUser } from '../../utils/serializeUser';
 
 // Логін
-export const loginUser = (email: string, password: string) => async (dispatch: AppDispatch) => {
+export const loginUser = createAsyncThunk<
+  SerializedUser,
+  { email: string; password: string },
+  { rejectValue: string }
+>('auth/loginUser', async ({ email, password }, { rejectWithValue }) => {
   const auth = getAuth();
   try {
-    dispatch(setLoading(true));
     const result = await signInWithEmailAndPassword(auth, email, password);
     const user = serializeUser(result.user);
-    console.log('SERIALIZED USER:', user);
-    console.log('USER:', result.user);
-    dispatch(setUser(user));
+
+    console.log('LOGIN: serialized user ->', user);
+    if (!user) {
+      return rejectWithValue('User data is null after login');
+    }
+
+    return user;
   } catch (e: any) {
-    dispatch(setError(e.message));
-  } finally {
-    dispatch(setLoading(false));
+    console.log('LOGIN ERROR:', e.message);
+    return rejectWithValue(e.message);
   }
-};
+});
 
 // Реєстрація
-export const registerUser = (email: string, password: string) => async (dispatch: AppDispatch) => {
+export const registerUser = createAsyncThunk<
+  SerializedUser,
+  { email: string; password: string },
+  { rejectValue: string }
+>('auth/registerUser', async ({ email, password }, { rejectWithValue }) => {
   const auth = getAuth();
   try {
-    dispatch(setLoading(true));
     const result = await createUserWithEmailAndPassword(auth, email, password);
     const user = serializeUser(result.user);
-    console.log('SERIALIZED USER:', user);
-    console.log('USER:', result.user);
-    dispatch(setUser(user));
+
+    console.log('REGISTER: serialized user ->', user);
+    if (!user) {
+      return rejectWithValue('User data is null after registration');
+    }
+
+    return user;
   } catch (e: any) {
-    dispatch(setError(e.message));
-  } finally {
-    dispatch(setLoading(false));
+    console.log('REGISTER ERROR:', e.message);
+    return rejectWithValue(e.message);
   }
-};
+});
 
 // Вихід
-export const logoutUser = () => async (dispatch: AppDispatch) => {
+export const logoutUser = createAsyncThunk('auth/logoutUser', async (_, { rejectWithValue }) => {
   const auth = getAuth();
   try {
     await signOut(auth);
+    console.log('LOGOUT: success');
+    return true;
   } catch (e: any) {
-    console.warn('SignOut failed:', e.message);
-  } finally {
-    dispatch(logout()); // очистка Redux завжди
+    console.log('LOGOUT ERROR:', e.message);
+    return rejectWithValue(e.message);
   }
-};
-
+});

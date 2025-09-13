@@ -47,7 +47,7 @@ export default function Registration() {
           confirmPassword: '',
         }}
         onSubmit={values => {
-          dispatch(registerUser(values.email, values.password)); // два аргументи
+          dispatch(registerUser({ email: values.email, password: values.password }));
         }}
         validationSchema={RegistrationSchema()}
       >
