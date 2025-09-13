@@ -1,23 +1,28 @@
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import React, { useState } from 'react';
 import { useAuthStyles } from '../useAuthStyles';
-import AuthHeader from '../components/AuthHeader/index';
-import Input from '../../../components/Input/index';
-import DefaultButton from '../../../components/DefaultButton/index';
-import AuthLayout from '../components/AuthLayout/index';
-import { getAuth, signInWithEmailAndPassword } from '@react-native-firebase/auth';
+import AuthHeader from '../components/AuthHeader';
+import Input from '../../../components/Input';
+import DefaultButton from '../../../components/DefaultButton';
+import AuthLayout from '../components/AuthLayout';
 import { useTranslation } from '../../../context/LanguageContext';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { loginUser } from '../../../redux/auth/operations';
+import { selectLoading, selectError } from '../../../redux/auth/selectors';
 
 type InputValueType = {
   email: string;
   password: string;
-  errorEmail?: string;      
-  errorPassword?: string;  
-}
+  errorEmail?: string;
+  errorPassword?: string;
+};
 
 export default function LoginPage() {
   const styles = useAuthStyles();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector(selectLoading);
+  const error = useAppSelector(selectError);
 
   const [inputValues, setInputValues] = useState<InputValueType>({
     email: '',
@@ -26,17 +31,12 @@ export default function LoginPage() {
     errorPassword: undefined,
   });
 
-  const handleChangeInput = (
-    key: keyof InputValueType,
-    value: string | undefined,
-  ) => {
-    setInputValues(prevState => ({ ...prevState, [key]: value }));
+  const handleChangeInput = (key: keyof InputValueType, value: string | undefined) => {
+    setInputValues(prev => ({ ...prev, [key]: value }));
   };
 
   const checkEmail = () => {
-    const emailValidator = new RegExp(
-      '^([a-z0-9._%-]+@[a-z0-9.-]+\\.[a-z]{2,6})*$',
-    );
+    const emailValidator = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,6}$/;
     if (!emailValidator.test(inputValues.email)) {
       handleChangeInput('errorEmail', 'Not valid email');
     } else {
@@ -46,40 +46,27 @@ export default function LoginPage() {
 
   const checkPassword = (text: string) => {
     if (text.length < 8) {
-      handleChangeInput(
-        'errorPassword',
-        'Password must be more than 8 symbols',
-      );
+      handleChangeInput('errorPassword', 'Password must be more than 8 symbols');
     } else {
       handleChangeInput('errorPassword', undefined);
     }
   };
 
-  const onLogin = async (email: string, password: string) => {
-    try {
-      const auth = getAuth();
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (e: any) {
-      console.log('Login error', e);
-      if (e.code === 'auth/user-not-found') {
-        handleChangeInput('errorEmail', 'User not found');
-      }
-      if (e.code === 'auth/wrong-password') {
-        handleChangeInput('errorPassword', 'Wrong password');
-      }
-    }
+  const onLogin = () => {
+    dispatch(loginUser(inputValues.email, inputValues.password));
   };
 
   const isDisabledLoginBtn = Boolean(
     inputValues.errorEmail ||
       inputValues.errorPassword ||
       !inputValues.email ||
-      !inputValues.password,
+      !inputValues.password ||
+      loading
   );
 
   return (
     <AuthLayout>
-      <AuthHeader activeBtn={'login'} />
+      <AuthHeader activeBtn="login" />
       <View style={styles.formContainer}>
         <Input
           onBlur={checkEmail}
@@ -96,16 +83,15 @@ export default function LoginPage() {
             checkPassword(text);
           }}
           error={inputValues.errorPassword}
-          secureTextEntry={true}
+          secureTextEntry
         />
       </View>
       <DefaultButton
-        onPress={() => {
-          void onLogin(inputValues.email, inputValues.password);
-        }}
+        onPress={onLogin}
         disabled={isDisabledLoginBtn}
-        text={t.screenAuth.logInBtn}
+        text={loading ? 'Loading...' : t.screenAuth.logInBtn}
       />
+      {error && <Text style={{ color: 'red' }}>{error}</Text>}
     </AuthLayout>
   );
 }
