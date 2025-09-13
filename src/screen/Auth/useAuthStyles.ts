@@ -34,7 +34,7 @@ export const useAuthStyles = () => {
   },
   headerBtnActive: {
     alignItems: 'center',
-    backgroundColor: color.octonary,
+    backgroundColor: color.primary,
     padding: 10,
     borderRadius: 20,  
     flex: 1,

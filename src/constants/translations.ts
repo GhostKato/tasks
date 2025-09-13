@@ -33,6 +33,7 @@ export type Translations = {
     headerTitle: string;
     sortByDate: string;
     byStatusTitle: string;
+    allTasks: string;
     byStatus: {
       done: string,
       undone: string,
@@ -97,7 +98,8 @@ export const en: Translations = {
   screenFilterSettings: {
      headerTitle: 'Filters',
      sortByDate: 'Sort by date added',
-     byStatusTitle: 'By status',
+    byStatusTitle: 'By status',
+     allTasks: 'All',
     byStatus: {
       done: 'Done',
       undone: 'Undone',
@@ -163,6 +165,7 @@ export const ua: Translations = {
      headerTitle: 'Фільтри',
      sortByDate: 'Сортувати за датою додавання',
     byStatusTitle: 'За статусом',
+    allTasks: 'Всі',
     byStatus: {
       done: 'Виконано',
       undone: 'Невиконано',
@@ -177,7 +180,7 @@ export const ua: Translations = {
     byDatesTitle: 'За датами',
     byDates: {
       today: 'Сьогодні',
-      thisWeek: 'На цьому тижні',
+      thisWeek: 'На тижні',
       overdue: 'Прострочені',
      },
     byCategoriesTitle: 'За категоріями',
@@ -227,7 +230,8 @@ export const pl: Translations = {
   screenFilterSettings: {
      headerTitle: 'Filtry',
      sortByDate: 'Sortuj według dodanej daty',
-     byStatusTitle: 'Według stanu',
+    byStatusTitle: 'Według stanu',
+     allTasks: 'Wszystko',
      byStatus: {
       done: 'Zrobione',
       undone: 'Niespełniony',

@@ -16,7 +16,7 @@ import { useTranslation } from '../../context/LanguageContext';
 import { ScreenNames } from '../../constants/screenNames';
 
 export interface ISettings {
-  timeStamp: boolean; // локальний прапорець сортування
+  timeStamp: boolean;
   status: 'done' | 'undone' | 'inProgress' | null;
   priority: 'high' | 'medium' | 'low' | null;
   date: 'today' | 'week' | 'overdue' | null;
@@ -81,57 +81,59 @@ export default function FilterSettings() {
 
         {/* За статусом */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byStatusTitle}</Text>
-        <SwitchBtn
-          handleSwitch={item => handleSwitch('status', item.id)}
-          active={settings.status}
+        <SwitchBtn<'done' | 'undone' | 'inProgress' | null>
           items={[
+            { text: t.screenFilterSettings.allTasks, id: null },
             { text: t.screenFilterSettings.byStatus.done, id: 'done' },
             { text: t.screenFilterSettings.byStatus.undone, id: 'undone' },
             { text: t.screenFilterSettings.byStatus.inProgress, id: 'inProgress' },
           ]}
+          active={settings.status}
+          handleSwitch={item => handleSwitch('status', item.id)}
         />
 
         {/* За пріоритетом */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byPriorityTitle}</Text>
-        <SwitchBtn
-          handleSwitch={item => handleSwitch('priority', item.id)}
-          active={settings.priority}
+        <SwitchBtn<'high' | 'medium' | 'low' | null>
           items={[
+            { text: t.screenFilterSettings.allTasks, id: null },
             { text: t.screenFilterSettings.byPriority.high, id: 'high' },
             { text: t.screenFilterSettings.byPriority.medium, id: 'medium' },
             { text: t.screenFilterSettings.byPriority.low, id: 'low' },
           ]}
+          active={settings.priority}
+          handleSwitch={item => handleSwitch('priority', item.id)}
         />
 
         {/* За датами */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byDatesTitle}</Text>
-        <SwitchBtn
-          handleSwitch={item => handleSwitch('date', item.id)}
-          active={settings.date}
+        <SwitchBtn<'today' | 'week' | 'overdue' | null>
           items={[
+            { text: t.screenFilterSettings.allTasks, id: null },
             { text: t.screenFilterSettings.byDates.today, id: 'today' },
             { text: t.screenFilterSettings.byDates.thisWeek, id: 'week' },
             { text: t.screenFilterSettings.byDates.overdue, id: 'overdue' },
           ]}
+          active={settings.date}
+          handleSwitch={item => handleSwitch('date', item.id)}
         />
 
         {/* За категоріями */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byCategoriesTitle}</Text>
-        <SwitchBtn
-          handleSwitch={item => handleSwitch('category', item.id)}
-          active={settings.category}
+        <SwitchBtn<'work' | 'personal' | 'study' | null>
           items={[
+            { text: t.screenFilterSettings.allTasks, id: null },
             { text: t.screenFilterSettings.byCategories.work, id: 'work' },
             { text: t.screenFilterSettings.byCategories.personal, id: 'personal' },
             { text: t.screenFilterSettings.byCategories.learning, id: 'study' },
           ]}
+          active={settings.category}
+          handleSwitch={item => handleSwitch('category', item.id)}
         />
 
         {/* Кнопка застосувати */}
         <DefaultButton
-          onPress={() => {
-            navigation.navigate(ScreenNames.TASKS_PAGE, { settings });
-          }}
+          onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, { settings })}
           text={t.screenFilterSettings.showVariationsBtn}
         />
       </View>

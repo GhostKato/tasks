@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { getAuth } from '@react-native-firebase/auth';
+import { getAuth, signOut } from '@react-native-firebase/auth';
 import { useTranslation } from '../../context/LanguageContext';
+import DefaultButton from '../DefaultButton';
 
 export default function LogoutButton() {
   const { t } = useTranslation();
@@ -9,11 +9,11 @@ export default function LogoutButton() {
   const handleLogout = async () => {
     try {
       const auth = getAuth();
-      await auth.signOut();
+      await signOut(auth);
     } catch (e) {
       console.log('Logout error', e);
     }
   };
 
-  return <Button title={t.logOutBtn} onPress={handleLogout} />;
+  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} />;
 }
