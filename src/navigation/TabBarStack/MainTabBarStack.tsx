@@ -8,6 +8,7 @@ import FilterSettings from '../../screen/FilterSettings';
 import { MainTabBarStackType } from '../types';
 import CustomTabBar from './CustomTabBar';
 import { ScreenNames } from '../../constants/screenNames';
+import FilterSettingsHeader from '../../screen/FilterSettings/components/FilterSettingsHeader';
 
 const Tab = createBottomTabNavigator<MainTabBarStackType>();
 
@@ -41,7 +42,11 @@ export default function MainTabBarStack() {
       <Tab.Screen
         name={ScreenNames.FILTERS_SETTINGS_PAGE}
         component={FilterSettings}
-        options={{ tabBarButton: () => null }}
+        options={{
+          tabBarButton: () => null,
+          headerShown: true,
+          header: () => <FilterSettingsHeader/>
+         }}
       />
     </Tab.Navigator>
   );

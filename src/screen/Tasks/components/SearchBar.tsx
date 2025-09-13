@@ -1,16 +1,12 @@
-import {
-  Dimensions,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { AboutIcon } from '../../../assets/icons';
+import { View, TouchableOpacity } from 'react-native';
+import { SettingsIcon } from '../../../assets/icons';
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LoggedInStackType } from '../../../navigation/types';
 import { ITask } from '../../Tasks';
+import Input from '../../../components/Input';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface ISearchBar {
   handleSearch: (text: string) => void;
@@ -18,6 +14,9 @@ interface ISearchBar {
 }
 
 export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
+
+  const { color } = useTheme();
+
   const [query, setQuery] = useState('');
   const navigation = useNavigation<StackNavigationProp<LoggedInStackType>>();
 
@@ -33,45 +32,28 @@ export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
   };
 
   return (
-    <View style={styles.mainWrapper}>
-      <View style={styles.searchWrapper}>
-        <View style={styles.searchIconWrapper}>
-          <AboutIcon />
-        </View>
-        <TextInput
-          placeholder={'Пошук задач'}
-          value={query}
-          onChangeText={setQuery}
-        />
-      </View>
+    <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10 }}>
+      <Input
+        placeholder="Пошук задач"
+        value={query}
+        onChangeText={setQuery}
+        additionalContainerStyle={{ flex: 1 }}
+      />
       <TouchableOpacity
-        style={styles.settingsIcon}
+        style={{
+          height: 45,
+          width: 45,
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',          
+          marginLeft: 10,
+          borderWidth: 1,
+          borderColor: color.quaternary
+        }}
         onPress={handleNavigateToFilters}
       >
-        <AboutIcon />
+        <SettingsIcon color={color.quaternary} />
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  mainWrapper: { flexDirection: 'row', alignItems: 'center' },
-  searchWrapper: {
-    borderRadius: 20,
-    backgroundColor: '#EFF1F4',
-    height: 40,
-    width: Dimensions.get('window').width - 70,
-    marginHorizontal: 10,
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  searchIconWrapper: { marginHorizontal: 20 },
-  settingsIcon: {
-    height: 40,
-    width: 40,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#EFF1F4',
-  },
-});

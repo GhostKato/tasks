@@ -9,6 +9,7 @@ import AboutIcon from './AboutIcon';
 import Label from './Label';
 import CloseIcon from './CloseIcon';
 import ArrowIcon from './ArrowIcon';
+import SettingsIcon from './SettingsIcon';
 
 export {
   ViewPassIcon,
@@ -22,4 +23,5 @@ export {
   Label,
   CloseIcon,
   ArrowIcon,
+  SettingsIcon
 };

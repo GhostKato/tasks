@@ -1,17 +1,17 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ArrowIcon} from '../../assets/icons';
-import {fonts} from '../../constants/fonts';
+import {ArrowIcon} from '../../../assets/icons';
+import {fonts} from '../../../constants/fonts';
 import {useNavigation} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {LoggedInStackType} from '../../navigation/types';
-import { useTheme } from '../../context/ThemeContext';
-import { useTranslation } from '../../context/LanguageContext';
+import {FilterSettingsNavigationProp} from '../../../navigation/types';
+import { useTheme } from '../../../context/ThemeContext';
+import { useTranslation } from '../../../context/LanguageContext';
+import { ScreenNames } from '../../../constants/screenNames';
 
-export default function SettingsHeader() {
+export default function FilterSettingsHeader() {
 
   const { color } = useTheme();
   const { t } = useTranslation();
-  const navigation = useNavigation<StackNavigationProp<LoggedInStackType>>();
+  const navigation = useNavigation<FilterSettingsNavigationProp>();
 
   const styles = StyleSheet.create({
   mainWrapper: {
@@ -19,7 +19,7 @@ export default function SettingsHeader() {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
-    backgroundColor: color.secondary,    
+    backgroundColor: color.tertiary,    
   },
   backBtn: {
     transform: [{rotate: '180deg'}],
@@ -34,7 +34,7 @@ export default function SettingsHeader() {
   return (
     <View style={styles.mainWrapper}>
       <TouchableOpacity
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, {})}
         style={styles.backBtn}>
         <ArrowIcon width={20} height={20} />
       </TouchableOpacity>

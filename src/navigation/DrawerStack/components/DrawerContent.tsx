@@ -1,11 +1,11 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Header from '../Header';
-import {fonts} from '../../constants/fonts';
-import { ArrowIcon } from '../../assets/icons';
+import Header from '../../../components/Header';
+import { ArrowIcon } from '../../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {DrawerStackType} from '../../navigation/types';
-import { useTranslation } from '../../context/LanguageContext';
-import LogoutButton from '../LogoutButton';
+import {DrawerStackType} from '../../../navigation/types';
+import { useTranslation } from '../../../context/LanguageContext';
+import LogoutButton from '../../../components/LogoutButton';
+import { fonts } from '../../../constants/fonts';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;

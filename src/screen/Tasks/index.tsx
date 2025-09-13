@@ -11,7 +11,6 @@ import { AddTaskNavigationProp } from '../../navigation/types';
 import {
   getFirestore,
   collection,
-  addDoc,
   getDocs,
   query,
   where,
@@ -23,7 +22,7 @@ import {
   DocumentData,
 } from '@react-native-firebase/firestore';
 
-import { addTasks } from '../../utils/tasksSeeder';
+import { addTasksToBase } from '../../utils/tasksSeeder';
 import DefaultButton from '../../components/DefaultButton';
 import { useTranslation } from '../../context/LanguageContext';
 
@@ -34,7 +33,7 @@ export interface ITask {
   status: 'done' | 'undone' | 'inProgress';
   priority: 'high' | 'medium' | 'low';
   category: 'work' | 'personal' | 'study';
-  deadline: Timestamp; // дата дедлайну
+  deadline: Timestamp;
   isFavorite: boolean;
   ownerId: string;
 }
@@ -46,14 +45,8 @@ export default function Tasks() {
   const route = useRoute<RouteProp<{ params: { settings: ISettings } }>>();
 
   const db = getFirestore();
-  const tasksRef = collection(db, 'tasks');
+  const tasksRef = collection(db, 'tasks');  
 
-  // Seeder для тестових задач
-  useEffect(() => {
-    addTasks();
-  }, []);
-
-  // Fetch tasks з фільтрами
   useEffect(() => {
     const fetchTasks = async () => {
       setLoading(true);
@@ -76,7 +69,6 @@ export default function Tasks() {
           }
         );
 
-        // Фільтр по дедлайну
         if (route?.params?.settings?.date) {
           const now = new Date();
           const filtered = temp.filter(task => {
@@ -90,9 +82,9 @@ export default function Tasks() {
                 );
               case 'week':
                 const startOfWeek = new Date(now);
-                startOfWeek.setDate(now.getDate() - now.getDay()); // початок тижня
+                startOfWeek.setDate(now.getDate() - now.getDay());
                 const endOfWeek = new Date(startOfWeek);
-                endOfWeek.setDate(startOfWeek.getDate() + 6); // кінець тижня
+                endOfWeek.setDate(startOfWeek.getDate() + 6);
                 return taskDate >= startOfWeek && taskDate <= endOfWeek;
               case 'overdue':
                 return taskDate < now;
@@ -105,7 +97,6 @@ export default function Tasks() {
           setTasks(temp);
         }
 
-        // Сортування по дедлайну, якщо включено timeStamp
         if (route?.params?.settings?.timeStamp) {
           setTasks(prev =>
             [...prev].sort(
@@ -121,9 +112,8 @@ export default function Tasks() {
     };
 
     fetchTasks();
-  }, [route?.params?.settings, tasksRef]);
+  }, [route?.params?.settings]);
 
-  // Пошук
   const handleSearch = async (text: string) => {
     try {
       const q = query(tasksRef, orderBy('title'), startAt(text), endAt(text + '\uf8ff'));
@@ -142,24 +132,35 @@ export default function Tasks() {
     }
   };
 
-  const navigation = useNavigation<AddTaskNavigationProp>();  
+  const navigation = useNavigation<AddTaskNavigationProp>();
+  
+  const handleAddTestTasks = async () => {
+    await addTasksToBase();    
+    navigation.navigate(ScreenNames.ADD_TASK_PAGE, {});
+  };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, margin:10 }}>
       <SearchBar handleSearch={handleSearch} tasks={tasks} />
-      {loading ? (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" />
-        </View>
-      ) : (
-        <TasksList tasks={tasks} />
-      )}
+
+      <View style={{ flex: 1 }}>
+        {loading ? (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <TasksList tasks={tasks} />
+        )}
+      </View>
+
       <DefaultButton
-                onPress={() => {
-                  navigation.navigate(ScreenNames.ADD_TASK_PAGE, {});
-                }}
-                text={t.screenTasks.AddBtn}
-              />
+        // Старий закоментований варіант
+        // onPress={() => {
+        //   navigation.navigate(ScreenNames.ADD_TASK_PAGE, {});
+        // }}
+        onPress={handleAddTestTasks}
+        text={t.screenTasks.AddBtn}
+      />
     </View>
   );
 }

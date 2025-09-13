@@ -5,8 +5,8 @@ import SettingsTabBarStack from '../TabBarStack/SettingsTabBarStack';
 import { DrawerStackType } from '../types';
 import Header from '../../components/Header';
 import { Dimensions } from 'react-native';
-import DrawerContent from '../../components/DrawerContent';
 import { useTheme } from '../../context/ThemeContext';
+import DrawerContent from './components/DrawerContent';
 
 const Drawer = createDrawerNavigator<DrawerStackType>();
 
