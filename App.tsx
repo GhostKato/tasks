@@ -6,7 +6,7 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 import { Provider, useDispatch } from 'react-redux';
 import { store } from './src/redux/store';
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { setUser } from './src/redux/auth/slice';
 import { serializeUser } from './src/utils/serializeUser';
 
@@ -14,8 +14,9 @@ function AppWrapper() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged((user: FirebaseAuthTypes.User | null) => {
-      const serialized = serializeUser(user);      
+    const auth = getAuth();
+    const unsubscribe = auth.onAuthStateChanged((user: FirebaseAuthTypes.User | null) => {
+      const serialized = serializeUser(user);
       dispatch(setUser(serialized));
     });
 
