@@ -5,26 +5,16 @@ import { RootStackNavigation } from './types';
 import LoggedInStack from './LogedInStack';
 import LoggedOutStack from './LoggedOutStack';
 import { useTheme } from '../context/ThemeContext';
-import { getAuth, onAuthStateChanged, FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
+import { useAppSelector } from '../redux/hooks';
+import { selectUser, selectLoading } from '../redux/auth/selectors';
 
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 
 export default function RootNavigation() {
   const { color } = useTheme();
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-
-    return unsubscribe; 
-  }, []);
+  const user = useAppSelector(selectUser);
+  const loading = useAppSelector(selectLoading);  
 
   if (loading) {
     return (
@@ -46,15 +36,9 @@ export default function RootNavigation() {
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          <Stack.Screen
-            name={ScreenNames.LOGGED_IN_STACK}
-            component={LoggedInStack}
-          />
+          <Stack.Screen name={ScreenNames.LOGGED_IN_STACK} component={LoggedInStack} />
         ) : (
-          <Stack.Screen
-            name={ScreenNames.LOGGED_OUT_STACK}
-            component={LoggedOutStack}
-          />
+          <Stack.Screen name={ScreenNames.LOGGED_OUT_STACK} component={LoggedOutStack} />
         )}
       </Stack.Navigator>
     </NavigationContainer>

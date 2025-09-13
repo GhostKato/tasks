@@ -1,19 +1,27 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { getAuth } from '@react-native-firebase/auth';
+import { ActivityIndicator, View } from 'react-native';
 import { useTranslation } from '../../context/LanguageContext';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { logoutUser } from '../../redux/auth/operations';
+import { selectLoading } from '../../redux/auth/selectors';
+import DefaultButton from '../../components/DefaultButton';
 
 export default function LogoutButton() {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector(selectLoading);
 
-  const handleLogout = async () => {
-    try {
-      const auth = getAuth();
-      await auth.signOut();
-    } catch (e) {
-      console.log('Logout error', e);
-    }
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
-  return <Button title={t.logOutBtn} onPress={handleLogout} />;
+  if (loading) {
+    return (
+      <View style={{ padding: 10 }}>
+        <ActivityIndicator size="small" />
+      </View>
+    );
+  }
+
+  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} />;
 }
