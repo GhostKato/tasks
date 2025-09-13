@@ -4,7 +4,7 @@ import { useTranslation } from '../../context/LanguageContext';
 import DefaultButton from '../DefaultButton';
 
 export default function LogoutButton() {
-  const { t } = useTranslation();
+  const { t } = useTranslation();  
 
   const handleLogout = async () => {
     try {
