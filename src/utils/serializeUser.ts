@@ -1,16 +1,14 @@
-import { User } from 'firebase/auth';
+import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
-// Тип для Redux
 export interface SerializedUser {
   uid: string;
   email: string | null;  
 }
 
-// Хелпер для серіалізації користувача
-export const serializeUser = (user: User | null): SerializedUser | null => {
+export const serializeUser = (user: FirebaseAuthTypes.User | null): SerializedUser | null => {
   if (!user) return null;
   return {
     uid: user.uid,
-    email: user.email,    
+    email: user.email,
   };
 };

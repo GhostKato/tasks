@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { useTranslation } from '../../context/LanguageContext';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { logoutUser } from '../../redux/auth/operations';
 import { selectLoading } from '../../redux/auth/selectors';
+import DefaultButton from '../../components/DefaultButton';
 
 export default function LogoutButton() {
   const { t } = useTranslation();
@@ -22,5 +23,5 @@ export default function LogoutButton() {
     );
   }
 
-  return <Button title={t.logOutBtn} onPress={handleLogout} />;
+  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} />;
 }

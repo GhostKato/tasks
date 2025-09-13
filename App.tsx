@@ -6,24 +6,26 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 import { Provider, useDispatch } from 'react-redux';
 import { store } from './src/redux/store';
-import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { setUser } from './src/redux/auth/slice';
+import { serializeUser } from './src/utils/serializeUser';
 
 function AppWrapper() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      dispatch(setUser(user));
+    const unsubscribe = auth().onAuthStateChanged((user: FirebaseAuthTypes.User | null) => {
+      const serialized = serializeUser(user);      
+      dispatch(setUser(serialized));
     });
+
     return unsubscribe;
   }, [dispatch]);
 
   return <RootNavigation />;
 }
 
-function App(): React.JSX.Element {
+export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -36,5 +38,3 @@ function App(): React.JSX.Element {
     </Provider>
   );
 }
-
-export default App;

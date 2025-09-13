@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator<RootStackNavigation>();
 export default function RootNavigation() {
   const { color } = useTheme();
   const user = useAppSelector(selectUser);
-  const loading = useAppSelector(selectLoading);
+  const loading = useAppSelector(selectLoading);  
 
   if (loading) {
     return (

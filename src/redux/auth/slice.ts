@@ -17,9 +17,12 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    // Логін
+  reducers: {
+    setUser: (state, action: PayloadAction<SerializedUser | null>) => {
+      state.user = action.payload;
+    },
+  },
+  extraReducers: (builder) => {    
     builder.addCase(loginUser.pending, (state) => {
       state.loading = true;
       state.error = null;
@@ -31,9 +34,7 @@ const authSlice = createSlice({
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload as string;
-    });
-
-    // Реєстрація
+    });    
     builder.addCase(registerUser.pending, (state) => {
       state.loading = true;
       state.error = null;
@@ -45,9 +46,7 @@ const authSlice = createSlice({
     builder.addCase(registerUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload as string;
-    });
-
-    // Вихід
+    });    
     builder.addCase(logoutUser.pending, (state) => {
       state.loading = true;
       state.error = null;
@@ -63,4 +62,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setUser } = authSlice.actions;
 export default authSlice.reducer;
