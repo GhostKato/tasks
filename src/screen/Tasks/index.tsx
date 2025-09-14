@@ -1,6 +1,6 @@
 import { ActivityIndicator, View } from 'react-native';
 import SearchBar from './components/SearchBar';
-import TasksList from './components/TasksList';
+import TasksList from '../../components/TasksList';
 import DefaultButton from '../../components/DefaultButton';
 import { ScreenNames } from '../../constants/screenNames';
 import { useNavigation } from '@react-navigation/core';

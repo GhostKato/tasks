@@ -1,8 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-// Селектор для всіх задач
-export const selectAllTasks = (state: RootState) => state.tasks.allTasks;
+const selectAllTasks = (state: RootState) => state.tasks.allTasks;
 
 // Селектор для фільтрів
 export const selectFilters = (state: RootState) => state.filters;
@@ -12,16 +11,11 @@ export const selectFilteredTasks = createSelector(
   [selectAllTasks, selectFilters],
   (tasks, filters) => {
     const now = new Date();
-
-    return tasks.filter(task => {
-      // Статус
-      const statusMatch = filters.status ? task.status === filters.status : true;
-      // Пріоритет
-      const priorityMatch = filters.priority ? task.priority === filters.priority : true;
-      // Категорія
+    return tasks.filter(task => {      
+      const statusMatch = filters.status ? task.status === filters.status : true;      
+      const priorityMatch = filters.priority ? task.priority === filters.priority : true;      
       const categoryMatch = filters.category ? task.category === filters.category : true;
-
-      // Дата
+      
       let dateMatch = true;
       if (filters.date) {
         const taskDate = new Date(task.deadline);
@@ -47,8 +41,20 @@ export const selectFilteredTasks = createSelector(
 
       return statusMatch && priorityMatch && categoryMatch && dateMatch;
     });
-  }
-);
+  });
+
+// Cелектор для всіх задач на сьогодні
+export const selectTodayTasks = createSelector([selectAllTasks], tasks => {
+  const now = new Date();
+  return tasks.filter(task => {
+    const taskDate = new Date(task.deadline);
+    return (
+      taskDate.getDate() === now.getDate() &&
+      taskDate.getMonth() === now.getMonth() &&
+      taskDate.getFullYear() === now.getFullYear()
+    );
+  });
+});
 
 // Селектор завантаження задач
 export const selectTasksLoading = (state: RootState) => state.tasks.loading;

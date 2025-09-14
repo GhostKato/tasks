@@ -1,17 +1,21 @@
-import {Text, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/core';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackNavigation} from '../../navigation/types';
+import { ActivityIndicator, View } from 'react-native';
+import { selectTodayTasks } from '../../redux/filters/selectors';
+import { useSelector } from 'react-redux';
+import TasksList from '../../components/TasksList';
+import { selectTasksLoading } from '../../redux/tasks/selectors';
 
-export default function Home() {
-  const navigation = useNavigation<StackNavigationProp<RootStackNavigation>>();
+export default function Home() {  
+
+  const tasks = useSelector(selectTodayTasks);
+  const loading = useSelector(selectTasksLoading);
 
   return (
-    <TouchableOpacity
-      onPress={() => {
-        navigation.goBack();
-      }}>
-      <Text>Home </Text>
-    </TouchableOpacity>
+    <View style={{ flex: 1, margin: 10 }}>
+            {loading ? (
+              <ActivityIndicator size="large" style={{ flex: 1 }} />
+            ) : (
+              <TasksList tasks={tasks} />
+            )}
+          </View>
   );
 }

@@ -5,9 +5,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ITask } from '../../../types/task';
-import { fonts } from '../../../constants/fonts';
-import { useTheme } from '../../../context/ThemeContext';
+import { ITask } from '../../types/task';
+import { fonts } from '../../constants/fonts';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ITasksListProps {
   tasks: ITask[];
