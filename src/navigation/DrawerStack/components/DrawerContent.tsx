@@ -6,6 +6,7 @@ import {DrawerStackType} from '../../../navigation/types';
 import { useTranslation } from '../../../context/LanguageContext';
 import LogoutButton from '../../../components/LogoutButton';
 import { fonts } from '../../../constants/fonts';
+import { ScreenNames } from '../../../constants/screenNames';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -20,12 +21,12 @@ export default function DrawerContent({ navigation }: Props) {
       <Header isOpenDrawer={true} navigation={navigation} />
       <View style={styles.mainWrapper}>
         <TouchableOpacity style={styles.btnWrapper}
-         onPress={() => navigation.navigate('MAIN_TAB_BAR_STACK')}>
+         onPress={() => navigation.navigate(ScreenNames.TASK_TAB_BAR_STACK)}>
           <Text style={styles.text}>{t.draverBar.tasks}</Text>
           <ArrowIcon />
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnWrapper}
-        onPress={() => navigation.navigate('SETTINGS_TAB_BAR_STACK')}>
+        onPress={() => navigation.navigate(ScreenNames.SETTINGS_TAB_BAR_STACK)}>
           <Text style={styles.text}>{t.draverBar.settings}</Text>
           <ArrowIcon />
         </TouchableOpacity>        

@@ -16,7 +16,7 @@ export default function DrawerStack() {
 
   return (
     <Drawer.Navigator
-  initialRouteName={ScreenNames.TODAY_TASKS_PAGE}
+  initialRouteName={ScreenNames.TASK_TAB_BAR_STACK}
   drawerContent={(props) => <DrawerContent {...props} />}
   screenOptions={{
     drawerPosition: 'right',
@@ -31,7 +31,7 @@ export default function DrawerStack() {
   }}
 >
   <Drawer.Screen
-    name={ScreenNames.TODAY_TASKS_PAGE}
+    name={ScreenNames.TASK_TAB_BAR_STACK}
     component={TaskTabBarStack}
     options={{
       header: ({ navigation }) => <Header navigation={navigation} />,
