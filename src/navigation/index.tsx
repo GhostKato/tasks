@@ -4,15 +4,16 @@ import { ScreenNames } from '../constants/screenNames';
 import { RootStackNavigation } from './types';
 import LoggedInStack from './LogedInStack';
 import LoggedOutStack from './LoggedOutStack';
-import { useTheme } from '../context/ThemeContext';
 import { View, ActivityIndicator } from 'react-native';
 import { useAppSelector } from '../redux/hooks';
 import { selectUser, selectLoading } from '../redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../redux/settings/selectors';
 
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 
 export default function RootNavigation() {
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
   const user = useAppSelector(selectUser);
   const loading = useAppSelector(selectLoading);  
 

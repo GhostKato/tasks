@@ -1,18 +1,18 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '../../constants/screenNames';
 import TaskTabBarStack from '../TabBarStack/TaskTabBarStack';
-import SettingsTabBarStack from '../TabBarStack/SettingsTabBarStack';
 import { DrawerStackType } from '../types';
 import Header from '../../components/Header';
 import { Dimensions } from 'react-native';
-import { useTheme } from '../../context/ThemeContext';
 import DrawerContent from './components/DrawerContent';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 const Drawer = createDrawerNavigator<DrawerStackType>();
 
 export default function DrawerStack() {
 
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   return (
     <Drawer.Navigator
@@ -36,14 +36,7 @@ export default function DrawerStack() {
     options={{
       header: ({ navigation }) => <Header navigation={navigation} />,
     }}
-      />
-      <Drawer.Screen
-    name={ScreenNames.SETTINGS_TAB_BAR_STACK}
-    component={SettingsTabBarStack}
-    options={{
-      header: ({ navigation }) => <Header navigation={navigation} />,
-    }}
-  />
+      />      
 </Drawer.Navigator>
 
   );

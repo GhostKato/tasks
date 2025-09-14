@@ -3,13 +3,14 @@ import {ArrowIcon} from '../../../assets/icons';
 import {fonts} from '../../../constants/fonts';
 import {useNavigation} from '@react-navigation/core';
 import {FilterSettingsNavigationProp} from '../../../navigation/types';
-import { useTheme } from '../../../context/ThemeContext';
 import { useTranslation } from '../../../context/LanguageContext';
 import { ScreenNames } from '../../../constants/screenNames';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../../redux/settings/selectors';
 
 export default function FilterSettingsHeader() {
 
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
   const { t } = useTranslation();
   const navigation = useNavigation<FilterSettingsNavigationProp>();
 

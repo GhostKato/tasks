@@ -1,4 +1,3 @@
-// LanguageContext.tsx
 import { createContext, useState, ReactNode, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { en, ua, pl, Translations } from '../constants/translations';

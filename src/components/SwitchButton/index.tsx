@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { fonts } from '../../constants/fonts';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 interface ISwitchItem<T extends string | null> {
   text: string;
@@ -21,7 +22,7 @@ export default function SwitchBtn<T extends string | null>({
   handleSwitch,
 }: ISwitchBtnProps<T>) {
 
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   const styles = StyleSheet.create({
     switcherWrapper: {

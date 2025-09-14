@@ -24,8 +24,7 @@ export const lightTheme: ThemeColors = {
   secondary: '#93242fff',
   tertiary: '#947112ff',
   quaternary: '#000000',
-  ...baseColors,
-  
+  ...baseColors,  
   
 };
 

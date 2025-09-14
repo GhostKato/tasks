@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../redux/settings/slice';
+import { selectThemeColors, selectIsDark } from '../../redux/settings/selectors';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function ThemeSwitcher() {
-  const { isDark, toggleTheme, color } = useTheme();
+  const dispatch = useDispatch();
+  const color = useSelector(selectThemeColors);
+  const isDark = useSelector(selectIsDark);
   const { t } = useTranslation();
 
   return (
@@ -12,12 +16,12 @@ export default function ThemeSwitcher() {
       <Text style={[styles.label, { color: color.quaternary }]}>
         {isDark ? `🌙 ${t.screenTheme.darkModeEnabled}` : `☀️ ${t.screenTheme.darkModeDisabled}`}
       </Text>
-      <Switch
-        value={isDark}
-        onValueChange={toggleTheme}
-        thumbColor={isDark ? color.senary : color.quinary}
-        trackColor={{ false: color.octonary, true: color.septenary }}
-      />
+     <Switch
+  value={isDark}
+  onValueChange={(_value) => { dispatch(toggleTheme()); }}
+  thumbColor={isDark ? color.senary : color.quinary}
+  trackColor={{ false: color.octonary, true: color.septenary }}
+/>
     </View>
   );
 }

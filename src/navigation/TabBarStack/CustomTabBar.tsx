@@ -1,14 +1,15 @@
 import { View, TouchableOpacity, Text } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { fonts } from '../../constants/fonts';
-import { HeartIcon, HomeIcon, TasksIcon, ThemeIcon, LanguageIcon, AboutIcon } from '../../assets/icons';
+import { HeartIcon, HomeIcon, TasksIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
-import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from '../../context/LanguageContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 
-  const { color } = useTheme();
+ const color = useSelector(selectThemeColors);
   const { t } = useTranslation();
   
   const hiddenScreens = [
@@ -39,19 +40,7 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
             case ScreenNames.MARKED_TASKS_PAGE:
               icon = <HeartIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
               label = t.taskTabBar.markedTasks;
-              break;
-            case ScreenNames.THEME_PAGE:
-              icon = <ThemeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.settingsTabBar.theme;
-              break;
-            case ScreenNames.LANGUAGE_PAGE:
-              icon = <LanguageIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.settingsTabBar.language;
-              break;
-            case ScreenNames.ABOUT_PAGE:
-              icon = <AboutIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.settingsTabBar.about;
-              break;
+              break;            
           }
 
           return (

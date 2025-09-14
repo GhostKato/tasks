@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
-import { ThemeProvider } from './src/context/ThemeContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 import { Provider, useDispatch } from 'react-redux';
 import { store, AppDispatch } from './src/redux/store';
@@ -35,10 +34,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaView style={{ flex: 1 }}>
-        <LanguageProvider>
-          <ThemeProvider>
-            <AppWrapper />
-          </ThemeProvider>
+        <LanguageProvider>          
+            <AppWrapper />          
         </LanguageProvider>
       </SafeAreaView>
     </Provider>

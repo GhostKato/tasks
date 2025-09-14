@@ -8,8 +8,7 @@ export type LoggedOutStackType = {
 };
 
 export type DrawerStackType = {
-  TASK_TAB_BAR_STACK: undefined;
-  SETTINGS_TAB_BAR_STACK: undefined;
+  TASK_TAB_BAR_STACK: undefined;  
 };
 
 export type LoggedInStackType = {
@@ -27,20 +26,13 @@ export type TaskTabBarStackType = {
   [ScreenNames.FILTERS_SETTINGS_PAGE]: { settings?: ISettings };
 };
 
-export type SettingsTabBarStackType = {
-  THEME_PAGE: undefined;
-  LANGUAGE_PAGE: undefined;
-  ABOUT_PAGE: undefined;
-};
-
 const LoggedOutStackScreens: LoggedOutStackType = {
   LOGIN_PAGE: undefined,
   REGISTRATION_PAGE: undefined,
 };
 
 const LoggedInStackScreens: DrawerStackType = {
-  TASK_TAB_BAR_STACK: undefined,
-  SETTINGS_TAB_BAR_STACK: undefined,
+  TASK_TAB_BAR_STACK: undefined,  
 };
 
 export type RootStackNavigation = {

@@ -3,7 +3,8 @@ import {CloseIcon, Label} from '../../assets/icons';
 import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 interface IHeader {
   isOpenDrawer?: boolean;
@@ -13,7 +14,7 @@ interface IHeader {
 
 export default function Header({ isOpenDrawer, navigation }: IHeader) { 
   
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   const styles = StyleSheet.create({
   wrapper: {

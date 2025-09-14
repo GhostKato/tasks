@@ -2,7 +2,8 @@ import {Text, TextInput, TouchableOpacity, View, ViewStyle} from 'react-native';
 import {useAuthStyles} from '../../screen/Auth/useAuthStyles';
 import React, {useState} from 'react';
 import {HidePassIcon, ViewPassIcon} from '../../assets/icons';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 interface IInput {
   onBlur?: () => void;
@@ -30,7 +31,7 @@ export default function Input({
 
   const styles = useAuthStyles();
 
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   const [isPassHidden, setIsPassHidden] = useState(secureTextEntry);
 

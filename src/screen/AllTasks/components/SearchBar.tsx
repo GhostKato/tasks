@@ -6,7 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { LoggedInStackType } from '../../../navigation/types';
 import { ITask } from '../../../types/task';
 import Input from '../../../components/Input';
-import { useTheme } from '../../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../../redux/settings/selectors';
 
 interface ISearchBar {
   handleSearch: (text: string) => void;
@@ -15,7 +16,7 @@ interface ISearchBar {
 
 export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
 
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   const [query, setQuery] = useState('');
   const navigation = useNavigation<StackNavigationProp<LoggedInStackType>>();

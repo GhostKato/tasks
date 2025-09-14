@@ -1,16 +1,16 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetFilters, setFilter, toggleTimeStamp } from '../../redux/filters/slice';
-import { useTheme } from '../../context/ThemeContext';
 import { useTranslation } from '../../context/LanguageContext';
 import SwitchBtn from '../../components/SwitchButton';
 import DefaultButton from '../../components/DefaultButton';
 import { useNavigation } from '@react-navigation/core';
 import { FilterSettingsNavigationProp } from '../../navigation/types';
 import { ScreenNames } from '../../constants/screenNames';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 export default function FilterSettings() {
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigation = useNavigation<FilterSettingsNavigationProp>();

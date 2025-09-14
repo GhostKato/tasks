@@ -1,18 +1,12 @@
 export type Translations = {
   draverBar: {
-    tasks: string;
-    settings: string;    
+    tasks: string;       
   };  
   taskTabBar: {
     todayTasks: string;
     allTasks: string;
     markedTasks: string;
-  };
-  settingsTabBar: {
-    theme: string;
-    language: string;
-    about: string;
-  };
+  };  
   screenAuth: {
     title: string;
     text: string;
@@ -67,19 +61,13 @@ export type Translations = {
 
 export const en: Translations = {
   draverBar: {
-    tasks: 'Tasks',
-    settings: 'Settings',    
+    tasks: 'Tasks',        
   },   
   taskTabBar: {
     todayTasks: 'Today',
     allTasks: 'All',
     markedTasks: 'Marked',
-  },
-  settingsTabBar: {
-    theme: 'Theme',
-    language: 'Language',
-    about: 'About',
-  },
+  },  
   screenAuth: {
     title: 'Glad to welcome you!',
     text: 'He who manages his tasks controls his life.',
@@ -134,19 +122,13 @@ export const en: Translations = {
 
 export const ua: Translations = {
   draverBar: {
-    tasks: 'Завдання',
-    settings: 'Налаштування',    
+    tasks: 'Завдання',        
   },  
   taskTabBar: {
     todayTasks: 'Сьогодні',
     allTasks: 'Всі',
     markedTasks: 'Відмічені',
-  },
-  settingsTabBar: {
-    theme: 'Тема',
-    language: 'Мова',
-    about: 'Про додаток',
-  },
+  },  
   screenAuth: {
     title: 'Раді вітати тебе!',
     text: 'Хто керує своїми задачами, той контролює своє життя.',
@@ -201,19 +183,13 @@ export const ua: Translations = {
 
 export const pl: Translations = {
   draverBar: {
-    tasks: 'Zadania',
-    settings: 'Ustawienia',    
+    tasks: 'Zadania',        
   },  
   taskTabBar: {
     todayTasks: 'Dzisiaj',
     allTasks: 'Wszystko',
     markedTasks: 'Oznaczony',
-  },
-  settingsTabBar: {
-    theme: 'Temat',
-    language: 'Język',
-    about: 'O aplikacji',
-  },
+  },  
   screenAuth: {
     title: 'Miło Cię powitać!',
     text: 'Ten, kto zarządza swoimi zadaniami, kontroluje swoje życie.',

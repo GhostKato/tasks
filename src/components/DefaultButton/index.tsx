@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 interface IDefaultButton {
   disabled?: boolean;
@@ -13,7 +14,7 @@ export default function DefaultButton({
   text,
 }: IDefaultButton) { 
   
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
 
   const styles = StyleSheet.create({
   

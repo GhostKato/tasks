@@ -7,6 +7,8 @@ import { useTranslation } from '../../../context/LanguageContext';
 import LogoutButton from '../../../components/LogoutButton';
 import { fonts } from '../../../constants/fonts';
 import { ScreenNames } from '../../../constants/screenNames';
+import LanguageDropdown from '../../../components/LanguageDropdown';
+import ThemeSwitcher from '../../../components/ThemeSwitcher';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -24,18 +26,14 @@ export default function DrawerContent({ navigation }: Props) {
          onPress={() => navigation.navigate(ScreenNames.TASK_TAB_BAR_STACK)}>
           <Text style={styles.text}>{t.draverBar.tasks}</Text>
           <ArrowIcon />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnWrapper}
-        onPress={() => navigation.navigate(ScreenNames.SETTINGS_TAB_BAR_STACK)}>
-          <Text style={styles.text}>{t.draverBar.settings}</Text>
-          <ArrowIcon />
         </TouchableOpacity>        
-        <LogoutButton/>
+        <ThemeSwitcher />
+        <LanguageDropdown/>
+        <LogoutButton />        
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   mainWrapper: {marginHorizontal: 10, gap: 16},
   btnWrapper: {

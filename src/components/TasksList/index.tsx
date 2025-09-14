@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 import { ITask } from '../../types/task';
 import { fonts } from '../../constants/fonts';
-import { useTheme } from '../../context/ThemeContext';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/settings/selectors';
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -15,7 +16,7 @@ interface ITasksListProps {
 }
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
-  const { color } = useTheme();
+  const color = useSelector(selectThemeColors);
   
   const styles = StyleSheet.create({
     flex: { flex: 1 },
