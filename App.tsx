@@ -5,13 +5,15 @@ import 'react-native-gesture-handler';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { LanguageProvider } from './src/context/LanguageContext';
 import { Provider, useDispatch } from 'react-redux';
-import { store } from './src/redux/store';
+import { store, AppDispatch } from './src/redux/store';
 import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { setUser } from './src/redux/auth/slice';
 import { serializeUser } from './src/utils/serializeUser';
-
+import { fetchTasks } from './src/redux/tasks/operations';
+// import { addTasksToBase } from './src/utils/tasksSeeder';
+ 
 function AppWrapper() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const auth = getAuth();
@@ -19,6 +21,9 @@ function AppWrapper() {
       const serialized = serializeUser(user);
       dispatch(setUser(serialized));
     });
+    
+    dispatch(fetchTasks());
+    // addTasksToBase();
 
     return unsubscribe;
   }, [dispatch]);

@@ -78,16 +78,8 @@ export const useAuthStyles = () => {
     flex: 1,
     color: color.quaternary,
     fontFamily: fonts.MontserratRegular,
-  },
-  BtnContainer: {
-    borderRadius: 25,
-    backgroundColor: color.secondary,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  btnText: {
-    color: color.octonary,
-    },
+    },  
+  
   errorText: {
     color: color.quinary,
   },

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { LoggedInStackType } from '../../../navigation/types';
-import { ITask } from '../../Tasks';
+import { ITask } from '../../../types/task';
 import Input from '../../../components/Input';
 import { useTheme } from '../../../context/ThemeContext';
 

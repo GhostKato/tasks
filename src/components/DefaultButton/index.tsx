@@ -1,6 +1,6 @@
-import {Text, TouchableOpacity} from 'react-native';
-import {useAuthStyles} from '../../screen/Auth/useAuthStyles';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 interface IDefaultButton {
   disabled?: boolean;
@@ -11,9 +11,22 @@ export default function DefaultButton({
   disabled = false,
   onPress,
   text,
-}: IDefaultButton) {
+}: IDefaultButton) { 
+  
+  const { color } = useTheme();
 
-  const styles = useAuthStyles();
+  const styles = StyleSheet.create({
+  
+  BtnContainer: {
+    borderRadius: 25,
+    backgroundColor: color.secondary,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  btnText: {
+    color: color.octonary,
+    },  
+});
 
   return (
     <TouchableOpacity
@@ -24,3 +37,5 @@ export default function DefaultButton({
     </TouchableOpacity>
   );
 }
+
+

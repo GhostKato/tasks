@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, Timestamp } from '@react-native-firebase/firestore';
+import { getFirestore, collection, addDoc } from '@react-native-firebase/firestore';
 
 // Дані для тестових задач
 const tasks = [
@@ -8,7 +8,7 @@ const tasks = [
     status: 'inProgress', 
     priority: 'high', 
     category: 'work', 
-    deadline: new Date('2025-09-12'), 
+    deadline: new Date('2025-09-10').toISOString(), 
     isFavorite: false,
     ownerId: 'test',
   },
@@ -18,7 +18,7 @@ const tasks = [
     status: 'undone', 
     priority: 'medium', 
     category: 'personal', 
-    deadline: new Date('2025-09-11'), 
+    deadline: new Date('2025-09-19').toISOString(), 
     isFavorite: true,
     ownerId: 'test',
   },
@@ -28,7 +28,7 @@ const tasks = [
     status: 'done', 
     priority: 'high', 
     category: 'work', 
-    deadline: new Date('2025-09-10'), 
+    deadline: new Date('2025-09-11').toISOString(), 
     isFavorite: false,
      ownerId: 'test',
   },
@@ -38,7 +38,7 @@ const tasks = [
     status: 'undone', 
     priority: 'low', 
     category: 'study', 
-    deadline: new Date('2025-09-15'), 
+    deadline: new Date('2025-09-14').toISOString(), 
     isFavorite: false,
     ownerId: 'test',
   },
@@ -48,7 +48,7 @@ const tasks = [
     status: 'inProgress', 
     priority: 'medium', 
     category: 'work', 
-    deadline: new Date('2025-09-13'), 
+    deadline: new Date('2025-09-18').toISOString(),
     isFavorite: false,
     ownerId: 'test',
   },
@@ -58,7 +58,7 @@ const tasks = [
     status: 'undone', 
     priority: 'low', 
     category: 'personal', 
-    deadline: new Date('2025-09-14'), 
+    deadline: new Date('2025-09-14').toISOString(), 
     isFavorite: true,
     ownerId: 'test',
   },
@@ -71,8 +71,7 @@ export async function addTasksToBase() {
   try {
     for (const task of tasks) {
       await addDoc(tasksRef, {
-        ...task,
-        deadline: Timestamp.fromDate(task.deadline),
+        ...task,        
       });
       console.log(`Задача "${task.title}" додана!`);
     }

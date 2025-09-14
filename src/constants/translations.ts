@@ -58,6 +58,7 @@ export type Translations = {
       learning: string,
     };
     showVariationsBtn: string,
+    resetFiltersBtn: string,
   };
   screenTasks: {
     AddBtn: string;    
@@ -124,6 +125,7 @@ export const en: Translations = {
       learning: 'Learning',
     },
     showVariationsBtn: 'Show variations',
+    resetFiltersBtn: 'Reset filters',
   },
   screenTasks: {
     AddBtn: 'Add task',    
@@ -190,6 +192,7 @@ export const ua: Translations = {
       learning: 'Навчання',
     },
     showVariationsBtn: 'Показати варіанти',
+    resetFiltersBtn: 'Зкинути фыльтри',
   },
   screenTasks: {
     AddBtn: 'Додати завдання',    
@@ -256,6 +259,7 @@ export const pl: Translations = {
       learning: 'Nauka',
     },
     showVariationsBtn: 'Pokaż opcje',
+    resetFiltersBtn: 'Zresetuj filtry',
   },
   screenTasks: {
     AddBtn: 'Dodaj zadanie',    

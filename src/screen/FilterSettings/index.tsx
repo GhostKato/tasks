@@ -1,31 +1,20 @@
-import { 
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { useState } from 'react';
-import { fonts } from '../../constants/fonts';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetFilters, setFilter, toggleTimeStamp } from '../../redux/filters/slice';
+import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from '../../context/LanguageContext';
 import SwitchBtn from '../../components/SwitchButton';
 import DefaultButton from '../../components/DefaultButton';
 import { useNavigation } from '@react-navigation/core';
-import { FilterSettingsNavigationProp } from '../../navigation/types'; 
-import { useTheme } from '../../context/ThemeContext';
-import { useTranslation } from '../../context/LanguageContext';
+import { FilterSettingsNavigationProp } from '../../navigation/types';
 import { ScreenNames } from '../../constants/screenNames';
-
-export interface ISettings {
-  timeStamp: boolean;
-  status: 'done' | 'undone' | 'inProgress' | null;
-  priority: 'high' | 'medium' | 'low' | null;
-  date: 'today' | 'week' | 'overdue' | null;
-  category: 'work' | 'personal' | 'study' | null;
-}
 
 export default function FilterSettings() {
   const { color } = useTheme();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigation = useNavigation<FilterSettingsNavigationProp>();
+  const filters = useSelector((state: any) => state.filters); 
 
   const styles = StyleSheet.create({
     sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
@@ -45,41 +34,25 @@ export default function FilterSettings() {
       backgroundColor: color.secondary,
     },
     sortByTimeText: {
-      fontFamily: fonts.MontserratRegular,
+      fontFamily: 'Montserrat-Regular',
       color: color.quaternary,
-    },
-    btnText: { fontFamily: fonts.MontserratRegular, color: color.quaternary },
+    },    
+    btnText: { fontFamily: 'Montserrat-Regular', color: color.quaternary },
   });
-
-  const navigation = useNavigation<FilterSettingsNavigationProp>();
-  const [settings, setSettings] = useState<ISettings>({
-    timeStamp: false,
-    status: null,
-    priority: null,
-    date: null,
-    category: null,
-  });
-
-  const handleSwitch = <T extends keyof ISettings>(key: T, value: ISettings[T]) => {
-    setSettings(prev => ({ ...prev, [key]: value }));
-  };
-
-  const onSortByTime = () => {
-    setSettings(prev => ({ ...prev, timeStamp: !prev.timeStamp }));
-  };
 
   return (
     <ScrollView style={{ margin: 10, gap: 20 }}>
       <View style={{ gap: 20 }}>
+
         {/* Сортування */}
-        <TouchableOpacity onPress={onSortByTime} style={styles.sortByTimeBtn}>
+        <TouchableOpacity onPress={() => dispatch(toggleTimeStamp())} style={styles.sortByTimeBtn}>
           <View style={styles.activeSortByTime}>
-            {settings.timeStamp && <View style={styles.checkedSortByTime} />}
+            {filters.timeStamp && <View style={styles.checkedSortByTime} />}
           </View>
           <Text style={styles.sortByTimeText}>{t.screenFilterSettings.sortByDate}</Text>
         </TouchableOpacity>
 
-        {/* За статусом */}
+        {/* Статус */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byStatusTitle}</Text>
         <SwitchBtn<'done' | 'undone' | 'inProgress' | null>
           items={[
@@ -88,11 +61,11 @@ export default function FilterSettings() {
             { text: t.screenFilterSettings.byStatus.undone, id: 'undone' },
             { text: t.screenFilterSettings.byStatus.inProgress, id: 'inProgress' },
           ]}
-          active={settings.status}
-          handleSwitch={item => handleSwitch('status', item.id)}
+          active={filters.status}
+          handleSwitch={item => dispatch(setFilter({ key: 'status', value: item.id }))}
         />
 
-        {/* За пріоритетом */}
+        {/* Пріоритет */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byPriorityTitle}</Text>
         <SwitchBtn<'high' | 'medium' | 'low' | null>
           items={[
@@ -101,11 +74,11 @@ export default function FilterSettings() {
             { text: t.screenFilterSettings.byPriority.medium, id: 'medium' },
             { text: t.screenFilterSettings.byPriority.low, id: 'low' },
           ]}
-          active={settings.priority}
-          handleSwitch={item => handleSwitch('priority', item.id)}
+          active={filters.priority}
+          handleSwitch={item => dispatch(setFilter({ key: 'priority', value: item.id }))}
         />
 
-        {/* За датами */}
+        {/* Дати */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byDatesTitle}</Text>
         <SwitchBtn<'today' | 'week' | 'overdue' | null>
           items={[
@@ -114,11 +87,11 @@ export default function FilterSettings() {
             { text: t.screenFilterSettings.byDates.thisWeek, id: 'week' },
             { text: t.screenFilterSettings.byDates.overdue, id: 'overdue' },
           ]}
-          active={settings.date}
-          handleSwitch={item => handleSwitch('date', item.id)}
+          active={filters.date}
+          handleSwitch={item => dispatch(setFilter({ key: 'date', value: item.id }))}
         />
 
-        {/* За категоріями */}
+        {/* Категорії */}
         <Text style={styles.btnText}>{t.screenFilterSettings.byCategoriesTitle}</Text>
         <SwitchBtn<'work' | 'personal' | 'study' | null>
           items={[
@@ -127,15 +100,21 @@ export default function FilterSettings() {
             { text: t.screenFilterSettings.byCategories.personal, id: 'personal' },
             { text: t.screenFilterSettings.byCategories.learning, id: 'study' },
           ]}
-          active={settings.category}
-          handleSwitch={item => handleSwitch('category', item.id)}
+          active={filters.category}
+          handleSwitch={item => dispatch(setFilter({ key: 'category', value: item.id }))}
+        />        
+          
+          {/* Зкинути фільтри */}
+          <DefaultButton
+            onPress={() => dispatch(resetFilters())}
+            text={t.screenFilterSettings.resetFiltersBtn}
         />
-
-        {/* Кнопка застосувати */}
-        <DefaultButton
-          onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, { settings })}
-          text={t.screenFilterSettings.showVariationsBtn}
-        />
+        
+        {/* Застосувати */}
+          <DefaultButton
+            onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, { settings: filters })}
+            text={t.screenFilterSettings.showVariationsBtn}
+          />
       </View>
     </ScrollView>
   );

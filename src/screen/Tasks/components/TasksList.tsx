@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { ITask } from '../index';
+import { ITask } from '../../../types/task';
 import { fonts } from '../../../constants/fonts';
 import { useTheme } from '../../../context/ThemeContext';
 
@@ -18,12 +18,8 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const { color } = useTheme();
   
   const styles = StyleSheet.create({
-    flex: {
-            
-    },
-    mainContainer: {     
-      // marginHorizontal: 15,      
-    },
+    flex: { flex: 1 },
+    mainContainer: { },
     item: {
       borderWidth: 1,
       borderColor: color.secondary, 
@@ -54,7 +50,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   });
 
   const renderTask = ({ item }: { item: ITask }) => {
-    const deadlineDate = item.deadline.toDate();
+    const deadlineDate = new Date(item.deadline);
     const formattedDeadline = `${deadlineDate.toLocaleDateString()} ${deadlineDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
 
     return (
