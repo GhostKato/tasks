@@ -20,9 +20,9 @@ const baseColors = {
 };
 
 export const lightTheme: ThemeColors = {  
-  primary: '#ffff', 
+  primary: '#e6e6e5ff', 
   secondary: '#93242fff',
-  tertiary: '#947112ff',
+  tertiary: '#6e6e6dff',
   quaternary: '#000000',
   ...baseColors,  
   

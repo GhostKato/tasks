@@ -1,15 +1,14 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Header from '../../../components/Header';
-import { ArrowIcon } from '../../../assets/icons';
+
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../../navigation/types';
 import LogoutButton from '../../../components/LogoutButton';
 import { fonts } from '../../../constants/fonts';
-import { ScreenNames } from '../../../constants/screenNames';
-import LanguageDropdown from '../../../components/LanguageDropdown';
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
 import { useSelector } from 'react-redux';
 import { selectTranslations } from '../../../redux/language/selector';
+import LanguageFlags from '../../../components/LanguageFlags';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -22,21 +21,16 @@ export default function DrawerContent({ navigation }: Props) {
   return (
     <View>
       <Header isOpenDrawer={true} navigation={navigation} />
-      <View style={styles.mainWrapper}>
-        <TouchableOpacity style={styles.btnWrapper}
-         onPress={() => navigation.navigate(ScreenNames.TASK_TAB_BAR_STACK)}>
-          <Text style={styles.text}>{t.draverBar.tasks}</Text>
-          <ArrowIcon />
-        </TouchableOpacity>        
+      <View style={styles.mainWrapper}>            
         <ThemeSwitcher />
-        <LanguageDropdown/>
+        <LanguageFlags/>
         <LogoutButton />        
       </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  mainWrapper: {marginHorizontal: 10, gap: 16},
+  mainWrapper: {margin: 20, gap: 40},
   btnWrapper: {
     flexDirection: 'row',
     alignItems: 'center',

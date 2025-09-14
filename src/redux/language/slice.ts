@@ -14,8 +14,8 @@ interface LanguageState {
 const translationsMap: Record<LanguageCode, Translations> = { en, ua, pl };
 
 const initialState: LanguageState = {
-  language: 'ua',
-  t: ua,
+  language: 'en',
+  t: en,
 };
 
 const languageSlice = createSlice({
