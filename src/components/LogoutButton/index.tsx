@@ -1,10 +1,11 @@
 import React from 'react';
 import { getAuth, signOut } from '@react-native-firebase/auth';
-import { useTranslation } from '../../context/LanguageContext';
 import DefaultButton from '../DefaultButton';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../redux/language/selector';
 
 export default function LogoutButton() {
-  const { t } = useTranslation();  
+  const t = useSelector(selectTranslations);  
 
   const handleLogout = async () => {
     try {

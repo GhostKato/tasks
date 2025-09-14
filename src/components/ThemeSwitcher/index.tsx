@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../../redux/settings/slice';
-import { selectThemeColors, selectIsDark } from '../../redux/settings/selectors';
-import { useTranslation } from '../../context/LanguageContext';
+import { toggleTheme } from '../../redux/theme/slice';
+import { selectThemeColors, selectIsDark } from '../../redux/theme/selectors';
+import { selectTranslations } from '../../redux/language/selector';
 
 export default function ThemeSwitcher() {
   const dispatch = useDispatch();
   const color = useSelector(selectThemeColors);
   const isDark = useSelector(selectIsDark);
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
 
   return (
     <View style={[styles.container, { backgroundColor: color.tertiary }]}>

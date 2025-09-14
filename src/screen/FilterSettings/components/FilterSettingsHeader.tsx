@@ -3,15 +3,15 @@ import {ArrowIcon} from '../../../assets/icons';
 import {fonts} from '../../../constants/fonts';
 import {useNavigation} from '@react-navigation/core';
 import {FilterSettingsNavigationProp} from '../../../navigation/types';
-import { useTranslation } from '../../../context/LanguageContext';
 import { ScreenNames } from '../../../constants/screenNames';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../../redux/settings/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { selectTranslations } from '../../../redux/language/selector';
 
 export default function FilterSettingsHeader() {
 
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   const navigation = useNavigation<FilterSettingsNavigationProp>();
 
   const styles = StyleSheet.create({

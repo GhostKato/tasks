@@ -5,10 +5,11 @@ import AuthHeader from '../components/AuthHeader';
 import Input from '../../../components/Input';
 import DefaultButton from '../../../components/DefaultButton';
 import AuthLayout from '../components/AuthLayout';
-import { useTranslation } from '../../../context/LanguageContext';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { loginUser } from '../../../redux/auth/operations';
 import { selectLoading, selectError } from '../../../redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../../redux/language/selector';
 
 type InputValueType = {
   email: string;
@@ -19,7 +20,7 @@ type InputValueType = {
 
 export default function LoginPage() {
   const styles = useAuthStyles();
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectLoading);
   const error = useAppSelector(selectError);

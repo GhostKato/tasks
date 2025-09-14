@@ -3,7 +3,7 @@ import {useAuthStyles} from '../../screen/Auth/useAuthStyles';
 import React, {useState} from 'react';
 import {HidePassIcon, ViewPassIcon} from '../../assets/icons';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 interface IInput {
   onBlur?: () => void;

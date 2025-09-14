@@ -1,7 +1,7 @@
 import {StyleSheet, Platform} from 'react-native';
 import {fonts} from '../../constants/fonts';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 export const useAuthStyles = () => {
   

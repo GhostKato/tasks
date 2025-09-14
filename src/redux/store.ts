@@ -2,14 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth/slice';
 import filtersReducer from './filters/slice';
 import tasksReducer from './tasks/slice';
-import settingsReducer from './settings/slice';
+import themeReducer from '../redux/theme/slice'
+import languageReducer from '../redux/language/slice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     filters: filtersReducer,
     tasks: tasksReducer,
-    theme: settingsReducer,
+    theme: themeReducer,
+    language: languageReducer,
   },
 });
 

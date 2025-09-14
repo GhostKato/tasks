@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
-import { LanguageProvider } from './src/context/LanguageContext';
 import { Provider, useDispatch } from 'react-redux';
 import { store, AppDispatch } from './src/redux/store';
 import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
@@ -33,10 +32,8 @@ function AppWrapper() {
 export default function App() {
   return (
     <Provider store={store}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <LanguageProvider>          
-            <AppWrapper />          
-        </LanguageProvider>
+      <SafeAreaView style={{ flex: 1 }}>                  
+            <AppWrapper />         
       </SafeAreaView>
     </Provider>
   );

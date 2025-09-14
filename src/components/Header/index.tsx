@@ -4,7 +4,7 @@ import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 interface IHeader {
   isOpenDrawer?: boolean;

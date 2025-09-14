@@ -3,14 +3,14 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { fonts } from '../../constants/fonts';
 import { HeartIcon, HomeIcon, TasksIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
-import { useTranslation } from '../../context/LanguageContext';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectTranslations } from '../../redux/language/selector';
 
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 
  const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   
   const hiddenScreens = [
     ScreenNames.ADD_TASK_PAGE,

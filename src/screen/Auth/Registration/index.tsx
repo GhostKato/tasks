@@ -7,10 +7,11 @@ import { Formik } from 'formik';
 import { RegistrationSchema } from '../utils/validations';
 import DefaultButton from '../../../components/DefaultButton/index';
 import { useState } from 'react';
-import { useTranslation } from '../../../context/LanguageContext';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { registerUser } from '../../../redux/auth/operations';
 import { selectLoading, selectError } from '../../../redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../../redux/language/selector';
 
 type InputTouchedType = {
   email: boolean;
@@ -26,7 +27,7 @@ type RegistrationValues = {
 
 export default function Registration() {
   const styles = useAuthStyles();
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectLoading);
   const error = useAppSelector(selectError);

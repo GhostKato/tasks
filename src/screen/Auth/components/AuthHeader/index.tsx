@@ -5,7 +5,8 @@ import {useNavigation} from '@react-navigation/core';
 import {ScreenNames} from '../../../../constants/screenNames';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {LoggedOutStackType} from '../../../../navigation/types';
-import { useTranslation } from '../../../../context/LanguageContext';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../../../redux/language/selector';
 
 interface IAuthHeader {
   activeBtn: 'login' | 'registration';
@@ -14,7 +15,7 @@ interface IAuthHeader {
 export default function AuthHeader({ activeBtn }: IAuthHeader) {
 
   const styles = useAuthStyles();
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
 
   const navigation = useNavigation<StackNavigationProp<LoggedOutStackType>>();
   const navigateToLogin = () => {

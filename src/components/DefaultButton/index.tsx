@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 interface IDefaultButton {
   disabled?: boolean;

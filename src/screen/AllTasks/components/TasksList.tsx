@@ -8,7 +8,7 @@ import {
 import { ITask } from '../../../types/task';
 import { fonts } from '../../../constants/fonts';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../../redux/settings/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 interface ITasksListProps {
   tasks: ITask[];

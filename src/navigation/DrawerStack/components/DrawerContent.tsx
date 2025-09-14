@@ -3,12 +3,13 @@ import Header from '../../../components/Header';
 import { ArrowIcon } from '../../../assets/icons';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../../navigation/types';
-import { useTranslation } from '../../../context/LanguageContext';
 import LogoutButton from '../../../components/LogoutButton';
 import { fonts } from '../../../constants/fonts';
 import { ScreenNames } from '../../../constants/screenNames';
 import LanguageDropdown from '../../../components/LanguageDropdown';
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
+import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../../redux/language/selector';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -16,7 +17,7 @@ interface Props {
 
 export default function DrawerContent({ navigation }: Props) {
 
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   
   return (
     <View>

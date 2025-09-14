@@ -8,7 +8,7 @@ import { View, ActivityIndicator } from 'react-native';
 import { useAppSelector } from '../redux/hooks';
 import { selectUser, selectLoading } from '../redux/auth/selectors';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../redux/settings/selectors';
+import { selectThemeColors } from '../redux/theme/selectors';
 
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 

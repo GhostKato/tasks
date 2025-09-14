@@ -5,8 +5,6 @@ import DefaultButton from '../../components/DefaultButton';
 import { ScreenNames } from '../../constants/screenNames';
 import { useNavigation } from '@react-navigation/core';
 import { AddTaskNavigationProp } from '../../navigation/types';
-import { useTranslation } from '../../context/LanguageContext';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
 import { setSearchQuery } from '../../redux/tasks/slice';
@@ -14,9 +12,10 @@ import {
   selectFilteredTasks,
   selectTasksLoading,
 } from '../../redux/tasks/selectors';
+import { selectTranslations } from '../../redux/language/selector';
 
 export default function AllTasks() {
-  const { t } = useTranslation();
+  const t = useSelector(selectTranslations);
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation<AddTaskNavigationProp>();
 

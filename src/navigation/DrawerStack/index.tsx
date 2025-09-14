@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import { Dimensions } from 'react-native';
 import DrawerContent from './components/DrawerContent';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/settings/selectors';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 const Drawer = createDrawerNavigator<DrawerStackType>();
 

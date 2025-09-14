@@ -7,7 +7,7 @@ import { LoggedInStackType } from '../../../navigation/types';
 import { ITask } from '../../../types/task';
 import Input from '../../../components/Input';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../../redux/settings/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 interface ISearchBar {
   handleSearch: (text: string) => void;
