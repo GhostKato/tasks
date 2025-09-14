@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
 import { selectTasksLoading } from '../../redux/tasks/selectors';
 
-export default function Home() {  
+export default function TodayTasks() {  
 
   const tasks = useSelector(selectTodayTasks);
   const loading = useSelector(selectTasksLoading);

@@ -34,7 +34,7 @@ export default function FilterSettingsHeader() {
   return (
     <View style={styles.mainWrapper}>
       <TouchableOpacity
-        onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, {})}
+        onPress={() => navigation.navigate(ScreenNames.ALL_TASKS_PAGE, {})}
         style={styles.backBtn}>
         <ArrowIcon width={20} height={20} />
       </TouchableOpacity>

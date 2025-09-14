@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '../../constants/screenNames';
-import MainTabBarStack from '../TabBarStack/MainTabBarStack';
+import TaskTabBarStack from '../TabBarStack/TaskTabBarStack';
 import SettingsTabBarStack from '../TabBarStack/SettingsTabBarStack';
 import { DrawerStackType } from '../types';
 import Header from '../../components/Header';
@@ -16,7 +16,7 @@ export default function DrawerStack() {
 
   return (
     <Drawer.Navigator
-  initialRouteName={ScreenNames.MAIN_TAB_BAR_STACK}
+  initialRouteName={ScreenNames.TODAY_TASKS_PAGE}
   drawerContent={(props) => <DrawerContent {...props} />}
   screenOptions={{
     drawerPosition: 'right',
@@ -31,8 +31,8 @@ export default function DrawerStack() {
   }}
 >
   <Drawer.Screen
-    name={ScreenNames.MAIN_TAB_BAR_STACK}
-    component={MainTabBarStack}
+    name={ScreenNames.TODAY_TASKS_PAGE}
+    component={TaskTabBarStack}
     options={{
       header: ({ navigation }) => <Header navigation={navigation} />,
     }}

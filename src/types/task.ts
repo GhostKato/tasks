@@ -15,6 +15,6 @@ export interface ITask {
   priority: 'high' | 'medium' | 'low';
   category: 'work' | 'personal' | 'study';
    deadline: string;
-  isFavorite: boolean;
+  isMarked: boolean;
   ownerId: string;
 }

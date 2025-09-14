@@ -1,5 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ISettings } from '../../screen/FilterSettings';
+import { FiltersState } from '../../redux/filters/slice';
 import { ScreenNames } from '../../constants/screenNames';
 
 export type LoggedOutStackType = {
@@ -8,7 +8,7 @@ export type LoggedOutStackType = {
 };
 
 export type DrawerStackType = {
-  MAIN_TAB_BAR_STACK: undefined;
+  TASK_TAB_BAR_STACK: undefined;
   SETTINGS_TAB_BAR_STACK: undefined;
 };
 
@@ -16,10 +16,12 @@ export type LoggedInStackType = {
   DRAWER_STACK: undefined;   
 };
 
-export type MainTabBarStackType = {
-  [ScreenNames.HOME_PAGE]: undefined;
-  [ScreenNames.TASKS_PAGE]: { settings?: ISettings };  
-  [ScreenNames.FAVORITE_PAGE]: undefined;
+export type ISettings = FiltersState;
+
+export type TaskTabBarStackType = {
+  [ScreenNames.TODAY_TASKS_PAGE]: undefined;
+  [ScreenNames.ALL_TASKS_PAGE]: { settings?: ISettings };  
+  [ScreenNames.MARKED_TASKS_PAGE]: undefined;
   [ScreenNames.ADD_TASK_PAGE]: { settings?: ISettings }; 
   [ScreenNames.UPDATE_TASK_PAGE]: { settings?: ISettings };
   [ScreenNames.FILTERS_SETTINGS_PAGE]: { settings?: ISettings };
@@ -37,7 +39,7 @@ const LoggedOutStackScreens: LoggedOutStackType = {
 };
 
 const LoggedInStackScreens: DrawerStackType = {
-  MAIN_TAB_BAR_STACK: undefined,
+  TASK_TAB_BAR_STACK: undefined,
   SETTINGS_TAB_BAR_STACK: undefined,
 };
 
@@ -47,11 +49,11 @@ export type RootStackNavigation = {
 };
 
 export type FilterSettingsNavigationProp = StackNavigationProp<
-  MainTabBarStackType,
-  ScreenNames.TASKS_PAGE
+  TaskTabBarStackType,
+  ScreenNames.ALL_TASKS_PAGE
   >;
 
   export type AddTaskNavigationProp = StackNavigationProp<
-  MainTabBarStackType,
-  ScreenNames.TASKS_PAGE
+  TaskTabBarStackType,
+  ScreenNames.ALL_TASKS_PAGE
 >;

@@ -28,17 +28,17 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
           let icon = null;
           let label: string = '';
           switch (route.name) {
-            case ScreenNames.HOME_PAGE:
+            case ScreenNames.TODAY_TASKS_PAGE:
               icon = <HomeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.mainTabBar.home;
+              label = t.taskTabBar.todayTasks;
               break;
-            case ScreenNames.TASKS_PAGE:
+            case ScreenNames.ALL_TASKS_PAGE:
               icon = <TasksIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.mainTabBar.tasks;
+              label = t.taskTabBar.allTasks;
               break;
-            case ScreenNames.FAVORITE_PAGE:
+            case ScreenNames.MARKED_TASKS_PAGE:
               icon = <HeartIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
-              label = t.mainTabBar.favorite;
+              label = t.taskTabBar.markedTasks;
               break;
             case ScreenNames.THEME_PAGE:
               icon = <ThemeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;

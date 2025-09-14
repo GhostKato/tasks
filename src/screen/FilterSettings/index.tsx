@@ -112,7 +112,7 @@ export default function FilterSettings() {
         
         {/* Застосувати */}
           <DefaultButton
-            onPress={() => navigation.navigate(ScreenNames.TASKS_PAGE, { settings: filters })}
+            onPress={() => navigation.navigate(ScreenNames.ALL_TASKS_PAGE, { settings: filters })}
             text={t.screenFilterSettings.showVariationsBtn}
           />
       </View>

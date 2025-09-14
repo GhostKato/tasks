@@ -5,7 +5,7 @@ import { fetchTasks, addTask, updateTask, deleteTask } from './operations';
 interface TasksState {
   allTasks: ITask[];
   filteredTasks: ITask[];
-  favoriteTasks: ITask[]; 
+  markedTasks: ITask[]; 
   loading: boolean;
   error: string | null;
   searchQuery: string;
@@ -14,11 +14,13 @@ interface TasksState {
 const initialState: TasksState = {
   allTasks: [],
   filteredTasks: [],
-  favoriteTasks: [], 
+  markedTasks: [], 
   loading: false,
   error: null,
   searchQuery: '',
 };
+
+
 
 const tasksSlice = createSlice({
   name: 'tasks',
@@ -31,21 +33,21 @@ const tasksSlice = createSlice({
       );
     },
 
-    // ✅ toggleFavorite
+    // ✅ toggleMarked
     toggleFavorite(state, action: PayloadAction<string>) {
       const taskId = action.payload;
       const taskIndex = state.allTasks.findIndex(t => t.id === taskId);
 
       if (taskIndex !== -1) {
-        // міняємо значення isFavorite
-        state.allTasks[taskIndex].isFavorite = !state.allTasks[taskIndex].isFavorite;
+        // міняємо значення isMarked
+        state.allTasks[taskIndex].isMarked = !state.allTasks[taskIndex].isMarked;
 
-        if (state.allTasks[taskIndex].isFavorite) {
-          // додаємо у favoriteTasks
-          state.favoriteTasks.push(state.allTasks[taskIndex]);
+        if (state.allTasks[taskIndex].isMarked) {
+          // додаємо у markedTasks
+          state.markedTasks.push(state.allTasks[taskIndex]);
         } else {
-          // видаляємо з favoriteTasks
-          state.favoriteTasks = state.favoriteTasks.filter(t => t.id !== taskId);
+          // видаляємо з markedTasks
+          state.markedTasks = state.markedTasks.filter(t => t.id !== taskId);
         }
       }
     },
@@ -60,7 +62,7 @@ const tasksSlice = createSlice({
         state.loading = false;
         state.allTasks = action.payload;
         state.filteredTasks = action.payload;
-        state.favoriteTasks = action.payload.filter(t => t.isFavorite); // ✅ ініціалізація фаворитів
+        state.markedTasks = action.payload.filter(t => t.isMarked); // ✅ ініціалізація відмічених
       })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.loading = false;
@@ -70,8 +72,8 @@ const tasksSlice = createSlice({
       .addCase(addTask.fulfilled, (state, action: PayloadAction<ITask>) => {
         state.allTasks.push(action.payload);
         state.filteredTasks.push(action.payload);
-        if (action.payload.isFavorite) {
-          state.favoriteTasks.push(action.payload); // якщо нова таска зразу фаворит
+        if (action.payload.isMarked) {
+          state.markedTasks.push(action.payload); // якщо нова таска зразу відміченна
         }
       })
 
@@ -79,23 +81,23 @@ const tasksSlice = createSlice({
         state.allTasks = state.allTasks.map(t => t.id === action.payload.id ? action.payload : t);
         state.filteredTasks = state.filteredTasks.map(t => t.id === action.payload.id ? action.payload : t);
 
-        // оновлюємо favoriteTasks
-        if (action.payload.isFavorite) {
-          const exists = state.favoriteTasks.find(t => t.id === action.payload.id);
+        // оновлюємо markedTasks
+        if (action.payload.isMarked) {
+          const exists = state.markedTasks.find(t => t.id === action.payload.id);
           if (!exists) {
-            state.favoriteTasks.push(action.payload);
+            state.markedTasks.push(action.payload);
           } else {
-            state.favoriteTasks = state.favoriteTasks.map(t => t.id === action.payload.id ? action.payload : t);
+            state.markedTasks = state.markedTasks.map(t => t.id === action.payload.id ? action.payload : t);
           }
         } else {
-          state.favoriteTasks = state.favoriteTasks.filter(t => t.id !== action.payload.id);
+          state.markedTasks = state.markedTasks.filter(t => t.id !== action.payload.id);
         }
       })
 
       .addCase(deleteTask.fulfilled, (state, action: PayloadAction<string>) => {
         state.allTasks = state.allTasks.filter(t => t.id !== action.payload);
         state.filteredTasks = state.filteredTasks.filter(t => t.id !== action.payload);
-        state.favoriteTasks = state.favoriteTasks.filter(t => t.id !== action.payload);
+        state.markedTasks = state.markedTasks.filter(t => t.id !== action.payload);
       });
   },
 });

@@ -3,10 +3,10 @@ export type Translations = {
     tasks: string;
     settings: string;    
   };  
-  mainTabBar: {
-    home: string;
-    tasks: string;
-    favorite: string;
+  taskTabBar: {
+    todayTasks: string;
+    allTasks: string;
+    markedTasks: string;
   };
   settingsTabBar: {
     theme: string;
@@ -70,10 +70,10 @@ export const en: Translations = {
     tasks: 'Tasks',
     settings: 'Settings',    
   },   
-  mainTabBar: {
-    home: 'Home',
-    tasks: 'Tasks',
-    favorite: 'Favorite',
+  taskTabBar: {
+    todayTasks: 'Today',
+    allTasks: 'All',
+    markedTasks: 'Marked',
   },
   settingsTabBar: {
     theme: 'Theme',
@@ -137,10 +137,10 @@ export const ua: Translations = {
     tasks: 'Завдання',
     settings: 'Налаштування',    
   },  
-  mainTabBar: {
-    home: 'Головна',
-    tasks: 'Завдання',
-    favorite: 'Улюблене',
+  taskTabBar: {
+    todayTasks: 'Сьогодні',
+    allTasks: 'Всі',
+    markedTasks: 'Відмічені',
   },
   settingsTabBar: {
     theme: 'Тема',
@@ -204,10 +204,10 @@ export const pl: Translations = {
     tasks: 'Zadania',
     settings: 'Ustawienia',    
   },  
-  mainTabBar: {
-    home: 'Główna',
-    tasks: 'Zadania',
-    favorite: 'Ulubiony',
+  taskTabBar: {
+    todayTasks: 'Dzisiaj',
+    allTasks: 'Wszystko',
+    markedTasks: 'Oznaczony',
   },
   settingsTabBar: {
     theme: 'Temat',

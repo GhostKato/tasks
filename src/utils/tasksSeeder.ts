@@ -9,7 +9,7 @@ const tasks = [
     priority: 'high', 
     category: 'work', 
     deadline: new Date('2025-09-10').toISOString(), 
-    isFavorite: false,
+    isMarked: false,
     ownerId: 'test',
   },
   { 
@@ -19,7 +19,7 @@ const tasks = [
     priority: 'medium', 
     category: 'personal', 
     deadline: new Date('2025-09-19').toISOString(), 
-    isFavorite: true,
+    isMarked: true,
     ownerId: 'test',
   },
   { 
@@ -29,7 +29,7 @@ const tasks = [
     priority: 'high', 
     category: 'work', 
     deadline: new Date('2025-09-11').toISOString(), 
-    isFavorite: false,
+    isMarked: false,
      ownerId: 'test',
   },
   { 
@@ -39,7 +39,7 @@ const tasks = [
     priority: 'low', 
     category: 'study', 
     deadline: new Date('2025-09-14').toISOString(), 
-    isFavorite: false,
+    isMarked: false,
     ownerId: 'test',
   },
   { 
@@ -49,7 +49,7 @@ const tasks = [
     priority: 'medium', 
     category: 'work', 
     deadline: new Date('2025-09-18').toISOString(),
-    isFavorite: false,
+    isMarked: false,
     ownerId: 'test',
   },
   { 
@@ -59,7 +59,7 @@ const tasks = [
     priority: 'low', 
     category: 'personal', 
     deadline: new Date('2025-09-14').toISOString(), 
-    isFavorite: true,
+    isMarked: true,
     ownerId: 'test',
   },
 ];

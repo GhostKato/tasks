@@ -1,32 +1,32 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Favorite from '../../screen/Favorite';
-import Home from '../../screen/Home';
-import Tasks from '../../screen/Tasks';
+import MarkedTasks from '../../screen/MarkedTasks';
+import TodayTasks from '../../screen/TodayTasks';
+import AllTasks from '../../screen/AllTasks';
 import AddTask from '../../screen/AddTask';
 import UpdateTask from '../../screen/UpdateTask';
 import FilterSettings from '../../screen/FilterSettings';
-import { MainTabBarStackType } from '../types';
+import { TaskTabBarStackType } from '../types';
 import CustomTabBar from './CustomTabBar';
 import { ScreenNames } from '../../constants/screenNames';
 import FilterSettingsHeader from '../../screen/FilterSettings/components/FilterSettingsHeader';
 
-const Tab = createBottomTabNavigator<MainTabBarStackType>();
+const Tab = createBottomTabNavigator<TaskTabBarStackType>();
 
 function renderCustomTabBar(props: any) {
   return <CustomTabBar {...props} />;
 }
 
-export default function MainTabBarStack() {  
+export default function TaskTabBarStack() {  
   return (
     <Tab.Navigator
-      initialRouteName={ScreenNames.HOME_PAGE}
+      initialRouteName={ScreenNames.TODAY_TASKS_PAGE}
       screenOptions={{ headerShown: false }}
       tabBar={renderCustomTabBar}
     >
       {/* Видимі кнопки */}
-      <Tab.Screen name={ScreenNames.HOME_PAGE} component={Home} />
-      <Tab.Screen name={ScreenNames.TASKS_PAGE} component={Tasks} />
-      <Tab.Screen name={ScreenNames.FAVORITE_PAGE} component={Favorite} />
+      <Tab.Screen name={ScreenNames.TODAY_TASKS_PAGE} component={TodayTasks} />
+      <Tab.Screen name={ScreenNames.ALL_TASKS_PAGE} component={AllTasks} />
+      <Tab.Screen name={ScreenNames.MARKED_TASKS_PAGE} component={MarkedTasks} />
 
       {/* Приховані кнопки */}
       <Tab.Screen

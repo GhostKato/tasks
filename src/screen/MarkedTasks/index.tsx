@@ -1,11 +1,11 @@
 import { ActivityIndicator, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
-import { selectFavoriteTasks, selectTasksLoading } from '../../redux/tasks/selectors';
+import { selectMarkedTasks, selectTasksLoading } from '../../redux/tasks/selectors';
 
-export default function Favorite() {  
+export default function MarkedTasks() {  
 
-  const tasks = useSelector(selectFavoriteTasks);
+  const tasks = useSelector(selectMarkedTasks);
   const loading = useSelector(selectTasksLoading);
 
   return (

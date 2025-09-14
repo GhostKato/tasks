@@ -15,7 +15,7 @@ import {
   selectTasksLoading,
 } from '../../redux/tasks/selectors';
 
-export default function Tasks() {
+export default function AllTasks() {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation<AddTaskNavigationProp>();
