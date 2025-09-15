@@ -1,12 +1,10 @@
 import {StyleSheet, View} from 'react-native';
-import Header from '../../../components/Header';
+import MainHeader from '../../../components/MainHeader';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../../navigation/types';
 import LogoutButton from '../../../components/LogoutButton';
-
 import ThemeSwitcher from '../../../components/ThemeSwitcher';
 import { useSelector } from 'react-redux';
-
 import LanguageFlags from '../../../components/LanguageFlags';
 import { selectThemeColors } from '../../../redux/theme/selectors';
 
@@ -40,7 +38,7 @@ export default function DrawerContent({ navigation }: Props) {
   
   return (
     <View style={styles.mainWrapper}>
-      <Header isOpenDrawer={true} navigation={navigation} />
+      <MainHeader isOpenDrawer={true} navigation={navigation} />
       <View style={styles.contentWrapper}>            
         <ThemeSwitcher />
         <LanguageFlags/>

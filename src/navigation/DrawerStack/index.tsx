@@ -2,7 +2,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '../../constants/screenNames';
 import TaskTabBarStack from '../TabBarStack/TaskTabBarStack';
 import { DrawerStackType } from '../types';
-import Header from '../../components/Header';
+import MainHeader from '../../components/MainHeader';
 import { Dimensions } from 'react-native';
 import DrawerContent from './components/DrawerContent';
 import { useSelector } from 'react-redux';
@@ -34,7 +34,7 @@ export default function DrawerStack() {
     name={ScreenNames.TASK_TAB_BAR_STACK}
     component={TaskTabBarStack}
     options={{
-      header: ({ navigation }) => <Header navigation={navigation} />,
+      header: ({ navigation }) => <MainHeader navigation={navigation} />,
     }}
       />      
 </Drawer.Navigator>

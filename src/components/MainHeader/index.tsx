@@ -12,7 +12,7 @@ interface IHeader {
 
 }
 
-export default function Header({ isOpenDrawer, navigation }: IHeader) { 
+export default function MainHeader({ isOpenDrawer, navigation }: IHeader) { 
   
   const color = useSelector(selectThemeColors);
 

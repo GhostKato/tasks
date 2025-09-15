@@ -8,7 +8,7 @@ import FilterSettings from '../../screen/FilterSettings';
 import { TaskTabBarStackType } from '../types';
 import CustomTabBar from './CustomTabBar';
 import { ScreenNames } from '../../constants/screenNames';
-import FilterSettingsHeader from '../../screen/FilterSettings/components/FilterSettingsHeader';
+import ScreenHeader from '../../components/ScreenHeader';
 
 const Tab = createBottomTabNavigator<TaskTabBarStackType>();
 
@@ -45,7 +45,7 @@ export default function TaskTabBarStack() {
         options={{
           tabBarButton: () => null,
           headerShown: true,
-          header: () => <FilterSettingsHeader/>
+          header: () => <ScreenHeader backPath="ALL_TASKS_PAGE"/>
          }}
       />
     </Tab.Navigator>

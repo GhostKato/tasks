@@ -3,7 +3,16 @@ export type Translations = {
     todayTasks: string;
     allTasks: string;
     markedTasks: string;
-  };  
+  };
+  screenNames: {
+    TODAY_TASKS_PAGE: string,
+    ALL_TASKS_PAGE: string,
+    MARKED_TASKS_PAGE: string,
+    ADD_TASK_PAGE: string,
+    UPDATE_TASK_PAGE: string,
+    FILTERS_SETTINGS_PAGE: string,
+    DETAILS_TASK_PAGE: string,
+  },
   screenAuth: {
     title: string;
     text: string;
@@ -16,8 +25,7 @@ export type Translations = {
     registerBtn: string;        
   };
   logOutBtn: string;
-  screenFilterSettings: {
-    headerTitle: string;
+  screenFilterSettings: {    
     sortByDate: string;
     byStatusTitle: string;
     allTasks: string;
@@ -54,10 +62,19 @@ export type Translations = {
 
 export const en: Translations = {  
   taskTabBar: {
-    todayTasks: 'Today',
+    todayTasks: 'Todays',
     allTasks: 'All',
     markedTasks: 'Marked',
-  },  
+  },
+  screenNames: {
+    TODAY_TASKS_PAGE: 'Todays tasks',
+    ALL_TASKS_PAGE: 'All tasks',
+    MARKED_TASKS_PAGE: 'Marked tasks',
+    ADD_TASK_PAGE: 'Add the task',
+    UPDATE_TASK_PAGE: 'Update task',
+    FILTERS_SETTINGS_PAGE: 'Filters',
+    DETAILS_TASK_PAGE: 'Task details',
+  },
   screenAuth: {
     title: 'Glad to welcome you!',
     text: 'He who manages his tasks controls his life.',
@@ -70,8 +87,7 @@ export const en: Translations = {
     registerBtn: 'Register',        
   },
   logOutBtn: 'Log Out', 
-  screenFilterSettings: {
-     headerTitle: 'Filters',
+  screenFilterSettings: {    
      sortByDate: 'Sort by date added',
     byStatusTitle: 'By status',
      allTasks: 'All',
@@ -111,7 +127,16 @@ export const ua: Translations = {
     todayTasks: 'Сьогодні',
     allTasks: 'Всі',
     markedTasks: 'Відмічені',
-  },  
+  },
+  screenNames: {
+    TODAY_TASKS_PAGE: 'Сьогоднішні завдання',
+    ALL_TASKS_PAGE: 'Всі завдання',
+    MARKED_TASKS_PAGE: 'Відмічені завдання',
+    ADD_TASK_PAGE: 'Дотати завдання',
+    UPDATE_TASK_PAGE: 'Оновити завдання',
+    FILTERS_SETTINGS_PAGE: 'Фільтри',
+    DETAILS_TASK_PAGE: 'Деталі завдання',
+  },
   screenAuth: {
     title: 'Раді вітати тебе!',
     text: 'Хто керує своїми задачами, той контролює своє життя.',
@@ -124,8 +149,7 @@ export const ua: Translations = {
     registerBtn: 'Зареєструватись',        
   },
   logOutBtn: 'Вийти',  
-  screenFilterSettings: {
-     headerTitle: 'Фільтри',
+  screenFilterSettings: {     
      sortByDate: 'Сортувати за датою додавання',
     byStatusTitle: 'За статусом',
     allTasks: 'Всі',
@@ -165,7 +189,16 @@ export const pl: Translations = {
     todayTasks: 'Dzisiaj',
     allTasks: 'Wszystko',
     markedTasks: 'Oznaczony',
-  },  
+  },
+  screenNames: {
+    TODAY_TASKS_PAGE: 'Dzisiejsze zadania',
+    ALL_TASKS_PAGE: 'Wszystkie zadania',
+    MARKED_TASKS_PAGE: 'Oznaczone zadania',
+    ADD_TASK_PAGE: 'Dodać zadanie',
+    UPDATE_TASK_PAGE: 'Zadanie aktualizacji',
+    FILTERS_SETTINGS_PAGE: 'Filtry',
+    DETAILS_TASK_PAGE: 'Szczegóły zadania',
+  },
   screenAuth: {
     title: 'Miło Cię powitać!',
     text: 'Ten, kto zarządza swoimi zadaniami, kontroluje swoje życie.',
@@ -178,8 +211,7 @@ export const pl: Translations = {
     registerBtn: 'Rejestr',        
   },
   logOutBtn: 'Wylogować', 
-  screenFilterSettings: {
-     headerTitle: 'Filtry',
+  screenFilterSettings: {     
      sortByDate: 'Sortuj według dodanej daty',
     byStatusTitle: 'Według stanu',
      allTasks: 'Wszystko',

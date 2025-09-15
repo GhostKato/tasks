@@ -2,24 +2,31 @@ import { View, TouchableOpacity } from 'react-native';
 import { SettingsIcon } from '../../../assets/icons';
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { LoggedInStackType } from '../../../navigation/types';
+import { TaskTabBarStackType } from '../../../navigation/types';
 import { ITask } from '../../../types/task';
 import Input from '../../../components/Input';
-import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../../redux/theme/selectors';
+import { RootState } from '../../../redux/store';
+import { ScreenNames } from '../../../constants/screenNames';
 
 interface ISearchBar {
   handleSearch: (text: string) => void;
   tasks: ITask[];
 }
 
-export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
+type SearchBarNavigationProp = StackNavigationProp<
+  TaskTabBarStackType,
+  ScreenNames.FILTERS_SETTINGS_PAGE
+>;
 
+export default function SearchBar({ handleSearch }: ISearchBar) {
   const color = useSelector(selectThemeColors);
+  const filters = useSelector((state: RootState) => state.filters);
 
   const [query, setQuery] = useState('');
-  const navigation = useNavigation<StackNavigationProp<LoggedInStackType>>();
+  const navigation = useNavigation<SearchBarNavigationProp>();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -29,7 +36,7 @@ export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
   }, [query]);
 
   const handleNavigateToFilters = () => {
-    navigation.navigate('FILTERS_SETTINGS_PAGE', { tasksList: tasks });
+    navigation.navigate(ScreenNames.FILTERS_SETTINGS_PAGE, { settings: filters });
   };
 
   return (
@@ -46,10 +53,10 @@ export default function SearchBar({ handleSearch, tasks }: ISearchBar) {
           width: 45,
           borderRadius: 50,
           alignItems: 'center',
-          justifyContent: 'center',          
+          justifyContent: 'center',
           marginLeft: 10,
           borderWidth: 1,
-          borderColor: color.quaternary
+          borderColor: color.quaternary,
         }}
         onPress={handleNavigateToFilters}
       >
