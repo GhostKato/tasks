@@ -1,38 +1,41 @@
-import {Text, TextInput, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {useAuthStyles} from '../../screen/Auth/useAuthStyles';
-import React, {useState} from 'react';
-import {HidePassIcon, ViewPassIcon} from '../../assets/icons';
+import { Text, TextInput, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { useAuthStyles } from '../../screen/Auth/useAuthStyles';
+import React, { useState } from 'react';
+import { HidePassIcon, ViewPassIcon } from '../../assets/icons';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
 
 interface IInput {
   onBlur?: () => void;
+  onFocus?: () => void;
   value: string;
   onChangeText: (text: string) => void;
-  placeholderColor?: string;
   placeholder?: string;
+  placeholderColor?: string;
   error?: string;
   secureTextEntry?: boolean;
+  multiline?: boolean;
+  textAlignVertical?: 'auto' | 'top' | 'center' | 'bottom';
   additionalContainerStyle?: ViewStyle;
-  additionInputStyle?: ViewStyle;
-  onFocus?: () => void;
+  additionInputStyle?: TextStyle;       
 }
+
 export default function Input({
   onBlur,
-  placeholder,
+  onFocus,
   value,
-  onChangeText,  
+  onChangeText,
+  placeholder,
+  placeholderColor,
   error,
   secureTextEntry = false,
+  multiline = false,
+  textAlignVertical = 'auto',
   additionalContainerStyle,
   additionInputStyle,
-  onFocus,
 }: IInput) {
-
   const styles = useAuthStyles();
-
   const color = useSelector(selectThemeColors);
-
   const [isPassHidden, setIsPassHidden] = useState(secureTextEntry);
 
   return (
@@ -40,29 +43,26 @@ export default function Input({
       <View style={[styles.inputContainer, additionalContainerStyle]}>
         <TextInput
           placeholder={placeholder}
-          style={[styles.input, additionInputStyle]}
-          placeholderTextColor={color.quaternary}
+          placeholderTextColor={placeholderColor || color.quaternary}
+          value={value}
+          onChangeText={onChangeText}
           onBlur={onBlur}
           onFocus={onFocus}
-          value={value}
-          onChangeText={text => onChangeText(text)}
-          secureTextEntry={isPassHidden}          
+          secureTextEntry={isPassHidden}
+          multiline={multiline}
+          textAlignVertical={textAlignVertical}
+          style={[styles.input, additionInputStyle, multiline && { minHeight: 100 }]} 
         />
         {secureTextEntry && (
           <TouchableOpacity
-            onPress={() => {
-              setIsPassHidden(!isPassHidden);
-            }}
-            hitSlop={{top: 15, bottom: 15, right: 15, left: 15}}>
-            {isPassHidden ? (
-              <ViewPassIcon fill={color.tertiary} />
-            ) : (
-              <HidePassIcon fill={color.tertiary} />
-            )}
+            onPress={() => setIsPassHidden(!isPassHidden)}
+            hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
+          >
+            {isPassHidden ? <ViewPassIcon fill={color.tertiary} /> : <HidePassIcon fill={color.tertiary} />}
           </TouchableOpacity>
         )}
       </View>
-      {!!error && <Text style={styles.errorText}>{error}</Text>}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </>
   );
 }

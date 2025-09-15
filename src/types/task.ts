@@ -1,20 +1,20 @@
 export interface Task {
-  id: string;
+  id?: string; 
   title: string;
-  status: 'done' | 'undone' | 'inProgress';
+  status: 'done' | 'undone' | 'inProgress' | 'new';
   priority: 'high' | 'medium' | 'low';
   dateFilter: 'today' | 'week' | 'overdue';
   category: 'work' | 'personal' | 'study';
 }
 
 export interface ITask {
-  id: string;
+  id?: string; 
   title: string;
   description: string;
-  status: 'done' | 'undone' | 'inProgress';
+  status: 'done' | 'undone' | 'inProgress' | 'new';
   priority: 'high' | 'medium' | 'low';
   category: 'work' | 'personal' | 'study';
-   deadline: string;
+  deadline: string;
   isMarked: boolean;
   ownerId: string;
 }

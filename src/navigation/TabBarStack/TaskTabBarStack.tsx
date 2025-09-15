@@ -32,7 +32,11 @@ export default function TaskTabBarStack() {
       <Tab.Screen
         name={ScreenNames.ADD_TASK_PAGE}
         component={AddTask}
-        options={{ tabBarButton: () => null }}
+        options={{
+          tabBarButton: () => null,
+          headerShown: true,
+          header: () => <ScreenHeader backPath="ALL_TASKS_PAGE"/>
+        }}
       />
       <Tab.Screen
         name={ScreenNames.UPDATE_TASK_PAGE}
