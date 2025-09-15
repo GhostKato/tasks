@@ -22,8 +22,29 @@ export default function ScreenHeader({ title, showBack, backPath }: ScreenHeader
   const screenTitle = title ?? t.screenNames?.[route.name as keyof typeof t.screenNames] ?? route.name;  
   const displayBack = showBack !== undefined ? showBack : navigation.canGoBack();
 
+  const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 10,  
+    backgroundColor: color.tertiary
+  },
+  backBtn: {
+    transform: [{ rotate: '180deg' }],
+  },
+  title: {
+    fontSize: 18,
+    fontFamily: fonts.MontserratSemiBold,
+    color: color.octonary
+    },
+  view: {
+    width: 24
+  },
+});
+
   return (
-    <View style={[styles.container, { backgroundColor: color.tertiary }]}>
+    <View style={styles.container}>
       {displayBack ? (
         <TouchableOpacity
           onPress={() => {
@@ -35,35 +56,17 @@ export default function ScreenHeader({ title, showBack, backPath }: ScreenHeader
           }}
           style={styles.backBtn}
         >
-          <ArrowIcon width={20} height={20} />
+          <ArrowIcon/>
         </TouchableOpacity>
       ) : (
-        <View style={{ width: 24 }} />
+        <View/>
       )}
-
-      <Text style={[styles.title, { color: color.quaternary }]}>
+      <Text style={styles.title}>
         {screenTitle}
       </Text>
-
-      <View style={{ width: 24 }} />
+      <View style={styles.view} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderColor: '#ddd',
-  },
-  backBtn: {
-    transform: [{ rotate: '180deg' }],
-  },
-  title: {
-    fontSize: 18,
-    fontFamily: fonts.MontserratSemiBold,
-  },
-});
+

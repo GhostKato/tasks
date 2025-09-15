@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { fonts } from '../../constants/fonts';
 import { HeartIcon, HomeIcon, TasksIcon } from '../../assets/icons';
@@ -18,8 +18,29 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
     ScreenNames.FILTERS_SETTINGS_PAGE
   ];
 
+  const styles = StyleSheet.create({
+    
+    container: {
+      flexDirection: 'row',
+      height: 60,
+      backgroundColor: color.tertiary,
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    },
+    btn: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+      },  
+    btnContent: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 5,
+      },  
+  });
+
   return (
-    <View style={{ flexDirection: 'row', height: 60, backgroundColor: color.tertiary, alignItems: 'center', justifyContent: 'space-around' }}>
+    <View style={styles.container}>
       {state.routes
         .filter(route => !hiddenScreens.includes(route.name as ScreenNames))
         .map((route, index) => {
@@ -44,8 +65,8 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
           }
 
           return (
-            <TouchableOpacity key={route.key} onPress={onPress} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <View style={{ justifyContent: 'center', alignItems: 'center', gap: 5 }}>
+            <TouchableOpacity key={route.key} onPress={onPress} style={styles.btn}>
+              <View style={styles.btnContent}>
                 {icon}
                 <Text style={{ fontFamily: fonts.MontserratRegular, color: focused ? color.quinary : color.octonary, fontSize: 12 }}>
                   {label}
