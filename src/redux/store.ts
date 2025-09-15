@@ -4,6 +4,8 @@ import filtersReducer from './filters/slice';
 import tasksReducer from './tasks/slice';
 import themeReducer from '../redux/theme/slice'
 import languageReducer from '../redux/language/slice';
+import widgetsReducer from '../redux/widgets/slice';
+
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,7 @@ export const store = configureStore({
     tasks: tasksReducer,
     theme: themeReducer,
     language: languageReducer,
+    widgets: widgetsReducer,
   },
 });
 

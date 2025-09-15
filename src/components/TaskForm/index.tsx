@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
-import SwitchBtn from '../../components/SwitchButton';
+import DefaultFilterSwitch from '../DefaultFilterSwitch';
 import DefaultButton from '../../components/DefaultButton';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
@@ -67,7 +67,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       {initialTask && (
         <>
           <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byStatusTitle}</Text>
-          <SwitchBtn<'done' | 'undone' | 'inProgress'>
+          <DefaultFilterSwitch<'done' | 'undone' | 'inProgress'>
             items={[
               { text: t.filterSettings.byStatus.undone, id: 'undone' as const },                           
               { text: t.filterSettings.byStatus.inProgress, id: 'inProgress' as const },
@@ -80,7 +80,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       )}
 
       <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byPriorityTitle}</Text>
-      <SwitchBtn<'high' | 'medium' | 'low'>
+      <DefaultFilterSwitch<'high' | 'medium' | 'low'>
         items={[
         { text: t.filterSettings.byPriority.low, id: 'low' as const },
         { text: t.filterSettings.byPriority.medium, id: 'medium' as const },
@@ -91,7 +91,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       />
 
       <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byCategoriesTitle}</Text>
-      <SwitchBtn<'work' | 'personal' | 'study'>
+      <DefaultFilterSwitch<'work' | 'personal' | 'study'>
         items={[
           { text: t.filterSettings.byCategories.work, id: 'work' as const },
           { text: t.filterSettings.byCategories.personal, id: 'personal' as const },

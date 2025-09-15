@@ -10,17 +10,17 @@ export interface ISwitchItem<T extends string | null> {
   id: T;
 }
 
-interface ISwitchBtnProps<T extends string | null> {
+interface IDefaultFilterSwitchProps<T extends string | null> {
   items: ISwitchItem<T>[];
   active: T;
   handleSwitch: (item: ISwitchItem<T>) => void;
 }
 
-export default function SwitchBtn<T extends string | null>({
+export default function DefaultFilterSwitch<T extends string | null>({
   items,
   active,
   handleSwitch,
-}: ISwitchBtnProps<T>) {
+}: IDefaultFilterSwitchProps<T>) {
 
   const color = useSelector(selectThemeColors);
 

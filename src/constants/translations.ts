@@ -1,11 +1,11 @@
 export type Translations = {  
   taskTabBar: {
-    todayTasks: string;
+    home: string;
     allTasks: string;
     markedTasks: string;
   };
   screenNames: {
-    TODAY_TASKS_PAGE: string,
+    HOME_PAGE: string,
     ALL_TASKS_PAGE: string,
     MARKED_TASKS_PAGE: string,
     ADD_TASK_PAGE: string,
@@ -24,7 +24,7 @@ export type Translations = {
     logInBtn: string;  
     registerBtn: string;        
   };
-  logOutBtn: string;
+  logOutBtn: string;  
   screenTasks: {
     AddBtn: string;    
   };
@@ -70,12 +70,12 @@ export type Translations = {
 
 export const en: Translations = {  
   taskTabBar: {
-    todayTasks: 'Todays',
+    home: 'Home',
     allTasks: 'All',
     markedTasks: 'Marked',
   },
   screenNames: {
-    TODAY_TASKS_PAGE: 'Todays tasks',
+    HOME_PAGE: 'Home',
     ALL_TASKS_PAGE: 'All tasks',
     MARKED_TASKS_PAGE: 'Marked tasks',
     ADD_TASK_PAGE: 'Add the task',
@@ -140,12 +140,12 @@ export const en: Translations = {
 
 export const ua: Translations = {  
   taskTabBar: {
-    todayTasks: 'Сьогодні',
+    home: 'Домашня',
     allTasks: 'Всі',
     markedTasks: 'Відмічені',
   },
   screenNames: {
-    TODAY_TASKS_PAGE: 'Сьогоднішні завдання',
+    HOME_PAGE: 'Домашня',
     ALL_TASKS_PAGE: 'Всі завдання',
     MARKED_TASKS_PAGE: 'Відмічені завдання',
     ADD_TASK_PAGE: 'Дотати завдання',
@@ -210,12 +210,12 @@ export const ua: Translations = {
 
 export const pl: Translations = {  
   taskTabBar: {
-    todayTasks: 'Dzisiaj',
+    home: 'Dom',
     allTasks: 'Wszystko',
     markedTasks: 'Oznaczony',
   },
   screenNames: {
-    TODAY_TASKS_PAGE: 'Dzisiejsze zadania',
+    HOME_PAGE: 'Dom',
     ALL_TASKS_PAGE: 'Wszystkie zadania',
     MARKED_TASKS_PAGE: 'Oznaczone zadania',
     ADD_TASK_PAGE: 'Dodać zadanie',

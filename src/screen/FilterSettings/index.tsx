@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetFilters, setFilter, toggleTimeStamp } from '../../redux/filters/slice';
-import SwitchBtn from '../../components/SwitchButton';
+import DefaultFilterSwitch from '../../components/DefaultFilterSwitch';
 import DefaultButton from '../../components/DefaultButton';
 import { useNavigation } from '@react-navigation/core';
 import { FilterSettingsNavigationProp } from '../../navigation/types';
@@ -54,7 +54,7 @@ export default function FilterSettings() {
 
         {/* Статус */}
         <Text style={styles.btnText}>{t.filterSettings.byStatusTitle}</Text>
-        <SwitchBtn<'done' | 'undone' | 'inProgress' | null>
+        <DefaultFilterSwitch<'done' | 'undone' | 'inProgress' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },            
             { text: t.filterSettings.byStatus.undone, id: 'undone' },
@@ -67,7 +67,7 @@ export default function FilterSettings() {
 
         {/* Пріоритет */}
         <Text style={styles.btnText}>{t.filterSettings.byPriorityTitle}</Text>
-        <SwitchBtn<'high' | 'medium' | 'low' | null>
+        <DefaultFilterSwitch<'high' | 'medium' | 'low' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
              { text: t.filterSettings.byPriority.low, id: 'low' },
@@ -80,7 +80,7 @@ export default function FilterSettings() {
 
         {/* Дати */}
         <Text style={styles.btnText}>{t.filterSettings.byDatesTitle}</Text>
-        <SwitchBtn<'today' | 'week' | 'overdue' | null>
+        <DefaultFilterSwitch<'today' | 'week' | 'overdue' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
             { text: t.filterSettings.byDates.today, id: 'today' },
@@ -93,7 +93,7 @@ export default function FilterSettings() {
 
         {/* Категорії */}
         <Text style={styles.btnText}>{t.filterSettings.byCategoriesTitle}</Text>
-        <SwitchBtn<'work' | 'personal' | 'study' | null>
+        <DefaultFilterSwitch<'work' | 'personal' | 'study' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
             { text: t.filterSettings.byCategories.work, id: 'work' },

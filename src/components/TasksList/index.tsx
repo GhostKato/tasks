@@ -79,7 +79,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         data={tasks}
         style={styles.mainContainer}
         numColumns={1}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => item.id ?? index.toString()}
         renderItem={renderTask}
         ListEmptyComponent={() => (
           <Text style={styles.emptyText}>Немає задач</Text>

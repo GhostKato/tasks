@@ -18,7 +18,7 @@ export type LoggedInStackType = {
 export type ISettings = FiltersState;
 
 export type TaskTabBarStackType = {
-  [ScreenNames.TODAY_TASKS_PAGE]: undefined;
+  [ScreenNames.HOME_PAGE]: undefined;
   [ScreenNames.ALL_TASKS_PAGE]: { settings?: ISettings };  
   [ScreenNames.MARKED_TASKS_PAGE]: undefined;
   [ScreenNames.ADD_TASK_PAGE]: { settings?: ISettings }; 

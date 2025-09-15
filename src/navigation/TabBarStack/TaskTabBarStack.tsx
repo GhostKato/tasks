@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MarkedTasks from '../../screen/MarkedTasks';
-import TodayTasks from '../../screen/TodayTasks';
+import Home from '../../screen/Home';
 import AllTasks from '../../screen/AllTasks';
 import AddTask from '../../screen/AddTask';
 import UpdateTask from '../../screen/UpdateTask';
@@ -19,12 +19,12 @@ function renderCustomTabBar(props: any) {
 export default function TaskTabBarStack() {  
   return (
     <Tab.Navigator
-      initialRouteName={ScreenNames.TODAY_TASKS_PAGE}
+      initialRouteName={ScreenNames.HOME_PAGE}
       screenOptions={{ headerShown: false }}
       tabBar={renderCustomTabBar}
     >
       {/* Видимі кнопки */}
-      <Tab.Screen name={ScreenNames.TODAY_TASKS_PAGE} component={TodayTasks} />
+      <Tab.Screen name={ScreenNames.HOME_PAGE} component={Home} />
       <Tab.Screen name={ScreenNames.ALL_TASKS_PAGE} component={AllTasks} />
       <Tab.Screen name={ScreenNames.MARKED_TASKS_PAGE} component={MarkedTasks} />
 
