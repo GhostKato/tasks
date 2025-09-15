@@ -1,7 +1,4 @@
-export type Translations = {
-  draverBar: {
-    tasks: string;       
-  };  
+export type Translations = {  
   taskTabBar: {
     todayTasks: string;
     allTasks: string;
@@ -18,11 +15,7 @@ export type Translations = {
     logInBtn: string;  
     registerBtn: string;        
   };
-  logOutBtn: string;  
-  screenTheme: {
-    darkModeEnabled: string;
-    darkModeDisabled: string;
-  };
+  logOutBtn: string;
   screenFilterSettings: {
     headerTitle: string;
     sortByDate: string;
@@ -59,10 +52,7 @@ export type Translations = {
   };
 };
 
-export const en: Translations = {
-  draverBar: {
-    tasks: 'Tasks',        
-  },   
+export const en: Translations = {  
   taskTabBar: {
     todayTasks: 'Today',
     allTasks: 'All',
@@ -79,11 +69,7 @@ export const en: Translations = {
     logInBtn: 'Log In',  
     registerBtn: 'Register',        
   },
-  logOutBtn: 'Log Out',  
-  screenTheme: {
-    darkModeEnabled: 'Dark mode: Enabled',
-    darkModeDisabled: 'Dark mode: Disabled',
-  },
+  logOutBtn: 'Log Out', 
   screenFilterSettings: {
      headerTitle: 'Filters',
      sortByDate: 'Sort by date added',
@@ -120,10 +106,7 @@ export const en: Translations = {
   },
 };
 
-export const ua: Translations = {
-  draverBar: {
-    tasks: 'Завдання',        
-  },  
+export const ua: Translations = {  
   taskTabBar: {
     todayTasks: 'Сьогодні',
     allTasks: 'Всі',
@@ -141,10 +124,6 @@ export const ua: Translations = {
     registerBtn: 'Зареєструватись',        
   },
   logOutBtn: 'Вийти',  
-  screenTheme: {
-    darkModeEnabled: 'Темний режим: Увімкнено',
-    darkModeDisabled: 'Темний режим: Вимкнено',
-  },
   screenFilterSettings: {
      headerTitle: 'Фільтри',
      sortByDate: 'Сортувати за датою додавання',
@@ -181,10 +160,7 @@ export const ua: Translations = {
   },
 };
 
-export const pl: Translations = {
-  draverBar: {
-    tasks: 'Zadania',        
-  },  
+export const pl: Translations = {  
   taskTabBar: {
     todayTasks: 'Dzisiaj',
     allTasks: 'Wszystko',
@@ -201,11 +177,7 @@ export const pl: Translations = {
     logInBtn: 'Logować',  
     registerBtn: 'Rejestr',        
   },
-  logOutBtn: 'Wylogować',  
-  screenTheme: {
-    darkModeEnabled: 'Tryb ciemny: Włączony',
-    darkModeDisabled: 'Tryb ciemny: Wyłączony',
-  },
+  logOutBtn: 'Wylogować', 
   screenFilterSettings: {
      headerTitle: 'Filtry',
      sortByDate: 'Sortuj według dodanej daty',

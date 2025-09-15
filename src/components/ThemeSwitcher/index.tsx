@@ -1,40 +1,54 @@
 import React from 'react';
-import { View, Text, Switch, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/slice';
-import { selectThemeColors, selectIsDark } from '../../redux/theme/selectors';
-import { selectTranslations } from '../../redux/language/selector';
+import { selectIsDark, selectThemeColors } from '../../redux/theme/selectors';
 
 export default function ThemeSwitcher() {
   const dispatch = useDispatch();
-  const color = useSelector(selectThemeColors);
   const isDark = useSelector(selectIsDark);
-  const t = useSelector(selectTranslations);
+  const color = useSelector(selectThemeColors);
 
-  return (
-    <View style={[styles.container, { backgroundColor: color.tertiary }]}>
-      <Text style={[styles.label, { color: color.quaternary }]}>
-        {isDark ? `🌙 ${t.screenTheme.darkModeEnabled}` : `☀️ ${t.screenTheme.darkModeDisabled}`}
-      </Text>
-     <Switch
-  value={isDark}
-  onValueChange={(_value) => { dispatch(toggleTheme()); }}
-  thumbColor={isDark ? color.senary : color.quinary}
-  trackColor={{ false: color.octonary, true: color.septenary }}
-/>
-    </View>
+  return (          
+      <TouchableOpacity
+        style={[
+          styles.switchContainer,
+          { backgroundColor: isDark ? color.septenary : color.octonary },
+        ]}
+        onPress={() => dispatch(toggleTheme())}
+        activeOpacity={0.8}
+      >
+        <Animated.View
+          style={[
+            styles.thumb,
+            {
+              backgroundColor: isDark ? color.senary : color.quinary,
+              transform: [{ translateX: isDark ? 28 : 0 }],
+            },
+          ]}
+        >
+          <Animated.Text style={styles.icon}>{isDark ? '🌙' : '☀️'}</Animated.Text>
+        </Animated.View>
+      </TouchableOpacity>    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+const styles = StyleSheet.create({  
+  switchContainer: {
+    width: 60,
+    height: 30,
+    borderRadius: 30,
+    padding: 2,
+    justifyContent: 'center',    
+  },
+  thumb: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
     alignItems: 'center',
   },
-  label: {
-    fontSize: 18,
-    fontWeight: '500',
+  icon: {
+    fontSize: 16,
   },
 });
