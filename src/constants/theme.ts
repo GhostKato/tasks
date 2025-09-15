@@ -12,7 +12,7 @@ export type ThemeColors = {
 };
 
 const baseColors = {
-  quinary: '#8d3333',
+  quinary: '#009156',
   senary: '#44e70eff',
   septenary: '#000000',
   octonary: '#FFFFFF',
@@ -21,7 +21,7 @@ const baseColors = {
 
 export const lightTheme: ThemeColors = {  
   primary: '#e6e6e5ff', 
-  secondary: '#93242fff',
+  secondary: '#00B068',
   tertiary: '#6e6e6dff',
   quaternary: '#000000',
   ...baseColors,  
@@ -30,7 +30,7 @@ export const lightTheme: ThemeColors = {
 
 export const darkTheme: ThemeColors = {
   primary: '#2a2d32',
-  secondary: '#ff4b5c',
+  secondary: '#009156',
   tertiary: '#1e2023',
   quaternary: '#FFFFFF',
   ...baseColors, 

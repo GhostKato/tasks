@@ -25,7 +25,10 @@ export type Translations = {
     registerBtn: string;        
   };
   logOutBtn: string;
-  screenFilterSettings: {    
+  screenTasks: {
+    AddBtn: string;    
+  };
+  filterSettings: {    
     sortByDate: string;
     byStatusTitle: string;
     allTasks: string;
@@ -50,13 +53,18 @@ export type Translations = {
     byCategories: {
       work: string,
       personal: string,
-      learning: string,
+      study: string,
     };
     showVariationsBtn: string,
     resetFiltersBtn: string,
   };
-  screenTasks: {
-    AddBtn: string;    
+  TaskForm: {
+    placeholderTitle: string;
+    placeholerDescription: string;      
+    selectionDate: string;  
+    selectionTime: string;
+    addTaskBtn: string;
+    updateTaskBtn: string;
   };
 };
 
@@ -86,8 +94,11 @@ export const en: Translations = {
     logInBtn: 'Log In',  
     registerBtn: 'Register',        
   },
-  logOutBtn: 'Log Out', 
-  screenFilterSettings: {    
+  logOutBtn: 'Log Out',
+  screenTasks: {
+    AddBtn: 'Add task',    
+  },
+  filterSettings: {    
      sortByDate: 'Sort by date added',
     byStatusTitle: 'By status',
      allTasks: 'All',
@@ -112,13 +123,18 @@ export const en: Translations = {
     byCategories: {
       work: 'Work',
       personal: 'Personal',
-      learning: 'Learning',
+      study: 'Study',
     },
     showVariationsBtn: 'Show variations',
     resetFiltersBtn: 'Reset filters',
   },
-  screenTasks: {
-    AddBtn: 'Add task',    
+  TaskForm: {
+    placeholderTitle: 'Title',
+    placeholerDescription: 'Description',      
+    selectionDate: 'Select a date',  
+    selectionTime: 'Select a time',
+    addTaskBtn: 'Add task',
+    updateTaskBtn: 'Update task',
   },
 };
 
@@ -148,8 +164,11 @@ export const ua: Translations = {
     logInBtn: 'Увійти',  
     registerBtn: 'Зареєструватись',        
   },
-  logOutBtn: 'Вийти',  
-  screenFilterSettings: {     
+  logOutBtn: 'Вийти',
+  screenTasks: {
+    AddBtn: 'Додати завдання',    
+  },
+  filterSettings: {     
      sortByDate: 'Сортувати за датою додавання',
     byStatusTitle: 'За статусом',
     allTasks: 'Всі',
@@ -174,13 +193,18 @@ export const ua: Translations = {
     byCategories: {
       work: 'Робота',
       personal: 'Особисте',
-      learning: 'Навчання',
+      study: 'Навчання',
     },
     showVariationsBtn: 'Показати варіанти',
     resetFiltersBtn: 'Зкинути фыльтри',
   },
-  screenTasks: {
-    AddBtn: 'Додати завдання',    
+  TaskForm: {
+    placeholderTitle: 'Заголовок',
+    placeholerDescription: 'Опис',      
+    selectionDate: 'Вибір дати',  
+    selectionTime: 'Вибір часу',
+    addTaskBtn: 'Додати задачу',
+    updateTaskBtn: 'Оновити задачу',
   },
 };
 
@@ -210,8 +234,11 @@ export const pl: Translations = {
     logInBtn: 'Logować',  
     registerBtn: 'Rejestr',        
   },
-  logOutBtn: 'Wylogować', 
-  screenFilterSettings: {     
+  logOutBtn: 'Wylogować',
+  screenTasks: {
+    AddBtn: 'Dodaj zadanie',    
+  },
+  filterSettings: {     
      sortByDate: 'Sortuj według dodanej daty',
     byStatusTitle: 'Według stanu',
      allTasks: 'Wszystko',
@@ -236,12 +263,17 @@ export const pl: Translations = {
     byCategories: {
       work: 'Praca',
       personal: 'Osobisty',
-      learning: 'Nauka',
+      study: 'Nauka',
     },
     showVariationsBtn: 'Pokaż opcje',
     resetFiltersBtn: 'Zresetuj filtry',
   },
-  screenTasks: {
-    AddBtn: 'Dodaj zadanie',    
+  TaskForm: {
+    placeholderTitle: 'Tytuł',
+    placeholerDescription: 'Opis',      
+    selectionDate: 'Wybrać datę',  
+    selectionTime: 'Wybrać czas',
+    addTaskBtn: 'Dodaj zadanie',
+    updateTaskBtn: 'Zadanie aktualizacji',
   },
 };

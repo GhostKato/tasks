@@ -20,9 +20,11 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
   const [title, setTitle] = useState(initialTask?.title || '');
   const [description, setDescription] = useState(initialTask?.description || '');
-  const [status, setStatus] = useState<'new' | 'done' | 'undone' | 'inProgress'>(
-    initialTask?.status || 'new'
+  
+  const [status, setStatus] = useState<'done' | 'undone' | 'inProgress'>(
+    initialTask?.status || 'undone'
   );
+
   const [priority, setPriority] = useState<'high' | 'medium' | 'low'>(
     initialTask?.priority || 'medium'
   );
@@ -38,10 +40,10 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
   const handleSave = () => {
     const task: ITask = {
-      ...(initialTask?.id ? { id: initialTask.id } : {}), 
+      ...(initialTask?.id ? { id: initialTask.id } : {}),
       title,
-      description,
-      status: initialTask ? status : 'new', 
+      description,      
+      status: initialTask ? status : 'undone',
       priority,
       category,
       deadline: deadline.toISOString(),
@@ -53,47 +55,53 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: color.tertiary }]}>
-      <Input placeholder="Заголовок" value={title} onChangeText={setTitle} />
-      <Input placeholder="Опис" value={description} onChangeText={setDescription} multiline={true} textAlignVertical='top'/>
-      
+      <Input placeholder={t.TaskForm.placeholderTitle} value={title} onChangeText={setTitle} />
+      <Input
+        placeholder={t.TaskForm.placeholderTitle}
+        value={description}
+        onChangeText={setDescription}
+        multiline={true}
+        textAlignVertical="top"
+      />
+
       {initialTask && (
         <>
-          <Text style={[styles.label, { color: color.quaternary }]}>Статус</Text>
+          <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byStatusTitle}</Text>
           <SwitchBtn<'done' | 'undone' | 'inProgress'>
             items={[
-              { text: 'Виконано', id: 'done' as const },
-              { text: 'Не виконано', id: 'undone' as const },
-              { text: 'В процесі', id: 'inProgress' as const },
+              { text: t.filterSettings.byStatus.undone, id: 'undone' as const },                           
+              { text: t.filterSettings.byStatus.inProgress, id: 'inProgress' as const },
+              { text: t.filterSettings.byStatus.done, id: 'done' as const }, 
             ]}
-            active={status as 'done' | 'undone' | 'inProgress'} 
+            active={status}
             handleSwitch={(item) => setStatus(item.id)}
           />
         </>
       )}
 
-      <Text style={[styles.label, { color: color.quaternary }]}>Пріоритет</Text>
+      <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byPriorityTitle}</Text>
       <SwitchBtn<'high' | 'medium' | 'low'>
         items={[
-          { text: 'Високий', id: 'high' as const },
-          { text: 'Середній', id: 'medium' as const },
-          { text: 'Низький', id: 'low' as const },
-        ]}
+        { text: t.filterSettings.byPriority.low, id: 'low' as const },
+        { text: t.filterSettings.byPriority.medium, id: 'medium' as const },
+        { text: t.filterSettings.byPriority.high, id: 'high' as const },         
+              ]}
         active={priority}
         handleSwitch={(item) => setPriority(item.id)}
       />
 
-      <Text style={[styles.label, { color: color.quaternary }]}>Категорія</Text>
+      <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byCategoriesTitle}</Text>
       <SwitchBtn<'work' | 'personal' | 'study'>
         items={[
-          { text: 'Робота', id: 'work' as const },
-          { text: 'Особисте', id: 'personal' as const },
-          { text: 'Навчання', id: 'study' as const },
+          { text: t.filterSettings.byCategories.work, id: 'work' as const },
+          { text: t.filterSettings.byCategories.personal, id: 'personal' as const },
+          { text: t.filterSettings.byCategories.study, id: 'study' as const },
         ]}
         active={category}
         handleSwitch={(item) => setCategory(item.id)}
       />
 
-      <Text style={[styles.label, { color: color.quaternary }]}>Дата</Text>
+      <Text style={[styles.label, { color: color.quaternary }]}>{t.TaskForm.selectionDate}</Text>
       <TouchableOpacity
         onPress={() => setShowDatePicker(true)}
         style={{
@@ -124,7 +132,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         />
       )}
 
-      <Text style={[styles.label, { color: color.quaternary }]}>Час</Text>
+      <Text style={[styles.label, { color: color.quaternary }]}>{t.TaskForm.selectionTime}</Text>
       <TouchableOpacity
         onPress={() => setShowTimePicker(true)}
         style={{
@@ -158,7 +166,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       )}
 
       <DefaultButton
-        text={initialTask ? 'Оновити' : 'Додати'}
+        text={initialTask ? t.TaskForm.updateTaskBtn : t.TaskForm.addTaskBtn}
         onPress={handleSave}
       />
     </ScrollView>

@@ -49,56 +49,56 @@ export default function FilterSettings() {
           <View style={styles.activeSortByTime}>
             {filters.timeStamp && <View style={styles.checkedSortByTime} />}
           </View>
-          <Text style={styles.sortByTimeText}>{t.screenFilterSettings.sortByDate}</Text>
+          <Text style={styles.sortByTimeText}>{t.filterSettings.sortByDate}</Text>
         </TouchableOpacity>
 
         {/* Статус */}
-        <Text style={styles.btnText}>{t.screenFilterSettings.byStatusTitle}</Text>
+        <Text style={styles.btnText}>{t.filterSettings.byStatusTitle}</Text>
         <SwitchBtn<'done' | 'undone' | 'inProgress' | null>
           items={[
-            { text: t.screenFilterSettings.allTasks, id: null },
-            { text: t.screenFilterSettings.byStatus.done, id: 'done' },
-            { text: t.screenFilterSettings.byStatus.undone, id: 'undone' },
-            { text: t.screenFilterSettings.byStatus.inProgress, id: 'inProgress' },
+            { text: t.filterSettings.allTasks, id: null },            
+            { text: t.filterSettings.byStatus.undone, id: 'undone' },
+            { text: t.filterSettings.byStatus.inProgress, id: 'inProgress' },
+            { text: t.filterSettings.byStatus.done, id: 'done' },
           ]}
           active={filters.status}
           handleSwitch={item => dispatch(setFilter({ key: 'status', value: item.id }))}
         />
 
         {/* Пріоритет */}
-        <Text style={styles.btnText}>{t.screenFilterSettings.byPriorityTitle}</Text>
+        <Text style={styles.btnText}>{t.filterSettings.byPriorityTitle}</Text>
         <SwitchBtn<'high' | 'medium' | 'low' | null>
           items={[
-            { text: t.screenFilterSettings.allTasks, id: null },
-            { text: t.screenFilterSettings.byPriority.high, id: 'high' },
-            { text: t.screenFilterSettings.byPriority.medium, id: 'medium' },
-            { text: t.screenFilterSettings.byPriority.low, id: 'low' },
+            { text: t.filterSettings.allTasks, id: null },
+             { text: t.filterSettings.byPriority.low, id: 'low' },
+            { text: t.filterSettings.byPriority.medium, id: 'medium' },           
+            { text: t.filterSettings.byPriority.high, id: 'high' },
           ]}
           active={filters.priority}
           handleSwitch={item => dispatch(setFilter({ key: 'priority', value: item.id }))}
         />
 
         {/* Дати */}
-        <Text style={styles.btnText}>{t.screenFilterSettings.byDatesTitle}</Text>
+        <Text style={styles.btnText}>{t.filterSettings.byDatesTitle}</Text>
         <SwitchBtn<'today' | 'week' | 'overdue' | null>
           items={[
-            { text: t.screenFilterSettings.allTasks, id: null },
-            { text: t.screenFilterSettings.byDates.today, id: 'today' },
-            { text: t.screenFilterSettings.byDates.thisWeek, id: 'week' },
-            { text: t.screenFilterSettings.byDates.overdue, id: 'overdue' },
+            { text: t.filterSettings.allTasks, id: null },
+            { text: t.filterSettings.byDates.today, id: 'today' },
+            { text: t.filterSettings.byDates.thisWeek, id: 'week' },
+            { text: t.filterSettings.byDates.overdue, id: 'overdue' },
           ]}
           active={filters.date}
           handleSwitch={item => dispatch(setFilter({ key: 'date', value: item.id }))}
         />
 
         {/* Категорії */}
-        <Text style={styles.btnText}>{t.screenFilterSettings.byCategoriesTitle}</Text>
+        <Text style={styles.btnText}>{t.filterSettings.byCategoriesTitle}</Text>
         <SwitchBtn<'work' | 'personal' | 'study' | null>
           items={[
-            { text: t.screenFilterSettings.allTasks, id: null },
-            { text: t.screenFilterSettings.byCategories.work, id: 'work' },
-            { text: t.screenFilterSettings.byCategories.personal, id: 'personal' },
-            { text: t.screenFilterSettings.byCategories.learning, id: 'study' },
+            { text: t.filterSettings.allTasks, id: null },
+            { text: t.filterSettings.byCategories.work, id: 'work' },
+            { text: t.filterSettings.byCategories.personal, id: 'personal' },
+            { text: t.filterSettings.byCategories.study, id: 'study' },
           ]}
           active={filters.category}
           handleSwitch={item => dispatch(setFilter({ key: 'category', value: item.id }))}
@@ -107,13 +107,13 @@ export default function FilterSettings() {
           {/* Зкинути фільтри */}
           <DefaultButton
             onPress={() => dispatch(resetFilters())}
-            text={t.screenFilterSettings.resetFiltersBtn}
+            text={t.filterSettings.resetFiltersBtn}
         />
         
         {/* Застосувати */}
           <DefaultButton
             onPress={() => navigation.navigate(ScreenNames.ALL_TASKS_PAGE, { settings: filters })}
-            text={t.screenFilterSettings.showVariationsBtn}
+            text={t.filterSettings.showVariationsBtn}
           />
       </View>
     </ScrollView>
