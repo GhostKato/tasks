@@ -1,6 +1,5 @@
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { useAuthStyles } from '../useAuthStyles';
 import AuthHeader from '../components/AuthHeader';
 import Input from '../../../components/Input';
 import DefaultButton from '../../../components/DefaultButton';
@@ -18,8 +17,7 @@ type InputValueType = {
   errorPassword?: string;
 };
 
-export default function LoginPage() {
-  const styles = useAuthStyles();
+export default function LoginPage() {  
   const t = useSelector(selectTranslations);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectLoading);
@@ -64,6 +62,10 @@ export default function LoginPage() {
       !inputValues.password ||
       loading
   );
+
+  const styles = StyleSheet.create({    
+    formContainer: {marginTop: 28, marginBottom: 68},  
+  });
 
   return (
     <AuthLayout>

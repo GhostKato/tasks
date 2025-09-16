@@ -25,7 +25,7 @@ export default function DefaultButton({
     alignItems: 'center',
   },
   btnText: {
-    color: color.octonary,
+    color: color.senary,
     },  
 });
 

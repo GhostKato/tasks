@@ -37,19 +37,19 @@ export default function LanguageSwitch() {
   return (
     <View style={styles.container}>      
       {Object.keys(languageToISO).map((lang) => {
-        const isActive = language === lang;
-        return (
-          <View>
-            <TouchableOpacity
-              key={lang}
-              onPress={() => dispatch(setLanguage(lang as 'ua' | 'en' | 'pl'))}
-              style={[styles.flagWrapper, isActive && styles.activeFlag]}
-            >
-              <CountryFlag isoCode={languageToISO[lang]} size={40} />
-            </TouchableOpacity>
-          </View>
-        );
-      })}
+  const isActive = language === lang;
+  return (
+    <View key={lang}>
+      <TouchableOpacity
+        onPress={() => dispatch(setLanguage(lang as 'ua' | 'en' | 'pl'))}
+        style={[styles.flagWrapper, isActive && styles.activeFlag]}
+      >
+        <CountryFlag isoCode={languageToISO[lang]} size={40} />
+      </TouchableOpacity>
+    </View>
+  );
+})}
+
     </View>
   );
 }

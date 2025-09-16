@@ -1,5 +1,4 @@
 import { StyleSheet, View } from "react-native";
-import ThemeSwitcher from "../../../components/ThemeSwitch";
 import { useSelector } from "react-redux";
 import { selectThemeColors } from "../../../redux/theme/selectors";
 
@@ -21,8 +20,7 @@ export default function WidgetSettings() {
   });
 
   return (    
-      <View style={styles.contentWrapper}>
-        <ThemeSwitcher />       
+      <View style={styles.contentWrapper}>              
       </View>    
   );
 }

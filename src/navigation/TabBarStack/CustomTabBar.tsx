@@ -51,15 +51,15 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
           let label: string = '';
           switch (route.name) {
             case ScreenNames.HOME_PAGE:
-              icon = <HomeIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
+              icon = <HomeIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
               label = t.taskTabBar.home;
               break;
             case ScreenNames.ALL_TASKS_PAGE:
-              icon = <TasksIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
+              icon = <TasksIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
               label = t.taskTabBar.allTasks;
               break;
             case ScreenNames.MARKED_TASKS_PAGE:
-              icon = <HeartIcon isFocused={focused} inactiveColor={color.octonary} activeColor={color.quinary} />;
+              icon = <HeartIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
               label = t.taskTabBar.markedTasks;
               break;            
           }
@@ -68,7 +68,7 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
             <TouchableOpacity key={route.key} onPress={onPress} style={styles.btn}>
               <View style={styles.btnContent}>
                 {icon}
-                <Text style={{ fontFamily: fonts.MontserratRegular, color: focused ? color.quinary : color.octonary, fontSize: 12 }}>
+                <Text style={{ fontFamily: fonts.MontserratRegular, color: focused ? color.secondary : color.senary, fontSize: 12 }}>
                   {label}
                 </Text>
               </View>

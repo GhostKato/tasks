@@ -55,7 +55,7 @@ const Tabs: React.FC<TabsProps> = ({
                 styles.tabText,
                 {
                   color:
-                    activeTab === index ?color.octonary : color.quaternary,
+                    activeTab === index ?color.senary : color.quaternary,
                 },
               ]}
               >

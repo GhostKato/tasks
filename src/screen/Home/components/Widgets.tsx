@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
         marginBottom: 6,
-        color: color.quinary
+        color: color.secondary
     },
 });
 

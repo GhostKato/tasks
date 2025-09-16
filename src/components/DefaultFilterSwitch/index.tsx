@@ -56,7 +56,7 @@ export default function DefaultFilterSwitch<T extends string | null>({
     },
     nonActiveTextBtn: {
       fontFamily: fonts.MontserratRegular,
-      color: color.octonary,
+      color: color.senary,
     },
     iconContainer: { flex: 0.05 },
     textContainer: { flex: 1, alignItems: 'center', justifyContent: 'center' },

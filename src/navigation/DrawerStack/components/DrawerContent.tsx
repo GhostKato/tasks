@@ -24,7 +24,7 @@ export default function DrawerContent({ navigation }: Props) {
       flex: 1,
     },
     buttonWrapper: {
-      padding: 10,      
+      padding: 60,      
     },
   });
   

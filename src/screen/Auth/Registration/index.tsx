@@ -1,7 +1,6 @@
 import AuthLayout from '../components/AuthLayout/index';
 import AuthHeader from '../components/AuthHeader/index';
-import { useAuthStyles } from '../useAuthStyles';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Input from '../../../components/Input';
 import { Formik } from 'formik';
 import { RegistrationSchema } from '../utils/validations';
@@ -25,8 +24,7 @@ type RegistrationValues = {
   confirmPassword: string;
 };
 
-export default function Registration() {
-  const styles = useAuthStyles();
+export default function Registration() {  
   const t = useSelector(selectTranslations);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectLoading);
@@ -37,6 +35,10 @@ export default function Registration() {
     password: false,
     confirmPassword: false,
   });
+
+  const styles = StyleSheet.create({    
+      formContainer: {marginTop: 28, marginBottom: 68},  
+    });
 
   return (
     <AuthLayout>

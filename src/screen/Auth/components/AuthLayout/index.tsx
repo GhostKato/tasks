@@ -2,14 +2,21 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {useAuthStyles} from '../../useAuthStyles';
 
-export default function AuthLayout({ children }) {
+export default function AuthLayout({ children }) { 
   
-  const styles = useAuthStyles();
+  const styles = StyleSheet.create({
+    mainWrapper: {
+      margin: 20,
+      flex: 1,
+      justifyContent: 'center',
+      },
+    
+  });
   
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

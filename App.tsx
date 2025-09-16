@@ -4,7 +4,7 @@ import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
 import { Provider, useDispatch } from 'react-redux';
 import { store, AppDispatch } from './src/redux/store';
-import { getAuth, FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { getAuth, FirebaseAuthTypes, onAuthStateChanged } from '@react-native-firebase/auth';
 import { setUser } from './src/redux/auth/slice';
 import { serializeUser } from './src/utils/serializeUser';
 import { fetchTasks } from './src/redux/tasks/operations';
@@ -17,19 +17,24 @@ function AppWrapper() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = auth.onAuthStateChanged((user: FirebaseAuthTypes.User | null) => {
-      const serialized = serializeUser(user);
-      dispatch(setUser(serialized));      
-    });    
-    dispatch(fetchTasks());
-    dispatch(loadWidget());
-    dispatch(loadTheme());
-    dispatch(loadLanguage());
-    // addTasksToBase();
+  const auth = getAuth();
 
-    return unsubscribe;
-  }, [dispatch]);
+  const unsubscribe = onAuthStateChanged(
+    auth,
+    (user: FirebaseAuthTypes.User | null) => {
+      const serialized = serializeUser(user);
+      dispatch(setUser(serialized));
+    }
+  );
+
+  dispatch(fetchTasks());
+  dispatch(loadWidget());
+  dispatch(loadTheme());
+  dispatch(loadLanguage());
+  // addTasksToBase();
+
+  return unsubscribe;
+}, [dispatch]);
 
   return <RootNavigation />;
 }

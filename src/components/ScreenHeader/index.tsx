@@ -36,7 +36,7 @@ export default function ScreenHeader({ title, showBack, backPath }: ScreenHeader
   title: {
     fontSize: 18,
     fontFamily: fonts.MontserratSemiBold,
-    color: color.octonary
+    color: color.senary,
     },
   view: {
     width: 24

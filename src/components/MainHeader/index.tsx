@@ -27,7 +27,7 @@ export default function MainHeader({ isOpenDrawer, navigation }: IHeader) {
     backgroundColor: color.secondary,
   },
   burgerBtn: {height: 20, width: 20, gap: 5},
-  line: {width: '100%', height: 2, backgroundColor: color.septenary},
+  line: {width: '100%', height: 2, backgroundColor: color.quinary},
 });
   
   const handleOpenDrawer = () => {
