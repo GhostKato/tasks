@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/slice';
 import { selectIsDark, selectThemeColors } from '../../redux/theme/selectors';
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitch() {
   const dispatch = useDispatch();
   const isDark = useSelector(selectIsDark);
   const color = useSelector(selectThemeColors);

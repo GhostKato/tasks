@@ -3,47 +3,48 @@ import MainHeader from '../../../components/MainHeader';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../../navigation/types';
 import LogoutButton from '../../../components/LogoutButton';
-import ThemeSwitcher from '../../../components/ThemeSwitcher';
-import { useSelector } from 'react-redux';
-import LanguageFlags from '../../../components/LanguageFlags';
-import { selectThemeColors } from '../../../redux/theme/selectors';
+import MainSettings from "./MainSettings";
+import WidgetSettings from "./WidgetSettings";
+import Tabs from "./Tabs";
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
 }
 
 export default function DrawerContent({ navigation }: Props) {
-
-  const color = useSelector(selectThemeColors);  
+    
 
   const styles = StyleSheet.create({
-    mainWrapper: {     
-      height: '100%',
-      backgroundColor: color.tertiary,       
+    mainWrapper: {
+      flex: 1,     
     },
     contentWrapper: {
-      padding: 20,
-      gap: 40,
-      margin: 20,           
-      borderWidth: 2,
-      borderColor: color.secondary,
-      borderRadius: 20,      
+      paddingHorizontal: 10,
+      marginTop: 10,
+      flex: 1,
     },
-  btnWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },  
-});
+    buttonWrapper: {
+      padding: 10,      
+    },
+  });
   
   return (
     <View style={styles.mainWrapper}>
       <MainHeader isOpenDrawer={true} navigation={navigation} />
-      <View style={styles.contentWrapper}>            
-        <ThemeSwitcher />
-        <LanguageFlags/>
-        <LogoutButton />        
+      <View style={styles.contentWrapper}>
+        <Tabs
+          tabs={[
+            { key: "main", title: "Main settings", content: <MainSettings /> },
+            { key: "hero", title: "Hero settings", content: <WidgetSettings /> },
+          ]}
+        />        
+      </View >
+      <View style={styles.buttonWrapper}>
+        <LogoutButton />
       </View>
     </View>
   );
-}
+}   
+        
+     
+

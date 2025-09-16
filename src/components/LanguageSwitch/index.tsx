@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from '../../redux/language/slice';
@@ -12,7 +12,7 @@ const languageToISO: Record<string, string> = {
   pl: 'PL',
 };
 
-export default function LanguageFlags() {
+export default function LanguageSwitch() {
   const dispatch = useDispatch();
 
   const language = useSelector(selectLanguage);
