@@ -2,12 +2,12 @@ import React from "react";
 import { FlatList } from "react-native";
 import Widget from "./components/Widgets";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import { WidgetsState } from "../../redux/widgets/slice";
 import { selectTranslations } from "../../redux/language/selector";
+import { selectWidgetBoolean } from "../../redux/widgets/selectors";
 
 const Home = () => {
-  const widgets = useSelector((state: RootState) => state.widgets);
+  const widgets = useSelector(selectWidgetBoolean);
   const t = useSelector(selectTranslations);
 
   const filters: { key: keyof WidgetsState; listKey: string; title: string }[] = [

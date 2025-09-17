@@ -41,18 +41,4 @@ export const selectTasksWidgets = (key: string) => (state: RootState) =>
     selectTasksByFilterKey(state, key);
 
 
-export const selectIsUndone = (state: RootState) => state.widgets.isUndone;
-export const selectIsInProgress = (state: RootState) => state.widgets.isInProgress;
-export const selectIsDone = (state: RootState) => state.widgets.isDone;
-
-export const selectIsLow = (state: RootState) => state.widgets.isLow;
-export const selectIsMedium = (state: RootState) => state.widgets.isMedium;
-export const selectIsHigh = (state: RootState) => state.widgets.isHigh;
-
-export const selectIsToday = (state: RootState) => state.widgets.isToday;
-export const selectIsThisWeek = (state: RootState) => state.widgets.isThisWeek;
-export const selectIsOverdue = (state: RootState) => state.widgets.isOverdue;
-
-export const selectIsWork = (state: RootState) => state.widgets.isWork;
-export const selectIsPersonal = (state: RootState) => state.widgets.isPersonal;
-export const selectIsStudy = (state: RootState) => state.widgets.isStudy;
+export const selectWidgetBoolean = (state: RootState) => state.widgets;

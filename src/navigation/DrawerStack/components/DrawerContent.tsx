@@ -6,17 +6,21 @@ import LogoutButton from '../../../components/LogoutButton';
 import MainSettings from "./MainSettings";
 import WidgetSettings from "./WidgetSettings";
 import Tabs from "./Tabs";
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
 }
 
 export default function DrawerContent({ navigation }: Props) {
-    
+
+   const color = useSelector(selectThemeColors);    
 
   const styles = StyleSheet.create({
     mainWrapper: {
-      flex: 1,     
+      flex: 1,
+      backgroundColor: color.tertiary
     },
     contentWrapper: {
       paddingHorizontal: 10,

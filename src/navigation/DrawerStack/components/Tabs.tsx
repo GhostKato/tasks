@@ -27,7 +27,30 @@ const Tabs: React.FC<TabsProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState(0);
   const color = useSelector(selectThemeColors);
-  
+
+  const styles = StyleSheet.create({
+  header: {
+    height: 35,
+    justifyContent: "center",
+  },
+  headerContent: {
+    alignItems: "center",
+    
+  },
+  tabButton: {    
+    paddingHorizontal: 16,
+    paddingVertical: 8,    
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  tabText: {    
+    fontSize: 16,
+    color: color.senary
+  },
+  content: {
+    flex: 1,    
+  },
+});
 
   return (
     <View style={{ flex: 1 }}>
@@ -46,21 +69,11 @@ const Tabs: React.FC<TabsProps> = ({
                 styles.tabButton,
                 {
                   backgroundColor:
-                    activeTab === index ?color.secondary : color.primary,
+                    activeTab === index ?color.secondary : color.tertiary,
                 },
               ]}
             >
-              <Text
-                style={[
-                styles.tabText,
-                {
-                  color:
-                    activeTab === index ?color.senary : color.quaternary,
-                },
-              ]}
-              >
-                {tab.title}
-              </Text>
+              <Text style={styles.tabText}>{tab.title}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -74,25 +87,4 @@ const Tabs: React.FC<TabsProps> = ({
 
 export default Tabs;
 
-const styles = StyleSheet.create({
-  header: {
-    height: 35,
-    justifyContent: "center",
-  },
-  headerContent: {
-    alignItems: "center",
-    
-  },
-  tabButton: {    
-    paddingHorizontal: 16,
-    paddingVertical: 8,    
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-  },
-  tabText: {    
-    fontSize: 16,
-  },
-  content: {
-    flex: 1,    
-  },
-});
+

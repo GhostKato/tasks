@@ -38,19 +38,15 @@ const widgetSlice = createSlice({
   initialState,
   reducers: {
     toggleWidget(state, action: PayloadAction<keyof WidgetsState>) {
-      const key = action.payload;
-      
-      (Object.keys(state) as (keyof WidgetsState)[]).forEach(
-        (k) => (state[k] = false)
-      );
-      
-      state[key] = true;
-      
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch((e) =>
-        console.log("Помилка при збереженні widgets:", e)
-      );
-    },
-    resetWidget() {
+  const key = action.payload;
+  
+  state[key] = !state[key];
+
+  AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch((e) =>
+    console.log("Помилка при збереженні widgets:", e)
+  );
+} ,
+  resetWidget() {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(initialState)).catch(
         (e) => console.log("Помилка при скиданні widgets:", e)
       );

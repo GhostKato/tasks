@@ -16,7 +16,7 @@ export default function ThemeSwitch() {
     borderRadius: 30,
     padding: 2,
     justifyContent: 'center',
-    backgroundColor: color.tertiary,
+    backgroundColor: color.primary,
   },
   thumb: {
     width: 35,
