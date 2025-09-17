@@ -1,20 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectThemeColors } from "../../../redux/theme/selectors";
 import DefaultSwitch from "../../../components/DefaultSwitch";
 import { selectWidgetBoolean } from "../../../redux/widgets/selectors";
-import { toggleWidget } from "../../../redux/widgets/slice";
+import { resetWidget, toggleWidget } from "../../../redux/widgets/slice";
 import { selectTranslations } from "../../../redux/language/selector";
+import DefaultButton from "../../../components/DefaultButton";
 
 export default function WidgetSettings() {
   const color = useSelector(selectThemeColors);
   const isActive = useSelector(selectWidgetBoolean);
   const t = useSelector(selectTranslations);
+  const dispatch = useDispatch();
 
   const styles = StyleSheet.create({    
     contentWrapper: {
       padding: 20,
-      gap: 10,      
+      gap: 20,      
       borderWidth: 2,
       borderColor: color.secondary,      
       borderBottomLeftRadius: 20,
@@ -41,40 +43,43 @@ export default function WidgetSettings() {
     },
     nameSwitch: {
       color: color.senary 
+    },
+    btnContainer: {
+      paddingHorizontal: 120, 
     },   
   });
 
   const switchBlocks = [
     {
-      title: t.filterSettings.byStatusTitle,
+      title: t.drawer.widget.byStatusTitle,
       items: [
-        { key: 'isUndone', label: t.filterSettings.byStatus.undone },
-        { key: 'isInProgress', label: t.filterSettings.byStatus.inProgress },
-        { key: 'isDone', label: t.filterSettings.byStatus.done },
+        { key: 'isUndone', label: t.drawer.widget.byStatus.undone },
+        { key: 'isInProgress', label: t.drawer.widget.byStatus.inProgress },
+        { key: 'isDone', label: t.drawer.widget.byStatus.done },
       ]
     },
     {
-      title: t.filterSettings.byPriorityTitle,
+      title: t.drawer.widget.byPriorityTitle,
       items: [
-        { key: 'isLow', label: t.filterSettings.byPriority.low },
-        { key: 'isMedium', label: t.filterSettings.byPriority.medium },
-        { key: 'isHigh', label: t.filterSettings.byPriority.high },
+        { key: 'isLow', label: t.drawer.widget.byPriority.low },
+        { key: 'isMedium', label: t.drawer.widget.byPriority.medium },
+        { key: 'isHigh', label: t.drawer.widget.byPriority.high },
       ]
     },
     {
-      title: t.filterSettings.byDatesTitle,
+      title: t.drawer.widget.byDatesTitle,
       items: [
-        { key: 'isToday', label: t.filterSettings.byDates.today },
-        { key: 'isThisWeek', label: t.filterSettings.byDates.thisWeek },
-        { key: 'isOverdue', label: t.filterSettings.byDates.overdue },
+        { key: 'isToday', label: t.drawer.widget.byDates.today },
+        { key: 'isThisWeek', label: t.drawer.widget.byDates.thisWeek },
+        { key: 'isOverdue', label: t.drawer.widget.byDates.overdue },
       ]
     },
     {
-      title: t.filterSettings.byCategoriesTitle,
+      title: t.drawer.widget.byCategoriesTitle,
       items: [
-        { key: 'isWork', label: t.filterSettings.byCategories.work },
-        { key: 'isPersonal', label: t.filterSettings.byCategories.personal },
-        { key: 'isStudy', label: t.filterSettings.byCategories.study },
+        { key: 'isWork', label: t.drawer.widget.byCategories.work },
+        { key: 'isPersonal', label: t.drawer.widget.byCategories.personal },
+        { key: 'isStudy', label: t.drawer.widget.byCategories.study },
       ]
     }
   ];
@@ -98,6 +103,13 @@ export default function WidgetSettings() {
           </View>
         </View>
       ))}
+     <View style={styles.btnContainer}>
+        <DefaultButton 
+          text={t.drawer.widget.resetBtn} 
+          onPress={() => dispatch(resetWidget())}
+          backgroundColor={color.nonary}
+        />
+     </View >
     </View>
   );
 }

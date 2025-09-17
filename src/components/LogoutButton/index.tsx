@@ -3,9 +3,11 @@ import { getAuth, signOut } from '@react-native-firebase/auth';
 import DefaultButton from '../DefaultButton';
 import { useSelector } from 'react-redux';
 import { selectTranslations } from '../../redux/language/selector';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 export default function LogoutButton() {
-  const t = useSelector(selectTranslations);  
+  const t = useSelector(selectTranslations);
+  const color = useSelector(selectThemeColors);
 
   const handleLogout = async () => {
     try {
@@ -16,5 +18,5 @@ export default function LogoutButton() {
     }
   };
 
-  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} />;
+  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} backgroundColor={color.secondary} />;
 }

@@ -13,9 +13,11 @@ import {
   selectTasksLoading,
 } from '../../redux/tasks/selectors';
 import { selectTranslations } from '../../redux/language/selector';
+import { selectThemeColors } from '../../redux/theme/selectors';
 
 export default function AllTasks() {
   const t = useSelector(selectTranslations);
+  const color = useSelector(selectThemeColors);
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation<AddTaskNavigationProp>();
 
@@ -41,6 +43,7 @@ export default function AllTasks() {
       <DefaultButton
         onPress={() => navigation.navigate(ScreenNames.ADD_TASK_PAGE, {})}
         text={t.screenTasks.AddBtn}
+        backgroundColor={color.secondary}
       />
     </View>
   );

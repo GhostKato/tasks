@@ -86,7 +86,7 @@ export default function Input({
             onPress={() => setIsPassHidden(!isPassHidden)}
             hitSlop={{ top: 15, bottom: 15, left: 15, right: 15 }}
           >
-            {isPassHidden ? <ViewPassIcon fill={color.quinary} /> : <HidePassIcon fill={color.quinary} />}
+            {isPassHidden ? <ViewPassIcon fill={color.quaternary} /> : <HidePassIcon fill={color.quaternary} />}
           </TouchableOpacity>
         )}
       </View>

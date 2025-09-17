@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetFilters, setFilter, toggleTimeStamp } from '../../redux/filters/slice';
-import DefaultFilterSwitch from '../../components/DefaultFilterSwitch';
+import FilterSwitch from '../../components/FilterSwitch';
 import DefaultButton from '../../components/DefaultButton';
 import { useNavigation } from '@react-navigation/core';
 import { FilterSettingsNavigationProp } from '../../navigation/types';
@@ -54,7 +54,7 @@ export default function FilterSettings() {
 
         {/* Статус */}
         <Text style={styles.btnText}>{t.filterSettings.byStatusTitle}</Text>
-        <DefaultFilterSwitch<'done' | 'undone' | 'inProgress' | null>
+        <FilterSwitch<'done' | 'undone' | 'inProgress' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },            
             { text: t.filterSettings.byStatus.undone, id: 'undone' },
@@ -67,7 +67,7 @@ export default function FilterSettings() {
 
         {/* Пріоритет */}
         <Text style={styles.btnText}>{t.filterSettings.byPriorityTitle}</Text>
-        <DefaultFilterSwitch<'high' | 'medium' | 'low' | null>
+        <FilterSwitch<'high' | 'medium' | 'low' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
              { text: t.filterSettings.byPriority.low, id: 'low' },
@@ -80,7 +80,7 @@ export default function FilterSettings() {
 
         {/* Дати */}
         <Text style={styles.btnText}>{t.filterSettings.byDatesTitle}</Text>
-        <DefaultFilterSwitch<'today' | 'week' | 'overdue' | null>
+        <FilterSwitch<'today' | 'week' | 'overdue' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
             { text: t.filterSettings.byDates.today, id: 'today' },
@@ -93,7 +93,7 @@ export default function FilterSettings() {
 
         {/* Категорії */}
         <Text style={styles.btnText}>{t.filterSettings.byCategoriesTitle}</Text>
-        <DefaultFilterSwitch<'work' | 'personal' | 'study' | null>
+        <FilterSwitch<'work' | 'personal' | 'study' | null>
           items={[
             { text: t.filterSettings.allTasks, id: null },
             { text: t.filterSettings.byCategories.work, id: 'work' },
@@ -107,13 +107,15 @@ export default function FilterSettings() {
           {/* Зкинути фільтри */}
           <DefaultButton
             onPress={() => dispatch(resetFilters())}
-            text={t.filterSettings.resetFiltersBtn}
+          text={t.filterSettings.resetFiltersBtn}
+          backgroundColor={color.nonary}
         />
         
         {/* Застосувати */}
           <DefaultButton
             onPress={() => navigation.navigate(ScreenNames.ALL_TASKS_PAGE, { settings: filters })}
-            text={t.filterSettings.showVariationsBtn}
+          text={t.filterSettings.showVariationsBtn}
+          backgroundColor={color.secondary}
           />
       </View>
     </ScrollView>

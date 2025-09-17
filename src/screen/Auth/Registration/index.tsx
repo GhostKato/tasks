@@ -11,6 +11,7 @@ import { registerUser } from '../../../redux/auth/operations';
 import { selectLoading, selectError } from '../../../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { selectTranslations } from '../../../redux/language/selector';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 type InputTouchedType = {
   email: boolean;
@@ -26,6 +27,7 @@ type RegistrationValues = {
 
 export default function Registration() {  
   const t = useSelector(selectTranslations);
+  const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectLoading);
   const error = useAppSelector(selectError);
@@ -91,8 +93,9 @@ export default function Registration() {
                 loading
               }
               text={loading ? 'Loading...' : t.screenAuth.registerBtn}
+              backgroundColor={color.secondary}
             />
-            {error && <Text style={{ color: 'red' }}>{error}</Text>}
+            {error && <Text style={{ color: color.nonary }}>{error}</Text>}
           </>
         )}
       </Formik>

@@ -1,9 +1,44 @@
 export type Translations = {  
   taskTabBar: {
-    home: string;
-    allTasks: string;
-    markedTasks: string;
+    home: string,
+    allTasks: string,
+    markedTasks: string,
   };
+  drawer: { 
+    main: {
+     titleTab: string,
+     theme: string,
+     language: string,      
+    },    
+    widget: {
+     titleTab: string,
+      byStatusTitle: string,
+      resetBtn: string,
+     byStatus: {
+      done: string,
+      undone: string,
+      inProgress: string,
+    },
+    byPriorityTitle: string,
+     byPriority: {
+      high: string,
+      medium: string,
+      low: string,
+    };
+    byDatesTitle: string;
+     byDates: {
+      today: string,
+      thisWeek: string,
+      overdue: string,
+    };
+    byCategoriesTitle: string,
+     byCategories: {
+      work: string,
+      personal: string,
+      study: string,
+    };
+    },
+    }, 
   screenNames: {
     HOME_PAGE: string,
     ALL_TASKS_PAGE: string,
@@ -14,42 +49,42 @@ export type Translations = {
     DETAILS_TASK_PAGE: string,
   },
   screenAuth: {
-    title: string;
-    text: string;
-    loginizationBtn: string;
-    registrationBtn: string;
-    placeholderEmail: string;
-    placeholderPassword: string;
-    placeholderConfirmPassword: string;
-    logInBtn: string;  
-    registerBtn: string;        
+    title: string,
+    text: string,
+    loginizationBtn: string,
+    registrationBtn: string,
+    placeholderEmail: string,
+    placeholderPassword: string,
+    placeholderConfirmPassword: string,
+    logInBtn: string,  
+    registerBtn: string,       
   };
-  logOutBtn: string;  
+  logOutBtn: string,  
   screenTasks: {
-    AddBtn: string;    
+    AddBtn: string,    
   };
   filterSettings: {    
-    sortByDate: string;
-    byStatusTitle: string;
-    allTasks: string;
+    sortByDate: string,
+    byStatusTitle: string,
+    allTasks: string,
     byStatus: {
       done: string,
       undone: string,
       inProgress: string,
     },
-    byPriorityTitle: string;
+    byPriorityTitle: string,
     byPriority: {
       high: string,
       medium: string,
       low: string,
     };
-    byDatesTitle: string;
+    byDatesTitle: string,
     byDates: {
       today: string,
       thisWeek: string,
       overdue: string,
     };
-    byCategoriesTitle: string;
+    byCategoriesTitle: string,
     byCategories: {
       work: string,
       personal: string,
@@ -59,21 +94,56 @@ export type Translations = {
     resetFiltersBtn: string,
   };
   TaskForm: {
-    placeholderTitle: string;
-    placeholerDescription: string;      
-    selectionDate: string;  
-    selectionTime: string;
-    addTaskBtn: string;
-    updateTaskBtn: string;
+    placeholderTitle: string,
+    placeholderDescription: string,      
+    selectionDate: string,  
+    selectionTime: string,
+    addTaskBtn: string,
+    updateTaskBtn: string,
   };
 };
 
 export const en: Translations = {  
-  taskTabBar: {
-    home: 'Home',
-    allTasks: 'All',
-    markedTasks: 'Marked',
+taskTabBar: {
+  home: 'Home',
+  allTasks: 'All',
+  markedTasks: 'Marked',
   },
+drawer: { 
+  main: {
+    titleTab: 'Main settings',
+    theme: 'Topic selection',
+    language: 'Language selection',      
+    },    
+  widget: {
+    titleTab: 'Widgets settings',
+    byStatusTitle: 'Status widgets',
+    resetBtn: 'Reset',
+    byStatus: {
+      done: 'Done',
+      undone: 'Undone',
+      inProgress: 'In progress',
+    },
+    byPriorityTitle: 'Priority widgets',
+    byPriority: {
+      high: 'High',
+      medium: 'Medium',
+      low: 'Low',
+    },
+    byDatesTitle: 'Date widgets',
+    byDates: {
+      today: 'Today',
+      thisWeek: 'This week',
+      overdue: 'Overdue',
+    },
+    byCategoriesTitle: 'Category widgets',
+    byCategories: {
+      work: 'Work',
+      personal: 'Personal',
+      study: 'Study',
+    },
+    },
+    },
   screenNames: {
     HOME_PAGE: 'Home',
     ALL_TASKS_PAGE: 'All tasks',
@@ -130,7 +200,7 @@ export const en: Translations = {
   },
   TaskForm: {
     placeholderTitle: 'Title',
-    placeholerDescription: 'Description',      
+    placeholderDescription: 'Description',      
     selectionDate: 'Select a date',  
     selectionTime: 'Select a time',
     addTaskBtn: 'Add task',
@@ -144,6 +214,41 @@ export const ua: Translations = {
     allTasks: 'Всі',
     markedTasks: 'Відмічені',
   },
+  drawer: { 
+  main: {
+    titleTab: 'Головні',
+    theme: 'Вибір теми',
+    language: 'Вибір  мови',      
+    },    
+  widget: {
+    titleTab: 'Віджети',
+    byStatusTitle: 'Віджети статусу',
+    resetBtn: 'Скинути',
+    byStatus: {
+      done: 'Виконані',
+      undone: 'Невиконані',
+      inProgress: 'У процесі',
+    },
+    byPriorityTitle: 'Віджети пріоритету',
+    byPriority: {
+      high: 'Високий',
+      medium: 'Середній',
+      low: 'Низький',
+    },
+    byDatesTitle: 'Віджети дати',
+    byDates: {
+      today: 'Сьогодні',
+      thisWeek: 'На тижні',
+      overdue: 'Просрочені',
+    },
+    byCategoriesTitle: 'Віджети категорій',
+    byCategories: {
+      work: 'Робота',
+      personal: 'Особисте',
+      study: 'Навчання',
+    },
+    },
+    },
   screenNames: {
     HOME_PAGE: 'Домашня',
     ALL_TASKS_PAGE: 'Всі завдання',
@@ -173,8 +278,8 @@ export const ua: Translations = {
     byStatusTitle: 'За статусом',
     allTasks: 'Всі',
     byStatus: {
-      done: 'Виконано',
-      undone: 'Невиконано',
+      done: 'Виконані',
+      undone: 'Невиконані',
       inProgress: 'У прогресі',
      },
     byPriorityTitle: 'За пріоритетом',
@@ -200,7 +305,7 @@ export const ua: Translations = {
   },
   TaskForm: {
     placeholderTitle: 'Заголовок',
-    placeholerDescription: 'Опис',      
+    placeholderDescription: 'Опис',      
     selectionDate: 'Вибір дати',  
     selectionTime: 'Вибір часу',
     addTaskBtn: 'Додати задачу',
@@ -214,6 +319,41 @@ export const pl: Translations = {
     allTasks: 'Wszystko',
     markedTasks: 'Oznaczony',
   },
+  drawer: { 
+  main: {
+    titleTab: 'Główne ustawienia',
+    theme: 'Wybór tematu',
+    language: 'Wybór języka',      
+    },    
+  widget: {
+    titleTab: 'Ustawienia widżetów',
+    byStatusTitle: 'Widżety statusu',
+    resetBtn: 'Resetuj',
+    byStatus: {
+      done: 'Zrobione',
+      undone: 'Niespełniony',
+      inProgress: 'W toku',
+    },
+    byPriorityTitle: 'Widżety priorytetowe',
+    byPriority: {
+      high: 'Wysoki',
+      medium: 'Średnia',
+      low: 'Niski',
+    },
+    byDatesTitle: 'Widżety daty',
+    byDates: {
+      today: 'Dzisiaj',
+      thisWeek: 'Ten tydzień',
+      overdue: 'Zaległy',
+    },
+    byCategoriesTitle: 'Widżety kategorii',
+    byCategories: {
+      work: 'Praca',
+      personal: 'Osobisty',
+      study: 'Nauka',
+    },
+    },
+    },
   screenNames: {
     HOME_PAGE: 'Dom',
     ALL_TASKS_PAGE: 'Wszystkie zadania',
@@ -270,7 +410,7 @@ export const pl: Translations = {
   },
   TaskForm: {
     placeholderTitle: 'Tytuł',
-    placeholerDescription: 'Opis',      
+    placeholderDescription: 'Opis',      
     selectionDate: 'Wybrać datę',  
     selectionTime: 'Wybrać czas',
     addTaskBtn: 'Dodaj zadanie',

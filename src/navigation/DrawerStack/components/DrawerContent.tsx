@@ -8,6 +8,7 @@ import WidgetSettings from "./WidgetSettings";
 import Tabs from "./Tabs";
 import { selectThemeColors } from '../../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
+import { selectTranslations } from '../../../redux/language/selector';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -15,7 +16,8 @@ interface Props {
 
 export default function DrawerContent({ navigation }: Props) {
 
-   const color = useSelector(selectThemeColors);    
+  const color = useSelector(selectThemeColors);
+  const t = useSelector(selectTranslations);
 
   const styles = StyleSheet.create({
     mainWrapper: {
@@ -28,7 +30,8 @@ export default function DrawerContent({ navigation }: Props) {
       flex: 1,
     },
     buttonWrapper: {
-      padding: 60,      
+      paddingBottom: 60,
+      paddingHorizontal: 100,
     },
   });
   
@@ -38,8 +41,8 @@ export default function DrawerContent({ navigation }: Props) {
       <View style={styles.contentWrapper}>
         <Tabs
           tabs={[
-            { key: "main", title: "Main settings", content: <MainSettings /> },
-            { key: "hero", title: "Hero settings", content: <WidgetSettings /> },
+            { key: "main", title: t.drawer.main.titleTab, content: <MainSettings /> },
+            { key: "widget", title: t.drawer.widget.titleTab, content: <WidgetSettings /> },
           ]}
         />        
       </View >

@@ -7,11 +7,13 @@ interface IDefaultButton {
   disabled?: boolean;
   onPress: () => void;
   text: string;
+  backgroundColor: string;
 }
 export default function DefaultButton({
   disabled = false,
   onPress,
   text,
+  backgroundColor,
 }: IDefaultButton) { 
   
   const color = useSelector(selectThemeColors);
@@ -20,7 +22,7 @@ export default function DefaultButton({
   
   BtnContainer: {
     borderRadius: 25,
-    backgroundColor: color.secondary,
+    backgroundColor: backgroundColor,
     paddingVertical: 12,
     alignItems: 'center',
   },

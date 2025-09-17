@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Input from '../../components/Input';
-import DefaultFilterSwitch from '../DefaultFilterSwitch';
+import FilterSwitch from '../FilterSwitch';
 import DefaultButton from '../../components/DefaultButton';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
@@ -67,7 +67,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       {initialTask && (
         <>
           <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byStatusTitle}</Text>
-          <DefaultFilterSwitch<'done' | 'undone' | 'inProgress'>
+          <FilterSwitch<'done' | 'undone' | 'inProgress'>
             items={[
               { text: t.filterSettings.byStatus.undone, id: 'undone' as const },                           
               { text: t.filterSettings.byStatus.inProgress, id: 'inProgress' as const },
@@ -80,7 +80,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       )}
 
       <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byPriorityTitle}</Text>
-      <DefaultFilterSwitch<'high' | 'medium' | 'low'>
+      <FilterSwitch<'high' | 'medium' | 'low'>
         items={[
         { text: t.filterSettings.byPriority.low, id: 'low' as const },
         { text: t.filterSettings.byPriority.medium, id: 'medium' as const },
@@ -91,7 +91,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       />
 
       <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byCategoriesTitle}</Text>
-      <DefaultFilterSwitch<'work' | 'personal' | 'study'>
+      <FilterSwitch<'work' | 'personal' | 'study'>
         items={[
           { text: t.filterSettings.byCategories.work, id: 'work' as const },
           { text: t.filterSettings.byCategories.personal, id: 'personal' as const },
@@ -108,7 +108,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
           padding: 12,
           borderWidth: 1,
           borderColor: color.quaternary,
-          borderRadius: 8,
+          borderRadius: 8,          
         }}
       >
         <Text>{deadline.toLocaleDateString()}</Text>
@@ -118,7 +118,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         <DateTimePicker
           value={deadline}
           mode="date"
-          display="calendar"
+          display="calendar"          
           onChange={(_, selectedDate) => {
             setShowDatePicker(false);
             if (selectedDate) {
@@ -168,6 +168,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
       <DefaultButton
         text={initialTask ? t.TaskForm.updateTaskBtn : t.TaskForm.addTaskBtn}
         onPress={handleSave}
+        backgroundColor={color.secondary}
       />
     </ScrollView>
   );
