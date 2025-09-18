@@ -4,28 +4,39 @@ import TaskForm from '../../components/TaskForm';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
 import { addTask } from '../../redux/tasks/operations';
-import { selectUser} from '../../redux/auth/selectors';
+import { selectUser } from '../../redux/auth/selectors';
 import { useAppDispatch } from '../../redux/hooks';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import ScreenHeader from '../../components/ScreenHeader';
 
 export default function AddTaskPage() {
   const dispatch = useAppDispatch();
-  const user = useSelector(selectUser);  
-  
-  if (!user) {  
-  return <Text>Необхідна авторизація</Text>;
+  const user = useSelector(selectUser);
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { backPath } = route.params as { backPath?: string } || {};
+
+  if (!user) {
+    return <Text>Необхідна авторизація</Text>;
   }
-  
+
   const ownerId = user.uid;
 
   const handleAddTask = (task: ITask) => {
-    dispatch(addTask({ ...task, ownerId}));
+    dispatch(addTask({ ...task, ownerId }));
+    if (backPath) {
+      navigation.navigate(backPath as never);
+    } else {
+      navigation.goBack();
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <TaskForm
-        onSubmit={handleAddTask}
-      />
+    <View style={{ flex: 1 }}>
+      <ScreenHeader backPath={backPath} title="Додати задачу" />
+      <View style={styles.container}>
+        <TaskForm onSubmit={handleAddTask} />
+      </View>
     </View>
   );
 }

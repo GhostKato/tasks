@@ -1,14 +1,14 @@
-import {  
+import {
   FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
-import { ITask } from '../../types/task';
-import { fonts } from '../../constants/fonts';
-import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+} from "react-native";
+import { ITask } from "../../types/task";
+import { fonts } from "../../constants/fonts";
+import { useSelector } from "react-redux";
+import { selectThemeColors } from "../../redux/theme/selectors";
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -17,18 +17,18 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
-  
+
   const styles = StyleSheet.create({
     flex: { flex: 1 },
-    mainContainer: { },
+    mainContainer: {},
     item: {
       borderWidth: 1,
-      borderColor: color.secondary, 
+      borderColor: color.secondary,
       borderRadius: 15,
       padding: 10,
-      marginVertical: 8,      
+      marginVertical: 8,
     },
-    textContainer: {  },
+    textContainer: {},
     title: {
       fontFamily: fonts.MontserratSemiBold,
       fontSize: 16,
@@ -45,14 +45,17 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       fontFamily: fonts.MontserratRegular,
       fontSize: 16,
       color: color.quaternary,
-      textAlign: 'center',
+      textAlign: "center",
       marginTop: 20,
     },
   });
 
   const renderTask = ({ item }: { item: ITask }) => {
     const deadlineDate = new Date(item.deadline);
-    const formattedDeadline = `${deadlineDate.toLocaleDateString()} ${deadlineDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    const formattedDeadline = `${deadlineDate.toLocaleDateString()} ${deadlineDate.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    })}`;
 
     return (
       <TouchableOpacity

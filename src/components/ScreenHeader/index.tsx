@@ -8,9 +8,9 @@ import { selectTranslations } from '../../redux/language/selector';
 import { fonts } from '../../constants/fonts';
 
 type ScreenHeaderProps = {
-  title?: string;             
-  showBack?: boolean;         
-  backPath?: string;          
+  title?: string;
+  showBack?: boolean;
+  backPath?: string;
 };
 
 export default function ScreenHeader({ title, showBack, backPath }: ScreenHeaderProps) {
@@ -18,55 +18,44 @@ export default function ScreenHeader({ title, showBack, backPath }: ScreenHeader
   const route = useRoute();
   const color = useSelector(selectThemeColors);
   const t = useSelector(selectTranslations);
-  
-  const screenTitle = title ?? t.screenNames?.[route.name as keyof typeof t.screenNames] ?? route.name;  
+
+  const screenTitle = title ?? t.screenNames?.[route.name as keyof typeof t.screenNames] ?? route.name;
   const displayBack = showBack !== undefined ? showBack : navigation.canGoBack();
 
   const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 10,  
-    backgroundColor: color.tertiary
-  },
-  backBtn: {
-    transform: [{ rotate: '180deg' }],
-  },
-  title: {
-    fontSize: 18,
-    fontFamily: fonts.MontserratSemiBold,
-    color: color.senary,
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: 10,
+      backgroundColor: color.tertiary
     },
-  view: {
-    width: 24
-  },
-});
+    backBtn: { transform: [{ rotate: '180deg' }] },
+    title: {
+      fontSize: 18,
+      fontFamily: fonts.MontserratSemiBold,
+      color: color.senary,
+    },
+    view: { width: 24 },
+  });
 
   return (
     <View style={styles.container}>
       {displayBack ? (
         <TouchableOpacity
           onPress={() => {
-            if (backPath) {
-              navigation.navigate(backPath as never); 
-            } else {
-              navigation.goBack();                  
-            }
+            if (backPath) navigation.navigate(backPath as never);
+            else navigation.goBack();
           }}
           style={styles.backBtn}
         >
-          <ArrowIcon/>
+          <ArrowIcon />
         </TouchableOpacity>
       ) : (
-        <View/>
+        <View />
       )}
-      <Text style={styles.title}>
-        {screenTitle}
-      </Text>
+      <Text style={styles.title}>{screenTitle}</Text>
       <View style={styles.view} />
     </View>
   );
 }
-
-

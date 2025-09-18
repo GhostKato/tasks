@@ -3,25 +3,20 @@ import { SettingsIcon } from '../../../assets/icons';
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { TaskTabBarStackType } from '../../../navigation/types';
 import { ITask } from '../../../types/task';
 import Input from '../../../components/Input';
 import { selectThemeColors } from '../../../redux/theme/selectors';
 import { RootState } from '../../../redux/store';
 import { ScreenNames } from '../../../constants/screenNames';
+import { SearchBarNavigationProp } from '../../../navigation/types';
 
 interface ISearchBar {
   handleSearch: (text: string) => void;
-  tasks: ITask[];
+  tasks?: ITask[];
+  backPath?: ScreenNames;
 }
 
-type SearchBarNavigationProp = StackNavigationProp<
-  TaskTabBarStackType,
-  ScreenNames.FILTERS_SETTINGS_PAGE
->;
-
-export default function SearchBar({ handleSearch }: ISearchBar) {
+export default function SearchBar({ handleSearch, backPath }: ISearchBar) {
   const color = useSelector(selectThemeColors);
   const filters = useSelector((state: RootState) => state.filters);
 
@@ -29,14 +24,15 @@ export default function SearchBar({ handleSearch }: ISearchBar) {
   const navigation = useNavigation<SearchBarNavigationProp>();
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      handleSearch(query);
-    }, 500);
+    const timeout = setTimeout(() => handleSearch(query), 500);
     return () => clearTimeout(timeout);
   }, [query]);
 
   const handleNavigateToFilters = () => {
-    navigation.navigate(ScreenNames.FILTERS_SETTINGS_PAGE, { settings: filters });
+    navigation.navigate(ScreenNames.FILTERS_SETTINGS_PAGE, {
+      settings: filters,
+      backPath: backPath ?? ScreenNames.ALL_TASKS_PAGE,
+    });
   };
 
   return (

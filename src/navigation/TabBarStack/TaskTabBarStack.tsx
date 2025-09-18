@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MarkedTasks from '../../screen/MarkedTasks';
+import DetailsTask from '../../screen/DetailsTask';
 import Home from '../../screen/Home';
 import AllTasks from '../../screen/AllTasks';
 import AddTask from '../../screen/AddTask';
@@ -8,7 +9,6 @@ import FilterSettings from '../../screen/FilterSettings';
 import { TaskTabBarStackType } from '../types';
 import CustomTabBar from './CustomTabBar';
 import { ScreenNames } from '../../constants/screenNames';
-import ScreenHeader from '../../components/ScreenHeader';
 
 const Tab = createBottomTabNavigator<TaskTabBarStackType>();
 
@@ -30,12 +30,20 @@ export default function TaskTabBarStack() {
 
       {/* Приховані кнопки */}
       <Tab.Screen
+        name={ScreenNames.DETAILS_TASK_PAGE}
+        component={DetailsTask}
+        options={{
+          tabBarButton: () => null,
+          headerShown: false,
+          
+        }}
+      />
+      <Tab.Screen
         name={ScreenNames.ADD_TASK_PAGE}
         component={AddTask}
         options={{
           tabBarButton: () => null,
-          headerShown: true,
-          header: () => <ScreenHeader backPath="ALL_TASKS_PAGE"/>
+          headerShown: false,          
         }}
       />
       <Tab.Screen
@@ -48,8 +56,8 @@ export default function TaskTabBarStack() {
         component={FilterSettings}
         options={{
           tabBarButton: () => null,
-          headerShown: true,
-          header: () => <ScreenHeader backPath="ALL_TASKS_PAGE"/>
+          headerShown: false,
+          
          }}
       />
     </Tab.Navigator>

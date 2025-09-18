@@ -13,6 +13,7 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
   const t = useSelector(selectTranslations);
   
   const hiddenScreens = [
+    ScreenNames.DETAILS_TASK_PAGE,
     ScreenNames.ADD_TASK_PAGE,
     ScreenNames.UPDATE_TASK_PAGE,
     ScreenNames.FILTERS_SETTINGS_PAGE
