@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface FiltersState {
+  searchQuery: string; 
   timeStamp: boolean;
   status: 'done' | 'undone' | 'inProgress' | null;
   priority: 'high' | 'medium' | 'low' | null;
@@ -9,6 +10,7 @@ export interface FiltersState {
 }
 
 const initialState: FiltersState = {
+  searchQuery: '',
   timeStamp: false,
   status: null,
   priority: null,
@@ -30,6 +32,7 @@ const filtersSlice = createSlice({
       state.timeStamp = !state.timeStamp;
     },
     resetFilters(state: FiltersState) {
+      state.searchQuery = '';
       state.timeStamp = false;
       state.status = null;
       state.priority = null;

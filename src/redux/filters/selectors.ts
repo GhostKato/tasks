@@ -1,60 +1,37 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
+import { ITask } from '../../types/task';
 
 const selectAllTasks = (state: RootState) => state.tasks.allTasks;
-
-// Селектор для фільтрів
-export const selectFilters = (state: RootState) => state.filters;
+const selectFilters = (state: RootState) => state.filters;
 
 // Селектор для відфільтрованих задач
 export const selectFilteredTasks = createSelector(
   [selectAllTasks, selectFilters],
-  (tasks, filters) => {
-    const now = new Date();
+  (tasks: ITask[], filters) => {
     return tasks.filter(task => {      
-      const statusMatch = filters.status ? task.status === filters.status : true;      
-      const priorityMatch = filters.priority ? task.priority === filters.priority : true;      
-      const categoryMatch = filters.category ? task.category === filters.category : true;
-      
-      let dateMatch = true;
-      if (filters.date) {
-        const taskDate = new Date(task.deadline);
-        switch (filters.date) {
-          case 'today':
-            dateMatch =
-              taskDate.getDate() === now.getDate() &&
-              taskDate.getMonth() === now.getMonth() &&
-              taskDate.getFullYear() === now.getFullYear();
-            break;
-          case 'week':
-            const startOfWeek = new Date(now);
-            startOfWeek.setDate(now.getDate() - now.getDay());
-            const endOfWeek = new Date(startOfWeek);
-            endOfWeek.setDate(startOfWeek.getDate() + 6);
-            dateMatch = taskDate >= startOfWeek && taskDate <= endOfWeek;
-            break;
-          case 'overdue':
-            dateMatch = taskDate < now;
-            break;
+      const matchesQuery = task.title.toLowerCase().includes(filters.searchQuery.toLowerCase());      
+      const matchesStatus = filters.status ? task.status === filters.status : true;      
+      const matchesPriority = filters.priority ? task.priority === filters.priority : true;      
+      const matchesCategory = filters.category ? task.category === filters.category : true;      
+      let matchesDate = true;
+      if (filters.date && task.deadline) {
+        const now = new Date();
+        const deadline = new Date(task.deadline);
+        if (filters.date === 'today') {
+          matchesDate = deadline.toDateString() === now.toDateString();
+        } else if (filters.date === 'week') {
+          const weekFromNow = new Date();
+          weekFromNow.setDate(now.getDate() + 7);
+          matchesDate = deadline >= now && deadline <= weekFromNow;
+        } else if (filters.date === 'overdue') {
+          matchesDate = deadline < now;
         }
       }
-
-      return statusMatch && priorityMatch && categoryMatch && dateMatch;
+      return matchesQuery && matchesStatus && matchesPriority && matchesCategory && matchesDate;
     });
-  });
-
-// Cелектор для всіх задач на сьогодні
-export const selectTodayTasks = createSelector([selectAllTasks], tasks => {
-  const now = new Date();
-  return tasks.filter(task => {
-    const taskDate = new Date(task.deadline);
-    return (
-      taskDate.getDate() === now.getDate() &&
-      taskDate.getMonth() === now.getMonth() &&
-      taskDate.getFullYear() === now.getFullYear()
-    );
-  });
-});
+  }
+);
 
 // Селектор завантаження задач
 export const selectTasksLoading = (state: RootState) => state.tasks.loading;
