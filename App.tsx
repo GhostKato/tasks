@@ -11,6 +11,7 @@ import { fetchTasks } from './src/redux/tasks/operations';
 import { loadWidget } from './src/redux/widgets/slice';
 import { loadTheme } from './src/redux/theme/slice';
 import { loadLanguage } from './src/redux/language/slice';
+import { loadMarkedTask } from './src/redux/tasks/slice';
 // import { addTasksToBase } from './src/utils/tasksSeeder';
  
 function AppWrapper() {
@@ -31,6 +32,7 @@ function AppWrapper() {
   dispatch(loadWidget());
   dispatch(loadTheme());
   dispatch(loadLanguage());
+  dispatch(loadMarkedTask());
   // addTasksToBase();
 
   return unsubscribe;

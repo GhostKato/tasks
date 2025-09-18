@@ -1,10 +1,9 @@
 import { getFirestore, collection, addDoc } from '@react-native-firebase/firestore';
 
-// Дані для тестових задач
 const tasks = [
   { 
-    title: 'Написати звіт', 
-    description: 'Фіналізувати звіт за тиждень і відправити керівнику', 
+    title: 'Write report', 
+    description: 'Finalize the weekly report and send it to the manager', 
     status: 'inProgress', 
     priority: 'high', 
     category: 'work', 
@@ -13,8 +12,8 @@ const tasks = [
     ownerId: 'test',
   },
   { 
-    title: 'Купити продукти', 
-    description: 'Молоко, хліб, овочі та м\'ясо', 
+    title: 'Buy groceries', 
+    description: 'Milk, bread, vegetables, and meat', 
     status: 'undone', 
     priority: 'medium', 
     category: 'personal', 
@@ -23,18 +22,18 @@ const tasks = [
     ownerId: 'test',
   },
   { 
-    title: 'Підготувати презентацію', 
-    description: 'Зробити слайди для виступу у п\'ятницю', 
+    title: 'Prepare presentation', 
+    description: 'Make slides for the Friday speech', 
     status: 'done', 
     priority: 'high', 
     category: 'work', 
     deadline: new Date('2025-09-11').toISOString(), 
     isMarked: false,
-     ownerId: 'test',
+    ownerId: 'test',
   },
   { 
-    title: 'Прочитати розділ з підручника', 
-    description: 'Розділ 3: Алгоритми сортування', 
+    title: 'Read textbook chapter', 
+    description: 'Chapter 3: Sorting algorithms', 
     status: 'undone', 
     priority: 'low', 
     category: 'study', 
@@ -43,8 +42,8 @@ const tasks = [
     ownerId: 'test',
   },
   { 
-    title: 'Зателефонувати колезі', 
-    description: 'Уточнити деталі по проєкту', 
+    title: 'Call colleague', 
+    description: 'Clarify project details', 
     status: 'inProgress', 
     priority: 'medium', 
     category: 'work', 
@@ -53,8 +52,8 @@ const tasks = [
     ownerId: 'test',
   },
   { 
-    title: 'Пробіжка в парку', 
-    description: '30 хвилин кардіо на свіжому повітрі', 
+    title: 'Jog in the park', 
+    description: '30 minutes of cardio outdoors', 
     status: 'undone', 
     priority: 'low', 
     category: 'personal', 

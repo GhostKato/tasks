@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ITask } from '../../types/task';
 import { fetchTasks, addTask, updateTask, deleteTask } from './operations';
 
@@ -16,10 +17,22 @@ const initialState: TasksState = {
   error: null,
 };
 
+const MARKED_TASKS_KEY = 'markedTasksIds';
+
+const saveMarkedToStorage = async (marked: ITask[]) => {
+  const ids = marked.map(t => t.id).filter(Boolean);
+  await AsyncStorage.setItem(MARKED_TASKS_KEY, JSON.stringify(ids));
+};
+
+const getMarkedFromStorage = async (): Promise<string[]> => {
+  const stored = await AsyncStorage.getItem(MARKED_TASKS_KEY);
+  return stored ? JSON.parse(stored) : [];
+};
+
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  reducers: {    
+  reducers: {
     toggleMarked(state, action: PayloadAction<string>) {
       const taskId = action.payload;
       const taskIndex = state.allTasks.findIndex(t => t.id === taskId);
@@ -32,7 +45,19 @@ const tasksSlice = createSlice({
         } else {
           state.markedTasks = state.markedTasks.filter(t => t.id !== taskId);
         }
+        
+        saveMarkedToStorage(state.markedTasks);
       }
+    },
+    
+    loadMarkedTask: (state) => {
+      getMarkedFromStorage().then(ids => {
+        const marked = state.allTasks.filter(task => task.id && ids.includes(task.id));
+        state.markedTasks = marked;
+        state.allTasks = state.allTasks.map(task =>
+          task.id && ids.includes(task.id) ? { ...task, isMarked: true } : task
+        );
+      });
     },
   },
   extraReducers: builder => {
@@ -44,7 +69,14 @@ const tasksSlice = createSlice({
       .addCase(fetchTasks.fulfilled, (state, action: PayloadAction<ITask[]>) => {
         state.loading = false;
         state.allTasks = action.payload;
-        state.markedTasks = action.payload.filter(t => t.isMarked);
+        
+        getMarkedFromStorage().then(ids => {
+          const marked = state.allTasks.filter(task => task.id && ids.includes(task.id));
+          state.markedTasks = marked;
+          state.allTasks = state.allTasks.map(task =>
+            task.id && ids.includes(task.id) ? { ...task, isMarked: true } : task
+          );
+        });
       })
       .addCase(fetchTasks.rejected, (state, action) => {
         state.loading = false;
@@ -54,6 +86,7 @@ const tasksSlice = createSlice({
         state.allTasks.push(action.payload);
         if (action.payload.isMarked) {
           state.markedTasks.push(action.payload);
+          saveMarkedToStorage(state.markedTasks);
         }
       })
       .addCase(updateTask.fulfilled, (state, action: PayloadAction<ITask>) => {
@@ -69,13 +102,16 @@ const tasksSlice = createSlice({
         } else {
           state.markedTasks = state.markedTasks.filter(t => t.id !== action.payload.id);
         }
+
+        saveMarkedToStorage(state.markedTasks);
       })
       .addCase(deleteTask.fulfilled, (state, action: PayloadAction<string>) => {
         state.allTasks = state.allTasks.filter(t => t.id !== action.payload);
         state.markedTasks = state.markedTasks.filter(t => t.id !== action.payload);
+        saveMarkedToStorage(state.markedTasks);
       });
   },
 });
 
-export const { toggleMarked } = tasksSlice.actions;
+export const { toggleMarked, loadMarkedTask } = tasksSlice.actions;
 export default tasksSlice.reducer;

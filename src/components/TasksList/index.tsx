@@ -105,7 +105,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
           />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.title}>{item.title}</Text>        
 
         <View style={styles.infoRow}>
           <Icon name="flag" size={16} color={borderColor} />
