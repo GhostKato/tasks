@@ -6,41 +6,33 @@ import { RootState } from "../../../redux/store";
 import { selectTasksWidgets } from "../../../redux/widgets/selectors";
 import { WidgetsState } from "../../../redux/widgets/slice";
 import { selectThemeColors } from "../../../redux/theme/selectors";
+import { ITask } from "../../../types/task";
 
 interface WidgetProps {
   title: string;
   filterKey: keyof WidgetsState;
   listKey: string;
+  onTaskPress?: (task: ITask) => void;
 }
 
-const TaskWidget: React.FC<WidgetProps> = ({ title, filterKey, listKey }) => {
+const Widget: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress }) => {
   const isActive = useSelector((state: RootState) => state.widgets[filterKey]);
   const tasks = useSelector(selectTasksWidgets(listKey));
   const color = useSelector(selectThemeColors);
 
-    if (!isActive || tasks.length === 0) return null;
-    
-const styles = StyleSheet.create({
-    container: {
-        marginVertical: 10,
-        padding: 8
-    },
-    title: {
-        fontSize: 18,
-        fontWeight: "bold",
-        marginBottom: 6,
-        color: color.secondary
-    },
-});
+  if (!isActive || tasks.length === 0) return null;
+
+  const styles = StyleSheet.create({
+    container: { marginVertical: 10, padding: 8 },
+    title: { fontSize: 18, fontWeight: "bold", marginBottom: 6, color: color.secondary },
+  });
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} onTaskPress={onTaskPress} />
     </View>
   );
 };
 
-export default TaskWidget;
-
-
+export default Widget;

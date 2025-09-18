@@ -5,10 +5,16 @@ import { useSelector } from "react-redux";
 import { WidgetsState } from "../../redux/widgets/slice";
 import { selectTranslations } from "../../redux/language/selector";
 import { selectWidgetBoolean } from "../../redux/widgets/selectors";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { TaskTabBarStackType } from "../../navigation/types";
+import { ScreenNames } from "../../constants/screenNames";
+import { ITask } from "../../types/task";
 
 const Home = () => {
   const widgets = useSelector(selectWidgetBoolean);
   const t = useSelector(selectTranslations);
+  const navigation = useNavigation<StackNavigationProp<TaskTabBarStackType>>();
 
   const filters: { key: keyof WidgetsState; listKey: string; title: string }[] = [
     { key: "isUndone", listKey: "undone", title: t.filterSettings.byStatus.undone },
@@ -24,7 +30,7 @@ const Home = () => {
     { key: "isPersonal", listKey: "personal", title: t.filterSettings.byCategories.personal },
     { key: "isStudy", listKey: "study", title: t.filterSettings.byCategories.study },
   ];
-  
+
   const activeFilters = filters.filter(f => widgets[f.key]);
 
   return (
@@ -36,6 +42,12 @@ const Home = () => {
           title={item.title}
           filterKey={item.key}
           listKey={item.listKey}
+          onTaskPress={(task: ITask) => 
+            navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, {
+              task,
+              backPath: ScreenNames.HOME_PAGE
+            })
+          }
         />
       )}
     />
