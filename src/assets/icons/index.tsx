@@ -1,25 +1,48 @@
-import ViewPassIcon from './ViewPassIcon';
-import HidePassIcon from './HidePassIcon';
-import HomeIcon from './HomeIcon';
-import TasksIcon from './TasksIcon';
-import HeartIcon from './HeartIcon';
-import ThemeIcon from './ThemeIcon';
-import LanguageIcon from './LanguageIcon';
-import Label from './Label';
-import CloseIcon from './CloseIcon';
-import ArrowIcon from './ArrowIcon';
-import SettingsIcon from './SettingsIcon';
+import Logo from './mainHeader/Logo';
+import DrawerIcon from './mainHeader/DrawerIcon';
+import CloseIcon from './mainHeader/CloseIcon';
+
+import HomeIcon from './tabBar/HomeIcon';
+import TasksIcon from './tabBar/TasksIcon';
+import MarkedIcon from './tabBar/MarkedIcon';
+
+import ViewPassIcon from './auth/ViewPassIcon';
+import HidePassIcon from './auth/HidePassIcon';
+
+import ArrowIcon from './screenHeader/ArrowIcon';
+import FiltersIcon from './searchBar/FiltersIcon';
+
+import UndoneIcon from './task/UndoneIcon';
+import InProgressIcon from './task/InProgressIcon';
+import DoneIcon from './task/DoneIcon';
+
+import WorkIcon from './task/WorkIcon';
+import PersonalIcon from './task/PersonalIcon';
+import StudyIcon from './task/StudyIcon';
+import MarkedTrueIcon from './task/MarkedTrueIcon';
+import MarkedFalseIcon from './task/MarkedFalseIcon';
 
 export {
-  ViewPassIcon,
-  HidePassIcon,
+  Logo,
+  DrawerIcon,
+  CloseIcon,
+
   HomeIcon,
   TasksIcon,
-  HeartIcon,
-  ThemeIcon,
-  LanguageIcon,  
-  Label,
-  CloseIcon,
+  MarkedIcon,
+
+  ViewPassIcon,
+  HidePassIcon, 
+  
   ArrowIcon,
-  SettingsIcon
+  FiltersIcon,
+
+  UndoneIcon,
+  InProgressIcon,
+  DoneIcon,
+  WorkIcon,
+  PersonalIcon,
+  StudyIcon,
+  MarkedTrueIcon,
+  MarkedFalseIcon
 };

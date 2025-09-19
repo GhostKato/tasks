@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {CloseIcon, Label} from '../../assets/icons';
+import {CloseIcon, DrawerIcon, Logo} from '../../assets/icons';
 import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../navigation/types';
@@ -26,8 +26,7 @@ export default function MainHeader({ isOpenDrawer, navigation }: IHeader) {
     alignItems: 'center',
     backgroundColor: color.secondary,
   },
-  burgerBtn: {height: 20, width: 20, gap: 5},
-  line: {width: '100%', height: 2, backgroundColor: color.quinary},
+  drawerBtn: {height: 20, width: 20, gap: 5},  
 });
   
   const handleOpenDrawer = () => {
@@ -36,16 +35,12 @@ export default function MainHeader({ isOpenDrawer, navigation }: IHeader) {
 
   return (
     <View style={styles.wrapper}>
-      <Label />
-      <TouchableOpacity style={styles.burgerBtn} onPress={handleOpenDrawer}>
+      <Logo />
+      <TouchableOpacity style={styles.drawerBtn} onPress={handleOpenDrawer}>
         {isOpenDrawer ? (
           <CloseIcon />
         ) : (
-          <>
-            <View style={styles.line} />
-            <View style={styles.line} />
-            <View style={styles.line} />
-          </>
+          <DrawerIcon/>
         )}
       </TouchableOpacity>
     </View>

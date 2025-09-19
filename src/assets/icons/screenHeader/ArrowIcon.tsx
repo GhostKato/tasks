@@ -1,6 +1,6 @@
 import Svg, {Path} from 'react-native-svg';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 export default function ArrowIcon() {
 

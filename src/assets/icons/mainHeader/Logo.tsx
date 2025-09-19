@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-export default function LabelIcon() {
+export default function LogoIcon() {
   return (
       <Svg    
     width="180"

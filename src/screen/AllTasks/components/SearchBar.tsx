@@ -1,5 +1,5 @@
 import { View, TouchableOpacity } from 'react-native';
-import { SettingsIcon } from '../../../assets/icons';
+import { FiltersIcon } from '../../../assets/icons';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
@@ -56,7 +56,7 @@ export default function SearchBar({ backPath }: ISearchBar) {
         }}
         onPress={handleNavigateToFilters}
       >
-        <SettingsIcon color={color.quaternary} />
+        <FiltersIcon color={color.quaternary} />
       </TouchableOpacity>
     </View>
   );

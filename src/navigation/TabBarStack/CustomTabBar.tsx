@@ -1,7 +1,7 @@
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { fonts } from '../../constants/fonts';
-import { HeartIcon, HomeIcon, TasksIcon } from '../../assets/icons';
+import { MarkedIcon, HomeIcon, TasksIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
@@ -60,7 +60,7 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
               label = t.taskTabBar.allTasks;
               break;
             case ScreenNames.MARKED_TASKS_PAGE:
-              icon = <HeartIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
+              icon = <MarkedIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
               label = t.taskTabBar.markedTasks;
               break;            
           }

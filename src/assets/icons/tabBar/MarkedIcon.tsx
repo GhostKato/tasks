@@ -7,7 +7,7 @@ type IconProps = {
   isFocused?: boolean;
 }
 
-export default function HeartIcon({inactiveColor, activeColor, isFocused = false}: IconProps) {
+export default function MarkedIcon({inactiveColor, activeColor, isFocused = false}: IconProps) {
   return (
     <Svg width="18" height="18" fill="none" viewBox="0 0 16 16">
       <G clipPath="url(#clip0_90_322)">
