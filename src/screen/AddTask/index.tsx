@@ -8,13 +8,15 @@ import { selectUser } from '../../redux/auth/selectors';
 import { useAppDispatch } from '../../redux/hooks';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ScreenHeader from '../../components/ScreenHeader';
+import { selectTranslations } from '../../redux/language/selector';
 
 export default function AddTaskPage() {
+  const t = useSelector(selectTranslations);
   const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
   const navigation = useNavigation();
   const route = useRoute();
-  const { backPath } = route.params as { backPath?: string } || {};
+  const { backPath } = route.params as { backPath?: string } || {};  
 
   if (!user) {
     return <Text>Необхідна авторизація</Text>;
@@ -33,7 +35,7 @@ export default function AddTaskPage() {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScreenHeader backPath={backPath} title="Додати задачу" />
+      <ScreenHeader title={t.namesScreenForHeader?.addTask} showBack backPath={backPath}/>
       <View style={styles.container}>
         <TaskForm onSubmit={handleAddTask} />
       </View>

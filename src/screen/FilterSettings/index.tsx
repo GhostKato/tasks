@@ -49,7 +49,7 @@ export default function FilterSettings() {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScreenHeader title={t.screenNames?.FILTERS_SETTINGS_PAGE} showBack backPath={backPath} />
+      <ScreenHeader title={t.namesScreenForHeader?.filtersSettings} showBack backPath={backPath} />
 
       <ScrollView style={{ margin: 10, gap: 20 }}>
         <View style={{ gap: 20 }}>

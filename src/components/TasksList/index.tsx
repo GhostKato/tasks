@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectThemeColors } from "../../redux/theme/selectors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { toggleMarked } from "../../redux/tasks/slice";
+import { selectTranslations } from "../../redux/language/selector";
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -19,6 +20,7 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
+  const t = useSelector(selectTranslations);
   const dispatch = useDispatch();
 
   const priorityColors = {
@@ -134,7 +136,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         keyExtractor={(item, index) => item.id ?? index.toString()}
         renderItem={renderTask}
         ListEmptyComponent={() => (
-          <Text style={styles.emptyText}>Немає задач</Text>
+          <Text style={styles.emptyText}>{t.taskListEmpty}</Text>
         )}
       />
     </View>

@@ -18,5 +18,5 @@ export default function LogoutButton() {
     }
   };
 
-  return <DefaultButton text={t.logOutBtn} onPress={handleLogout} backgroundColor={color.secondary} />;
+  return <DefaultButton text={t.drawer.logOutBtn} onPress={handleLogout} backgroundColor={color.secondary} />;
 }

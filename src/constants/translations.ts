@@ -4,7 +4,8 @@ export type Translations = {
     allTasks: string,
     markedTasks: string,
   };
-  drawer: { 
+  drawer: {
+    logOutBtn: string,     
     main: {
      titleTab: string,
      theme: string,
@@ -39,14 +40,14 @@ export type Translations = {
     };
     },
     }, 
-  screenNames: {
-    HOME_PAGE: string,
-    ALL_TASKS_PAGE: string,
-    MARKED_TASKS_PAGE: string,
-    ADD_TASK_PAGE: string,
-    UPDATE_TASK_PAGE: string,
-    FILTERS_SETTINGS_PAGE: string,
-    DETAILS_TASK_PAGE: string,
+  namesScreenForHeader: {
+    home: string,
+    allTasks: string,
+    markedTask: string,
+    addTask: string,
+    updateTask: string,
+    filtersSettings: string,
+    detailsTask: string,
   },
   screenAuth: {
     title: string,
@@ -55,15 +56,15 @@ export type Translations = {
     registrationBtn: string,
     placeholderEmail: string,
     placeholderPassword: string,
-    placeholderConfirmPassword: string,
+    placeholderConfirmPassword: string,      
     logInBtn: string,  
     registerBtn: string,       
-  };
-  logOutBtn: string,  
+  };   
   screenAllTasks: {
     searchInput: string,
     addBtn: string,    
   };
+  taskListEmpty: string,
   filterSettings: {    
     sortByDate: string,
     byStatusTitle: string,
@@ -110,7 +111,8 @@ taskTabBar: {
   allTasks: 'All',
   markedTasks: 'Marked',
   },
-drawer: { 
+  drawer: {
+  logOutBtn: 'Log Out',
   main: {
     titleTab: 'Main settings',
     theme: 'Topic selection',
@@ -145,14 +147,14 @@ drawer: {
     },
     },
     },
-  screenNames: {
-    HOME_PAGE: 'Home',
-    ALL_TASKS_PAGE: 'All tasks',
-    MARKED_TASKS_PAGE: 'Marked tasks',
-    ADD_TASK_PAGE: 'Add the task',
-    UPDATE_TASK_PAGE: 'Update task',
-    FILTERS_SETTINGS_PAGE: 'Filters',
-    DETAILS_TASK_PAGE: 'Task details',
+  namesScreenForHeader: {
+    home: 'Home',
+    allTasks: 'All tasks',
+    markedTask: 'Marked tasks',
+    addTask: 'Add the task',
+    updateTask: 'Update task',
+    filtersSettings: 'Filters',
+    detailsTask: 'Task details',
   },
   screenAuth: {
     title: 'Glad to welcome you!',
@@ -164,12 +166,12 @@ drawer: {
     placeholderConfirmPassword: 'Confirm Password',
     logInBtn: 'Log In',  
     registerBtn: 'Register',        
-  },
-  logOutBtn: 'Log Out',
+  },  
   screenAllTasks: {
     searchInput: 'Task search',
     addBtn: 'Add task',    
   },
+  taskListEmpty: 'Task not found',
   filterSettings: {    
      sortByDate: 'Sort by date added',
     byStatusTitle: 'By status',
@@ -216,7 +218,8 @@ export const ua: Translations = {
     allTasks: 'Всі',
     markedTasks: 'Відмічені',
   },
-  drawer: { 
+  drawer: {
+    logOutBtn: 'Вийти',
   main: {
     titleTab: 'Головні',
     theme: 'Вибір теми',
@@ -251,14 +254,14 @@ export const ua: Translations = {
     },
     },
     },
-  screenNames: {
-    HOME_PAGE: 'Домашня',
-    ALL_TASKS_PAGE: 'Всі завдання',
-    MARKED_TASKS_PAGE: 'Відмічені завдання',
-    ADD_TASK_PAGE: 'Дотати завдання',
-    UPDATE_TASK_PAGE: 'Оновити завдання',
-    FILTERS_SETTINGS_PAGE: 'Фільтри',
-    DETAILS_TASK_PAGE: 'Деталі завдання',
+  namesScreenForHeader: {
+    home: 'Домашня',
+    allTasks: 'Всі завдання',
+    markedTask: 'Відмічені завдання',
+    addTask: 'Дотати завдання',
+    updateTask: 'Оновити завдання',
+    filtersSettings: 'Фільтри',
+    detailsTask: 'Деталі завдання',
   },
   screenAuth: {
     title: 'Раді вітати тебе!',
@@ -270,12 +273,12 @@ export const ua: Translations = {
     placeholderConfirmPassword: 'Підтвердити пароль',
     logInBtn: 'Увійти',  
     registerBtn: 'Зареєструватись',        
-  },
-  logOutBtn: 'Вийти',
+  },  
   screenAllTasks: {
     searchInput: 'Пошук задачі',
     addBtn: 'Додати завдання',    
   },
+  taskListEmpty: 'Завдань не знайдено',
   filterSettings: {     
      sortByDate: 'Сортувати за датою додавання',
     byStatusTitle: 'За статусом',
@@ -322,7 +325,8 @@ export const pl: Translations = {
     allTasks: 'Wszystko',
     markedTasks: 'Oznaczony',
   },
-  drawer: { 
+  drawer: {    
+    logOutBtn: 'Wylogować',
   main: {
     titleTab: 'Główne ustawienia',
     theme: 'Wybór tematu',
@@ -357,14 +361,14 @@ export const pl: Translations = {
     },
     },
     },
-  screenNames: {
-    HOME_PAGE: 'Dom',
-    ALL_TASKS_PAGE: 'Wszystkie zadania',
-    MARKED_TASKS_PAGE: 'Oznaczone zadania',
-    ADD_TASK_PAGE: 'Dodać zadanie',
-    UPDATE_TASK_PAGE: 'Zadanie aktualizacji',
-    FILTERS_SETTINGS_PAGE: 'Filtry',
-    DETAILS_TASK_PAGE: 'Szczegóły zadania',
+  namesScreenForHeader: {
+    home: 'Dom',
+    allTasks: 'Wszystkie zadania',
+    markedTask: 'Oznaczone zadania',
+    addTask: 'Dodać zadanie',
+    updateTask: 'Zadanie aktualizacji',
+    filtersSettings: 'Filtry',
+    detailsTask: 'Szczegóły zadania',
   },
   screenAuth: {
     title: 'Miło Cię powitać!',
@@ -376,12 +380,12 @@ export const pl: Translations = {
     placeholderConfirmPassword: 'Potwierdź hasło',
     logInBtn: 'Logować',  
     registerBtn: 'Rejestr',        
-  },
-  logOutBtn: 'Wylogować',
+  },  
   screenAllTasks: {
     searchInput: 'Wyszukiwanie zadań',
     addBtn: 'Dodaj zadanie',    
   },
+  taskListEmpty: 'Nie znaleziono zadania',
   filterSettings: {     
      sortByDate: 'Sortuj według dodanej daty',
     byStatusTitle: 'Według stanu',

@@ -19,7 +19,7 @@ export default function ScreenHeader({ title, showBack, backPath }: ScreenHeader
   const color = useSelector(selectThemeColors);
   const t = useSelector(selectTranslations);
 
-  const screenTitle = title ?? t.screenNames?.[route.name as keyof typeof t.screenNames] ?? route.name;
+  const screenTitle = title ?? t.namesScreenForHeader?.[route.name as keyof typeof t.namesScreenForHeader] ?? route.name;
   const displayBack = showBack !== undefined ? showBack : navigation.canGoBack();
 
   const styles = StyleSheet.create({

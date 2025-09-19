@@ -7,6 +7,8 @@ import { updateTask } from "../../redux/tasks/operations";
 import { selectUser } from "../../redux/auth/selectors";
 import { AppDispatch } from "../../redux/store";
 import { ITask } from "../../types/task";
+import { selectTranslations } from "../../redux/language/selector";
+import ScreenHeader from "../../components/ScreenHeader";
 
 type RootStackParamList = {
   UPDATE_TASK_PAGE: { task: ITask };
@@ -19,6 +21,7 @@ export default function UpdateTaskPage() {
   const navigation = useNavigation();
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
+  const t = useSelector(selectTranslations);
 
   const { task } = route.params;
 
@@ -46,10 +49,13 @@ export default function UpdateTaskPage() {
   }
 
   return (
-    <TaskForm
-      initialTask={task}
-      onSubmit={handleUpdate}
-    />
+    <View>
+      <ScreenHeader title={t.namesScreenForHeader?.updateTask}/>
+      <TaskForm
+        initialTask={task}
+        onSubmit={handleUpdate}
+      />
+    </View>
   );
 }
 
