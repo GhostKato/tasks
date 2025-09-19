@@ -69,7 +69,7 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
             <TouchableOpacity key={route.key} onPress={onPress} style={styles.btn}>
               <View style={styles.btnContent}>
                 {icon}
-                <Text style={{ fontFamily: fonts.MontserratRegular, color: focused ? color.secondary : color.senary, fontSize: 12 }}>
+                <Text style={{ fontFamily: fonts.MontserratMedium, color: focused ? color.secondary : color.senary, fontSize: 12 }}>
                   {label}
                 </Text>
               </View>

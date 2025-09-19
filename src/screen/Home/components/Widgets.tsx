@@ -7,6 +7,7 @@ import { selectTasksWidgets } from "../../../redux/widgets/selectors";
 import { WidgetsState } from "../../../redux/widgets/slice";
 import { selectThemeColors } from "../../../redux/theme/selectors";
 import { ITask } from "../../../types/task";
+import { fonts } from "../../../constants/fonts";
 
 interface WidgetProps {
   title: string;
@@ -23,8 +24,17 @@ const Widget: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress 
   if (!isActive || tasks.length === 0) return null;
 
   const styles = StyleSheet.create({
-    container: { marginVertical: 10, padding: 8 },
-    title: { fontSize: 18, fontWeight: "bold", marginBottom: 6, color: color.secondary },
+    container: {
+      marginVertical: 10,
+      padding: 8
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: "bold",
+      marginBottom: 6,
+      color: color.secondary,
+      fontFamily: fonts.ComfortaaBold,      
+    },
   });
 
   return (

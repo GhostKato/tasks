@@ -6,6 +6,7 @@ import { selectWidgetBoolean } from "../../../redux/widgets/selectors";
 import { resetWidget, toggleWidget } from "../../../redux/widgets/slice";
 import { selectTranslations } from "../../../redux/language/selector";
 import DefaultButton from "../../../components/DefaultButton";
+import { fonts } from "../../../constants/fonts";
 
 export default function WidgetSettings() {
   const color = useSelector(selectThemeColors);
@@ -39,10 +40,12 @@ export default function WidgetSettings() {
       color: color.senary,
       paddingBottom: 10,
       fontWeight: 'bold',
+      fontFamily: fonts.MontserratExtraBold,
       fontSize: 16,
     },
     nameSwitch: {
-      color: color.senary 
+      color: color.senary,
+      fontFamily: fonts.MontserratMedium,
     },
     btnContainer: {
       paddingHorizontal: 120, 

@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { selectThemeColors } from "../../../redux/theme/selectors";
 import { useSelector } from "react-redux";
+import { fonts } from "../../../constants/fonts";
 
 interface Tab {
   key: string;
@@ -43,9 +44,10 @@ const Tabs: React.FC<TabsProps> = ({
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
-  tabText: {    
+  tabTitle: {    
     fontSize: 16,
-    color: color.senary
+    color: color.senary,
+    fontFamily: fonts.MontserratMedium
   },
   content: {
     flex: 1,    
@@ -73,7 +75,7 @@ const Tabs: React.FC<TabsProps> = ({
                 },
               ]}
             >
-              <Text style={styles.tabText}>{tab.title}</Text>
+              <Text style={styles.tabTitle}>{tab.title}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>

@@ -60,8 +60,9 @@ export type Translations = {
     registerBtn: string,       
   };
   logOutBtn: string,  
-  screenTasks: {
-    AddBtn: string,    
+  screenAllTasks: {
+    searchInput: string,
+    addBtn: string,    
   };
   filterSettings: {    
     sortByDate: string,
@@ -165,8 +166,9 @@ drawer: {
     registerBtn: 'Register',        
   },
   logOutBtn: 'Log Out',
-  screenTasks: {
-    AddBtn: 'Add task',    
+  screenAllTasks: {
+    searchInput: 'Task search',
+    addBtn: 'Add task',    
   },
   filterSettings: {    
      sortByDate: 'Sort by date added',
@@ -270,8 +272,9 @@ export const ua: Translations = {
     registerBtn: 'Зареєструватись',        
   },
   logOutBtn: 'Вийти',
-  screenTasks: {
-    AddBtn: 'Додати завдання',    
+  screenAllTasks: {
+    searchInput: 'Пошук задачі',
+    addBtn: 'Додати завдання',    
   },
   filterSettings: {     
      sortByDate: 'Сортувати за датою додавання',
@@ -375,8 +378,9 @@ export const pl: Translations = {
     registerBtn: 'Rejestr',        
   },
   logOutBtn: 'Wylogować',
-  screenTasks: {
-    AddBtn: 'Dodaj zadanie',    
+  screenAllTasks: {
+    searchInput: 'Wyszukiwanie zadań',
+    addBtn: 'Dodaj zadanie',    
   },
   filterSettings: {     
      sortByDate: 'Sortuj według dodanej daty',

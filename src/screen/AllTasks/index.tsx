@@ -45,7 +45,7 @@ export default function AllTasks() {
       backPath: ScreenNames.ALL_TASKS_PAGE, 
     })
   }
-  text={t.screenTasks.AddBtn}
+  text={t.screenAllTasks.addBtn}
   backgroundColor={color.secondary}
 />
     </View>
