@@ -112,7 +112,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
           style={styles.markedButton}
           onPress={() => item.id && dispatch(toggleMarked(item.id))}
         >
-          {item.isMarked ? <MarkedTrueIcon width={20} height={20} /> : <MarkedFalseIcon width={20} height={20} />}
+          {item.isMarked ? <MarkedTrueIcon width={25} height={25} color={color.quaternary}/> : <MarkedFalseIcon width={25} height={25} color={color.quaternary}/>}
         </TouchableOpacity>
 
         <Text style={styles.title}>{item.title}</Text>
@@ -129,9 +129,9 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
     
             {/* Категорія */}
             <View style={styles.infoRow}>
-              {item.category === "work" && <WorkIcon width={16} height={16} />}
+              {item.category === "work" && <WorkIcon width={20} height={20} color={color.quaternary} />}
               {item.category === "personal" && <PersonalIcon width={16} height={16} />}
-              {item.category === "study" && <StudyIcon width={16} height={16} />}
+              {item.category === "study" && <StudyIcon width={20} height={20} color={color.quaternary} />}
               <Text style={styles.infoText}>{item.category}</Text>
             </View>
           </View>
