@@ -24,7 +24,7 @@ export type TaskTabBarStackType = {
   [ScreenNames.MARKED_TASKS_PAGE]: { backPath?: ScreenNames };
   [ScreenNames.DETAILS_TASK_PAGE]: { task: ITask; backPath?: ScreenNames };
   [ScreenNames.ADD_TASK_PAGE]: { settings?: ISettings; backPath?: ScreenNames }; 
-  [ScreenNames.UPDATE_TASK_PAGE]: { settings?: ISettings; backPath?: ScreenNames };
+  [ScreenNames.UPDATE_TASK_PAGE]: { task: ITask; backPath?: ScreenNames };
   [ScreenNames.FILTERS_SETTINGS_PAGE]: { settings?: ISettings; backPath?: ScreenNames };
 };
 
@@ -50,9 +50,14 @@ export type DetailsTaskNavigationProp = StackNavigationProp<
 export type AddTaskNavigationProp = StackNavigationProp<
   TaskTabBarStackType,
   ScreenNames.ALL_TASKS_PAGE
+  >;
+
+  export type UpdateTaskNavigationProp = StackNavigationProp<
+  TaskTabBarStackType,
+  ScreenNames.UPDATE_TASK_PAGE
 >;
 
-export type TaskNavigationProp = StackNavigationProp<
+export type MarkedNavigationProp = StackNavigationProp<
   TaskTabBarStackType,
   ScreenNames.MARKED_TASKS_PAGE
   >;

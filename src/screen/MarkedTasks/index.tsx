@@ -5,12 +5,12 @@ import { selectMarkedTasks, selectTasksLoading } from '../../redux/tasks/selecto
 import { ITask } from '../../types/task';
 import { ScreenNames } from '../../constants/screenNames';
 import { useNavigation } from '@react-navigation/native';
-import { TaskNavigationProp } from '../../navigation/types';
+import { MarkedNavigationProp } from '../../navigation/types';
 
 export default function MarkedTasks() {
   const tasks = useSelector(selectMarkedTasks);
   const loading = useSelector(selectTasksLoading);
-  const navigation = useNavigation<TaskNavigationProp>();
+  const navigation = useNavigation<MarkedNavigationProp>();
 
   const handleTaskPress = (task: ITask) => {
     navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, { task, backPath: ScreenNames.MARKED_TASKS_PAGE });

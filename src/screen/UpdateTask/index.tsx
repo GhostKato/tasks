@@ -9,21 +9,25 @@ import { AppDispatch } from "../../redux/store";
 import { ITask } from "../../types/task";
 import { selectTranslations } from "../../redux/language/selector";
 import ScreenHeader from "../../components/ScreenHeader";
+import { TaskTabBarStackType } from "../../navigation/types";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenNames } from "../../constants/screenNames";
 
 type RootStackParamList = {
-  UPDATE_TASK_PAGE: { task: ITask };
+  UPDATE_TASK_PAGE: { task: ITask; backPath?: ScreenNames };
 };
 
 type UpdateTaskRouteProp = RouteProp<RootStackParamList, "UPDATE_TASK_PAGE">;
 
 export default function UpdateTaskPage() {
   const route = useRoute<UpdateTaskRouteProp>();
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
   const t = useSelector(selectTranslations);
 
-  const { task } = route.params;
+  const { task, backPath } = route.params;
 
   const handleUpdate = (updatedTask: ITask) => {
     if (!user) {
@@ -32,8 +36,12 @@ export default function UpdateTaskPage() {
 
     dispatch(updateTask({ ...updatedTask, ownerId: user.uid }))
       .unwrap()
-      .then(() => {
-        navigation.goBack();
+      .then((savedTask) => {
+        // Переходимо назад у DetailsTask з оновленою задачею
+        navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, {
+          task: savedTask,
+          backPath: backPath || ScreenNames.ALL_TASKS_PAGE,
+        });
       })
       .catch((err) => {
         console.error("Помилка при оновленні задачі:", err);
@@ -50,11 +58,11 @@ export default function UpdateTaskPage() {
 
   return (
     <View>
-      <ScreenHeader title={t.namesScreenForHeader?.updateTask}/>
-      <TaskForm
-        initialTask={task}
-        onSubmit={handleUpdate}
+      <ScreenHeader
+        title={t.namesScreenForHeader?.updateTask}
+        backPath={backPath}
       />
+      <TaskForm initialTask={task} onSubmit={handleUpdate} />
     </View>
   );
 }
