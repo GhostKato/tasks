@@ -14,18 +14,21 @@ import {
   UndoneIcon,
   WorkIcon,
 } from "../../assets/icons";
-import DefaultButton from "../../components/DefaultButton"; // або своя кнопка
+import DefaultButton from "../../components/DefaultButton";
 import { TaskTabBarStackType } from "../../navigation/types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { ScreenNames } from "../../constants/screenNames";
+import ModalConfirmDeletion from "../../components/ModalConfirmDeletion";
+import { useState } from "react";
 
 export default function DetailsTask() {
   const route = useRoute();
   const navigation =
     useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
-  const { task, backPath } = route.params as { task: ITask; backPath?: string };
+  const { task, backPath } = route.params as { task: ITask; backPath?: ScreenNames };
   const t = useSelector(selectTranslations);
   const color = useSelector(selectThemeColors);
+  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
 
   const styles = StyleSheet.create({
     wraper: {
@@ -158,6 +161,18 @@ export default function DetailsTask() {
             })
           }
         />
+         {/* 🔹 Кнопка Delete з модалкою */}
+  <DefaultButton
+  text="Видалити"
+  backgroundColor={color.secondary}
+  onPress={() => setDeleteModalVisible(true)}
+/>
+<ModalConfirmDeletion
+  taskId={task.id!}
+  backPath={backPath} // можна і не передавати
+  isVisible={isDeleteModalVisible}
+  onClose={() => setDeleteModalVisible(false)}
+/>
       </View>
     </View>
   );
