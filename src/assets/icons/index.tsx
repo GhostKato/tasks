@@ -21,6 +21,7 @@ import PersonalIcon from './task/PersonalIcon';
 import StudyIcon from './task/StudyIcon';
 import MarkedTrueIcon from './task/MarkedTrueIcon';
 import MarkedFalseIcon from './task/MarkedFalseIcon';
+import DeadlineIcon from './task/DeadlineIcon';
 
 export {
   Logo,
@@ -44,5 +45,6 @@ export {
   PersonalIcon,
   StudyIcon,
   MarkedTrueIcon,
-  MarkedFalseIcon
+  MarkedFalseIcon,
+  DeadlineIcon
 };

@@ -15,6 +15,7 @@ import {
   StudyIcon,
   MarkedTrueIcon,
   MarkedFalseIcon,
+  DeadlineIcon,
 } from "../../assets/icons";
 
 interface ITasksListProps {
@@ -86,9 +87,10 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       justifyContent:'space-between'
 
     },
-    deadlineRow: {      
-      justifyContent:'flex-end'
-      
+    deadlineRow: {    
+      alignItems:'flex-end',
+      flexDirection: 'row',
+      gap: 5
     },
   });
 
@@ -137,9 +139,12 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
           </View>
   
           {/* Дедлайн */}
-          <View style={styles.deadlineRow}>
-            <Text style={styles.infoText}>{formattedDeadline}</Text>
-          </View>
+         <View style={styles.deadlineRow}>
+            <DeadlineIcon width={16} height={16} color={color.quaternary} />
+            <View>
+              <Text style={styles.infoText}>{formattedDeadline}</Text>
+            </View>
+         </View>
        </View>
       </TouchableOpacity>
     );
