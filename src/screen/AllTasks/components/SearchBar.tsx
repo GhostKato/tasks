@@ -12,7 +12,7 @@ import { setFilter } from '../../../redux/filters/slice';
 import { selectTranslations } from '../../../redux/language/selector';
 
 interface ISearchBar {
-  backPath?: ScreenNames;
+  backPath?: ScreenNames;  
 }
 
 export default function SearchBar({ backPath }: ISearchBar) {
