@@ -4,7 +4,7 @@ import { ITask } from "../../types/task";
 import { fonts } from "../../constants/fonts";
 import { useSelector, useDispatch } from "react-redux";
 import { selectThemeColors } from "../../redux/theme/selectors";
-import { toggleMarked } from "../../redux/tasks/slice";
+import { toggleMarked } from "../../redux/tasks/operations";
 import { selectTranslations } from "../../redux/language/selector";
 import {
   UndoneIcon,
@@ -17,6 +17,7 @@ import {
   MarkedFalseIcon,
   DeadlineIcon,
 } from "../../assets/icons";
+import { AppDispatch } from "../../redux/store";
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -26,8 +27,7 @@ interface ITasksListProps {
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
   const t= useSelector(selectTranslations);
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch<AppDispatch>(); 
   const priorityColors = {
     high: color.nonary,
     medium: color.denary,
@@ -111,11 +111,11 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       >
         {/* Кнопка "Вибране" */}
         <TouchableOpacity
-          style={styles.markedButton}
-          onPress={() => item.id && dispatch(toggleMarked(item.id))}
-        >
-          {item.isMarked ? <MarkedTrueIcon width={25} height={25} color={color.quaternary}/> : <MarkedFalseIcon width={25} height={25} color={color.quaternary}/>}
-        </TouchableOpacity>
+  style={styles.markedButton}
+  onPress={() => item.id && dispatch(toggleMarked({ taskId: item.id }))} 
+>
+  {item.isMarked ? <MarkedTrueIcon width={25} height={25} color={color.quaternary}/> : <MarkedFalseIcon width={25} height={25} color={color.quaternary}/>}
+</TouchableOpacity>
 
         <Text style={styles.title}>{item.title}</Text>
 

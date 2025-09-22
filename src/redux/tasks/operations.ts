@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ITask } from '../../types/task';
-import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, QueryDocumentSnapshot, DocumentData } from '@react-native-firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, getDoc, QueryDocumentSnapshot, DocumentData } from '@react-native-firebase/firestore';
 
 const db = getFirestore();
 const tasksRef = collection(db, 'tasks');
@@ -19,7 +19,7 @@ export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
 
 // Add task
 export const addTask = createAsyncThunk('tasks/addTask', async (task: Omit<ITask, 'id'>) => {
-  const taskToSave = { ...task, deadline: task.deadline }; // ISO рядок
+  const taskToSave = { ...task, deadline: task.deadline };
   const docRef = await addDoc(tasksRef, taskToSave);
   return { ...taskToSave, id: docRef.id } as ITask;
 });
@@ -37,3 +37,20 @@ export const deleteTask = createAsyncThunk('tasks/deleteTask', async (taskId: st
   await deleteDoc(taskDoc);
   return taskId;
 });
+
+// Toggle marked
+export const toggleMarked = createAsyncThunk(
+  'tasks/toggleMarked',
+  async ({ taskId }: { taskId: string }) => {
+    const taskDoc = doc(db, 'tasks', taskId);
+
+    const snapshot = await getDoc(taskDoc);
+    const current = snapshot.data();
+    const currentMarked = current?.isMarked ?? false;
+
+    const newMarked = !currentMarked;
+    await updateDoc(taskDoc, { isMarked: newMarked });
+
+    return { taskId, isMarked: newMarked };
+  }
+);
