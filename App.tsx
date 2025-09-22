@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import RootNavigation from './src/navigation';
 import 'react-native-gesture-handler';
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { store, AppDispatch, RootState } from './src/redux/store';
+import { Provider, useDispatch } from 'react-redux';
+import { store, AppDispatch } from './src/redux/store';
 import { getAuth, FirebaseAuthTypes, onAuthStateChanged } from '@react-native-firebase/auth';
 import { setUser } from './src/redux/auth/slice';
 import { serializeUser } from './src/utils/serializeUser';
@@ -11,12 +11,10 @@ import { fetchTasks } from './src/redux/tasks/operations';
 import { loadWidget } from './src/redux/widgets/slice';
 import { loadTheme } from './src/redux/theme/slice';
 import { loadLanguage } from './src/redux/language/slice';
-import { selectMarkedTasks } from './src/redux/tasks/selectors';
 // import { addTasksToBase } from './src/utils/tasksSeeder';
 
 function AppWrapper() {
-  const dispatch = useDispatch<AppDispatch>();
-  const markedTasks = useSelector((state: RootState) => selectMarkedTasks(state));
+  const dispatch = useDispatch<AppDispatch>();  
 
   useEffect(() => {
     const auth = getAuth();
@@ -29,8 +27,7 @@ function AppWrapper() {
     dispatch(fetchTasks());
     dispatch(loadWidget());
     dispatch(loadTheme());
-    dispatch(loadLanguage());   
-    console.log('Marked tasks:', markedTasks);
+    dispatch(loadLanguage()); 
     // addTasksToBase();
 
     return unsubscribe;

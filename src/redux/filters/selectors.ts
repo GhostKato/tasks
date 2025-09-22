@@ -1,11 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { ITask } from '../../types/task';
+import { initialState } from '../filters/slice';
 
 const selectAllTasks = (state: RootState) => state.tasks.allTasks;
 const selectFilters = (state: RootState) => state.filters;
 
-// Селектор для відфільтрованих задач
+// Selector for filtered tasks
 export const selectFilteredTasks = createSelector(
   [selectAllTasks, selectFilters],
   (tasks: ITask[], filters) => {
@@ -33,8 +34,23 @@ export const selectFilteredTasks = createSelector(
   }
 );
 
-// Селектор завантаження задач
+// Task loading selector
 export const selectTasksLoading = (state: RootState) => state.tasks.loading;
 
-// Селектор помилки задач
+// Task error selector
 export const selectTasksError = (state: RootState) => state.tasks.error;
+
+// Selector of the initial value of filters
+export const selectAreFiltersDefault = createSelector(
+  [selectFilters],
+  (filters) => {
+    return (
+      filters.searchQuery === initialState.searchQuery &&
+      filters.timeStamp === initialState.timeStamp &&
+      filters.status === initialState.status &&
+      filters.priority === initialState.priority &&
+      filters.date === initialState.date &&
+      filters.category === initialState.category
+    );
+  }
+);

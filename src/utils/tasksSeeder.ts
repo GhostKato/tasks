@@ -72,10 +72,10 @@ export async function addTasksToBase() {
       await addDoc(tasksRef, {
         ...task,        
       });
-      console.log(`Задача "${task.title}" додана!`);
+      console.log(`Task "${task.title}" added!`);
     }
   } catch (error) {
-    console.error('Помилка при додаванні задач:', error);
+    console.error('Error adding tasks:', error);
   }
 }
 

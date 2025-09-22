@@ -9,7 +9,7 @@ export interface FiltersState {
   category: 'work' | 'personal' | 'study' | null;
 }
 
-const initialState: FiltersState = {
+export const initialState: FiltersState = {
   searchQuery: '',
   timeStamp: false,
   status: null,

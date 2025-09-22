@@ -26,7 +26,7 @@ const languageSlice = createSlice({
       state.language = action.payload;
       state.t = translationsMap[action.payload];
       AsyncStorage.setItem(LANGUAGE_KEY, action.payload).catch((e) =>
-        console.error('Помилка при збереженні мови:', e)
+        console.error('Error saving language:', e)
       );
     },
   },
@@ -42,6 +42,6 @@ export const loadLanguage = () => async (dispatch: any) => {
       dispatch(setLanguage(stored));
     }
   } catch (e) {
-    console.error('Помилка при завантаженні мови:', e);
+    console.error('Error saving language:', e);
   }
 };

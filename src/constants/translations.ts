@@ -64,6 +64,15 @@ export type Translations = {
     searchInput: string,
     addBtn: string,    
   };
+  screenDetailsTask: {
+    description: string,
+    priority: string,
+    status: string,
+    category: string,
+    deadline: string,
+    deleteBtn: string,
+    updateBtn: string,
+  };
   taskListEmpty: string,
   filterSettings: {    
     sortByDate: string,
@@ -102,6 +111,11 @@ export type Translations = {
     selectionTime: string,
     addTaskBtn: string,
     updateTaskBtn: string,
+  };
+  ModalConfirmDeletion: {
+    title: string,
+    yesBtn: string,      
+    noBtn: string,
   };
 };
 
@@ -171,6 +185,15 @@ taskTabBar: {
     searchInput: 'Task search',
     addBtn: 'Add task',    
   },
+  screenDetailsTask: {
+    description: 'Description:',
+    priority: 'Priority:',
+    status: 'Status:',
+    category: 'Category:',
+    deadline: 'Deadline:',
+    deleteBtn: 'Delete',
+    updateBtn: 'Update',
+  },
   taskListEmpty: 'Task not found',
   filterSettings: {    
      sortByDate: 'Sort by date added',
@@ -209,6 +232,11 @@ taskTabBar: {
     selectionTime: 'Select a time',
     addTaskBtn: 'Add task',
     updateTaskBtn: 'Update task',
+  },
+  ModalConfirmDeletion: {
+    title: 'Confirm deletion?',
+    yesBtn: 'Yes',      
+    noBtn: 'No',
   },
 };
 
@@ -278,6 +306,15 @@ export const ua: Translations = {
     searchInput: 'Пошук задачі',
     addBtn: 'Додати завдання',    
   },
+  screenDetailsTask: {
+    description: 'Опис:',
+    priority: 'Пріоритет:',
+    status: 'Статус:',
+    category: 'Категорія:',
+    deadline: 'Дедлайн:',
+    deleteBtn: 'Видалити',
+    updateBtn: 'Оновити',
+  },
   taskListEmpty: 'Завдань не знайдено',
   filterSettings: {     
      sortByDate: 'Сортувати за датою додавання',
@@ -316,6 +353,11 @@ export const ua: Translations = {
     selectionTime: 'Вибір часу',
     addTaskBtn: 'Додати задачу',
     updateTaskBtn: 'Оновити задачу',
+  },
+  ModalConfirmDeletion: {
+    title: 'Підтвердити видалення?',
+    yesBtn: 'Так',      
+    noBtn: 'Ні',
   },
 };
 
@@ -385,6 +427,15 @@ export const pl: Translations = {
     searchInput: 'Wyszukiwanie zadań',
     addBtn: 'Dodaj zadanie',    
   },
+  screenDetailsTask: {
+    description: 'Opis:',
+    priority: 'Priorytet:',
+    status: 'Status:',
+    category: 'Kategoria:',
+    deadline: 'Termin:',
+    deleteBtn: 'Usuń',
+    updateBtn: 'Aktualizacja',
+  },
   taskListEmpty: 'Nie znaleziono zadania',
   filterSettings: {     
      sortByDate: 'Sortuj według dodanej daty',
@@ -423,5 +474,10 @@ export const pl: Translations = {
     selectionTime: 'Wybrać czas',
     addTaskBtn: 'Dodaj zadanie',
     updateTaskBtn: 'Zadanie aktualizacji',
+  },
+  ModalConfirmDeletion: {
+    title: 'Potwierdź usunięcie?',
+    yesBtn: 'Tak',      
+    noBtn: 'Nie',
   },
 };

@@ -36,22 +36,21 @@ export default function UpdateTaskPage() {
 
     dispatch(updateTask({ ...updatedTask, ownerId: user.uid }))
       .unwrap()
-      .then((savedTask) => {
-        // Переходимо назад у DetailsTask з оновленою задачею
+      .then((savedTask) => {        
         navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, {
           task: savedTask,
           backPath: backPath || ScreenNames.ALL_TASKS_PAGE,
         });
       })
       .catch((err) => {
-        console.error("Помилка при оновленні задачі:", err);
+        console.error("Error updating task:", err);
       });
   };
 
   if (!user) {
     return (
       <View style={styles.center}>
-        <Text>Будь ласка, увійдіть, щоб редагувати задачу</Text>
+        <Text>Please login to edit the task</Text>
       </View>
     );
   }
@@ -61,6 +60,7 @@ export default function UpdateTaskPage() {
       <ScreenHeader
         title={t.namesScreenForHeader?.updateTask}
         backPath={backPath}
+        showBack={false}
       />
       <TaskForm initialTask={task} onSubmit={handleUpdate} />
     </View>

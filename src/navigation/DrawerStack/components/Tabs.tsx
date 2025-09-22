@@ -56,7 +56,7 @@ const Tabs: React.FC<TabsProps> = ({
 
   return (
     <View style={{ flex: 1 }}>
-      {/* Заголовки вкладок */}
+      {/* Tab headings */}
       <View style={styles.header}>
         <ScrollView
           horizontal
@@ -81,7 +81,7 @@ const Tabs: React.FC<TabsProps> = ({
         </ScrollView>
       </View>
 
-      {/* Вміст активної вкладки */}
+      {/* Content of the active tab  */}
       <View style={styles.content}>{tabs[activeTab].content}</View>
     </View>
   );

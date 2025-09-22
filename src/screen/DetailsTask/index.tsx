@@ -75,6 +75,18 @@ export default function DetailsTask() {
       height: 15,
       borderRadius: 12,
     },
+    actions: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+      gap: 10,
+    padding: 15
+    },
+    buttonDelete: {
+    flex: 0.5
+    },
+    buttonUpdate: {
+    flex: 1
+  },
   });
 
   const getBackgroundColor = () => {
@@ -98,11 +110,11 @@ export default function DetailsTask() {
       />
       <View style={styles.mainContainer}>
         <Text style={styles.titleTask}>{task.title}</Text>
-        <Text style={styles.itemTitle}>Опис:</Text>
+        <Text style={styles.itemTitle}>{t.screenDetailsTask.description}</Text>
         <Text style={styles.descriptionTask}>{task.description}</Text>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>Пріоритет:</Text>
+          <Text style={styles.itemTitle}>{t.screenDetailsTask.priority}</Text>
           <View style={styles.itemContent}>
             <View
               style={[
@@ -115,7 +127,7 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>Статус:</Text>
+          <Text style={styles.itemTitle}>{t.screenDetailsTask.status}</Text>
           <View style={styles.itemContent}>
             {task.status === "undone" && <UndoneIcon width={16} height={16} />}
             {task.status === "inProgress" && (
@@ -127,7 +139,7 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>Категорія:</Text>
+          <Text style={styles.itemTitle}>{t.screenDetailsTask.category}</Text>
           <View style={styles.itemContent}>
             {task.category === "work" && (
               <WorkIcon width={20} height={20} color={color.quaternary} />
@@ -143,37 +155,41 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>Дедлайн:</Text>
+          <Text style={styles.itemTitle}>{t.screenDetailsTask.deadline}</Text>
           <View style={styles.itemContent}>
             <DeadlineIcon width={16} height={16} color={color.quaternary} />
             <Text style={styles.itemText}>{task.deadline}</Text>
           </View>
         </View>
-
-        {/* 🔹 Кнопка Update */}
-        <DefaultButton
-          backgroundColor={color.secondary}
-          text={t.TaskForm.updateTaskBtn}
-          onPress={() =>
-            navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
-              task,
-              backPath: ScreenNames.DETAILS_TASK_PAGE,
-            })
-          }
-        />
-         {/* 🔹 Кнопка Delete з модалкою */}
-  <DefaultButton
-  text="Видалити"
-  backgroundColor={color.secondary}
-  onPress={() => setDeleteModalVisible(true)}
-/>
-<ModalConfirmDeletion
-  taskId={task.id!}
-  backPath={backPath} // можна і не передавати
-  isVisible={isDeleteModalVisible}
-  onClose={() => setDeleteModalVisible(false)}
-/>
+        
+     <ModalConfirmDeletion
+       taskId={task.id!}
+       backPath={backPath} 
+       isVisible={isDeleteModalVisible}
+      onClose={() => setDeleteModalVisible(false)}
+     />
       </View>
-    </View>
+      <View style={styles.actions}>
+        <View style={styles.buttonDelete}>
+          <DefaultButton
+              text={t.screenDetailsTask.deleteBtn}
+              backgroundColor={color.nonary}
+              onPress={() => setDeleteModalVisible(true)}
+          />
+        </View>
+        <View style={styles.buttonUpdate}>
+          <DefaultButton
+              backgroundColor={color.secondary}
+              text={t.screenDetailsTask.updateBtn}
+              onPress={() =>
+                navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
+                  task,
+                  backPath: ScreenNames.DETAILS_TASK_PAGE,
+                })
+              }
+          />    
+        </View>    
+      </View>
+      </View>
   );
 }

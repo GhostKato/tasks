@@ -1,8 +1,8 @@
-import { ActivityIndicator, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
 import { selectTasksLoading } from '../../redux/tasks/selectors';
-import { selectFilteredTasks } from '../../redux/filters/selectors';
+import { selectAreFiltersDefault, selectFilteredTasks } from '../../redux/filters/selectors';
 import { selectTranslations } from '../../redux/language/selector';
 import { selectThemeColors } from '../../redux/theme/selectors';
 import { useNavigation } from '@react-navigation/core';
@@ -11,10 +11,13 @@ import DefaultButton from '../../components/DefaultButton';
 import { ScreenNames } from '../../constants/screenNames';
 import { ITask } from '../../types/task';
 import SearchBar from './components/SearchBar';
+import { resetFilters } from '../../redux/filters/slice';
 
 export default function AllTasks() {
   const t = useSelector(selectTranslations);
   const color = useSelector(selectThemeColors);
+  const dispatch = useDispatch();
+  const areFiltersDefault = useSelector(selectAreFiltersDefault);
   
   const navigation = useNavigation<AddTaskNavigationProp>();
 
@@ -28,6 +31,20 @@ export default function AllTasks() {
     });
   };
 
+  const styles = StyleSheet.create({      
+      actions: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      gap: 10,      
+      },
+      buttonReset: {
+      flex: 0.5
+      },
+      buttonAdd: {
+      flex: 1
+    },
+    });
+
   return (
     <View style={{ flex: 1, margin: 10 }}>
       <SearchBar />
@@ -38,15 +55,30 @@ export default function AllTasks() {
           <TasksList tasks={tasks} onTaskPress={handleTaskPress} />
         )}
       </View>
-      <DefaultButton
-        onPress={() =>
-          navigation.navigate(ScreenNames.ADD_TASK_PAGE, {
-            backPath: ScreenNames.ALL_TASKS_PAGE,
-          })
-        }
-        text={t.screenAllTasks.addBtn}
-        backgroundColor={color.secondary}
-      />
+
+    
+      <View style={styles.actions}>
+        {!areFiltersDefault && (
+         <View style={styles.buttonReset}>
+                <DefaultButton
+                  onPress={() => dispatch(resetFilters())}
+                  text={t.filterSettings.resetFiltersBtn}
+                  backgroundColor={color.nonary}
+                />
+          </View>  
+      )}  
+        <View style={styles.buttonAdd}>
+          <DefaultButton
+            onPress={() =>
+              navigation.navigate(ScreenNames.ADD_TASK_PAGE, {
+                backPath: ScreenNames.ALL_TASKS_PAGE,
+              })
+            }
+            text={t.screenAllTasks.addBtn}
+            backgroundColor={color.secondary}
+          />
+        </View>
+       </View>
     </View>
   );
 }

@@ -23,12 +23,12 @@ export default function TaskTabBarStack() {
       screenOptions={{ headerShown: false }}
       tabBar={renderCustomTabBar}
     >
-      {/* Видимі кнопки */}
+      {/* Visible buttons */}
       <Tab.Screen name={ScreenNames.HOME_PAGE} component={Home} />
       <Tab.Screen name={ScreenNames.ALL_TASKS_PAGE} component={AllTasks} />
       <Tab.Screen name={ScreenNames.MARKED_TASKS_PAGE} component={MarkedTasks} />
 
-      {/* Приховані кнопки */}
+      {/* Hidden buttons */}
       <Tab.Screen
         name={ScreenNames.DETAILS_TASK_PAGE}
         component={DetailsTask}

@@ -20,14 +20,14 @@ const themeSlice = createSlice({
       state.isDark = action.payload;
       state.color = action.payload ? darkTheme : lightTheme;
       AsyncStorage.setItem('theme', action.payload ? 'dark' : 'light').catch((e) =>
-        console.log('Помилка при збереженні теми:', e)
+        console.log('Error saving topic:', e)
       );
     },
     toggleTheme(state) {
       state.isDark = !state.isDark;
       state.color = state.isDark ? darkTheme : lightTheme;
       AsyncStorage.setItem('theme', state.isDark ? 'dark' : 'light').catch((e) =>
-        console.log('Помилка при збереженні теми:', e)
+        console.log('Error saving topic:', e)
       );
     },
   },
@@ -42,6 +42,6 @@ export const loadTheme = () => async (dispatch: any) => {
     if (savedTheme === 'dark') dispatch(setDarkMode(true));
     if (savedTheme === 'light') dispatch(setDarkMode(false));
   } catch (e) {
-    console.log('Помилка при завантаженні теми:', e);
+    console.log('Error saving topic:', e);
   }
 };

@@ -19,7 +19,7 @@ export default function AddTaskPage() {
   const { backPath } = route.params as { backPath?: string } || {};  
 
   if (!user) {
-    return <Text>Необхідна авторизація</Text>;
+    return <Text>Authorization required</Text>;
   }
 
   const ownerId = user.uid;

@@ -109,7 +109,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         activeOpacity={0.7}
         onPress={() => onTaskPress && onTaskPress(item)}
       >
-        {/* Кнопка "Вибране" */}
+        
         <TouchableOpacity
   style={styles.markedButton}
   onPress={() => item.id && dispatch(toggleMarked({ taskId: item.id }))} 
@@ -121,7 +121,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
 
        <View style={styles.infoContainer}>
           <View style={styles.infoIconContainer}>
-            {/* Статус */}
+            {/* Status */}
             <View style={styles.infoRow}>
               {item.status === "undone" && <UndoneIcon width={16} height={16} />}
               {item.status === "inProgress" && <InProgressIcon width={16} height={16} />}
@@ -129,7 +129,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
               <Text style={styles.infoText}>{item.status}</Text>
             </View>
     
-            {/* Категорія */}
+            {/* Category */}
             <View style={styles.infoRow}>
               {item.category === "work" && <WorkIcon width={20} height={20} color={color.quaternary} />}
               {item.category === "personal" && <PersonalIcon width={16} height={16} />}
@@ -138,7 +138,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
             </View>
           </View>
   
-          {/* Дедлайн */}
+          {/* Deadline */}
          <View style={styles.deadlineRow}>
             <DeadlineIcon width={16} height={16} color={color.quaternary} />
             <View>

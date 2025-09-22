@@ -12,6 +12,7 @@ import ScreenHeader from '../../components/ScreenHeader';
 import { TaskTabBarStackType } from '../../navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FiltersState } from '../../redux/filters/slice';
+import { selectAreFiltersDefault } from '../../redux/filters/selectors';
 
 type FilterSettingsNavigationProp = StackNavigationProp<TaskTabBarStackType>;
 type FilterSettingsRouteProp = RouteProp<TaskTabBarStackType, ScreenNames.FILTERS_SETTINGS_PAGE>;
@@ -21,6 +22,7 @@ export default function FilterSettings() {
   const t = useSelector(selectTranslations);
   const dispatch = useDispatch();
   const filters = useSelector((state: any) => state.filters as FiltersState);
+  const areFiltersDefault = useSelector(selectAreFiltersDefault);
 
   const navigation = useNavigation<FilterSettingsNavigationProp>();
   const route = useRoute<FilterSettingsRouteProp>();
@@ -45,6 +47,18 @@ export default function FilterSettings() {
     },
     sortByTimeText: { fontFamily: 'Montserrat-Regular', color: color.quaternary },
     btnText: { fontFamily: 'Montserrat-Regular', color: color.quaternary },
+    actions: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+      gap: 10,
+    
+    },
+    buttonReset: {
+    flex: 0.5
+    },
+    buttonShowVariations: {
+    flex: 1
+  },
   });
 
   return (
@@ -53,7 +67,7 @@ export default function FilterSettings() {
 
       <ScrollView style={{ margin: 10, gap: 20 }}>
         <View style={{ gap: 20 }}>
-          {/* Сортування */}
+          {/* Sorting */}
           <TouchableOpacity onPress={() => dispatch(toggleTimeStamp())} style={styles.sortByTimeBtn}>
             <View style={styles.activeSortByTime}>
               {filters.timeStamp && <View style={styles.checkedSortByTime} />}
@@ -61,7 +75,7 @@ export default function FilterSettings() {
             <Text style={styles.sortByTimeText}>{t.filterSettings.sortByDate}</Text>
           </TouchableOpacity>
 
-          {/* Статус */}
+          {/* Status */}
           <Text style={styles.btnText}>{t.filterSettings.byStatusTitle}</Text>
           <FilterSwitch<'done' | 'undone' | 'inProgress' | null>
             items={[
@@ -74,7 +88,7 @@ export default function FilterSettings() {
             handleSwitch={item => dispatch(setFilter({ key: 'status', value: item.id }))}
           />
 
-          {/* Пріоритет */}
+          {/* Priority */}
           <Text style={styles.btnText}>{t.filterSettings.byPriorityTitle}</Text>
           <FilterSwitch<'high' | 'medium' | 'low' | null>
             items={[
@@ -87,7 +101,7 @@ export default function FilterSettings() {
             handleSwitch={item => dispatch(setFilter({ key: 'priority', value: item.id }))}
           />
 
-          {/* Дати */}
+          {/* Dates */}
           <Text style={styles.btnText}>{t.filterSettings.byDatesTitle}</Text>
           <FilterSwitch<'today' | 'week' | 'overdue' | null>
             items={[
@@ -100,7 +114,7 @@ export default function FilterSettings() {
             handleSwitch={item => dispatch(setFilter({ key: 'date', value: item.id }))}
           />
 
-          {/* Категорії */}
+          {/* Categories */}
           <Text style={styles.btnText}>{t.filterSettings.byCategoriesTitle}</Text>
           <FilterSwitch<'work' | 'personal' | 'study' | null>
             items={[
@@ -113,24 +127,29 @@ export default function FilterSettings() {
             handleSwitch={item => dispatch(setFilter({ key: 'category', value: item.id }))}
           />
 
-          {/* Зкинути фільтри */}
-          <DefaultButton
-            onPress={() => dispatch(resetFilters())}
-            text={t.filterSettings.resetFiltersBtn}
-            backgroundColor={color.nonary}
-          />
-
-          {/* Застосувати */}
-          <DefaultButton
-            onPress={() =>
-              navigation.navigate(ScreenNames.ALL_TASKS_PAGE, {
-                settings: filters,
-                backPath: backPath,
-              })
-            }
-            text={t.filterSettings.showVariationsBtn}
-            backgroundColor={color.secondary}
-          />
+          <View style={styles.actions}>
+             {!areFiltersDefault && (
+            <View style={styles.buttonReset}>
+              <DefaultButton
+                onPress={() => dispatch(resetFilters())}
+                text={t.filterSettings.resetFiltersBtn}
+                backgroundColor={color.nonary}
+              />
+            </View>  
+             )}
+            <View style={styles.buttonShowVariations}>
+              <DefaultButton
+                onPress={() =>
+                  navigation.navigate(ScreenNames.ALL_TASKS_PAGE, {
+                    settings: filters,
+                    backPath: backPath,
+                  })
+                }
+                text={t.filterSettings.showVariationsBtn}
+                backgroundColor={color.secondary}
+              />
+            </View>
+         </View>
         </View>
       </ScrollView>
     </View>
