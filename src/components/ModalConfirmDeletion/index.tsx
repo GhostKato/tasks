@@ -74,7 +74,8 @@ export default function ModalConfirmDeletion({
               backgroundColor={color.secondary}
             />
           </View>
-          <View  style={styles.buttonContainer}>
+
+          <View style={styles.buttonContainer}>
             <DefaultButton
               text={t.ModalConfirmDeletion.yesBtn}
               onPress={handleDelete}

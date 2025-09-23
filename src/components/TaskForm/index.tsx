@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Input from '../../components/Input';
 import FilterSwitch from '../FilterSwitch';
 import DefaultButton from '../../components/DefaultButton';
@@ -53,8 +53,31 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
     onSubmit(task);
   };
 
+  const styles = StyleSheet.create({
+  container: {
+    padding: 16,    
+  },
+  label: {
+    fontSize: 16,
+    marginVertical: 8,
+    color: color.quaternary
+  },
+  btnContainer: {    
+    marginVertical: 12,
+  },
+  dateTimeText: {    
+    color: color.quaternary
+    },
+  touchableOpacityStyle: {    
+    padding: 12,
+     borderWidth: 1,
+     borderColor: color.quaternary,
+     borderRadius: 8,     
+  },  
+});
+
   return (
-    <ScrollView style={[styles.container, { backgroundColor: color.tertiary }]}>
+    <ScrollView style={styles.container}>
       <Input placeholder={t.TaskForm.placeholderTitle} value={title} onChangeText={setTitle} />
       <Input
         placeholder={t.TaskForm.placeholderTitle}
@@ -66,7 +89,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
       {initialTask && (
         <>
-          <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byStatusTitle}</Text>
+          <Text style={styles.label}>{t.filterSettings.byStatusTitle}</Text>
           <FilterSwitch<'done' | 'undone' | 'inProgress'>
             items={[
               { text: t.filterSettings.byStatus.undone, id: 'undone' as const },                           
@@ -79,7 +102,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         </>
       )}
 
-      <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byPriorityTitle}</Text>
+      <Text style={styles.label}>{t.filterSettings.byPriorityTitle}</Text>
       <FilterSwitch<'high' | 'medium' | 'low'>
         items={[
         { text: t.filterSettings.byPriority.low, id: 'low' as const },
@@ -90,7 +113,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         handleSwitch={(item) => setPriority(item.id)}
       />
 
-      <Text style={[styles.label, { color: color.quaternary }]}>{t.filterSettings.byCategoriesTitle}</Text>
+      <Text style={styles.label}>{t.filterSettings.byCategoriesTitle}</Text>
       <FilterSwitch<'work' | 'personal' | 'study'>
         items={[
           { text: t.filterSettings.byCategories.work, id: 'work' as const },
@@ -101,17 +124,12 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         handleSwitch={(item) => setCategory(item.id)}
       />
 
-      <Text style={[styles.label, { color: color.quaternary }]}>{t.TaskForm.selectionDate}</Text>
+      <Text style={styles.label}>{t.TaskForm.selectionDate}</Text>
       <TouchableOpacity
         onPress={() => setShowDatePicker(true)}
-        style={{
-          padding: 12,
-          borderWidth: 1,
-          borderColor: color.quaternary,
-          borderRadius: 8,          
-        }}
+        style={styles.touchableOpacityStyle}
       >
-        <Text>{deadline.toLocaleDateString()}</Text>
+        <Text style={styles.dateTimeText}>{deadline.toLocaleDateString()}</Text>
       </TouchableOpacity>
 
       {showDatePicker && (
@@ -132,17 +150,12 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         />
       )}
 
-      <Text style={[styles.label, { color: color.quaternary }]}>{t.TaskForm.selectionTime}</Text>
+      <Text style={styles.label}>{t.TaskForm.selectionTime}</Text>
       <TouchableOpacity
         onPress={() => setShowTimePicker(true)}
-        style={{
-          padding: 12,
-          borderWidth: 1,
-          borderColor: color.quaternary,
-          borderRadius: 8,
-        }}
+        style={styles.touchableOpacityStyle}
       >
-        <Text>
+        <Text style={styles.dateTimeText}>
           {deadline.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </Text>
       </TouchableOpacity>
@@ -165,22 +178,15 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         />
       )}
 
-      <DefaultButton
-        text={initialTask ? t.TaskForm.updateTaskBtn : t.TaskForm.addTaskBtn}
-        onPress={handleSave}
-        backgroundColor={color.secondary}
-      />
+      <View style={styles.btnContainer}>
+        <DefaultButton
+          text={initialTask ? t.TaskForm.updateTaskBtn : t.TaskForm.addTaskBtn}
+          onPress={handleSave}
+          backgroundColor={color.secondary}
+        />
+      </View>
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    gap: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginVertical: 8,
-  },
-});
+

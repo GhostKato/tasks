@@ -62,7 +62,9 @@ export default function UpdateTaskPage() {
         backPath={backPath}
         showBack={false}
       />
-      <TaskForm initialTask={task} onSubmit={handleUpdate} />
+      <View style={styles.container}>
+        <TaskForm initialTask={task} onSubmit={handleUpdate} />
+      </View>
     </View>
   );
 }
@@ -72,5 +74,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+   container: {
+    flex: 1,
+    paddingHorizontal: 16,    
   },
 });
