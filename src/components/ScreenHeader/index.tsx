@@ -13,7 +13,7 @@ type ScreenHeaderProps = {
   backPath?: string;
 };
 
-export default function ScreenHeader({ title, showBack, backPath }: ScreenHeaderProps) {
+export default function ScreenHeader({ title, showBack=true, backPath }: ScreenHeaderProps) {
   const navigation = useNavigation();
   const route = useRoute();
   const color = useSelector(selectThemeColors);

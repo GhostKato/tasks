@@ -56,7 +56,7 @@ export default function UpdateTaskPage() {
   }
 
   return (
-    <View>
+    <>
       <ScreenHeader
         title={t.namesScreenForHeader?.updateTask}
         backPath={backPath}
@@ -65,7 +65,7 @@ export default function UpdateTaskPage() {
       <View style={styles.container}>
         <TaskForm initialTask={task} onSubmit={handleUpdate} />
       </View>
-    </View>
+    </>
   );
 }
 

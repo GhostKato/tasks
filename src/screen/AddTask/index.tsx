@@ -35,7 +35,7 @@ export default function AddTaskPage() {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScreenHeader title={t.namesScreenForHeader?.addTask} showBack backPath={backPath}/>
+      <ScreenHeader title={t.namesScreenForHeader?.addTask} backPath={backPath}/>
       <View style={styles.container}>
         <TaskForm onSubmit={handleAddTask} />
       </View>
