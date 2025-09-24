@@ -1,7 +1,7 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const MarkedFalseIcon = ({ width = 14, height = 14, color = "black" }) => (
+const MarkedFalseIcon = ({ width = 25, height = 25, color = "black" }) => (
   <Svg
     width={width}
     height={height} 

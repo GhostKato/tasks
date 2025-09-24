@@ -71,8 +71,8 @@ export default function DetailsTask() {
       color: color.quaternary,
     },
     priorityIcon: {
-      width: 15,
-      height: 15,
+      width: 20,
+      height: 20,
       borderRadius: 12,
     },
     actions: {
@@ -129,11 +129,9 @@ export default function DetailsTask() {
         <View style={styles.itemContainer}>
           <Text style={styles.itemTitle}>{t.screenDetailsTask.status}</Text>
           <View style={styles.itemContent}>
-            {task.status === "undone" && <UndoneIcon width={16} height={16} />}
-            {task.status === "inProgress" && (
-              <InProgressIcon width={16} height={16} />
-            )}
-            {task.status === "done" && <DoneIcon width={16} height={16} />}
+            {task.status === "undone" && <UndoneIcon width={20} height={20} color={color.quaternary}/>}
+            {task.status === "inProgress" && (<InProgressIcon width={20} height={20} color={color.quaternary}/>)}
+            {task.status === "done" && <DoneIcon width={20} height={20} color={color.quaternary}/>}
             <Text style={styles.itemText}>{task.status}</Text>
           </View>
         </View>
@@ -141,15 +139,9 @@ export default function DetailsTask() {
         <View style={styles.itemContainer}>
           <Text style={styles.itemTitle}>{t.screenDetailsTask.category}</Text>
           <View style={styles.itemContent}>
-            {task.category === "work" && (
-              <WorkIcon width={20} height={20} color={color.quaternary} />
-            )}
-            {task.category === "personal" && (
-              <PersonalIcon width={16} height={16} />
-            )}
-            {task.category === "study" && (
-              <StudyIcon width={20} height={20} color={color.quaternary} />
-            )}
+            {task.category === "work" && (<WorkIcon width={20} height={20} color={color.quaternary} />)}
+            {task.category === "personal" && (<PersonalIcon width={20} height={20} color={color.quaternary}/>)}
+            {task.category === "study" && (<StudyIcon width={20} height={20} color={color.quaternary} />)}
             <Text style={styles.itemText}>{task.category}</Text>
           </View>
         </View>
@@ -157,7 +149,7 @@ export default function DetailsTask() {
         <View style={styles.itemContainer}>
           <Text style={styles.itemTitle}>{t.screenDetailsTask.deadline}</Text>
           <View style={styles.itemContent}>
-            <DeadlineIcon width={16} height={16} color={color.quaternary} />
+            <DeadlineIcon width={20} height={20} color={color.quaternary} />
             <Text style={styles.itemText}>{task.deadline}</Text>
           </View>
         </View>

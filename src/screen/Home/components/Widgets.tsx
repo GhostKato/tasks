@@ -24,8 +24,7 @@ const Widget: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress 
   if (!isActive || tasks.length === 0) return null;
 
   const styles = StyleSheet.create({
-    container: {
-      marginVertical: 10,
+    container: {      
       padding: 8
     },
     title: {

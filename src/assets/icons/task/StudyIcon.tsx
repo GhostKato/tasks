@@ -1,7 +1,7 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const StudyIcon = ({ width = 14, height = 14, color = "black" }) => (
+const StudyIcon = ({ width = 16, height = 16, color = "black" }) => (
   
   <Svg
     width={width}

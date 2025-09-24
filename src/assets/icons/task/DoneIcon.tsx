@@ -1,17 +1,17 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const DoneIcon = ({ width = 14, height = 14, color = "black" }) => {
-  return (
-    <Svg width={width} height={height} fill="none" viewBox="0 0 12 12">
-      <Path
-        fill={color}
-        fillRule="evenodd"
-        d="M.293.293a1 1 0 011.414 0L6 4.586 10.293.293a1 1 0 111.414 1.414L7.414 6l4.293 4.293a1 1 0 01-1.414 1.414L6 7.414l-4.293 4.293a1 1 0 01-1.414-1.414L4.586 6 .293 1.707a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </Svg>
-  );
-};
+const DoneIcon = ({ width = 16, height = 16, color = "black" }) => (
+  <Svg width={width} height={height} viewBox="0 0 24 24">
+    <Path
+      fill={color}
+      fillRule="evenodd"
+      id="Status-Approved-Filled"
+      d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0M9.5 18.3l-5.6-5.7 1.8-1.8 3.9 3.9L18 6.3l1.8 1.8z"
+      clipRule="evenodd"
+    ></Path>
+  </Svg>
+);
 
 export default DoneIcon;
+

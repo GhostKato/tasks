@@ -85,17 +85,16 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
     infoContainer: {
       flexDirection: 'row',
       justifyContent:'space-between'
-
     },
     deadlineRow: {    
-      alignItems:'flex-end',
+      alignItems: 'flex-end',      
       flexDirection: 'row',
       gap: 5,
       paddingBottom: 4
     },
     priorityIcon: {    
-      width: 15,
-      height: 15,
+      width: 16,
+      height: 16,
       borderRadius: 12,    
     },    
   });
@@ -120,7 +119,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   style={styles.markedButton}
   onPress={() => item.id && dispatch(toggleMarked({ taskId: item.id }))} 
 >
-  {item.isMarked ? <MarkedTrueIcon width={25} height={25} color={color.quaternary}/> : <MarkedFalseIcon width={25} height={25} color={color.quaternary}/>}
+  {item.isMarked ? <MarkedTrueIcon color={color.quaternary}/> : <MarkedFalseIcon color={color.quaternary}/>}
 </TouchableOpacity>
        <View style={styles.infoRow}>
           <View style={[styles.priorityIcon, { backgroundColor }]} />
@@ -131,17 +130,17 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
           <View style={styles.infoIconContainer}>
             {/* Status */}
             <View style={styles.infoRow}>
-              {item.status === "undone" && <UndoneIcon width={16} height={16} />}
-              {item.status === "inProgress" && <InProgressIcon width={16} height={16} />}
-              {item.status === "done" && <DoneIcon width={16} height={16} />}
+              {item.status === "undone" && <UndoneIcon color={color.quaternary}/>}
+              {item.status === "inProgress" && <InProgressIcon color={color.quaternary}/>}
+              {item.status === "done" && <DoneIcon color={color.quaternary}/>}
               <Text style={styles.infoText}>{item.status}</Text>
             </View>
     
             {/* Category */}
             <View style={styles.infoRow}>
-              {item.category === "work" && <WorkIcon width={20} height={20} color={color.quaternary} />}
-              {item.category === "personal" && <PersonalIcon width={16} height={16} />}
-              {item.category === "study" && <StudyIcon width={20} height={20} color={color.quaternary} />}
+              {item.category === "work" && <WorkIcon color={color.quaternary} />}
+              {item.category === "personal" && <PersonalIcon color={color.quaternary}/>}
+              {item.category === "study" && <StudyIcon color={color.quaternary} />}
               <Text style={styles.infoText}>{item.category}</Text>
             </View>
           </View>

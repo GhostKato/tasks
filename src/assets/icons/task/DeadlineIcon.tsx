@@ -1,17 +1,22 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const DeadlineIcon = ({ width = 14, height = 14, color = "black" }) => {
-  return (
-    <Svg width={width} height={height} fill="none" viewBox="0 0 12 12">
-      <Path
-        fill={color}
-        fillRule="evenodd"
-        d="M.293.293a1 1 0 011.414 0L6 4.586 10.293.293a1 1 0 111.414 1.414L7.414 6l4.293 4.293a1 1 0 01-1.414 1.414L6 7.414l-4.293 4.293a1 1 0 01-1.414-1.414L4.586 6 .293 1.707a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </Svg>
-  );
-};
+const DeadlineIcon = ({ width = 16, height = 16, color = "black" }) => (
+  <Svg width={width} height={height} viewBox="0 0 32 32">
+    <Path
+      fill={color}
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M0 16q0-3.232 1.28-6.208t3.392-5.12 5.12-3.392T16 0q3.264 0 6.24 1.28t5.088 3.392 3.392 5.12T32 16q0 3.264-1.28 6.208t-3.392 5.12-5.12 3.424T16 32t-6.208-1.248-5.12-3.424-3.392-5.12T0 16m4 0q0 3.264 1.6 6.048T9.984 26.4 16 28t6.016-1.6 4.384-4.352T28 16t-1.6-6.016-4.384-4.352T16 4 9.984 5.632 5.6 9.984 4 16m10.016 0v-5.984q0-.832.576-1.408T16 8t1.408.608.608 1.408v4h4q.8 0 1.408.576T24 16t-.576 1.44-1.408.576H16q-.832 0-1.408-.576T14.016 16"></Path>
+  </Svg>
+);
 
 export default DeadlineIcon;
+
+
+
+
+
+
+
+

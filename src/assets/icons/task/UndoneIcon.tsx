@@ -1,17 +1,16 @@
 import React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const UndoneIcon = ({ width = 14, height = 14, color = "black" }) => {
-  return (
-    <Svg width={width} height={height} fill="none" viewBox="0 0 12 12">
-      <Path
-        fill={color}
-        fillRule="evenodd"
-        d="M.293.293a1 1 0 011.414 0L6 4.586 10.293.293a1 1 0 111.414 1.414L7.414 6l4.293 4.293a1 1 0 01-1.414 1.414L6 7.414l-4.293 4.293a1 1 0 01-1.414-1.414L4.586 6 .293 1.707a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </Svg>
-  );
-};
+const UndoneIcon = ({ width = 16, height = 16, color = "black" }) => (
+  <Svg width={width} height={height} viewBox="0 0 24 24">
+    <Path
+      fill={color}
+      fillRule="evenodd"  
+      d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0m6.38 16.62-1.77 1.77L12 13.77l-4.62 4.62-1.77-1.77L10.23 12 5.62 7.38l1.77-1.77L12 10.23l4.62-4.62 1.77 1.77L13.77 12z"
+      clipRule="evenodd"
+    ></Path>
+  </Svg>
+);
 
 export default UndoneIcon;
+
