@@ -34,7 +34,7 @@ export default function AddTaskPage() {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.flex}>
       <ScreenHeader title={t.namesScreenForHeader?.addTask} backPath={backPath}/>
       <View style={styles.container}>
         <TaskForm onSubmit={handleAddTask} />
@@ -44,6 +44,9 @@ export default function AddTaskPage() {
 }
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,    
+  },
   container: {
     flex: 1,
     padding: 16,

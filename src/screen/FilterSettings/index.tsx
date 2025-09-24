@@ -29,7 +29,21 @@ export default function FilterSettings() {
   const backPath = route.params?.backPath ?? ScreenNames.ALL_TASKS_PAGE;
 
   const styles = StyleSheet.create({
-    sortByTimeBtn: { flexDirection: 'row', gap: 10, alignItems: 'center' },
+    mainContainer: {
+      flex: 1
+    },
+    scrollView: {
+      margin: 10,
+      gap: 20
+    },
+    contentContainer: {
+      gap: 20
+    },
+    sortByTimeBtn: {
+      flexDirection: 'row',
+      gap: 10,
+      alignItems: 'center'
+    },
     activeSortByTime: {
       borderRadius: 50,
       width: 15,
@@ -62,11 +76,11 @@ export default function FilterSettings() {
   });
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.mainContainer}>
       <ScreenHeader title={t.namesScreenForHeader?.filtersSettings} backPath={backPath} />
 
-      <ScrollView style={{ margin: 10, gap: 20 }}>
-        <View style={{ gap: 20 }}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.contentContainer}>
           {/* Sorting */}
           <TouchableOpacity onPress={() => dispatch(toggleTimeStamp())} style={styles.sortByTimeBtn}>
             <View style={styles.activeSortByTime}>

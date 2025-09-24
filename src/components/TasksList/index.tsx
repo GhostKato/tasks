@@ -44,16 +44,16 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
     item: {
       borderWidth: 1,
       borderRadius: 15,
-      padding: 12,
+      padding: 12,      
       marginVertical: 8,
-      backgroundColor: color.primary,
+      borderColor: color.quaternary,
       position: "relative",
     },
     title: {
       fontFamily: fonts.MontserratSemiBold,
       fontSize: 16,
       color: color.quaternary,
-      marginBottom: 6,
+      marginBottom: 3,
     },
     infoRow: {
       flexDirection: "row",
@@ -90,8 +90,14 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
     deadlineRow: {    
       alignItems:'flex-end',
       flexDirection: 'row',
-      gap: 5
+      gap: 5,
+      paddingBottom: 4
     },
+    priorityIcon: {    
+      width: 15,
+      height: 15,
+      borderRadius: 12,    
+    },    
   });
 
   const renderTask = ({ item }: { item: ITask }) => {
@@ -101,11 +107,11 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       minute: "2-digit",
     })}`;
 
-    const borderColor = priorityColors[item.priority];
+    const backgroundColor = priorityColors[item.priority];
 
     return (
       <TouchableOpacity
-        style={[styles.item, { borderColor }]}
+        style={styles.item}
         activeOpacity={0.7}
         onPress={() => onTaskPress && onTaskPress(item)}
       >
@@ -116,8 +122,10 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
 >
   {item.isMarked ? <MarkedTrueIcon width={25} height={25} color={color.quaternary}/> : <MarkedFalseIcon width={25} height={25} color={color.quaternary}/>}
 </TouchableOpacity>
-
-        <Text style={styles.title}>{item.title}</Text>
+       <View style={styles.infoRow}>
+          <View style={[styles.priorityIcon, { backgroundColor }]} />
+          <Text style={styles.title}>{item.title}</Text>  
+       </View>      
 
        <View style={styles.infoContainer}>
           <View style={styles.infoIconContainer}>
@@ -163,3 +171,5 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
     </View>
   );
 }
+
+

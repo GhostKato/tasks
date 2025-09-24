@@ -17,15 +17,15 @@ const baseColors = {
   quinary: '#000000',
   senary: '#FFFFFF',
   septenary: '#8f968eff',
-  octonary: '#44e70eff',
-  nonary: '#8e0b0bff',
-  denary: '#a89e0dff',
+  octonary: '#40ff00ff',
+  nonary: '#ff0000ff',
+  denary: '#f6e607ff',
   undecimary: '#0c0643ff',
   duodenary: '#0e85e7ff'
 };
 
 export const lightTheme: ThemeColors = {  
-  primary: '#e6e6e5ff', 
+  primary: '#ffffffff', 
   secondary: '#008577',
   tertiary: '#6e6e6dff',
   quaternary: '#000000',

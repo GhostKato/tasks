@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { FiltersIcon } from '../../../assets/icons';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -37,8 +37,26 @@ export default function SearchBar({ backPath }: ISearchBar) {
     });
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      margin: 10,      
+      },
+    filterBtn: {
+      height: 45,
+      width: 45,
+      borderRadius: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: 10,
+      borderWidth: 1,
+      borderColor: color.quaternary,
+      },      
+    });
+
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10 }}>
+    <View style={styles.container}>
       <Input
         placeholder={t.screenAllTasks.searchInput}
         value={searchQuery}
@@ -46,17 +64,8 @@ export default function SearchBar({ backPath }: ISearchBar) {
         additionalContainerStyle={{ flex: 1 }}        
       />
       <TouchableOpacity
-        style={{
-          height: 45,
-          width: 45,
-          borderRadius: 50,
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginLeft: 10,
-          borderWidth: 1,
-          borderColor: color.quaternary,
-        }}
-        onPress={handleNavigateToFilters}
+        style={styles.filterBtn}      
+          onPress={handleNavigateToFilters}
       >
         <FiltersIcon color={color.quaternary} />
       </TouchableOpacity>

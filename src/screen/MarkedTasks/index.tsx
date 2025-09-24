@@ -1,4 +1,4 @@
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
 import { selectMarkedTasks, selectTasksLoading } from '../../redux/tasks/selectors';
@@ -16,10 +16,20 @@ export default function MarkedTasks() {
     navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, { task, backPath: ScreenNames.MARKED_TASKS_PAGE });
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      margin: 10    
+    },
+    flex: {
+      flex: 1       
+      },    
+    });  
+
   return (
-    <View style={{ flex: 1, margin: 10 }}>
+    <View style={styles.container}>
       {loading ? (
-        <ActivityIndicator size="large" style={{ flex: 1 }} />
+        <ActivityIndicator size="large" style={styles.flex} />
       ) : (
         <TasksList tasks={tasks} onTaskPress={handleTaskPress} />
       )}

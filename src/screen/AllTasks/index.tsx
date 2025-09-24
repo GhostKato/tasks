@@ -31,11 +31,19 @@ export default function AllTasks() {
     });
   };
 
-  const styles = StyleSheet.create({      
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      margin: 10     
+    },
+    flex: {
+      flex: 1           
+      },
       actions: {
       flexDirection: "row",
       justifyContent: "space-around",
-      gap: 10,      
+        gap: 10, 
+      marginHorizontal: 6
       },
       buttonReset: {
       flex: 0.5
@@ -46,11 +54,11 @@ export default function AllTasks() {
     });
 
   return (
-    <View style={{ flex: 1, margin: 10 }}>
+    <View style={styles.container}>
       <SearchBar />
-      <View style={{ flex: 1 }}>
+      <View style={styles.flex}>
         {loading ? (
-          <ActivityIndicator size="large" style={{ flex: 1 }} />
+          <ActivityIndicator size="large" style={styles.flex} />
         ) : (
           <TasksList tasks={tasks} onTaskPress={handleTaskPress} />
         )}

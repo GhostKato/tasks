@@ -25,11 +25,21 @@ export const addTask = createAsyncThunk('tasks/addTask', async (task: Omit<ITask
 });
 
 // Update task
-export const updateTask = createAsyncThunk('tasks/updateTask', async (task: ITask) => {
-  const taskDoc = doc(db, 'tasks', task.id);
-  await updateDoc(taskDoc, task);
-  return task;
-});
+export const updateTask = createAsyncThunk(
+  'tasks/updateTask',
+  async (task: ITask) => {
+    if (!task.id) throw new Error("Task ID is required for update");
+
+    const taskDoc = doc(db, 'tasks', task.id);
+
+    // В updateDoc не можна кидати повністю ITask, треба чистий POJO без id
+    const { id, ...taskData } = task;
+
+    await updateDoc(taskDoc, taskData as any);
+
+    return task;
+  }
+);
 
 // Delete task
 export const deleteTask = createAsyncThunk('tasks/deleteTask', async (taskId: string) => {
