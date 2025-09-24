@@ -72,7 +72,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
     padding: 12,
      borderWidth: 1,
      borderColor: color.quaternary,
-     borderRadius: 8,     
+     borderRadius: 25,     
   },  
 });
 
@@ -165,7 +165,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
           value={deadline}
           mode="time"
           is24Hour={true}
-          display="spinner"
+          display="spinner"          
           onChange={(_, selectedTime) => {
             setShowTimePicker(false);
             if (selectedTime) {
