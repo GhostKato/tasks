@@ -33,7 +33,7 @@ export const getSwitchBlocks = (t: Translations): SwitchBlock[] => [
     title: t.drawer.widget.byDatesTitle,
     items: [
       { key: 'isToday', listKey: "today", label: t.drawer.widget.byDates.today },
-      { key: 'isThisWeek', listKey: "week", label: t.drawer.widget.byDates.thisWeek },
+      { key: 'isWeek', listKey: "week", label: t.drawer.widget.byDates.thisWeek },
       { key: 'isOverdue', listKey: "overdue", label: t.drawer.widget.byDates.overdue },
     ],
   },

@@ -51,11 +51,16 @@ export default function WidgetSettings() {
     },
   });
 
-  const syncedWidgets = Object.keys(widgets).reduce((acc, key) => {
-    const listKey = key.replace(/^is/, '').toLowerCase() as keyof typeof tasksByWidget;
-    acc[key as keyof typeof widgets] = tasksByWidget[listKey]?.length ? widgets[key as keyof typeof widgets] : false;
-    return acc;
-  }, {} as typeof widgets);
+  const syncedWidgets = Object.keys(widgets).reduce((acc, key) => {  
+  const listKeyRaw = key.replace(/^is/, '');  
+  const listKey = (listKeyRaw.charAt(0).toLowerCase() + listKeyRaw.slice(1)) as keyof typeof tasksByWidget;  
+  acc[key as keyof typeof widgets] = tasksByWidget[listKey]?.length
+    ? widgets[key as keyof typeof widgets]
+    : false;
+
+  return acc;
+}, {} as typeof widgets);
+
 
   const switchBlocks = getSwitchBlocks(t);
 

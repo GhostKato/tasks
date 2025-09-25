@@ -71,7 +71,7 @@ export const selectAreWidgetDefault = createSelector(
       wigets.isMedium === initialState.isMedium &&
       wigets.isHigh === initialState.isHigh &&
       wigets.isToday === initialState.isToday &&
-      wigets.isThisWeek === initialState.isThisWeek &&
+      wigets.isWeek === initialState.isWeek &&
       wigets.isOverdue === initialState.isOverdue &&
       wigets.isWork === initialState.isWork &&
       wigets.isPersonal === initialState.isPersonal &&

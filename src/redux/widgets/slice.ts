@@ -9,7 +9,7 @@ export interface WidgetsState {
   isMedium: boolean;
   isHigh: boolean;
   isToday: boolean;
-  isThisWeek: boolean;
+  isWeek: boolean;
   isOverdue: boolean;
   isWork: boolean;
   isPersonal: boolean;
@@ -24,7 +24,7 @@ export const initialState: WidgetsState = {
   isMedium: false,
   isHigh: false,
   isToday: false,
-  isThisWeek: false,
+  isWeek: false,
   isOverdue: false,
   isWork: false,
   isPersonal: false,
