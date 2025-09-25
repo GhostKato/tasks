@@ -4,7 +4,7 @@ import Widget from "./components/Widgets";
 import { useSelector } from "react-redux";
 import { WidgetsState } from "../../redux/widgets/slice";
 import { selectTranslations } from "../../redux/language/selector";
-import { selectAreWidgetDefault, selectWidgets } from "../../redux/widgets/selectors";
+import { selectWidgets, selectTasksByWidget } from "../../redux/widgets/selectors";
 import { selectAllTasks } from "../../redux/tasks/selectors";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -19,45 +19,49 @@ const Home = () => {
   const widgets = useSelector(selectWidgets);
   const t = useSelector(selectTranslations);
   const color = useSelector(selectThemeColors);
-  const navigation = useNavigation<StackNavigationProp<TaskTabBarStackType>>();
-  const areWidgetsDefault = useSelector(selectAreWidgetDefault);
-   const selectTasks = useSelector(selectAllTasks);
-  
-  const filters: { key: keyof WidgetsState; listKey: string; label: string }[] = getFilters(t);  
+  const navigation = useNavigation<StackNavigationProp<TaskTabBarStackType>>();  
+  const allTasks: ITask[] = useSelector(selectAllTasks);
+  const tasksByWidget = useSelector(selectTasksByWidget);
+
+  const filters: { key: keyof WidgetsState; listKey: keyof typeof tasksByWidget; label: string }[] = getFilters(t);  
   const activeFilters = filters.filter(f => widgets[f.key]);
 
   const styles = StyleSheet.create({
-      container: {  
-           
+    container: {      
     },
     text: {
       fontFamily: fonts.MontserratRegular,
-            fontSize: 16,
-            color: color.quaternary,
-            textAlign: "center",
-            marginTop: 30,
-      },      
-    });
+      fontSize: 16,
+      color: color.quaternary,
+      textAlign: "center",
+      marginTop: 30,
+    },      
+  });
   
-  if (selectTasks.length === 0) {
+  if (allTasks.length === 0) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {t.taskListEmpty}
-        </Text>
+        <Text style={styles.text}>{t.taskListEmpty}</Text>
       </View>
     );
   }
   
-  if (areWidgetsDefault) {
+  if (activeFilters.length === 0) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {t.screenHome.selectWidgets}
-        </Text>
+        <Text style={styles.text}>{t.screenHome.selectWidgets}</Text>
       </View>
     );
-  }  
+  }
+  
+  const noTasksInWidgets = activeFilters.every(f => tasksByWidget[f.listKey].length === 0);
+  if (noTasksInWidgets) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{t.screenHome.selectWidgetsEmpty}</Text>
+      </View>
+    );
+  }
   
   return (
     <FlatList

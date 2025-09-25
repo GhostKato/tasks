@@ -61,7 +61,8 @@ export type Translations = {
     registerBtn: string,       
   };
   screenHome: {
-    selectWidgets: string,        
+    selectWidgets: string,
+    selectWidgetsEmpty: string,
   };
   screenAllTasks: {
     searchInput: string,
@@ -185,7 +186,8 @@ taskTabBar: {
     registerBtn: 'Register',        
   },
   screenHome: {
-    selectWidgets: 'Select widgets in the settings!',        
+    selectWidgets: 'Select widgets in the settings!',
+    selectWidgetsEmpty: 'The selected widgets have no tasks!',
   },
   screenAllTasks: {
     searchInput: 'Task search',
@@ -309,7 +311,8 @@ export const ua: Translations = {
     registerBtn: 'Зареєструватись',        
   }, 
   screenHome: {
-    selectWidgets: 'Виберіть віджети в налаштуваннях!',        
+    selectWidgets: 'Виберіть віджети в налаштуваннях!',
+    selectWidgetsEmpty: 'Вибрані віджети не мають задач!',
   },
   screenAllTasks: {
     searchInput: 'Пошук задачі',
@@ -433,7 +436,8 @@ export const pl: Translations = {
     registerBtn: 'Rejestr',        
   },
   screenHome: {
-    selectWidgets: 'Wybierz widżety w ustawieniach!',        
+    selectWidgets: 'Wybierz widżety w ustawieniach!',
+    selectWidgetsEmpty: 'Wybrane widżety nie mają żadnych zadań!',
   },
   screenAllTasks: {
     searchInput: 'Wyszukiwanie zadań',

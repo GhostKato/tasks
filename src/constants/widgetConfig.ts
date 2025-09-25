@@ -1,9 +1,10 @@
 import { WidgetsState } from "../redux/widgets/slice";
 import { Translations } from "../constants/translations";
+import { selectTasksByWidget } from "../redux/widgets/selectors";
 
 export type SwitchItem = {
   key: keyof WidgetsState;
-  listKey: string;
+  listKey: keyof ReturnType<typeof selectTasksByWidget>;
   label: string;
 };
 

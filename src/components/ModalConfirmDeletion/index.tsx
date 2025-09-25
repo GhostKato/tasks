@@ -67,14 +67,6 @@ export default function ModalConfirmDeletion({
         <Text style={styles.title}>{t.ModalConfirmDeletion.title}</Text>
 
         <View style={styles.actions}>
-          <View  style={styles.buttonContainer}>
-            <DefaultButton
-              text={t.ModalConfirmDeletion.noBtn}
-              onPress={onClose}
-              backgroundColor={color.secondary}
-            />
-          </View>
-
           <View style={styles.buttonContainer}>
             <DefaultButton
               text={t.ModalConfirmDeletion.yesBtn}
@@ -82,7 +74,15 @@ export default function ModalConfirmDeletion({
               backgroundColor={color.nonary}
             />
           </View>
-          </View>
+          <View  style={styles.buttonContainer}>
+            <DefaultButton
+              text={t.ModalConfirmDeletion.noBtn}
+              onPress={onClose}
+              backgroundColor={color.secondary}
+            />
+          </View>         
+        </View>
+        
       </View>
     </Modal>
   );

@@ -1,7 +1,5 @@
 import { RootState } from "../store";
 import { ITask } from "../../types/task"; 
-import { createSelector } from "@reduxjs/toolkit";
-import { initialState } from "./slice";
 
 type Status = "done" | "undone" | "inProgress";
 type Priority = "high" | "medium" | "low";
@@ -59,23 +57,4 @@ export const selectWidgets = (state: RootState) => state.widgets;
   study: selectTasksWidgets("study")(state),
 });
 
-// Selector of the initial value of widgets
-export const selectAreWidgetDefault = createSelector(
-  [selectWidgets],
-  (wigets) => {
-    return (
-      wigets.isUndone === initialState.isUndone &&
-      wigets.isInProgress === initialState.isInProgress &&
-      wigets.isDone === initialState.isDone &&
-      wigets.isLow === initialState.isLow &&
-      wigets.isMedium === initialState.isMedium &&
-      wigets.isHigh === initialState.isHigh &&
-      wigets.isToday === initialState.isToday &&
-      wigets.isWeek === initialState.isWeek &&
-      wigets.isOverdue === initialState.isOverdue &&
-      wigets.isWork === initialState.isWork &&
-      wigets.isPersonal === initialState.isPersonal &&
-      wigets.isStudy === initialState.isStudy 
-    );
-  }
-);
+
