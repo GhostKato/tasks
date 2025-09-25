@@ -40,7 +40,7 @@ export default function DetailsTask() {
       margin: 16,
       borderWidth: 1,
       borderRadius: 12,
-      borderColor: color.senary,
+      borderColor: color.quaternary,
       gap: 20,
     },
     titleTask: {

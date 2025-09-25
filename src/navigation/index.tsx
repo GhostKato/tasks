@@ -4,9 +4,8 @@ import { ScreenNames } from '../constants/screenNames';
 import { RootStackNavigation } from './types';
 import LoggedInStack from './LogedInStack';
 import LoggedOutStack from './LoggedOutStack';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useAppSelector } from '../redux/hooks';
-import { selectUser, selectLoading } from '../redux/auth/selectors';
+import { selectUser } from '../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../redux/theme/selectors';
 
@@ -14,25 +13,8 @@ const Stack = createNativeStackNavigator<RootStackNavigation>();
 
 export default function RootNavigation() {
   const color = useSelector(selectThemeColors);
-  const user = useAppSelector(selectUser);
-  const loading = useAppSelector(selectLoading);
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center'    
-    },    
-  });  
-
-  if (loading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color={color.primary} />
-      </View>
-    );
-  }  
-
+  const user = useAppSelector(selectUser);  
+   
   return (
     <NavigationContainer
       theme={{

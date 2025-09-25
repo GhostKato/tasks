@@ -27,7 +27,7 @@ export default function MarkedTasks() {
     });  
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container}>      
       {loading ? (
         <ActivityIndicator size="large" style={styles.flex} />
       ) : (

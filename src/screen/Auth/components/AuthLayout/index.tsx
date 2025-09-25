@@ -6,9 +6,14 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { ReactNode } from 'react';
 
-export default function AuthLayout({ children }) { 
-  
+type MyWrapperProps = {
+  children: ReactNode;
+};
+
+export default function AuthLayout({ children }: MyWrapperProps) { 
+    
   const styles = StyleSheet.create({
     mainWrapper: {
       margin: 20,
@@ -19,8 +24,8 @@ export default function AuthLayout({ children }) {
   });
   
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={[styles.mainWrapper]}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>      
+      <View style={[styles.mainWrapper]}>       
         <KeyboardAvoidingView
           keyboardVerticalOffset={Platform.select({android: 20, ios: 90})}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>

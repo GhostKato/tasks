@@ -8,7 +8,7 @@ import DefaultButton from '../../../components/DefaultButton/index';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { registerUser } from '../../../redux/auth/operations';
-import { selectLoading, selectError } from '../../../redux/auth/selectors';
+import { selectAuthLoading, selectAuthError } from '../../../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { selectTranslations } from '../../../redux/language/selector';
 import { selectThemeColors } from '../../../redux/theme/selectors';
@@ -29,8 +29,8 @@ export default function Registration() {
   const t = useSelector(selectTranslations);
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
-  const loading = useAppSelector(selectLoading);
-  const error = useAppSelector(selectError);
+  const loading = useAppSelector(selectAuthLoading);
+  const error = useAppSelector(selectAuthError);
 
   const [touched, setTouched] = useState<InputTouchedType>({
     email: false,
