@@ -16,9 +16,9 @@ export interface WidgetsState {
   isStudy: boolean;
 }
 
-const initialState: WidgetsState = {
-  isUndone: true,
-  isInProgress: true,
+export const initialState: WidgetsState = {
+  isUndone: false,
+  isInProgress: false,
   isDone: false,
   isLow: false,
   isMedium: false,
@@ -43,18 +43,18 @@ const widgetSlice = createSlice({
   state[key] = !state[key];
 
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch((e) =>
-    console.log("Помилка при збереженні widgets:", e)
+    console.log("Error saving widgets:", e)
   );
 } ,
   resetWidget() {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(initialState)).catch(
-        (e) => console.log("Помилка при скиданні widgets:", e)
+        (e) => console.log("Error resetting widgets:", e)
       );
       return initialState;
     },
     setWidget(_, action: PayloadAction<WidgetsState>) {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(action.payload)).catch(
-        (e) => console.log("Помилка при збереженні widgets:", e)
+        (e) => console.log("Error saving widgets:", e)
       );
       return action.payload;
     },
@@ -71,6 +71,6 @@ export const loadWidget = () => async (dispatch: any) => {
       dispatch(setWidget(JSON.parse(saved)));
     }
   } catch (e) {
-    console.log("Помилка при завантаженні widgets:", e);
+    console.log("Error loading widgets:", e);
   }
 };

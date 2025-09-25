@@ -6,34 +6,39 @@ import { selectThemeColors } from '../../redux/theme/selectors';
 interface SwitchButtonProps {
   isActive: boolean;  
   payload: any;
-  action: (payload: any) => any;         
+  action: (payload: any) => any;
+  disabled?: boolean;
 }
 
-export default function DefaultSwitch({ isActive, action, payload}: SwitchButtonProps) {
+export default function DefaultSwitch({ isActive, action, payload, disabled }: SwitchButtonProps) {
   const dispatch = useDispatch();
   const color = useSelector(selectThemeColors);
 
   const styles = StyleSheet.create({
-  switchContainer: {
-    width: 60,
-    height: 30,
-    borderRadius: 30,
-    padding: 2,
-    justifyContent: 'center',
-    backgroundColor: color.primary
-  },
-  thumb: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-  },
-});
+    switchContainer: {
+      width: 60,
+      height: 30,
+      borderRadius: 30,
+      padding: 2,
+      justifyContent: 'center',
+      backgroundColor: color.primary,
+      opacity: disabled ? 0.2 : 1, 
+    },
+    thumb: {
+      width: 28,
+      height: 28,
+      borderRadius: 14,
+    },
+  });
 
   return (
     <TouchableOpacity
-      style={ styles.switchContainer }
-      onPress={() => dispatch(action(payload))}
+      style={styles.switchContainer}
+      onPress={() => {
+        if (!disabled) dispatch(action(payload));
+      }}
       activeOpacity={0.8}
+      disabled={disabled}
     >
       <Animated.View
         style={[
@@ -47,5 +52,3 @@ export default function DefaultSwitch({ isActive, action, payload}: SwitchButton
     </TouchableOpacity>
   );
 }
-
-

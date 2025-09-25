@@ -59,7 +59,10 @@ export type Translations = {
     placeholderConfirmPassword: string,      
     logInBtn: string,  
     registerBtn: string,       
-  };   
+  };
+  screenHome: {
+    selectWidgets: string,        
+  };
   screenAllTasks: {
     searchInput: string,
     addBtn: string,    
@@ -180,7 +183,10 @@ taskTabBar: {
     placeholderConfirmPassword: 'Confirm Password',
     logInBtn: 'Log In',  
     registerBtn: 'Register',        
-  },  
+  },
+  screenHome: {
+    selectWidgets: 'Select widgets in the settings!',        
+  },
   screenAllTasks: {
     searchInput: 'Task search',
     addBtn: 'Add task',    
@@ -301,7 +307,10 @@ export const ua: Translations = {
     placeholderConfirmPassword: 'Підтвердити пароль',
     logInBtn: 'Увійти',  
     registerBtn: 'Зареєструватись',        
-  },  
+  }, 
+  screenHome: {
+    selectWidgets: 'Виберіть віджети в налаштуваннях!',        
+  },
   screenAllTasks: {
     searchInput: 'Пошук задачі',
     addBtn: 'Додати завдання',    
@@ -422,7 +431,10 @@ export const pl: Translations = {
     placeholderConfirmPassword: 'Potwierdź hasło',
     logInBtn: 'Logować',  
     registerBtn: 'Rejestr',        
-  },  
+  },
+  screenHome: {
+    selectWidgets: 'Wybierz widżety w ustawieniach!',        
+  },
   screenAllTasks: {
     searchInput: 'Wyszukiwanie zadań',
     addBtn: 'Dodaj zadanie',    

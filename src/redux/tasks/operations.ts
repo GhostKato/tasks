@@ -29,14 +29,9 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async (task: ITask) => {
     if (!task.id) throw new Error("Task ID is required for update");
-
-    const taskDoc = doc(db, 'tasks', task.id);
-
-    // В updateDoc не можна кидати повністю ITask, треба чистий POJO без id
+    const taskDoc = doc(db, 'tasks', task.id);    
     const { id, ...taskData } = task;
-
     await updateDoc(taskDoc, taskData as any);
-
     return task;
   }
 );
@@ -53,14 +48,11 @@ export const toggleMarked = createAsyncThunk(
   'tasks/toggleMarked',
   async ({ taskId }: { taskId: string }) => {
     const taskDoc = doc(db, 'tasks', taskId);
-
     const snapshot = await getDoc(taskDoc);
     const current = snapshot.data();
     const currentMarked = current?.isMarked ?? false;
-
     const newMarked = !currentMarked;
     await updateDoc(taskDoc, { isMarked: newMarked });
-
     return { taskId, isMarked: newMarked };
   }
 );

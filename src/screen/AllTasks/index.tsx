@@ -22,7 +22,8 @@ export default function AllTasks() {
   const navigation = useNavigation<AddTaskNavigationProp>();
 
   const tasks = useSelector(selectFilteredTasks);
-  const loading = useSelector(selectTasksLoading);  
+  const loading = useSelector(selectTasksLoading);
+  const isTasksEmpty = tasks.length === 0;
 
   const handleTaskPress = (task: ITask) => {
     navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, {
@@ -55,7 +56,9 @@ export default function AllTasks() {
 
   return (
     <View style={styles.container}>
-      <SearchBar />
+      {!(areFiltersDefault && isTasksEmpty) && (
+  <SearchBar />
+)}
       <View style={styles.flex}>
         {loading ? (
           <ActivityIndicator size="large" style={styles.flex} />
