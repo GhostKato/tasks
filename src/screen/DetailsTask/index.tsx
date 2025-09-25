@@ -174,11 +174,11 @@ export default function DetailsTask() {
               backgroundColor={color.secondary}
               text={t.screenDetailsTask.updateBtn}
               onPress={() =>
-                navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
-                  task,
-                  backPath: ScreenNames.DETAILS_TASK_PAGE,
-                })
-              }
+              navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
+                task,
+                backPath: backPath,
+              })
+            }
           />    
         </View>    
       </View>

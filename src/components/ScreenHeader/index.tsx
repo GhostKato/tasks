@@ -43,14 +43,17 @@ export default function ScreenHeader({ title, showBack=true, backPath }: ScreenH
     <View style={styles.container}>
       {displayBack ? (
         <TouchableOpacity
-          onPress={() => {
-            if (backPath) navigation.navigate(backPath as never);
-            else navigation.goBack();
-          }}
-          style={styles.backBtn}
-        >
-          <ArrowIcon />
-        </TouchableOpacity>
+   onPress={() => {
+    if (backPath) {
+      navigation.navigate(backPath as never);
+    } else {
+      navigation.goBack();
+    }
+  }}
+  style={styles.backBtn}
+>
+  <ArrowIcon />
+</TouchableOpacity>
       ) : (
         <View />
       )}

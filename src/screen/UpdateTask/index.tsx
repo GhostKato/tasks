@@ -11,10 +11,9 @@ import { selectTranslations } from "../../redux/language/selector";
 import ScreenHeader from "../../components/ScreenHeader";
 import { TaskTabBarStackType } from "../../navigation/types";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ScreenNames } from "../../constants/screenNames";
 
 type RootStackParamList = {
-  UPDATE_TASK_PAGE: { task: ITask; backPath?: ScreenNames };
+  UPDATE_TASK_PAGE: { task: ITask };
 };
 
 type UpdateTaskRouteProp = RouteProp<RootStackParamList, "UPDATE_TASK_PAGE">;
@@ -27,25 +26,18 @@ export default function UpdateTaskPage() {
   const user = useSelector(selectUser);
   const t = useSelector(selectTranslations);
 
-  const { task, backPath } = route.params;
+  const { task } = route.params;
 
   const handleUpdate = (updatedTask: ITask) => {
-    if (!user) {
-      return;
-    }
+  if (!user) return;
 
-    dispatch(updateTask({ ...updatedTask, ownerId: user.uid }))
-      .unwrap()
-      .then((savedTask) => {        
-        navigation.navigate(ScreenNames.DETAILS_TASK_PAGE, {
-          task: savedTask,
-          backPath: backPath || ScreenNames.ALL_TASKS_PAGE,
-        });
-      })
-      .catch((err) => {
-        console.error("Error updating task:", err);
-      });
-  };
+  dispatch(updateTask({ ...updatedTask, ownerId: user.uid }))
+    .unwrap()
+    .then(() => {      
+      navigation.goBack();
+    })
+    .catch((err) => console.error("Error updating task:", err));
+};
 
   if (!user) {
     return (
@@ -56,12 +48,8 @@ export default function UpdateTaskPage() {
   }
 
   return (
-    <>
-      <ScreenHeader
-        title={t.namesScreenForHeader?.updateTask}
-        backPath={backPath}
-        showBack={false}
-      />
+    <>      
+      <ScreenHeader title={t.namesScreenForHeader?.updateTask} />
       <View style={styles.container}>
         <TaskForm initialTask={task} onSubmit={handleUpdate} />
       </View>
@@ -75,8 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-   container: {
+  container: {
     flex: 1,
-    paddingHorizontal: 16,    
+    paddingHorizontal: 16,
   },
 });
