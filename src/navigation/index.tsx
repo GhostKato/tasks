@@ -8,12 +8,21 @@ import { useAppSelector } from '../redux/hooks';
 import { selectUser } from '../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../redux/theme/selectors';
+import LoaderRunningDots from '../components/LoaderRunningDots';
+import { selectAuthLoading } from '../redux/auth/selectors';
 
 const Stack = createNativeStackNavigator<RootStackNavigation>();
 
 export default function RootNavigation() {
   const color = useSelector(selectThemeColors);
-  const user = useAppSelector(selectUser);  
+  const user = useAppSelector(selectUser);
+  const isAuthLoading = useAppSelector(selectAuthLoading);  
+  
+  if (isAuthLoading) {
+    return (      
+        <LoaderRunningDots fullScreen />      
+    );
+  }
    
   return (
     <NavigationContainer

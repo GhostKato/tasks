@@ -18,6 +18,8 @@ import {
   DeadlineIcon,
 } from "../../assets/icons";
 import { AppDispatch } from "../../redux/store";
+import { selectTasksLoading } from "../../redux/tasks/selectors";
+import LoaderRunningDots from "../LoaderRunningDots";
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -26,8 +28,9 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
-  const t= useSelector(selectTranslations);
-  const dispatch = useDispatch<AppDispatch>(); 
+  const t = useSelector(selectTranslations);
+  const dispatch = useDispatch<AppDispatch>();
+   const loading = useSelector(selectTasksLoading);
   const priorityColors = {
     high: color.nonary,
     medium: color.denary,
@@ -134,8 +137,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
               {item.status === "inProgress" && <InProgressIcon color={color.quaternary}/>}
               {item.status === "done" && <DoneIcon color={color.quaternary}/>}
               <Text style={styles.infoText}>{item.status}</Text>
-            </View>
-    
+            </View>    
             {/* Category */}
             <View style={styles.infoRow}>
               {item.category === "work" && <WorkIcon color={color.quaternary} />}
@@ -143,8 +145,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
               {item.category === "study" && <StudyIcon color={color.quaternary} />}
               <Text style={styles.infoText}>{item.category}</Text>
             </View>
-          </View>
-  
+          </View>  
           {/* Deadline */}
          <View style={styles.deadlineRow}>
             <DeadlineIcon width={16} height={16} color={color.quaternary} />
@@ -159,6 +160,9 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
 
   return (
     <View style={styles.flex}>
+      {loading ? (
+              <LoaderRunningDots />
+            ) : (
       <FlatList
         data={tasks}
         style={styles.mainContainer}
@@ -166,7 +170,8 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         keyExtractor={(item, index) => item.id ?? index.toString()}
         renderItem={renderTask}
         ListEmptyComponent={() => <Text style={styles.emptyText}>{t.taskListEmpty}</Text>}
-      />
+        />
+          )}
     </View>
   );
 }

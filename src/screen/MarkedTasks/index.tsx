@@ -1,15 +1,14 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
-import { selectMarkedTasks, selectTasksLoading } from '../../redux/tasks/selectors';
+import { selectMarkedTasks } from '../../redux/tasks/selectors';
 import { ITask } from '../../types/task';
 import { ScreenNames } from '../../constants/screenNames';
 import { useNavigation } from '@react-navigation/native';
 import { MarkedNavigationProp } from '../../navigation/types';
 
 export default function MarkedTasks() {
-  const tasks = useSelector(selectMarkedTasks);
-  const loading = useSelector(selectTasksLoading);
+  const tasks = useSelector(selectMarkedTasks);  
   const navigation = useNavigation<MarkedNavigationProp>();
 
   const handleTaskPress = (task: ITask) => {
@@ -27,12 +26,8 @@ export default function MarkedTasks() {
     });  
 
   return (
-    <View style={styles.container}>      
-      {loading ? (
-        <ActivityIndicator size="large" style={styles.flex} />
-      ) : (
-        <TasksList tasks={tasks} onTaskPress={handleTaskPress} />
-      )}
+    <View style={styles.container}>    
+        <TasksList tasks={tasks} onTaskPress={handleTaskPress} />     
     </View>
   );
 }
