@@ -1,5 +1,4 @@
-{
-  "screenAuth": {
+{  
     "title": "Miło Cię powitać!",
     "text": "Ten, kto zarządza swoimi zadaniami, kontroluje swoje życie.",
     "loginizationBtn": "Logowanie",
@@ -8,6 +7,5 @@
     "placeholderPassword": "Hasło",
     "placeholderConfirmPassword": "Potwierdź hasło",
     "logInBtn": "Logować",
-    "registerBtn": "Rejestr"
-  }
+    "registerBtn": "Rejestr"  
 }

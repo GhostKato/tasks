@@ -11,7 +11,7 @@ import ScreenHeader from '../../components/ScreenHeader';
 import { useTranslation } from 'react-i18next';
 
 export default function AddTaskPage() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('namesScreenForHeader');
   const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
   const navigation = useNavigation();
@@ -35,7 +35,7 @@ export default function AddTaskPage() {
 
   return (
     <View style={styles.flex}>
-      <ScreenHeader title={t('namesScreenForHeader?.addTask')} backPath={backPath}/>
+      <ScreenHeader title={t('addTask')} backPath={backPath}/>
       <View style={styles.container}>
         <TaskForm onSubmit={handleAddTask} />
       </View>

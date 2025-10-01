@@ -26,7 +26,7 @@ export default function DetailsTask() {
   const navigation =
     useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
   const { task, backPath } = route.params as { task: ITask; backPath?: ScreenNames };
-  const { t } = useTranslation();
+  const { t } = useTranslation(['screenDetailsTask', 'namesScreenForHeader']);
   const color = useSelector(selectThemeColors);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
 

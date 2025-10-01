@@ -14,7 +14,7 @@ import { resetFilters } from '../../redux/filters/slice';
 import { useTranslation } from 'react-i18next';
 
 export default function AllTasks() {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['screenAllTasks', 'filterSettings']);
   const color = useSelector(selectThemeColors);
   const dispatch = useDispatch();
   const areFiltersDefault = useSelector(selectAreFiltersDefault);

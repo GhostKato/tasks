@@ -17,9 +17,9 @@ export default function ScreenHeader({ title, showBack=true, backPath }: ScreenH
   const navigation = useNavigation();
   const route = useRoute();
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation('namesScreenForHeader');
 
-  const screenTitle = title ?? t(`namesScreenForHeader.${route.name}`) ?? route.name;
+  const screenTitle = title ?? t(`${route.name}`) ?? route.name;
   const displayBack = showBack !== undefined ? showBack : navigation.canGoBack();
 
   const styles = StyleSheet.create({

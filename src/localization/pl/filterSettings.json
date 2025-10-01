@@ -1,5 +1,4 @@
-{
-  "filterSettings": {
+{  
     "sortByDate": "Sortuj według dodanej daty",
     "byStatusTitle": "Według stanu",
     "allTasks": "Wszystko",
@@ -27,6 +26,5 @@
       "study": "Nauka"
     },
     "showVariationsBtn": "Pokaż opcje",
-    "resetFiltersBtn": "Zresetuj filtry"
-  }
+    "resetFiltersBtn": "Zresetuj filtry"  
 }

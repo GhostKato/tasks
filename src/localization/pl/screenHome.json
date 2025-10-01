@@ -1,6 +1,4 @@
-{
-  "screenHome": {
+{ 
     "selectWidgets": "Wybierz widżety w ustawieniach!",
-    "selectWidgetsEmpty": "Wybrane widżety nie mają żadnych zadań!"
-  }
+    "selectWidgetsEmpty": "Wybrane widżety nie mają żadnych zadań!"  
 }

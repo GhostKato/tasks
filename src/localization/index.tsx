@@ -34,45 +34,9 @@ import screenHomePL from './pl/screenHome.json';
 import taskFormPL from './pl/taskForm.json';
 import taskTabBarPL from './pl/taskTabBar.json';
 
-export const mainEN = {
-  drawer: drawerEN,
-  filterSettings: filterSettingsEN,
-  global: globalEN,
-  modalConfirmDeletion: modalConfirmDeletionEN,
-  namesScreenForHeader: namesScreenForHeaderEN,
-  screenAllTasks: screenAllTasksEN,
-  screenAuth: screenAuthEN,
-  screenDetailsTask: screenDetailsTaskEN,
-  screenHome: screenHomeEN,
-  taskForm: taskFormEN,
-  taskTabBar: taskTabBarEN
-};
-
-export const mainUK = { 
-  drawer: drawerUA,
-  filterSettings: filterSettingsUA,
-  global: globalUA,
-  modalConfirmDeletion: modalConfirmDeletionUA,
-  namesScreenForHeader: namesScreenForHeaderUA,
-  screenAllTasks: screenAllTasksUA,
-  screenAuth: screenAuthUA,
-  screenDetailsTask: screenDetailsTaskUA,
-  screenHome: screenHomeUA,
-  taskForm: taskFormUA,
-  taskTabBar: taskTabBarUA
-};
-
-export const mainPL = {
-  drawer: drawerPL,
-  filterSettings: filterSettingsPL,
-  global: globalPL,
-  modalConfirmDeletion: modalConfirmDeletionPL,
-  namesScreenForHeader: namesScreenForHeaderPL,
-  screenAllTasks: screenAllTasksPL,
-  screenAuth: screenAuthPL,
-  screenDetailsTask: screenDetailsTaskPL,
-  screenHome: screenHomePL,
-  taskForm: taskFormPL,
-  taskTabBar: taskTabBarPL
+export {
+  drawerEN, filterSettingsEN, globalEN, modalConfirmDeletionEN, namesScreenForHeaderEN, screenAllTasksEN, screenAuthEN, screenDetailsTaskEN, screenHomeEN, taskFormEN, taskTabBarEN,
+  drawerUA, filterSettingsUA, globalUA, modalConfirmDeletionUA, namesScreenForHeaderUA, screenAllTasksUA, screenAuthUA, screenDetailsTaskUA, screenHomeUA, taskFormUA, taskTabBarUA,
+  drawerPL, filterSettingsPL, globalPL, modalConfirmDeletionPL, namesScreenForHeaderPL, screenAllTasksPL, screenAuthPL, screenDetailsTaskPL, screenHomePL, taskFormPL, taskTabBarPL
 };
 

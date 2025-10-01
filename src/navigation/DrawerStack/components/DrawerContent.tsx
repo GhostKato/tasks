@@ -17,7 +17,7 @@ interface Props {
 export default function DrawerContent({ navigation }: Props) {
 
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation('drawer');
 
   const styles = StyleSheet.create({
     mainWrapper: {
@@ -41,8 +41,8 @@ export default function DrawerContent({ navigation }: Props) {
       <View style={styles.contentWrapper}>
         <Tabs
           tabs={[
-            { key: 'main', title: t('drawer.main.titleTab'), content: <MainSettings /> },
-            { key: 'widget', title: t('drawer.widget.titleTab'), content: <WidgetSettings /> },
+            { key: 'main', title: t('main.titleTab'), content: <MainSettings /> },
+            { key: 'widget', title: t('widget.titleTab'), content: <WidgetSettings /> },
           ]}
         />        
       </View >

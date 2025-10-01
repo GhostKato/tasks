@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 
  const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation('taskTabBar');
   
   const hiddenScreens = [
     ScreenNames.DETAILS_TASK_PAGE,
@@ -53,15 +53,15 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
           switch (route.name) {
             case ScreenNames.HOME_PAGE:
               icon = <HomeIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t('taskTabBar.home');
+              label = t('home');
               break;
             case ScreenNames.ALL_TASKS_PAGE:
               icon = <TasksIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t('taskTabBar.allTasks');
+              label = t('allTasks');
               break;
             case ScreenNames.MARKED_TASKS_PAGE:
               icon = <MarkedIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t('taskTabBar.markedTasks');
+              label = t('markedTasks');
               break;            
           }
 

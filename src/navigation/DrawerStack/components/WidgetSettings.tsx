@@ -13,7 +13,7 @@ export default function WidgetSettings() {
   const color = useSelector(selectThemeColors);
   const widgets = useSelector(selectWidgets);
   const tasksByWidget = useSelector(selectTasksByWidget);
-  const { t } = useTranslation();
+  const { t } = useTranslation('drawer');
   const dispatch = useDispatch();
 
   const styles = StyleSheet.create({
@@ -92,7 +92,7 @@ export default function WidgetSettings() {
       ))}
       <View style={styles.btnContainer}>
         <DefaultButton 
-          text={t('drawer.widget.resetBtn')} 
+          text={t('widget.resetBtn')} 
           onPress={() => dispatch(resetWidget())}
           backgroundColor={color.nonary}
         />

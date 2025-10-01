@@ -1,6 +1,5 @@
-{
-  "screenHome": {
+{  
     "selectWidgets": "Select widgets in the settings!",
     "selectWidgetsEmpty": "The selected widgets have no tasks!"
-  }
 }
+

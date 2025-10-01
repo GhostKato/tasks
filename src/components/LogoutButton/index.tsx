@@ -6,7 +6,7 @@ import { selectThemeColors } from '../../redux/theme/selectors';
 import { useTranslation } from 'react-i18next';
 
 export default function LogoutButton() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('drawer');
   const color = useSelector(selectThemeColors);
 
   const handleLogout = async () => {
@@ -18,5 +18,5 @@ export default function LogoutButton() {
     }
   };
 
-  return <DefaultButton text={t('drawer.logOutBtn')} onPress={handleLogout} backgroundColor={color.nonary} />;
+  return <DefaultButton text={t('logOutBtn')} onPress={handleLogout} backgroundColor={color.nonary} />;
 }

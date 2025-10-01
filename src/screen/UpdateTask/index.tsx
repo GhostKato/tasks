@@ -24,7 +24,7 @@ export default function UpdateTaskPage() {
     useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
-  const { t } = useTranslation();
+  const { t } = useTranslation('namesScreenForHeader');
 
   const { task } = route.params;
 
@@ -49,7 +49,7 @@ export default function UpdateTaskPage() {
 
   return (
     <>      
-      <ScreenHeader title={t('namesScreenForHeader?.updateTask')} />
+      <ScreenHeader title={t('updateTask')} />
       <View style={styles.container}>
         <TaskForm initialTask={task} onSubmit={handleUpdate} />
       </View>

@@ -16,7 +16,7 @@ interface TaskFormProps {
 
 export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
   const color = useSelector(selectThemeColors);
-   const { t } = useTranslation();
+   const { t } = useTranslation(['taskForm', 'filterSettings']);
 
   const [title, setTitle] = useState(initialTask?.title || '');
   const [description, setDescription] = useState(initialTask?.description || '');

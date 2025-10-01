@@ -28,7 +28,7 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation('global');
   const dispatch = useDispatch<AppDispatch>();
    const loading = useSelector(selectTasksLoading);
   const priorityColors = {

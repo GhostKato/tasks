@@ -19,7 +19,7 @@ type FilterSettingsRouteProp = RouteProp<TaskTabBarStackType, ScreenNames.FILTER
 
 export default function FilterSettings() {
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation(['filterSettings', 'namesScreenForHeader']);
   const dispatch = useDispatch();
   const filters = useSelector((state: any) => state.filters as FiltersState);
   const areFiltersDefault = useSelector(selectAreFiltersDefault);
@@ -77,7 +77,7 @@ export default function FilterSettings() {
 
   return (
     <View style={styles.mainContainer}>
-      <ScreenHeader title={t('namesScreenForHeader?.filtersSettings')} backPath={backPath} />
+      <ScreenHeader title={t('namesScreenForHeader.filtersSettings')} backPath={backPath} />
 
       <ScrollView style={styles.scrollView}>
         <View style={styles.contentContainer}>

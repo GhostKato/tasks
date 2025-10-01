@@ -1,5 +1,4 @@
-{
-  "screenDetailsTask": {
+{  
     "description": "Description:",
     "priority": "Priority:",
     "status": "Status:",
@@ -8,4 +7,4 @@
     "deleteBtn": "Delete",
     "updateBtn": "Update"
   }
-}
+

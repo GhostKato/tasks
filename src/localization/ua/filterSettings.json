@@ -1,5 +1,4 @@
-{
-  "filterSettings": {
+{  
     "sortByDate": "Сортувати за датою додавання",
     "byStatusTitle": "За статусом",
     "allTasks": "Всі",
@@ -27,6 +26,5 @@
       "study": "Навчання"
     },
     "showVariationsBtn": "Показати варіанти",
-    "resetFiltersBtn": "Зкинути фільтри"
-  }
+    "resetFiltersBtn": "Зкинути фільтри"  
 }

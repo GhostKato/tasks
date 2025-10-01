@@ -1,5 +1,4 @@
-{
-  "drawer": {
+{  
     "logOutBtn": "Wylogować",
     "main": {
       "titleTab": "Główne ustawienia",
@@ -33,6 +32,5 @@
         "personal": "Osobisty",
         "study": "Nauka"
       }
-    }
-  }
+    }  
 }

@@ -1,10 +1,9 @@
-{
-  "taskForm": {
+{  
     "placeholderTitle": "Title",
     "placeholderDescription": "Description",
     "selectionDate": "Select a date",
     "selectionTime": "Select a time",
     "addTaskBtn": "Add task",
     "updateTaskBtn": "Update task"
-  }
 }
+

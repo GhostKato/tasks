@@ -1,5 +1,4 @@
-{
-  "filterSettings": {
+{  
     "sortByDate": "Sort by date added",
     "byStatusTitle": "By status",
     "allTasks": "All",
@@ -27,6 +26,5 @@
       "study": "Study"
     },
     "showVariationsBtn": "Show variations",
-    "resetFiltersBtn": "Reset filters"
-  }
+    "resetFiltersBtn": "Reset filters" 
 }

@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const widgets = useSelector(selectWidgets);
-  const { t } = useTranslation();
+  const { t } = useTranslation('screenHome');
   const color = useSelector(selectThemeColors);
   const navigation = useNavigation<StackNavigationProp<TaskTabBarStackType>>();
   const allTasks: ITask[] = useSelector(selectAllTasks);
@@ -47,7 +47,7 @@ const Home = () => {
   if (filters.length === 0) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{t('screenHome.selectWidgets')}</Text>
+        <Text style={styles.text}>{t('selectWidgets')}</Text>
       </View>
     );
   }
@@ -55,7 +55,7 @@ const Home = () => {
   if (noTasksInWidgets) {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{t('screenHome.selectWidgetsEmpty')}</Text>
+        <Text style={styles.text}>{t('selectWidgetsEmpty')}</Text>
       </View>
     );
   }

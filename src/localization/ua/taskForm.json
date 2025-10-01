@@ -1,10 +1,8 @@
-{
-  "taskForm": {
+{  
     "placeholderTitle": "Заголовок",
     "placeholderDescription": "Опис",
     "selectionDate": "Вибір дати",
     "selectionTime": "Вибір часу",
     "addTaskBtn": "Додати задачу",
-    "updateTaskBtn": "Оновити задачу"
-  }
+    "updateTaskBtn": "Оновити задачу"  
 }

@@ -26,7 +26,7 @@ export default function ModalConfirmDeletion({
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation();
+  const { t } = useTranslation('modalConfirmDeletion');
 
   const handleDelete = async () => {
     await dispatch(deleteTask(taskId));
@@ -64,19 +64,19 @@ export default function ModalConfirmDeletion({
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose}>
       <View style={styles.modalBox}>
-        <Text style={styles.title}>{t('ModalConfirmDeletion.title')}</Text>
+        <Text style={styles.title}>{t('title')}</Text>
 
         <View style={styles.actions}>
           <View style={styles.buttonContainer}>
             <DefaultButton
-              text={t('ModalConfirmDeletion.yesBtn')}
+              text={t('yesBtn')}
               onPress={handleDelete}
               backgroundColor={color.nonary}
             />
           </View>
           <View  style={styles.buttonContainer}>
             <DefaultButton
-              text={t('ModalConfirmDeletion.noBtn')}
+              text={t('noBtn')}
               onPress={onClose}
               backgroundColor={color.secondary}
             />

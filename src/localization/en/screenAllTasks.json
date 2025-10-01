@@ -1,6 +1,4 @@
-{
-  "screenAllTasks": {
+{  
     "searchInput": "Task search",
-    "addBtn": "Add task"
-  }
+    "addBtn": "Add task"  
 }

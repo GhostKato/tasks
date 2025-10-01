@@ -1,11 +1,9 @@
-{
-  "screenDetailsTask": {
+{  
     "description": "Опис:",
     "priority": "Пріоритет:",
     "status": "Статус:",
     "category": "Категорія:",
     "deadline": "Дедлайн:",
     "deleteBtn": "Видалити",
-    "updateBtn": "Оновити"
-  }
+    "updateBtn": "Оновити"  
 }

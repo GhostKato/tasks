@@ -26,7 +26,7 @@ type RegistrationValues = {
 };
 
 export default function Registration() {  
-  const { t } = useTranslation();
+  const { t } = useTranslation('screenAuth');
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectAuthLoading);
@@ -63,7 +63,7 @@ export default function Registration() {
                 onFocus={() => setTouched(prev => ({ ...prev, email: true }))}
                 value={values.email}
                 onChangeText={value => setFieldValue('email', value)}
-                placeholder={t('screenAuth.placeholderEmail')}
+                placeholder={t('placeholderEmail')}
                 error={touched.email ? errors.email : undefined}
               />
               <Input
@@ -71,7 +71,7 @@ export default function Registration() {
                 value={values.password}
                 onChangeText={value => setFieldValue('password', value)}
                 secureTextEntry
-                placeholder={t('screenAuth.placeholderPassword')}
+                placeholder={t('placeholderPassword')}
                 error={touched.password ? errors.password : undefined}
               />
               <Input
@@ -79,7 +79,7 @@ export default function Registration() {
                 value={values.confirmPassword}
                 onChangeText={value => setFieldValue('confirmPassword', value)}
                 secureTextEntry
-                placeholder={t('screenAuth.placeholderConfirmPassword')}
+                placeholder={t('placeholderConfirmPassword')}
                 error={touched.confirmPassword ? errors.confirmPassword : undefined}
               />
             </View>
@@ -92,7 +92,7 @@ export default function Registration() {
                 !values.confirmPassword ||
                 loading
               }
-              text={loading ? 'Loading...' : t('screenAuth.registerBtn')}
+              text={loading ? 'Loading...' : t('registerBtn')}
               backgroundColor={color.secondary}
             />
             {error && <Text style={{ color: color.nonary }}>{error}</Text>}

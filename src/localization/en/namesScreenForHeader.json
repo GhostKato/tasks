@@ -1,11 +1,9 @@
-{
-  "namesScreenForHeader": {
+{ 
     "home": "Home",
     "allTasks": "All tasks",
     "markedTask": "Marked task",
     "addTask": "Add task",
     "updateTask": "Update task",
     "filtersSettings": "Filters settings",
-    "detailsTask": "Task details"
-  }
+    "detailsTask": "Task details"  
 }

@@ -21,7 +21,7 @@ export default function SearchBar({ backPath }: ISearchBar) {
   const filters = useSelector((state: RootState) => state.filters);
   const dispatch = useDispatch();
   const navigation = useNavigation<SearchBarNavigationProp>();
-  const { t } = useTranslation();
+  const { t } = useTranslation('screenAllTasks');
 
   const handleSearch = useCallback(
     (text: string) => {
@@ -58,7 +58,7 @@ export default function SearchBar({ backPath }: ISearchBar) {
   return (
     <View style={styles.container}>
       <Input
-        placeholder={t('screenAllTasks.searchInput')}
+        placeholder={t('searchInput')}
         value={searchQuery}
         onChangeText={handleSearch}
         additionalContainerStyle={{ flex: 1 }}        

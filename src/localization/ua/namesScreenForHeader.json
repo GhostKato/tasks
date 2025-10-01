@@ -1,11 +1,9 @@
-{
-  "namesScreenForHeader": {
+{  
     "home": "Домашня",
     "allTasks": "Всі завдання",
     "markedTask": "Відмічене завдання",
     "addTask": "Додати завдання",
     "updateTask": "Оновити завдання",
     "filtersSettings": "Налаштування фільтрів",
-    "detailsTask": "Деталі завдання"
-  }
+    "detailsTask": "Деталі завдання"  
 }

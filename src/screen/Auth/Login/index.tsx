@@ -19,7 +19,7 @@ type InputValueType = {
 };
 
 export default function LoginPage() {  
-  const { t } = useTranslation();
+  const { t } = useTranslation('screenAuth');
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectAuthLoading);
@@ -78,10 +78,10 @@ export default function LoginPage() {
           value={inputValues.email}
           onChangeText={text => handleChangeInput('email', text)}
           error={inputValues.errorEmail}
-          placeholder={t('screenAuth.placeholderEmail')}
+          placeholder={t('placeholderEmail')}
         />
         <Input
-          placeholder={t('screenAuth.placeholderPassword')}
+          placeholder={t('placeholderPassword')}
           value={inputValues.password}
           onChangeText={text => {
             handleChangeInput('password', text);
@@ -94,7 +94,7 @@ export default function LoginPage() {
       <DefaultButton
         onPress={onLogin}
         disabled={isDisabledLoginBtn}
-        text={loading ? 'Loading...' : t('screenAuth.logInBtn')}
+        text={loading ? 'Loading...' : t('logInBtn')}
         backgroundColor={color.secondary}
       />
       {error && <Text style={{ color: color.nonary }}>{error}</Text>}
