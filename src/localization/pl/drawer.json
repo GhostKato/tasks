@@ -1,0 +1,38 @@
+{
+  "drawer": {
+    "logOutBtn": "Wylogować",
+    "main": {
+      "titleTab": "Główne ustawienia",
+      "theme": "Wybór tematu",
+      "language": "Wybór języka"
+    },
+    "widget": {
+      "titleTab": "Ustawienia widżetów",
+      "byStatusTitle": "Widżety statusu",
+      "resetBtn": "Resetuj",
+      "byStatus": {
+        "done": "Zrobione",
+        "undone": "Niespełniony",
+        "inProgress": "W toku"
+      },
+      "byPriorityTitle": "Widżety priorytetowe",
+      "byPriority": {
+        "high": "Wysoki",
+        "medium": "Średnia",
+        "low": "Niski"
+      },
+      "byDatesTitle": "Widżety daty",
+      "byDates": {
+        "today": "Dzisiaj",
+        "thisWeek": "Ten tydzień",
+        "overdue": "Zaległy"
+      },
+      "byCategoriesTitle": "Widżety kategorii",
+      "byCategories": {
+        "work": "Praca",
+        "personal": "Osobisty",
+        "study": "Nauka"
+      }
+    }
+  }
+}

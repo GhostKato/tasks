@@ -1,14 +1,14 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Modal from "react-native-modal";
-import { useNavigation } from "@react-navigation/native";
-import { useAppDispatch } from "../../redux/hooks";
-import { deleteTask } from "../../redux/tasks/operations";
-import { ScreenNames } from "../../constants/screenNames";
-import DefaultButton from "../DefaultButton";
-import { selectThemeColors } from "../../redux/theme/selectors";
-import { selectTranslations } from "../../redux/language/selector";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Modal from 'react-native-modal';
+import { useNavigation } from '@react-navigation/native';
+import { useAppDispatch } from '../../redux/hooks';
+import { deleteTask } from '../../redux/tasks/operations';
+import { ScreenNames } from '../../constants/screenNames';
+import DefaultButton from '../DefaultButton';
+import { selectThemeColors } from '../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   taskId: string;
@@ -26,7 +26,7 @@ export default function ModalConfirmDeletion({
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
   const handleDelete = async () => {
     await dispatch(deleteTask(taskId));
@@ -47,12 +47,12 @@ export default function ModalConfirmDeletion({
   title: {
     fontSize: 18,
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: 'center',
     color: color.quaternary
   },
   actions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     gap: 10
     
   },
@@ -64,19 +64,19 @@ export default function ModalConfirmDeletion({
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose}>
       <View style={styles.modalBox}>
-        <Text style={styles.title}>{t.ModalConfirmDeletion.title}</Text>
+        <Text style={styles.title}>{t('ModalConfirmDeletion.title')}</Text>
 
         <View style={styles.actions}>
           <View style={styles.buttonContainer}>
             <DefaultButton
-              text={t.ModalConfirmDeletion.yesBtn}
+              text={t('ModalConfirmDeletion.yesBtn')}
               onPress={handleDelete}
               backgroundColor={color.nonary}
             />
           </View>
           <View  style={styles.buttonContainer}>
             <DefaultButton
-              text={t.ModalConfirmDeletion.noBtn}
+              text={t('ModalConfirmDeletion.noBtn')}
               onPress={onClose}
               backgroundColor={color.secondary}
             />

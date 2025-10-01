@@ -1,19 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { selectThemeColors } from "../../../redux/theme/selectors";
-import DefaultSwitch from "../../../components/DefaultSwitch";
-import { selectTasksByWidget, selectWidgets } from "../../../redux/widgets/selectors";
-import { resetWidget, toggleWidget } from "../../../redux/widgets/slice";
-import { selectTranslations } from "../../../redux/language/selector";
-import DefaultButton from "../../../components/DefaultButton";
-import { fonts } from "../../../constants/fonts";
-import { getSwitchBlocks } from "../../../constants/widgetConfig";
+import { StyleSheet, Text, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import DefaultSwitch from '../../../components/DefaultSwitch';
+import { selectTasksByWidget, selectWidgets } from '../../../redux/widgets/selectors';
+import { resetWidget, toggleWidget } from '../../../redux/widgets/slice';
+import DefaultButton from '../../../components/DefaultButton';
+import { fonts } from '../../../constants/fonts';
+import { getSwitchBlocks } from '../../../constants/widgetConfig';
+import { useTranslation } from 'react-i18next';
 
 export default function WidgetSettings() {
   const color = useSelector(selectThemeColors);
   const widgets = useSelector(selectWidgets);
   const tasksByWidget = useSelector(selectTasksByWidget);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const styles = StyleSheet.create({
@@ -92,7 +92,7 @@ export default function WidgetSettings() {
       ))}
       <View style={styles.btnContainer}>
         <DefaultButton 
-          text={t.drawer.widget.resetBtn} 
+          text={t('drawer.widget.resetBtn')} 
           onPress={() => dispatch(resetWidget())}
           backgroundColor={color.nonary}
         />

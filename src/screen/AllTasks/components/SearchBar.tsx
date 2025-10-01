@@ -9,7 +9,7 @@ import { RootState } from '../../../redux/store';
 import { ScreenNames } from '../../../constants/screenNames';
 import { SearchBarNavigationProp } from '../../../navigation/types';
 import { setFilter } from '../../../redux/filters/slice';
-import { selectTranslations } from '../../../redux/language/selector';
+import { useTranslation } from 'react-i18next';
 
 interface ISearchBar {
   backPath?: ScreenNames;  
@@ -21,7 +21,7 @@ export default function SearchBar({ backPath }: ISearchBar) {
   const filters = useSelector((state: RootState) => state.filters);
   const dispatch = useDispatch();
   const navigation = useNavigation<SearchBarNavigationProp>();
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
   const handleSearch = useCallback(
     (text: string) => {
@@ -58,7 +58,7 @@ export default function SearchBar({ backPath }: ISearchBar) {
   return (
     <View style={styles.container}>
       <Input
-        placeholder={t.screenAllTasks.searchInput}
+        placeholder={t('screenAllTasks.searchInput')}
         value={searchQuery}
         onChangeText={handleSearch}
         additionalContainerStyle={{ flex: 1 }}        

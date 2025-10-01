@@ -1,11 +1,10 @@
-import React from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { ITask } from "../../types/task";
-import { fonts } from "../../constants/fonts";
-import { useSelector, useDispatch } from "react-redux";
-import { selectThemeColors } from "../../redux/theme/selectors";
-import { toggleMarked } from "../../redux/tasks/operations";
-import { selectTranslations } from "../../redux/language/selector";
+import React from 'react';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ITask } from '../../types/task';
+import { fonts } from '../../constants/fonts';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectThemeColors } from '../../redux/theme/selectors';
+import { toggleMarked } from '../../redux/tasks/operations';
 import {
   UndoneIcon,
   InProgressIcon,
@@ -16,10 +15,11 @@ import {
   MarkedTrueIcon,
   MarkedFalseIcon,
   DeadlineIcon,
-} from "../../assets/icons";
-import { AppDispatch } from "../../redux/store";
-import { selectTasksLoading } from "../../redux/tasks/selectors";
-import LoaderRunningDots from "../LoaderRunningDots";
+} from '../../assets/icons';
+import { AppDispatch } from '../../redux/store';
+import { selectTasksLoading } from '../../redux/tasks/selectors';
+import LoaderRunningDots from '../LoaderRunningDots';
+import { useTranslation } from 'react-i18next';
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -28,7 +28,7 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
    const loading = useSelector(selectTasksLoading);
   const priorityColors = {
@@ -50,7 +50,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       padding: 12,      
       marginVertical: 8,
       borderColor: color.quaternary,
-      position: "relative",
+      position: 'relative',
     },
     title: {
       fontFamily: fonts.MontserratSemiBold,
@@ -59,8 +59,8 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       marginBottom: 3,
     },
     infoRow: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
       gap:'10',
       marginBottom: 4
     },
@@ -73,11 +73,11 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
       fontFamily: fonts.MontserratRegular,
       fontSize: 16,
       color: color.quaternary,
-      textAlign: "center",
+      textAlign: 'center',
       marginTop: 20,
     },
     markedButton: {
-      position: "absolute",
+      position: 'absolute',
       top: 10,
       right: 10,
       padding: 6,
@@ -105,8 +105,8 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const renderTask = ({ item }: { item: ITask }) => {
     const deadlineDate = new Date(item.deadline);
     const formattedDeadline = `${deadlineDate.toLocaleDateString()} ${deadlineDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
+      hour: '2-digit',
+      minute: '2-digit',
     })}`;
 
     const backgroundColor = priorityColors[item.priority];
@@ -133,16 +133,16 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
           <View style={styles.infoIconContainer}>
             {/* Status */}
             <View style={styles.infoRow}>
-              {item.status === "undone" && <UndoneIcon color={color.quaternary}/>}
-              {item.status === "inProgress" && <InProgressIcon color={color.quaternary}/>}
-              {item.status === "done" && <DoneIcon color={color.quaternary}/>}
+              {item.status === 'undone' && <UndoneIcon color={color.quaternary}/>}
+              {item.status === 'inProgress' && <InProgressIcon color={color.quaternary}/>}
+              {item.status === 'done' && <DoneIcon color={color.quaternary}/>}
               <Text style={styles.infoText}>{item.status}</Text>
             </View>    
             {/* Category */}
             <View style={styles.infoRow}>
-              {item.category === "work" && <WorkIcon color={color.quaternary} />}
-              {item.category === "personal" && <PersonalIcon color={color.quaternary}/>}
-              {item.category === "study" && <StudyIcon color={color.quaternary} />}
+              {item.category === 'work' && <WorkIcon color={color.quaternary} />}
+              {item.category === 'personal' && <PersonalIcon color={color.quaternary}/>}
+              {item.category === 'study' && <StudyIcon color={color.quaternary} />}
               <Text style={styles.infoText}>{item.category}</Text>
             </View>
           </View>  
@@ -169,7 +169,7 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         numColumns={1}
         keyExtractor={(item, index) => item.id ?? index.toString()}
         renderItem={renderTask}
-        ListEmptyComponent={() => <Text style={styles.emptyText}>{t.taskListEmpty}</Text>}
+        ListEmptyComponent={() => <Text style={styles.emptyText}>{t('taskListEmpty')}</Text>}
         />
           )}
     </View>

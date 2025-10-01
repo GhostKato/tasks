@@ -1,10 +1,9 @@
-import { View, Text, StyleSheet } from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
-import ScreenHeader from "../../components/ScreenHeader";
-import { ITask } from "../../types/task";
-import { selectTranslations } from "../../redux/language/selector";
-import { useSelector } from "react-redux";
-import { selectThemeColors } from "../../redux/theme/selectors";
+import { View, Text, StyleSheet } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import ScreenHeader from '../../components/ScreenHeader';
+import { ITask } from '../../types/task';
+import { useSelector } from 'react-redux';
+import { selectThemeColors } from '../../redux/theme/selectors';
 import {
   DeadlineIcon,
   DoneIcon,
@@ -13,20 +12,21 @@ import {
   StudyIcon,
   UndoneIcon,
   WorkIcon,
-} from "../../assets/icons";
-import DefaultButton from "../../components/DefaultButton";
-import { TaskTabBarStackType } from "../../navigation/types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ScreenNames } from "../../constants/screenNames";
-import ModalConfirmDeletion from "../../components/ModalConfirmDeletion";
-import { useState } from "react";
+} from '../../assets/icons';
+import DefaultButton from '../../components/DefaultButton';
+import { TaskTabBarStackType } from '../../navigation/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ScreenNames } from '../../constants/screenNames';
+import ModalConfirmDeletion from '../../components/ModalConfirmDeletion';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function DetailsTask() {
   const route = useRoute();
   const navigation =
     useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
   const { task, backPath } = route.params as { task: ITask; backPath?: ScreenNames };
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const color = useSelector(selectThemeColors);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
 
@@ -45,7 +45,7 @@ export default function DetailsTask() {
     },
     titleTask: {
       fontSize: 20,
-      fontWeight: "bold",
+      fontWeight: 'bold',
       marginBottom: 10,
       color: color.secondary,
     },
@@ -58,13 +58,13 @@ export default function DetailsTask() {
       gap: 5,
     },
     itemTitle: {
-      fontWeight: "bold",
+      fontWeight: 'bold',
       color: color.quaternary,
       fontSize: 14,
     },
     itemContent: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
       gap: 10,
     },
     itemText: {
@@ -76,8 +76,8 @@ export default function DetailsTask() {
       borderRadius: 12,
     },
     actions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
       gap: 10,
     padding: 15
     },
@@ -91,30 +91,30 @@ export default function DetailsTask() {
 
   const getBackgroundColor = () => {
     switch (task.priority) {
-      case "high":
-        return "red";
-      case "medium":
-        return "yellow";
-      case "low":
-        return "green";
+      case 'high':
+        return 'red';
+      case 'medium':
+        return 'yellow';
+      case 'low':
+        return 'green';
       default:
-        return "white";
+        return 'white';
     }
   };
 
   return (
     <View style={styles.wraper}>
       <ScreenHeader
-        title={t.namesScreenForHeader.detailsTask}
+        title={t('namesScreenForHeader.detailsTask')}
         backPath={backPath}
       />
       <View style={styles.mainContainer}>
         <Text style={styles.titleTask}>{task.title}</Text>
-        <Text style={styles.itemTitle}>{t.screenDetailsTask.description}</Text>
+        <Text style={styles.itemTitle}>{t('screenDetailsTask.description')}</Text>
         <Text style={styles.descriptionTask}>{task.description}</Text>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t.screenDetailsTask.priority}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask.priority')}</Text>
           <View style={styles.itemContent}>
             <View
               style={[
@@ -127,27 +127,27 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t.screenDetailsTask.status}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask.status')}</Text>
           <View style={styles.itemContent}>
-            {task.status === "undone" && <UndoneIcon width={20} height={20} color={color.quaternary}/>}
-            {task.status === "inProgress" && (<InProgressIcon width={20} height={20} color={color.quaternary}/>)}
-            {task.status === "done" && <DoneIcon width={20} height={20} color={color.quaternary}/>}
+            {task.status === 'undone' && <UndoneIcon width={20} height={20} color={color.quaternary}/>}
+            {task.status === 'inProgress' && (<InProgressIcon width={20} height={20} color={color.quaternary}/>)}
+            {task.status === 'done' && <DoneIcon width={20} height={20} color={color.quaternary}/>}
             <Text style={styles.itemText}>{task.status}</Text>
           </View>
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t.screenDetailsTask.category}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask.category')}</Text>
           <View style={styles.itemContent}>
-            {task.category === "work" && (<WorkIcon width={20} height={20} color={color.quaternary} />)}
-            {task.category === "personal" && (<PersonalIcon width={20} height={20} color={color.quaternary}/>)}
-            {task.category === "study" && (<StudyIcon width={20} height={20} color={color.quaternary} />)}
+            {task.category === 'work' && (<WorkIcon width={20} height={20} color={color.quaternary} />)}
+            {task.category === 'personal' && (<PersonalIcon width={20} height={20} color={color.quaternary}/>)}
+            {task.category === 'study' && (<StudyIcon width={20} height={20} color={color.quaternary} />)}
             <Text style={styles.itemText}>{task.category}</Text>
           </View>
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t.screenDetailsTask.deadline}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask.deadline')}</Text>
           <View style={styles.itemContent}>
             <DeadlineIcon width={20} height={20} color={color.quaternary} />
             <Text style={styles.itemText}>{task.deadline}</Text>
@@ -164,7 +164,7 @@ export default function DetailsTask() {
       <View style={styles.actions}>
         <View style={styles.buttonDelete}>
           <DefaultButton
-              text={t.screenDetailsTask.deleteBtn}
+              text={t('screenDetailsTask.deleteBtn')}
               backgroundColor={color.nonary}
               onPress={() => setDeleteModalVisible(true)}
           />
@@ -172,7 +172,7 @@ export default function DetailsTask() {
         <View style={styles.buttonUpdate}>
           <DefaultButton
               backgroundColor={color.secondary}
-              text={t.screenDetailsTask.updateBtn}
+              text={t('screenDetailsTask.updateBtn')}
               onPress={() =>
               navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
                 task,

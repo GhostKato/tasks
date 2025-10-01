@@ -1,0 +1,7 @@
+{
+  "taskTabBar": {
+    "home": "Home",
+    "allTasks": "All",
+    "markedTasks": "Marked"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "filterSettings": {
+    "sortByDate": "Sortuj według dodanej daty",
+    "byStatusTitle": "Według stanu",
+    "allTasks": "Wszystko",
+    "byStatus": {
+      "done": "Zrobione",
+      "undone": "Niespełniony",
+      "inProgress": "W toku"
+    },
+    "byPriorityTitle": "Według priorytetu",
+    "byPriority": {
+      "high": "Wysoki",
+      "medium": "Średnia",
+      "low": "Niski"
+    },
+    "byDatesTitle": "Według dat",
+    "byDates": {
+      "today": "Dzisiaj",
+      "thisWeek": "Ten tydzień",
+      "overdue": "Zaległy"
+    },
+    "byCategoriesTitle": "Według kategorii",
+    "byCategories": {
+      "work": "Praca",
+      "personal": "Osobisty",
+      "study": "Nauka"
+    },
+    "showVariationsBtn": "Pokaż opcje",
+    "resetFiltersBtn": "Zresetuj filtry"
+  }
+}

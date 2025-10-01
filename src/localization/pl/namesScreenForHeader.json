@@ -1,0 +1,11 @@
+{
+  "namesScreenForHeader": {
+    "home": "Dom",
+    "allTasks": "Wszystkie zadania",
+    "markedTask": "Oznaczone zadanie",
+    "addTask": "Dodaj zadanie",
+    "updateTask": "Aktualizuj zadanie",
+    "filtersSettings": "Ustawienia filtrów",
+    "detailsTask": "Szczegóły zadania"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "screenAuth": {
+    "title": "Раді вітати тебе!",
+    "text": "Хто керує своїми задачами, той контролює своє життя.",
+    "loginizationBtn": "Вхід",
+    "registrationBtn": "Реєстрація",
+    "placeholderEmail": "Емейл",
+    "placeholderPassword": "Пароль",
+    "placeholderConfirmPassword": "Підтвердити пароль",
+    "logInBtn": "Увійти",
+    "registerBtn": "Зареєструватись"
+  }
+}

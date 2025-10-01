@@ -1,0 +1,7 @@
+{
+  "ModalConfirmDeletion": {
+    "title": "Confirm deletion?",
+    "yesBtn": "Yes",
+    "noBtn": "No"
+  }
+}

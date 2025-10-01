@@ -1,0 +1,13 @@
+{
+  "screenAuth": {
+    "title": "Glad to welcome you!",
+    "text": "He who manages his tasks controls his life.",
+    "loginizationBtn": "Loginization",
+    "registrationBtn": "Registration",
+    "placeholderEmail": "Email",
+    "placeholderPassword": "Password",
+    "placeholderConfirmPassword": "Confirm Password",
+    "logInBtn": "Log In",
+    "registerBtn": "Register"
+  }
+}

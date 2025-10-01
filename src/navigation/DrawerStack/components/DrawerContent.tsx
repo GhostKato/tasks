@@ -3,12 +3,12 @@ import MainHeader from '../../../components/MainHeader';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackType} from '../../../navigation/types';
 import LogoutButton from '../../../components/LogoutButton';
-import MainSettings from "./MainSettings";
-import WidgetSettings from "./WidgetSettings";
-import Tabs from "./Tabs";
+import MainSettings from './MainSettings';
+import WidgetSettings from './WidgetSettings';
+import Tabs from './Tabs';
 import { selectThemeColors } from '../../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
-import { selectTranslations } from '../../../redux/language/selector';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   navigation: DrawerNavigationProp<DrawerStackType>;
@@ -17,7 +17,7 @@ interface Props {
 export default function DrawerContent({ navigation }: Props) {
 
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
   const styles = StyleSheet.create({
     mainWrapper: {
@@ -41,8 +41,8 @@ export default function DrawerContent({ navigation }: Props) {
       <View style={styles.contentWrapper}>
         <Tabs
           tabs={[
-            { key: "main", title: t.drawer.main.titleTab, content: <MainSettings /> },
-            { key: "widget", title: t.drawer.widget.titleTab, content: <WidgetSettings /> },
+            { key: 'main', title: t('drawer.main.titleTab'), content: <MainSettings /> },
+            { key: 'widget', title: t('drawer.widget.titleTab'), content: <WidgetSettings /> },
           ]}
         />        
       </View >

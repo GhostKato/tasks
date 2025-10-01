@@ -1,14 +1,14 @@
-import { StyleSheet, View, Text } from "react-native";
-import ThemeSwitch from "../../../components/ThemeSwitch";
-import { useSelector } from "react-redux";
-import LanguageSwitch from "../../../components/LanguageSwitch";
-import { selectThemeColors } from "../../../redux/theme/selectors";
-import { selectTranslations } from "../../../redux/language/selector";
-import { fonts } from "../../../constants/fonts";
+import { StyleSheet, View, Text } from 'react-native';
+import ThemeSwitch from '../../../components/ThemeSwitch';
+import { useSelector } from 'react-redux';
+import LanguageSwitch from '../../../components/LanguageSwitch';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { fonts } from '../../../constants/fonts';
+import { useTranslation } from 'react-i18next';
 
 export default function MainSettings() {
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
   const styles = StyleSheet.create({    
     contentWrapper: {
@@ -31,9 +31,9 @@ export default function MainSettings() {
 
   return (    
     <View style={styles.contentWrapper}>
-      <Text style={styles.title}>{t.drawer.main.theme}</Text>
+      <Text style={styles.title}>{t('drawer.main.theme')}</Text>
       <ThemeSwitch />
-      <Text style={styles.title}>{t.drawer.main.language}</Text>
+      <Text style={styles.title}>{t('drawer.main.language')}</Text>
         <LanguageSwitch />
       </View>    
   );

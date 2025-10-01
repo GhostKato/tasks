@@ -8,10 +8,10 @@ import { selectUser } from '../../redux/auth/selectors';
 import { useAppDispatch } from '../../redux/hooks';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ScreenHeader from '../../components/ScreenHeader';
-import { selectTranslations } from '../../redux/language/selector';
+import { useTranslation } from 'react-i18next';
 
 export default function AddTaskPage() {
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const user = useSelector(selectUser);
   const navigation = useNavigation();
@@ -35,7 +35,7 @@ export default function AddTaskPage() {
 
   return (
     <View style={styles.flex}>
-      <ScreenHeader title={t.namesScreenForHeader?.addTask} backPath={backPath}/>
+      <ScreenHeader title={t('namesScreenForHeader?.addTask')} backPath={backPath}/>
       <View style={styles.container}>
         <TaskForm onSubmit={handleAddTask} />
       </View>

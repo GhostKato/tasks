@@ -2,11 +2,11 @@ import React from 'react';
 import { getAuth, signOut } from '@react-native-firebase/auth';
 import DefaultButton from '../DefaultButton';
 import { useSelector } from 'react-redux';
-import { selectTranslations } from '../../redux/language/selector';
 import { selectThemeColors } from '../../redux/theme/selectors';
+import { useTranslation } from 'react-i18next';
 
 export default function LogoutButton() {
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const color = useSelector(selectThemeColors);
 
   const handleLogout = async () => {
@@ -18,5 +18,5 @@ export default function LogoutButton() {
     }
   };
 
-  return <DefaultButton text={t.drawer.logOutBtn} onPress={handleLogout} backgroundColor={color.nonary} />;
+  return <DefaultButton text={t('drawer.logOutBtn')} onPress={handleLogout} backgroundColor={color.nonary} />;
 }

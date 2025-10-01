@@ -4,8 +4,8 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { ArrowIcon } from '../../assets/icons';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
-import { selectTranslations } from '../../redux/language/selector';
 import { fonts } from '../../constants/fonts';
+import { useTranslation } from 'react-i18next';
 
 type ScreenHeaderProps = {
   title?: string;
@@ -17,9 +17,9 @@ export default function ScreenHeader({ title, showBack=true, backPath }: ScreenH
   const navigation = useNavigation();
   const route = useRoute();
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
-  const screenTitle = title ?? t.namesScreenForHeader?.[route.name as keyof typeof t.namesScreenForHeader] ?? route.name;
+  const screenTitle = title ?? t(`namesScreenForHeader.${route.name}`) ?? route.name;
   const displayBack = showBack !== undefined ? showBack : navigation.canGoBack();
 
   const styles = StyleSheet.create({

@@ -1,0 +1,11 @@
+{
+  "screenDetailsTask": {
+    "description": "Description:",
+    "priority": "Priority:",
+    "status": "Status:",
+    "category": "Category:",
+    "deadline": "Deadline:",
+    "deleteBtn": "Delete",
+    "updateBtn": "Update"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "taskForm": {
+    "placeholderTitle": "Tytuł",
+    "placeholderDescription": "Opis",
+    "selectionDate": "Wybrać datę",
+    "selectionTime": "Wybrać czas",
+    "addTaskBtn": "Dodaj zadanie",
+    "updateTaskBtn": "Zadanie aktualizacji"
+  }
+}

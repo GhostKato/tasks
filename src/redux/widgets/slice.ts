@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface WidgetsState {
   isUndone: boolean;
@@ -31,10 +31,10 @@ export const initialState: WidgetsState = {
   isStudy: false,
 };
 
-const STORAGE_KEY = "widgets";
+const STORAGE_KEY = 'widgets';
 
 const widgetSlice = createSlice({
-  name: "widgets",
+  name: 'widgets',
   initialState,
   reducers: {
     toggleWidget(state, action: PayloadAction<keyof WidgetsState>) {
@@ -43,18 +43,18 @@ const widgetSlice = createSlice({
   state[key] = !state[key];
 
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch((e) =>
-    console.log("Error saving widgets:", e)
+    console.log('Error saving widgets:', e)
   );
 } ,
   resetWidget() {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(initialState)).catch(
-        (e) => console.log("Error resetting widgets:", e)
+        (e) => console.log('Error resetting widgets:', e)
       );
       return initialState;
     },
     setWidget(_, action: PayloadAction<WidgetsState>) {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(action.payload)).catch(
-        (e) => console.log("Error saving widgets:", e)
+        (e) => console.log('Error saving widgets:', e)
       );
       return action.payload;
     },
@@ -71,6 +71,6 @@ export const loadWidget = () => async (dispatch: any) => {
       dispatch(setWidget(JSON.parse(saved)));
     }
   } catch (e) {
-    console.log("Error loading widgets:", e);
+    console.log('Error loading widgets:', e);
   }
 };

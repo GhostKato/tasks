@@ -8,8 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { loginUser } from '../../../redux/auth/operations';
 import { selectAuthLoading, selectAuthError } from '../../../redux/auth/selectors';
 import { useSelector } from 'react-redux';
-import { selectTranslations } from '../../../redux/language/selector';
 import { selectThemeColors } from '../../../redux/theme/selectors';
+import { useTranslation } from 'react-i18next';
 
 type InputValueType = {
   email: string;
@@ -19,7 +19,7 @@ type InputValueType = {
 };
 
 export default function LoginPage() {  
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectAuthLoading);
@@ -78,10 +78,10 @@ export default function LoginPage() {
           value={inputValues.email}
           onChangeText={text => handleChangeInput('email', text)}
           error={inputValues.errorEmail}
-          placeholder={t.screenAuth.placeholderEmail}
+          placeholder={t('screenAuth.placeholderEmail')}
         />
         <Input
-          placeholder={t.screenAuth.placeholderPassword}
+          placeholder={t('screenAuth.placeholderPassword')}
           value={inputValues.password}
           onChangeText={text => {
             handleChangeInput('password', text);
@@ -94,7 +94,7 @@ export default function LoginPage() {
       <DefaultButton
         onPress={onLogin}
         disabled={isDisabledLoginBtn}
-        text={loading ? 'Loading...' : t.screenAuth.logInBtn}
+        text={loading ? 'Loading...' : t('screenAuth.logInBtn')}
         backgroundColor={color.secondary}
       />
       {error && <Text style={{ color: color.nonary }}>{error}</Text>}

@@ -28,7 +28,7 @@ export const addTask = createAsyncThunk('tasks/addTask', async (task: Omit<ITask
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async (task: ITask) => {
-    if (!task.id) throw new Error("Task ID is required for update");
+    if (!task.id) throw new Error('Task ID is required for update');
     const taskDoc = doc(db, 'tasks', task.id);    
     const { id, ...taskData } = task;
     await updateDoc(taskDoc, taskData as any);

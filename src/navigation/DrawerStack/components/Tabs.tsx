@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-} from "react-native";
-import { selectThemeColors } from "../../../redux/theme/selectors";
-import { useSelector } from "react-redux";
-import { fonts } from "../../../constants/fonts";
+} from 'react-native';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { useSelector } from 'react-redux';
+import { fonts } from '../../../constants/fonts';
 
 interface Tab {
   key: string;
@@ -32,10 +32,10 @@ const Tabs: React.FC<TabsProps> = ({
   const styles = StyleSheet.create({
   header: {
     height: 35,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   headerContent: {
-    alignItems: "center",
+    alignItems: 'center',
     
   },
   tabButton: {    

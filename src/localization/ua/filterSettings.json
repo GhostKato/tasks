@@ -1,0 +1,32 @@
+{
+  "filterSettings": {
+    "sortByDate": "Сортувати за датою додавання",
+    "byStatusTitle": "За статусом",
+    "allTasks": "Всі",
+    "byStatus": {
+      "done": "Виконані",
+      "undone": "Невиконані",
+      "inProgress": "У прогресі"
+    },
+    "byPriorityTitle": "За пріоритетом",
+    "byPriority": {
+      "high": "Високий",
+      "medium": "Середній",
+      "low": "Низький"
+    },
+    "byDatesTitle": "За датами",
+    "byDates": {
+      "today": "Сьогодні",
+      "thisWeek": "На тижні",
+      "overdue": "Прострочені"
+    },
+    "byCategoriesTitle": "За категоріями",
+    "byCategories": {
+      "work": "Робота",
+      "personal": "Особисте",
+      "study": "Навчання"
+    },
+    "showVariationsBtn": "Показати варіанти",
+    "resetFiltersBtn": "Зкинути фільтри"
+  }
+}

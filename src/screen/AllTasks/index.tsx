@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import TasksList from '../../components/TasksList';
 import { selectTasksLoading } from '../../redux/tasks/selectors';
 import { selectAreFiltersDefault, selectFilteredTasks } from '../../redux/filters/selectors';
-import { selectTranslations } from '../../redux/language/selector';
 import { selectThemeColors } from '../../redux/theme/selectors';
 import { useNavigation } from '@react-navigation/core';
 import { AddTaskNavigationProp } from '../../navigation/types';
@@ -12,9 +11,10 @@ import { ScreenNames } from '../../constants/screenNames';
 import { ITask } from '../../types/task';
 import SearchBar from './components/SearchBar';
 import { resetFilters } from '../../redux/filters/slice';
+import { useTranslation } from 'react-i18next';
 
 export default function AllTasks() {
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   const color = useSelector(selectThemeColors);
   const dispatch = useDispatch();
   const areFiltersDefault = useSelector(selectAreFiltersDefault);
@@ -41,8 +41,8 @@ export default function AllTasks() {
       flex: 1           
       },
       actions: {
-      flexDirection: "row",
-      justifyContent: "space-around",
+      flexDirection: 'row',
+      justifyContent: 'space-around',
         gap: 10, 
       marginHorizontal: 6
       },
@@ -73,7 +73,7 @@ export default function AllTasks() {
          <View style={styles.buttonReset}>
                 <DefaultButton
                   onPress={() => dispatch(resetFilters())}
-                  text={t.filterSettings.resetFiltersBtn}
+                  text={t('filterSettings.resetFiltersBtn')}
                   backgroundColor={color.nonary}
                 />
           </View>  
@@ -85,7 +85,7 @@ export default function AllTasks() {
                 backPath: ScreenNames.ALL_TASKS_PAGE,
               })
             }
-            text={t.screenAllTasks.addBtn}
+            text={t('screenAllTasks.addBtn')}
             backgroundColor={color.secondary}
           />
         </View>

@@ -1,0 +1,38 @@
+{
+  "drawer": {
+    "logOutBtn": "Вийти",
+    "main": {
+      "titleTab": "Головні",
+      "theme": "Вибір теми",
+      "language": "Вибір  мови"
+    },
+    "widget": {
+      "titleTab": "Віджети",
+      "byStatusTitle": "Віджети статусу",
+      "resetBtn": "Скинути",
+      "byStatus": {
+        "done": "Виконані",
+        "undone": "Невиконані",
+        "inProgress": "У процесі"
+      },
+      "byPriorityTitle": "Віджети пріоритету",
+      "byPriority": {
+        "high": "Високий",
+        "medium": "Середній",
+        "low": "Низький"
+      },
+      "byDatesTitle": "Віджети дати",
+      "byDates": {
+        "today": "Сьогодні",
+        "thisWeek": "На тижні",
+        "overdue": "Просрочені"
+      },
+      "byCategoriesTitle": "Віджети категорій",
+      "byCategories": {
+        "work": "Робота",
+        "personal": "Особисте",
+        "study": "Навчання"
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
-import { View, Animated, StyleSheet, Dimensions } from "react-native";
+import React, { useRef, useEffect } from 'react';
+import { View, Animated, StyleSheet, Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 const DOT_SIZE = 12;
 const DOTS = 8;
 const RADIUS = 40;
@@ -58,7 +58,7 @@ export default function LoaderRunningDots({ fullScreen = false }: LoaderProps) {
               {
                 transform: [{ translateX: x }, { translateY: y }, { scale }],
                 opacity,
-                backgroundColor: "#19786fff",
+                backgroundColor: '#19786fff',
               },
             ]}
           />
@@ -70,13 +70,13 @@ export default function LoaderRunningDots({ fullScreen = false }: LoaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   fullScreen: {
     width,
     height,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
   },
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
     width: DOT_SIZE,
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
-    position: "absolute",
+    position: 'absolute',
   },
 });

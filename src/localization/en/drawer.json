@@ -1,0 +1,38 @@
+{
+  "drawer": {
+    "logOutBtn": "Log Out",
+    "main": {
+      "titleTab": "Main settings",
+      "theme": "Topic selection",
+      "language": "Language selection"
+    },
+    "widget": {
+      "titleTab": "Widgets settings",
+      "byStatusTitle": "Status widgets",
+      "resetBtn": "Reset",
+      "byStatus": {
+        "done": "Done",
+        "undone": "Undone",
+        "inProgress": "In progress"
+      },
+      "byPriorityTitle": "Priority widgets",
+      "byPriority": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "byDatesTitle": "Date widgets",
+      "byDates": {
+        "today": "Today",
+        "thisWeek": "This week",
+        "overdue": "Overdue"
+      },
+      "byCategoriesTitle": "Category widgets",
+      "byCategories": {
+        "work": "Work",
+        "personal": "Personal",
+        "study": "Study"
+      }
+    }
+  }
+}

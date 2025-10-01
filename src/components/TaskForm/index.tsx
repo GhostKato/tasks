@@ -6,8 +6,8 @@ import DefaultButton from '../../components/DefaultButton';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
-import { selectTranslations } from '../../redux/language/selector';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 
 interface TaskFormProps {
   initialTask?: ITask;
@@ -16,7 +16,7 @@ interface TaskFormProps {
 
 export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
   const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+   const { t } = useTranslation();
 
   const [title, setTitle] = useState(initialTask?.title || '');
   const [description, setDescription] = useState(initialTask?.description || '');
@@ -78,9 +78,9 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
   return (
     <ScrollView style={styles.container}>
-      <Input placeholder={t.TaskForm.placeholderTitle} value={title} onChangeText={setTitle} />
+      <Input placeholder={t('taskForm.placeholderTitle')} value={title} onChangeText={setTitle} />
       <Input
-        placeholder={t.TaskForm.placeholderTitle}
+        placeholder={t('taskForm.placeholderTitle')}
         value={description}
         onChangeText={setDescription}
         multiline={true}
@@ -89,12 +89,12 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
       {initialTask && (
         <>
-          <Text style={styles.label}>{t.filterSettings.byStatusTitle}</Text>
+          <Text style={styles.label}>{t('filterSettings.byStatusTitle')}</Text>
           <FilterSwitch<'done' | 'undone' | 'inProgress'>
             items={[
-              { text: t.filterSettings.byStatus.undone, id: 'undone' as const },                           
-              { text: t.filterSettings.byStatus.inProgress, id: 'inProgress' as const },
-              { text: t.filterSettings.byStatus.done, id: 'done' as const }, 
+              { text: t('filterSettings.byStatus.undone'), id: 'undone' as const },                           
+              { text: t('filterSettings.byStatus.inProgress'), id: 'inProgress' as const },
+              { text: t('filterSettings.byStatus.done'), id: 'done' as const }, 
             ]}
             active={status}
             handleSwitch={(item) => setStatus(item.id)}
@@ -102,29 +102,29 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         </>
       )}
 
-      <Text style={styles.label}>{t.filterSettings.byPriorityTitle}</Text>
+      <Text style={styles.label}>{t('filterSettings.byPriorityTitle')}</Text>
       <FilterSwitch<'high' | 'medium' | 'low'>
         items={[
-        { text: t.filterSettings.byPriority.low, id: 'low' as const },
-        { text: t.filterSettings.byPriority.medium, id: 'medium' as const },
-        { text: t.filterSettings.byPriority.high, id: 'high' as const },         
+        { text: t('filterSettings.byPriority.low'), id: 'low' as const },
+        { text: t('filterSettings.byPriority.medium'), id: 'medium' as const },
+        { text: t('filterSettings.byPriority.high'), id: 'high' as const },         
               ]}
         active={priority}
         handleSwitch={(item) => setPriority(item.id)}
       />
 
-      <Text style={styles.label}>{t.filterSettings.byCategoriesTitle}</Text>
+      <Text style={styles.label}>{t('filterSettings.byCategoriesTitle')}</Text>
       <FilterSwitch<'work' | 'personal' | 'study'>
         items={[
-          { text: t.filterSettings.byCategories.work, id: 'work' as const },
-          { text: t.filterSettings.byCategories.personal, id: 'personal' as const },
-          { text: t.filterSettings.byCategories.study, id: 'study' as const },
+          { text: t('filterSettings.byCategories.work'), id: 'work' as const },
+          { text: t('filterSettings.byCategories.personal'), id: 'personal' as const },
+          { text: t('filterSettings.byCategories.study'), id: 'study' as const },
         ]}
         active={category}
         handleSwitch={(item) => setCategory(item.id)}
       />
 
-      <Text style={styles.label}>{t.TaskForm.selectionDate}</Text>
+      <Text style={styles.label}>{t('taskForm.selectionDate')}</Text>
       <TouchableOpacity
         onPress={() => setShowDatePicker(true)}
         style={styles.touchableOpacityStyle}
@@ -150,7 +150,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
         />
       )}
 
-      <Text style={styles.label}>{t.TaskForm.selectionTime}</Text>
+      <Text style={styles.label}>{t('taskForm.selectionTime')}</Text>
       <TouchableOpacity
         onPress={() => setShowTimePicker(true)}
         style={styles.touchableOpacityStyle}
@@ -180,7 +180,7 @@ export default function TaskForm({ initialTask, onSubmit }: TaskFormProps) {
 
       <View style={styles.btnContainer}>
         <DefaultButton
-          text={initialTask ? t.TaskForm.updateTaskBtn : t.TaskForm.addTaskBtn}
+          text={initialTask ? t('taskForm.updateTaskBtn') : t('taskForm.addTaskBtn')}
           onPress={handleSave}
           backgroundColor={color.secondary}
         />

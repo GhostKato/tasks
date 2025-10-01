@@ -5,12 +5,12 @@ import { MarkedIcon, HomeIcon, TasksIcon } from '../../assets/icons';
 import { ScreenNames } from '../../constants/screenNames';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
-import { selectTranslations } from '../../redux/language/selector';
+import { useTranslation } from 'react-i18next';
 
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 
  const color = useSelector(selectThemeColors);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
   
   const hiddenScreens = [
     ScreenNames.DETAILS_TASK_PAGE,
@@ -53,15 +53,15 @@ export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {
           switch (route.name) {
             case ScreenNames.HOME_PAGE:
               icon = <HomeIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t.taskTabBar.home;
+              label = t('taskTabBar.home');
               break;
             case ScreenNames.ALL_TASKS_PAGE:
               icon = <TasksIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t.taskTabBar.allTasks;
+              label = t('taskTabBar.allTasks');
               break;
             case ScreenNames.MARKED_TASKS_PAGE:
               icon = <MarkedIcon isFocused={focused} inactiveColor={color.senary} activeColor={color.secondary} />;
-              label = t.taskTabBar.markedTasks;
+              label = t('taskTabBar.markedTasks');
               break;            
           }
 

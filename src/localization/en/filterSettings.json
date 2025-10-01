@@ -1,0 +1,32 @@
+{
+  "filterSettings": {
+    "sortByDate": "Sort by date added",
+    "byStatusTitle": "By status",
+    "allTasks": "All",
+    "byStatus": {
+      "done": "Done",
+      "undone": "Undone",
+      "inProgress": "In progress"
+    },
+    "byPriorityTitle": "By priority",
+    "byPriority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "byDatesTitle": "By dates",
+    "byDates": {
+      "today": "Today",
+      "thisWeek": "This week",
+      "overdue": "Overdue"
+    },
+    "byCategoriesTitle": "By categories",
+    "byCategories": {
+      "work": "Work",
+      "personal": "Personal",
+      "study": "Study"
+    },
+    "showVariationsBtn": "Show variations",
+    "resetFiltersBtn": "Reset filters"
+  }
+}

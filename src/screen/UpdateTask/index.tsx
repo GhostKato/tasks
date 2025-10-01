@@ -1,22 +1,22 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import TaskForm from "../../components/TaskForm";
-import { updateTask } from "../../redux/tasks/operations";
-import { selectUser } from "../../redux/auth/selectors";
-import { AppDispatch } from "../../redux/store";
-import { ITask } from "../../types/task";
-import { selectTranslations } from "../../redux/language/selector";
-import ScreenHeader from "../../components/ScreenHeader";
-import { TaskTabBarStackType } from "../../navigation/types";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import TaskForm from '../../components/TaskForm';
+import { updateTask } from '../../redux/tasks/operations';
+import { selectUser } from '../../redux/auth/selectors';
+import { AppDispatch } from '../../redux/store';
+import { ITask } from '../../types/task';
+import ScreenHeader from '../../components/ScreenHeader';
+import { TaskTabBarStackType } from '../../navigation/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 type RootStackParamList = {
   UPDATE_TASK_PAGE: { task: ITask };
 };
 
-type UpdateTaskRouteProp = RouteProp<RootStackParamList, "UPDATE_TASK_PAGE">;
+type UpdateTaskRouteProp = RouteProp<RootStackParamList, 'UPDATE_TASK_PAGE'>;
 
 export default function UpdateTaskPage() {
   const route = useRoute<UpdateTaskRouteProp>();
@@ -24,7 +24,7 @@ export default function UpdateTaskPage() {
     useNavigation<NativeStackNavigationProp<TaskTabBarStackType>>();
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
-  const t = useSelector(selectTranslations);
+  const { t } = useTranslation();
 
   const { task } = route.params;
 
@@ -36,7 +36,7 @@ export default function UpdateTaskPage() {
     .then(() => {      
       navigation.goBack();
     })
-    .catch((err) => console.error("Error updating task:", err));
+    .catch((err) => console.error('Error updating task:', err));
 };
 
   if (!user) {
@@ -49,7 +49,7 @@ export default function UpdateTaskPage() {
 
   return (
     <>      
-      <ScreenHeader title={t.namesScreenForHeader?.updateTask} />
+      <ScreenHeader title={t('namesScreenForHeader?.updateTask')} />
       <View style={styles.container}>
         <TaskForm initialTask={task} onSubmit={handleUpdate} />
       </View>
@@ -60,8 +60,8 @@ export default function UpdateTaskPage() {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   container: {
     flex: 1,
