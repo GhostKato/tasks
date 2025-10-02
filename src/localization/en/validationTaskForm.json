@@ -1,0 +1,10 @@
+{
+  "titleTooShort": "Must be from 3 characters",
+  "titleTooLong": "Must be up to 45 characters",
+  "titleRequired": "Title is required",
+  "descTooShort": "Must be from 5 characters",
+  "descTooLong": "Must be up to 200 characters",
+  "descRequired": "Description is required",
+  "deadlinePast": "There can be no deadline in the past",
+  "deadlineRequired": "Deadline is required"
+}

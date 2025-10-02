@@ -2,10 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getAuth,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
+  createUserWithEmailAndPassword,  
 } from '@react-native-firebase/auth';
 import { serializeUser, SerializedUser } from '../../utils/serializeUser';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 export const loginUser = createAsyncThunk<
   SerializedUser,
@@ -48,9 +49,10 @@ export const registerUser = createAsyncThunk<
 export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, { rejectWithValue }) => {
-    try {
-      const auth = getAuth();
-      await signOut(auth);
+    try {      
+      await firestore().terminate();    
+      await firestore().clearPersistence();      
+      await auth().signOut();
       return true;
     } catch (e: any) {
       return rejectWithValue(e.message);

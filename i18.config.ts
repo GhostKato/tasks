@@ -1,9 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { getLocales } from 'react-native-localize';
-import { drawerEN, filterSettingsEN, globalEN, modalConfirmDeletionEN, namesScreenForHeaderEN, screenAllTasksEN, screenAuthEN, screenDetailsTaskEN, screenHomeEN, taskFormEN, taskTabBarEN,
-  drawerUA, filterSettingsUA, globalUA, modalConfirmDeletionUA, namesScreenForHeaderUA, screenAllTasksUA, screenAuthUA, screenDetailsTaskUA, screenHomeUA, taskFormUA, taskTabBarUA,
-  drawerPL, filterSettingsPL, globalPL, modalConfirmDeletionPL, namesScreenForHeaderPL, screenAllTasksPL, screenAuthPL, screenDetailsTaskPL, screenHomePL, taskFormPL, taskTabBarPL } from './src/localization';
+import { drawerEN, filterSettingsEN, globalEN, modalConfirmDeletionEN, namesScreenForHeaderEN, screenAllTasksEN, screenAuthEN, screenDetailsTaskEN, screenHomeEN, taskFormEN, taskTabBarEN, validationTaskFormEN,
+  drawerUA, filterSettingsUA, globalUA, modalConfirmDeletionUA, namesScreenForHeaderUA, screenAllTasksUA, screenAuthUA, screenDetailsTaskUA, screenHomeUA, taskFormUA, taskTabBarUA, validationTaskFormUA,
+  drawerPL, filterSettingsPL, globalPL, modalConfirmDeletionPL, namesScreenForHeaderPL, screenAllTasksPL, screenAuthPL, screenDetailsTaskPL, screenHomePL, taskFormPL, taskTabBarPL, validationTaskFormPL } from './src/localization';
 
 const resources = {
   en: {
@@ -18,6 +18,7 @@ const resources = {
     screenHome: screenHomeEN,
     taskForm: taskFormEN,
     taskTabBar: taskTabBarEN,
+    validationTaskForm: validationTaskFormEN
   },
   uk: {
     drawer: drawerUA,
@@ -31,6 +32,7 @@ const resources = {
     screenHome: screenHomeUA,
     taskForm: taskFormUA,
     taskTabBar: taskTabBarUA,
+     validationTaskForm: validationTaskFormUA
   },
   pl: {
     drawer: drawerPL,
@@ -44,6 +46,7 @@ const resources = {
     screenHome: screenHomePL,
     taskForm: taskFormPL,
     taskTabBar: taskTabBarPL,
+    validationTaskForm: validationTaskFormPL
   }
 };
 

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITask } from '../../types/task';
 import { fetchTasks, addTask, updateTask, deleteTask, toggleMarked } from './operations';
+import { logoutUser } from '../auth/operations';
 
 interface TasksState {
   allTasks: ITask[];
@@ -53,8 +54,12 @@ const tasksSlice = createSlice({
         );
         state.allTasks = updatedTasks;
         state.markedTasks = updatedTasks.filter(t => t.isMarked);
-      });
-  },
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.allTasks = [];
+        state.markedTasks = [];
+    });
+  }, 
 });
 
 export default tasksSlice.reducer;

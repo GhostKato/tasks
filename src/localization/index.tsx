@@ -9,6 +9,7 @@ import screenDetailsTaskEN from './en/screenDetailsTask.json';
 import screenHomeEN from './en/screenHome.json';
 import taskFormEN from './en/taskForm.json';
 import taskTabBarEN from './en/taskTabBar.json';
+import validationTaskFormEN from './en/validationTaskForm.json';
 
 import drawerUA from './ua/drawer.json';
 import filterSettingsUA from './ua/filterSettings.json';
@@ -21,6 +22,7 @@ import screenDetailsTaskUA from './ua/screenDetailsTask.json';
 import screenHomeUA from './ua/screenHome.json';
 import taskFormUA from './ua/taskForm.json';
 import taskTabBarUA from './ua/taskTabBar.json';
+import validationTaskFormUA from './ua/validationTaskForm.json';
 
 import drawerPL from './pl/drawer.json';
 import filterSettingsPL from './pl/filterSettings.json';
@@ -33,10 +35,11 @@ import screenDetailsTaskPL from './pl/screenDetailsTask.json';
 import screenHomePL from './pl/screenHome.json';
 import taskFormPL from './pl/taskForm.json';
 import taskTabBarPL from './pl/taskTabBar.json';
+import validationTaskFormPL from './pl/validationTaskForm.json';
 
 export {
-  drawerEN, filterSettingsEN, globalEN, modalConfirmDeletionEN, namesScreenForHeaderEN, screenAllTasksEN, screenAuthEN, screenDetailsTaskEN, screenHomeEN, taskFormEN, taskTabBarEN,
-  drawerUA, filterSettingsUA, globalUA, modalConfirmDeletionUA, namesScreenForHeaderUA, screenAllTasksUA, screenAuthUA, screenDetailsTaskUA, screenHomeUA, taskFormUA, taskTabBarUA,
-  drawerPL, filterSettingsPL, globalPL, modalConfirmDeletionPL, namesScreenForHeaderPL, screenAllTasksPL, screenAuthPL, screenDetailsTaskPL, screenHomePL, taskFormPL, taskTabBarPL
+  drawerEN, filterSettingsEN, globalEN, modalConfirmDeletionEN, namesScreenForHeaderEN, screenAllTasksEN, screenAuthEN, screenDetailsTaskEN, screenHomeEN, taskFormEN, taskTabBarEN, validationTaskFormEN,
+  drawerUA, filterSettingsUA, globalUA, modalConfirmDeletionUA, namesScreenForHeaderUA, screenAllTasksUA, screenAuthUA, screenDetailsTaskUA, screenHomeUA, taskFormUA, taskTabBarUA, validationTaskFormUA,
+  drawerPL, filterSettingsPL, globalPL, modalConfirmDeletionPL, namesScreenForHeaderPL, screenAllTasksPL, screenAuthPL, screenDetailsTaskPL, screenHomePL, taskFormPL, taskTabBarPL, validationTaskFormPL
 };
 

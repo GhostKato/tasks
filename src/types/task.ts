@@ -16,7 +16,7 @@ export interface ITask {
   category: 'work' | 'personal' | 'study';
   deadline: string;
   isMarked: boolean;
-  ownerId: string;
+  ownerId?: string;
 }
 
 

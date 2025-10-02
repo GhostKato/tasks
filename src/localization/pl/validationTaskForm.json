@@ -1,0 +1,10 @@
+{
+  "titleTooShort": "Musi pochodzić z 3 znaków",
+  "titleTooLong": "Musi mieć do 45 znaków",
+  "titleRequired": "Tytuł jest wymagany",
+  "descTooShort": "Musi pochodzić z 5 znaków",
+  "descTooLong": "Musi mieć do 200 znaków",
+  "descRequired": "Opis jest obowiązkowy",
+  "deadlinePast": "W przeszłości nie może być żadnego terminu",
+  "deadlineRequired": "Termin jest obowiązkowy"
+}
