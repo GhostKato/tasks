@@ -73,7 +73,7 @@ export default function AllTasks() {
          <View style={styles.buttonReset}>
                 <DefaultButton
                   onPress={() => dispatch(resetFilters())}
-                  text={t('filterSettings.resetFiltersBtn')}
+                  text={t('filterSettings:resetFiltersBtn')}
                   backgroundColor={color.nonary}
                 />
           </View>  
@@ -85,7 +85,7 @@ export default function AllTasks() {
                 backPath: ScreenNames.ALL_TASKS_PAGE,
               })
             }
-            text={t('screenAllTasks.addBtn')}
+            text={t('screenAllTasks:addBtn')}
             backgroundColor={color.secondary}
           />
         </View>

@@ -105,16 +105,16 @@ export default function DetailsTask() {
   return (
     <View style={styles.wraper}>
       <ScreenHeader
-        title={t('namesScreenForHeader.detailsTask')}
+        title={t('namesScreenForHeader:detailsTask')}
         backPath={backPath}
       />
       <View style={styles.mainContainer}>
         <Text style={styles.titleTask}>{task.title}</Text>
-        <Text style={styles.itemTitle}>{t('screenDetailsTask.description')}</Text>
+        <Text style={styles.itemTitle}>{t('screenDetailsTask:description')}</Text>
         <Text style={styles.descriptionTask}>{task.description}</Text>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t('screenDetailsTask.priority')}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask:priority')}</Text>
           <View style={styles.itemContent}>
             <View
               style={[
@@ -127,7 +127,7 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t('screenDetailsTask.status')}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask:status')}</Text>
           <View style={styles.itemContent}>
             {task.status === 'undone' && <UndoneIcon width={20} height={20} color={color.quaternary}/>}
             {task.status === 'inProgress' && (<InProgressIcon width={20} height={20} color={color.quaternary}/>)}
@@ -137,7 +137,7 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t('screenDetailsTask.category')}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask:category')}</Text>
           <View style={styles.itemContent}>
             {task.category === 'work' && (<WorkIcon width={20} height={20} color={color.quaternary} />)}
             {task.category === 'personal' && (<PersonalIcon width={20} height={20} color={color.quaternary}/>)}
@@ -147,7 +147,7 @@ export default function DetailsTask() {
         </View>
 
         <View style={styles.itemContainer}>
-          <Text style={styles.itemTitle}>{t('screenDetailsTask.deadline')}</Text>
+          <Text style={styles.itemTitle}>{t('screenDetailsTask:deadline')}</Text>
           <View style={styles.itemContent}>
             <DeadlineIcon width={20} height={20} color={color.quaternary} />
             <Text style={styles.itemText}>{task.deadline}</Text>
@@ -164,7 +164,7 @@ export default function DetailsTask() {
       <View style={styles.actions}>
         <View style={styles.buttonDelete}>
           <DefaultButton
-              text={t('screenDetailsTask.deleteBtn')}
+              text={t('screenDetailsTask:deleteBtn')}
               backgroundColor={color.nonary}
               onPress={() => setDeleteModalVisible(true)}
           />
@@ -172,7 +172,7 @@ export default function DetailsTask() {
         <View style={styles.buttonUpdate}>
           <DefaultButton
               backgroundColor={color.secondary}
-              text={t('screenDetailsTask.updateBtn')}
+              text={t('screenDetailsTask:updateBtn')}
               onPress={() =>
               navigation.navigate(ScreenNames.UPDATE_TASK_PAGE, {
                 task,

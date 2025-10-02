@@ -1,19 +1,20 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLanguage } from '../../redux/language/slice';
+import { useSelector } from 'react-redux';
+import { changeLanguage } from '../../redux/language/slice';
 import { selectLanguage } from '../../redux/language/selector';
 import { selectThemeColors } from '../../redux/theme/selectors';
+import { useAppDispatch } from '../../redux/hooks';
 
 const languageToISO: Record<string, string> = {  
   en: 'US', 
-  ua: 'UA',
+  uk: 'UA',
   pl: 'PL',
 };
 
 export default function LanguageSwitch() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const language = useSelector(selectLanguage);
   const color = useSelector(selectThemeColors);
@@ -41,7 +42,7 @@ export default function LanguageSwitch() {
   return (
     <View key={lang}>
       <TouchableOpacity
-        onPress={() => dispatch(setLanguage(lang as 'ua' | 'en' | 'pl'))}
+        onPress={() => dispatch(changeLanguage(lang as 'uk' | 'en' | 'pl'))}
         style={[styles.flagWrapper, isActive && styles.activeFlag]}
       >
         <CountryFlag isoCode={languageToISO[lang]} size={40} />
@@ -49,7 +50,6 @@ export default function LanguageSwitch() {
     </View>
   );
 })}
-
     </View>
   );
 }

@@ -77,7 +77,7 @@ export default function FilterSettings() {
 
   return (
     <View style={styles.mainContainer}>
-      <ScreenHeader title={t('namesScreenForHeader.filtersSettings')} backPath={backPath} />
+      <ScreenHeader title={t('namesScreenForHeader:filtersSettings')} backPath={backPath} />
 
       <ScrollView style={styles.scrollView}>
         <View style={styles.contentContainer}>
@@ -86,56 +86,56 @@ export default function FilterSettings() {
             <View style={styles.activeSortByTime}>
               {filters.timeStamp && <View style={styles.checkedSortByTime} />}
             </View>
-            <Text style={styles.sortByTimeText}>{t('filterSettings.sortByDate')}</Text>
+            <Text style={styles.sortByTimeText}>{t('filterSettings:sortByDate')}</Text>
           </TouchableOpacity>
 
           {/* Status */}
-          <Text style={styles.btnText}>{t('filterSettings.byStatusTitle')}</Text>
+          <Text style={styles.btnText}>{t('filterSettings:byStatusTitle')}</Text>
           <FilterSwitch<'done' | 'undone' | 'inProgress' | null>
             items={[
-              { text: t('filterSettings.allTasks'), id: null },
-              { text: t('filterSettings.byStatus.undone'), id: 'undone' },
-              { text: t('filterSettings.byStatus.inProgress'), id: 'inProgress' },
-              { text: t('filterSettings.byStatus.done'), id: 'done' },
+              { text: t('filterSettings:allTasks'), id: null },
+              { text: t('filterSettings:byStatus.undone'), id: 'undone' },
+              { text: t('filterSettings:byStatus.inProgress'), id: 'inProgress' },
+              { text: t('filterSettings:byStatus.done'), id: 'done' },
             ]}
             active={filters.status}
             handleSwitch={item => dispatch(setFilter({ key: 'status', value: item.id }))}
           />
 
           {/* Priority */}
-          <Text style={styles.btnText}>{t('filterSettings.byPriorityTitle')}</Text>
+          <Text style={styles.btnText}>{t('filterSettings:byPriorityTitle')}</Text>
           <FilterSwitch<'high' | 'medium' | 'low' | null>
             items={[
-              { text: t('filterSettings.allTasks'), id: null },
-              { text: t('filterSettings.byPriority.low'), id: 'low' },
-              { text: t('filterSettings.byPriority.medium'), id: 'medium' },
-              { text: t('filterSettings.byPriority.high'), id: 'high' },
+              { text: t('filterSettings:allTasks'), id: null },
+              { text: t('filterSettings:byPriority.low'), id: 'low' },
+              { text: t('filterSettings:byPriority.medium'), id: 'medium' },
+              { text: t('filterSettings:byPriority.high'), id: 'high' },
             ]}
             active={filters.priority}
             handleSwitch={item => dispatch(setFilter({ key: 'priority', value: item.id }))}
           />
 
           {/* Dates */}
-          <Text style={styles.btnText}>{t('filterSettings.byDatesTitle')}</Text>
+          <Text style={styles.btnText}>{t('filterSettings:byDatesTitle')}</Text>
           <FilterSwitch<'today' | 'week' | 'overdue' | null>
             items={[
-              { text: t('filterSettings.allTasks'), id: null },
-              { text: t('filterSettings.byDates.today'), id: 'today' },
-              { text: t('filterSettings.byDates.thisWeek'), id: 'week' },
-              { text: t('filterSettings.byDates.overdue'), id: 'overdue' },
+              { text: t('filterSettings:allTasks'), id: null },
+              { text: t('filterSettings:byDates.today'), id: 'today' },
+              { text: t('filterSettings:byDates.thisWeek'), id: 'week' },
+              { text: t('filterSettings:byDates.overdue'), id: 'overdue' },
             ]}
             active={filters.date}
             handleSwitch={item => dispatch(setFilter({ key: 'date', value: item.id }))}
           />
 
           {/* Categories */}
-          <Text style={styles.btnText}>{t('filterSettings.byCategoriesTitle')}</Text>
+          <Text style={styles.btnText}>{t('filterSettings:byCategoriesTitle')}</Text>
           <FilterSwitch<'work' | 'personal' | 'study' | null>
             items={[
-              { text: t('filterSettings.allTasks'), id: null },
-              { text: t('filterSettings.byCategories.work'), id: 'work' },
-              { text: t('filterSettings.byCategories.personal'), id: 'personal' },
-              { text: t('filterSettings.byCategories.study'), id: 'study' },
+              { text: t('filterSettings:allTasks'), id: null },
+              { text: t('filterSettings:byCategories.work'), id: 'work' },
+              { text: t('filterSettings:byCategories.personal'), id: 'personal' },
+              { text: t('filterSettings:byCategories.study'), id: 'study' },
             ]}
             active={filters.category}
             handleSwitch={item => dispatch(setFilter({ key: 'category', value: item.id }))}
@@ -146,7 +146,7 @@ export default function FilterSettings() {
             <View style={styles.buttonReset}>
               <DefaultButton
                 onPress={() => dispatch(resetFilters())}
-                text={t('filterSettings.resetFiltersBtn')}
+                text={t('filterSettings:resetFiltersBtn')}
                 backgroundColor={color.nonary}
               />
             </View>  
@@ -159,7 +159,7 @@ export default function FilterSettings() {
                     backPath: backPath,
                   })
                 }
-                text={t('filterSettings.showVariationsBtn')}
+                text={t('filterSettings:showVariationsBtn')}
                 backgroundColor={color.secondary}
               />
             </View>

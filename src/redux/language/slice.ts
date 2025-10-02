@@ -1,21 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from '../../../i18.config';
-import { en, ua, pl, Translations } from '../../constants/translations';
 import { AppDispatch } from '../store';
 
 const LANGUAGE_KEY = 'APP_LANGUAGE';
 
-export type LanguageCode = 'en' | 'ua' | 'pl';
+export type LanguageCode = 'en' | 'uk' | 'pl';
 
-interface LanguageState {
-  language: LanguageCode;  
+export interface ILanguageState {
+  language: LanguageCode;
 }
 
-const translationsMap: Record<LanguageCode, Translations> = { en, ua, pl };
-
-const initialState: LanguageState = {
-  language: 'en',  
+const initialState: ILanguageState = {
+  language: 'en',
 };
 
 const languageSlice = createSlice({
@@ -23,13 +20,7 @@ const languageSlice = createSlice({
   initialState,
   reducers: {
     setLanguage(state, action: PayloadAction<LanguageCode>) {
-      state.language = action.payload;     
-      
-      AsyncStorage.setItem(LANGUAGE_KEY, action.payload).catch((e) =>
-        console.error('Error saving language:', e)
-      );
-      
-      i18n.changeLanguage(action.payload);
+      state.language = action.payload;
     },
   },
 });
@@ -37,10 +28,22 @@ const languageSlice = createSlice({
 export const { setLanguage } = languageSlice.actions;
 export default languageSlice.reducer;
 
+export const changeLanguage =
+  (lang: LanguageCode) => async (dispatch: AppDispatch) => {
+    try {
+      await AsyncStorage.setItem(LANGUAGE_KEY, lang);
+      i18n.changeLanguage(lang);
+      dispatch(setLanguage(lang));
+    } catch (e) {
+      console.error('Error saving language:', e);
+    }
+  };
+
 export const loadLanguage = () => async (dispatch: AppDispatch) => {
   try {
     const stored = (await AsyncStorage.getItem(LANGUAGE_KEY)) as LanguageCode | null;
-    if (stored && stored in translationsMap) {
+    if (stored) {
+      i18n.changeLanguage(stored);
       dispatch(setLanguage(stored));
     }
   } catch (e) {
