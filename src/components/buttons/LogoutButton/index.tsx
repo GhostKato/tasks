@@ -2,7 +2,7 @@ import React from 'react';
 import { getAuth, signOut } from '@react-native-firebase/auth';
 import DefaultButton from '../DefaultButton';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 import { useTranslation } from 'react-i18next';
 
 export default function LogoutButton() {

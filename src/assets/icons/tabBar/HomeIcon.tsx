@@ -18,7 +18,7 @@ export default function HomeIcon({inactiveColor, activeColor, isFocused = false}
     <G clipPath="url(#clip0_90_362)">
       <Path
         fill={isFocused ? activeColor : 'none'}
-        stroke={!isFocused ? inactiveColor : null}
+        stroke={!isFocused ? inactiveColor : 'black'}
         fillRule="evenodd"
         d="M8 0 0 6v2h1v7h3v-5h3v5h8V8h1V6l-2-1.5V1h-3v1.25zm1 10h3v3H9z"
         clipRule="evenodd"

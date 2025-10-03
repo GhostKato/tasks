@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import AuthHeader from '../components/AuthHeader';
 import Input from '../../../components/Input';
-import DefaultButton from '../../../components/DefaultButton';
+import DefaultButton from '../../../components/buttons/DefaultButton';
 import AuthLayout from '../components/AuthLayout';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { loginUser } from '../../../redux/auth/operations';

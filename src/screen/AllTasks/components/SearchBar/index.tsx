@@ -1,14 +1,14 @@
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { FiltersIcon } from '../../../assets/icons';
+import { FiltersIcon } from '../../../../assets/icons';
 import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
-import Input from '../../../components/Input';
-import { selectThemeColors } from '../../../redux/theme/selectors';
-import { RootState } from '../../../redux/store';
-import { ScreenNames } from '../../../constants/screenNames';
-import { SearchBarNavigationProp } from '../../../navigation/types';
-import { setFilter } from '../../../redux/filters/slice';
+import Input from '../../../../components/Input';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
+import { RootState } from '../../../../redux/store';
+import { ScreenNames } from '../../../../constants/screenNames';
+import { SearchBarNavigationProp } from '../../../../navigation/types';
+import { setFilter } from '../../../../redux/filters/slice';
 import { useTranslation } from 'react-i18next';
 
 interface ISearchBar {

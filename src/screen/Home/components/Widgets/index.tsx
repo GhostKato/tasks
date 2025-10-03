@@ -1,22 +1,22 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import TasksList from '../../../components/TasksList';
-import { RootState } from '../../../redux/store';
-import { selectTasksByWidget } from '../../../redux/widgets/selectors';
-import { WidgetsState } from '../../../redux/widgets/slice';
-import { selectThemeColors } from '../../../redux/theme/selectors';
-import { ITask } from '../../../types/task';
-import { fonts } from '../../../constants/fonts';
+import TasksList from '../../../../components/TasksList';
+import { RootState } from '../../../../redux/store';
+import { selectTasksByWidget } from '../../../../redux/widgets/selectors';
+import { IWidgetsState } from '../../../../redux/widgets/slice';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
+import { ITask } from '../../../../types/task';
+import { fonts } from '../../../../constants/fonts';
 
 interface WidgetProps {
   title: string;
-  filterKey: keyof WidgetsState;
+  filterKey: keyof IWidgetsState;
   listKey: keyof ReturnType<typeof selectTasksByWidget>;
   onTaskPress?: (task: ITask) => void;
 }
 
-const Widget: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress }) => {
+const Widgets: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress }) => {
   const isActive = useSelector((state: RootState) => state.widgets[filterKey]);
   const tasksByWidget = useSelector(selectTasksByWidget);
   const tasks = tasksByWidget[listKey];
@@ -43,4 +43,4 @@ const Widget: React.FC<WidgetProps> = ({ title, filterKey, listKey, onTaskPress 
   );
 };
 
-export default Widget;
+export default Widgets;

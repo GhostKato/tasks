@@ -6,9 +6,9 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import { selectThemeColors } from '../../../redux/theme/selectors';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
-import { fonts } from '../../../constants/fonts';
+import { fonts } from '../../../../constants/fonts';
 
 interface Tab {
   key: string;

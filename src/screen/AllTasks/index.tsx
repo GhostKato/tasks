@@ -6,7 +6,7 @@ import { selectAreFiltersDefault, selectFilteredTasks } from '../../redux/filter
 import { selectThemeColors } from '../../redux/theme/selectors';
 import { useNavigation } from '@react-navigation/core';
 import { AddTaskNavigationProp } from '../../navigation/types';
-import DefaultButton from '../../components/DefaultButton';
+import DefaultButton from '../../components/buttons/DefaultButton';
 import { ScreenNames } from '../../constants/screenNames';
 import { ITask } from '../../types/task';
 import SearchBar from './components/SearchBar';

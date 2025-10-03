@@ -2,24 +2,21 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ITask } from '../../types/task';
 import { fonts } from '../../constants/fonts';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
-import { toggleMarked } from '../../redux/tasks/operations';
 import {
   UndoneIcon,
   InProgressIcon,
   DoneIcon,
   WorkIcon,
   PersonalIcon,
-  StudyIcon,
-  MarkedTrueIcon,
-  MarkedFalseIcon,
+  StudyIcon,  
   DeadlineIcon,
 } from '../../assets/icons';
-import { AppDispatch } from '../../redux/store';
 import { selectTasksLoading } from '../../redux/tasks/selectors';
 import LoaderRunningDots from '../LoaderRunningDots';
 import { useTranslation } from 'react-i18next';
+import MarkedButton from '../../components/buttons/MarkedButton';
 
 interface ITasksListProps {
   tasks: ITask[];
@@ -28,8 +25,7 @@ interface ITasksListProps {
 
 export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
   const color = useSelector(selectThemeColors);
-  const { t } = useTranslation('global');
-  const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation('global');  
    const loading = useSelector(selectTasksLoading);
   const priorityColors = {
     high: color.nonary,
@@ -116,14 +112,8 @@ export default function TasksList({ tasks, onTaskPress }: ITasksListProps) {
         style={styles.item}
         activeOpacity={0.7}
         onPress={() => onTaskPress && onTaskPress(item)}
-      >
-        
-        <TouchableOpacity
-  style={styles.markedButton}
-  onPress={() => item.id && dispatch(toggleMarked({ taskId: item.id }))} 
->
-  {item.isMarked ? <MarkedTrueIcon color={color.quaternary}/> : <MarkedFalseIcon color={color.quaternary}/>}
-</TouchableOpacity>
+      >        
+        <MarkedButton taskId={item.id!} isMarked={item.isMarked} />
        <View style={styles.infoRow}>
           <View style={[styles.priorityIcon, { backgroundColor }]} />
           <Text style={styles.title}>{item.title}</Text>  

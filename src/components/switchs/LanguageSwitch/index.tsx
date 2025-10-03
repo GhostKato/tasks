@@ -2,10 +2,10 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 import { useSelector } from 'react-redux';
-import { changeLanguage } from '../../redux/language/slice';
-import { selectLanguage } from '../../redux/language/selector';
-import { selectThemeColors } from '../../redux/theme/selectors';
-import { useAppDispatch } from '../../redux/hooks';
+import { changeLanguage } from '../../../redux/language/slice';
+import { selectLanguage } from '../../../redux/language/selector';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { useAppDispatch } from '../../../redux/hooks';
 
 const languageToISO: Record<string, string> = {  
   en: 'US', 

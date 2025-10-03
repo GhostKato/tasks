@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Input from '../../../components/Input';
 import { Formik } from 'formik';
 import { RegistrationSchema } from '../utils/validations';
-import DefaultButton from '../../../components/DefaultButton/index';
+import DefaultButton from '../../../components/buttons/DefaultButton';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { registerUser } from '../../../redux/auth/operations';

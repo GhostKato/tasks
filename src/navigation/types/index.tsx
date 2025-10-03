@@ -1,5 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { FiltersState } from '../../redux/filters/slice';
+import { IFiltersState } from '../../redux/filters/slice';
 import { ScreenNames } from '../../constants/screenNames';
 import { ITask } from '../../types/task';
 
@@ -16,7 +16,7 @@ export type LoggedInStackType = {
   DRAWER_STACK: undefined;   
 };
 
-export type ISettings = FiltersState;
+export type ISettings = IFiltersState;
 
 export type TaskTabBarStackType = {
   [ScreenNames.HOME_PAGE]: undefined;

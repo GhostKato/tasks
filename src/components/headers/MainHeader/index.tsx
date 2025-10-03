@@ -1,10 +1,10 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {CloseIcon, DrawerIcon, Logo} from '../../assets/icons';
+import {CloseIcon, DrawerIcon, Logo} from '../../../assets/icons';
 import {DrawerActions} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {DrawerStackType} from '../../navigation/types';
+import {DrawerStackType} from '../../../navigation/types';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 interface IHeader {
   isOpenDrawer?: boolean;

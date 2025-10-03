@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../../redux/theme/slice';
-import { selectIsDark, selectThemeColors } from '../../redux/theme/selectors';
+import { toggleTheme } from '../../../redux/theme/slice';
+import { selectIsDark, selectThemeColors } from '../../../redux/theme/selectors';
 
 export default function ThemeSwitch() {
   const dispatch = useDispatch();

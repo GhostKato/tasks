@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectThemeColors } from '../../../redux/theme/selectors';
-import DefaultSwitch from '../../../components/DefaultSwitch';
-import { selectTasksByWidget, selectWidgets } from '../../../redux/widgets/selectors';
-import { resetWidget, toggleWidget } from '../../../redux/widgets/slice';
-import DefaultButton from '../../../components/DefaultButton';
-import { fonts } from '../../../constants/fonts';
-import { getSwitchBlocks } from '../../../constants/widgetConfig';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
+import DefaultSwitch from '../../../../components/switchs/DefaultSwitch';
+import { selectTasksByWidget, selectWidgets } from '../../../../redux/widgets/selectors';
+import { resetWidget, toggleWidget } from '../../../../redux/widgets/slice';
+import DefaultButton from '../../../../components/buttons/DefaultButton';
+import { fonts } from '../../../../constants/fonts';
+import { getSwitchBlocks } from '../../../../constants/widgetConfig';
 import { useTranslation } from 'react-i18next';
 
 export default function WidgetSettings() {

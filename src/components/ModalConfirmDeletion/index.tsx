@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useAppDispatch } from '../../redux/hooks';
 import { deleteTask } from '../../redux/tasks/operations';
 import { ScreenNames } from '../../constants/screenNames';
-import DefaultButton from '../DefaultButton';
+import DefaultButton from '../buttons/DefaultButton';
 import { selectThemeColors } from '../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 interface SwitchButtonProps {
   isActive: boolean;  

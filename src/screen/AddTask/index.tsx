@@ -5,7 +5,7 @@ import { ITask } from '../../types/task';
 import { addTask } from '../../redux/tasks/operations';
 import { useAppDispatch } from '../../redux/hooks';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/headers/ScreenHeader';
 import { useTranslation } from 'react-i18next';
 
 export default function AddTaskPage() {

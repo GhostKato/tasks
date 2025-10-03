@@ -2,15 +2,15 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetFilters, setFilter, toggleTimeStamp } from '../../redux/filters/slice';
-import FilterSwitch from '../../components/FilterSwitch';
-import DefaultButton from '../../components/DefaultButton';
+import FilterSwitch from '../../components/switchs/FilterSwitch';
+import DefaultButton from '../../components/buttons/DefaultButton';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { ScreenNames } from '../../constants/screenNames';
 import { selectThemeColors } from '../../redux/theme/selectors';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/headers/ScreenHeader';
 import { TaskTabBarStackType } from '../../navigation/types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { FiltersState } from '../../redux/filters/slice';
+import { IFiltersState } from '../../redux/filters/slice';
 import { selectAreFiltersDefault } from '../../redux/filters/selectors';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,7 @@ export default function FilterSettings() {
   const color = useSelector(selectThemeColors);
   const { t } = useTranslation(['filterSettings', 'namesScreenForHeader']);
   const dispatch = useDispatch();
-  const filters = useSelector((state: any) => state.filters as FiltersState);
+  const filters = useSelector((state: any) => state.filters as IFiltersState);
   const areFiltersDefault = useSelector(selectAreFiltersDefault);
 
   const navigation = useNavigation<FilterSettingsNavigationProp>();

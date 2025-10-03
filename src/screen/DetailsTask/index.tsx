@@ -1,25 +1,27 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/headers/ScreenHeader';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
 import {
   DeadlineIcon,
   DoneIcon,
-  InProgressIcon,
+  InProgressIcon,  
   PersonalIcon,
   StudyIcon,
   UndoneIcon,
   WorkIcon,
 } from '../../assets/icons';
-import DefaultButton from '../../components/DefaultButton';
+import DefaultButton from '../../components/buttons/DefaultButton';
 import { TaskTabBarStackType } from '../../navigation/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ScreenNames } from '../../constants/screenNames';
 import ModalConfirmDeletion from '../../components/ModalConfirmDeletion';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import MarkedButton from '../../components/buttons/MarkedButton';
 
 export default function DetailsTask() {
   const route = useRoute();
@@ -28,7 +30,7 @@ export default function DetailsTask() {
   const { task, backPath } = route.params as { task: ITask; backPath?: ScreenNames };
   const { t } = useTranslation(['screenDetailsTask', 'namesScreenForHeader']);
   const color = useSelector(selectThemeColors);
-  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);  
 
   const styles = StyleSheet.create({
     wraper: {
@@ -86,7 +88,14 @@ export default function DetailsTask() {
     },
     buttonUpdate: {
     flex: 1
-  },
+    },
+    markedButton: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+      padding: 6,
+      zIndex: 10,
+    },
   });
 
   const getBackgroundColor = () => {
@@ -108,7 +117,10 @@ export default function DetailsTask() {
         title={t('namesScreenForHeader:detailsTask')}
         backPath={backPath}
       />
-      <View style={styles.mainContainer}>
+      <View style={styles.mainContainer}>       
+        
+        <MarkedButton taskId={task.id!} />
+        
         <Text style={styles.titleTask}>{task.title}</Text>
         <Text style={styles.itemTitle}>{t('screenDetailsTask:description')}</Text>
         <Text style={styles.descriptionTask}>{task.description}</Text>

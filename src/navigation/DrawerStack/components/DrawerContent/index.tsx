@@ -1,12 +1,12 @@
 import {StyleSheet, View} from 'react-native';
-import MainHeader from '../../../components/MainHeader';
+import MainHeader from '../../../../components/headers/MainHeader';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {DrawerStackType} from '../../../navigation/types';
-import LogoutButton from '../../../components/LogoutButton';
-import MainSettings from './MainSettings';
-import WidgetSettings from './WidgetSettings';
-import Tabs from './Tabs';
-import { selectThemeColors } from '../../../redux/theme/selectors';
+import {DrawerStackType} from '../../../types';
+import LogoutButton from '../../../../components/buttons/LogoutButton';
+import MainSettings from '../MainSettings';
+import WidgetSettings from '../WidgetSettings';
+import Tabs from '../Tabs';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 

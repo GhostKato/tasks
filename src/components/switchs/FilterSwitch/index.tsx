@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { fonts } from '../../constants/fonts';
+import { fonts } from '../../../constants/fonts';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../redux/theme/selectors';
 
 export interface ISwitchItem<T extends string | null> {
   text: string;

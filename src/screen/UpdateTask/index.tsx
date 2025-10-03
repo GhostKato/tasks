@@ -7,7 +7,7 @@ import { updateTask } from '../../redux/tasks/operations';
 import { selectUser } from '../../redux/auth/selectors';
 import { AppDispatch } from '../../redux/store';
 import { ITask } from '../../types/task';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/headers/ScreenHeader';
 import { TaskTabBarStackType } from '../../navigation/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';

@@ -1,8 +1,8 @@
-import { WidgetsState } from '../redux/widgets/slice';
+import { IWidgetsState } from '../redux/widgets/slice';
 import { selectTasksByWidget } from '../redux/widgets/selectors';
 
 export type SwitchItem = {
-  key: keyof WidgetsState;
+  key: keyof IWidgetsState;
   listKey: keyof ReturnType<typeof selectTasksByWidget>;
   label: string;
 };

@@ -2,7 +2,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '../../constants/screenNames';
 import TaskTabBarStack from '../TabBarStack/TaskTabBarStack';
 import { DrawerStackType } from '../types';
-import MainHeader from '../../components/MainHeader';
+import MainHeader from '../../components/headers/MainHeader';
 import { Dimensions } from 'react-native';
 import DrawerContent from './components/DrawerContent';
 import { useSelector } from 'react-redux';

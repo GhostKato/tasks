@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { ArrowIcon } from '../../assets/icons';
+import { ArrowIcon } from '../../../assets/icons';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
-import { fonts } from '../../constants/fonts';
+import { selectThemeColors } from '../../../redux/theme/selectors';
+import { fonts } from '../../../constants/fonts';
 import { useTranslation } from 'react-i18next';
 
 type ScreenHeaderProps = {

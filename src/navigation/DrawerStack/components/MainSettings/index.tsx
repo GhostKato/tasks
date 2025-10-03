@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text } from 'react-native';
-import ThemeSwitch from '../../../components/ThemeSwitch';
+import ThemeSwitch from '../../../../components/switchs/ThemeSwitch';
 import { useSelector } from 'react-redux';
-import LanguageSwitch from '../../../components/LanguageSwitch';
-import { selectThemeColors } from '../../../redux/theme/selectors';
-import { fonts } from '../../../constants/fonts';
+import LanguageSwitch from '../../../../components/switchs/LanguageSwitch';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
+import { fonts } from '../../../../constants/fonts';
 import { useTranslation } from 'react-i18next';
 
 export default function MainSettings() {

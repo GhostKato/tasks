@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Input from '../../components/Input';
-import FilterSwitch from '../FilterSwitch';
-import DefaultButton from '../../components/DefaultButton';
+import FilterSwitch from '../switchs/FilterSwitch';
+import DefaultButton from '../../components/buttons/DefaultButton';
 import { ITask } from '../../types/task';
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../redux/theme/selectors';
