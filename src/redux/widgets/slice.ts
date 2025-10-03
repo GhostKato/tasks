@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export interface WidgetsState {
+export interface IWidgetsState {
   isUndone: boolean;
   isInProgress: boolean;
   isDone: boolean;
@@ -16,7 +16,7 @@ export interface WidgetsState {
   isStudy: boolean;
 }
 
-export const initialState: WidgetsState = {
+export const initialState: IWidgetsState = {
   isUndone: false,
   isInProgress: false,
   isDone: false,
@@ -37,7 +37,7 @@ const widgetSlice = createSlice({
   name: 'widgets',
   initialState,
   reducers: {
-    toggleWidget(state, action: PayloadAction<keyof WidgetsState>) {
+    toggleWidget(state, action: PayloadAction<keyof IWidgetsState>) {
   const key = action.payload;
   
   state[key] = !state[key];
@@ -52,7 +52,7 @@ const widgetSlice = createSlice({
       );
       return initialState;
     },
-    setWidget(_, action: PayloadAction<WidgetsState>) {
+    setWidget(_, action: PayloadAction<IWidgetsState>) {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(action.payload)).catch(
         (e) => console.log('Error saving widgets:', e)
       );

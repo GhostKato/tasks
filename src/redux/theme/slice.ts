@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { lightTheme, darkTheme, ThemeColors } from '../../constants/theme';
 
-interface ThemeState {
+interface IThemeState {
   isDark: boolean;
   color: ThemeColors;
 }
 
-const initialState: ThemeState = {
+const initialState: IThemeState = {
   isDark: false,
   color: lightTheme,
 };

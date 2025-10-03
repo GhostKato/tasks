@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface FiltersState {
+export interface IFiltersState {
   searchQuery: string; 
   timeStamp: boolean;
   status: 'done' | 'undone' | 'inProgress' | null;
@@ -9,7 +9,7 @@ export interface FiltersState {
   category: 'work' | 'personal' | 'study' | null;
 }
 
-export const initialState: FiltersState = {
+export const initialState: IFiltersState = {
   searchQuery: '',
   timeStamp: false,
   status: null,
@@ -22,16 +22,16 @@ const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setFilter<T extends keyof FiltersState>(
-      state: FiltersState,
-      action: PayloadAction<{ key: T; value: FiltersState[T] }>
+    setFilter<T extends keyof IFiltersState>(
+      state: IFiltersState,
+      action: PayloadAction<{ key: T; value: IFiltersState[T] }>
     ) {
       state[action.payload.key] = action.payload.value;
     },
-    toggleTimeStamp(state: FiltersState) {
+    toggleTimeStamp(state: IFiltersState) {
       state.timeStamp = !state.timeStamp;
     },
-    resetFilters(state: FiltersState) {
+    resetFilters(state: IFiltersState) {
       state.searchQuery = '';
       state.timeStamp = false;
       state.status = null;

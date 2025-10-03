@@ -12,7 +12,6 @@ import { loadWidget } from './src/redux/widgets/slice';
 import { loadTheme } from './src/redux/theme/slice';
 import { loadLanguage } from './src/redux/language/slice';
 import './i18.config';
-// import { addTasksToBase } from './src/utils/tasksSeeder';
 
 function AppWrapper() {
   const dispatch = useDispatch<AppDispatch>();  
@@ -23,13 +22,14 @@ function AppWrapper() {
     const unsubscribe = onAuthStateChanged(auth, (user: FirebaseAuthTypes.User | null) => {
       const serialized = serializeUser(user);
       dispatch(setUser(serialized));
+      if (user) {
+      dispatch(fetchTasks()); 
+    }
     });
-
-    dispatch(fetchTasks());
+    
     dispatch(loadWidget());
     dispatch(loadTheme());
-    dispatch(loadLanguage()); 
-    // addTasksToBase();
+    dispatch(loadLanguage());     
 
     return unsubscribe;
   }, [dispatch]);

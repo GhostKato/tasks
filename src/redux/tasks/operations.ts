@@ -6,6 +6,7 @@ import { ITask } from '../../types/task';
 // Fetch all tasks
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
   const user = auth().currentUser;
+  
   if (!user) throw new Error('Not authenticated');
 
   const snapshot = await firestore()

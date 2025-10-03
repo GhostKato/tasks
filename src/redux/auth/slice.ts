@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SerializedUser } from '../../utils/serializeUser';
 import { loginUser, registerUser, logoutUser } from './operations';
 
-interface AuthState {
+interface IAuthState {
   user: SerializedUser | null;
   loading: boolean;
   error: string | null;
 }
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   user: null,
   loading: false,
   error: null,

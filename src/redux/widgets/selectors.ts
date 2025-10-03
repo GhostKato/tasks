@@ -2,7 +2,7 @@ import { RootState } from '../store';
 import { createSelector } from '@reduxjs/toolkit';
 import { ITask } from '../../types/task';
 
-// Функція для фільтрації за датою
+// Filter by date function
 const getDateFilter = (deadline: string) => {
   const now = new Date();
   const due = new Date(deadline);
@@ -17,7 +17,7 @@ const getDateFilter = (deadline: string) => {
 
 export const selectAllTasks = (state: RootState) => state.tasks.allTasks;
 
-// Мемоїзований селектор для всіх віджетів одразу
+// Memoized selector for all widgets at once
 export const selectTasksByWidget = createSelector(
   selectAllTasks,
   (allTasks: ITask[]) => ({
@@ -36,5 +36,5 @@ export const selectTasksByWidget = createSelector(
   })
 );
 
-// Селектор для стану віджетів (включені/виключені)
+// Selector for widget state (included/excluded)
 export const selectWidgets = (state: RootState) => state.widgets;
