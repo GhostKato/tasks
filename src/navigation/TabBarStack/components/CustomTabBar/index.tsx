@@ -1,10 +1,10 @@
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { fonts } from '../../constants/fonts';
-import { MarkedIcon, HomeIcon, TasksIcon } from '../../assets/icons';
-import { ScreenNames } from '../../constants/screenNames';
+import { fonts } from '../../../../constants/fonts';
+import { MarkedIcon, HomeIcon, TasksIcon } from '../../../../assets/icons';
+import { ScreenNames } from '../../../../constants/screenNames';
 import { useSelector } from 'react-redux';
-import { selectThemeColors } from '../../redux/theme/selectors';
+import { selectThemeColors } from '../../../../redux/theme/selectors';
 import { useTranslation } from 'react-i18next';
 
 export default function CustomTabBar({ state, navigation }: BottomTabBarProps) {

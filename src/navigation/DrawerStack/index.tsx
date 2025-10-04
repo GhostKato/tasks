@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScreenNames } from '../../constants/screenNames';
-import TaskTabBarStack from '../TabBarStack/TaskTabBarStack';
+import TaskTabBarStack from '../TabBarStack';
 import { DrawerStackType } from '../types';
 import MainHeader from '../../components/headers/MainHeader';
 import { Dimensions } from 'react-native';

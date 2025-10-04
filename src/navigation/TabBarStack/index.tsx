@@ -7,7 +7,7 @@ import AddTask from '../../screen/AddTask';
 import UpdateTask from '../../screen/UpdateTask';
 import FilterSettings from '../../screen/FilterSettings';
 import { TaskTabBarStackType } from '../types';
-import CustomTabBar from './CustomTabBar';
+import CustomTabBar from './components/CustomTabBar';
 import { ScreenNames } from '../../constants/screenNames';
 
 const Tab = createBottomTabNavigator<TaskTabBarStackType>();
