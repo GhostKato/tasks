@@ -1,97 +1,139 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Individual project: tasks
 
-# Getting Started
+### Description:
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+**Tasks** is a mobile application for personal task management, designed to make planning and organization simple, efficient, and visually clear.  
+Users can register, create their own tasks, edit or delete them, and customize the app’s appearance and behavior to fit their preferences.  
+All user data is stored securely in **Firebase**, while global state is managed using **Redux Toolkit**.
 
-## Step 1: Start Metro
+![home](./readme-images/main.png)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Features:
 
-```sh
-# Using npm
-npm start
+1. **User Interface:**
 
-# OR using Yarn
-yarn start
-```
+   - Minimalistic and user-friendly design.
+   - Intuitive navigation between screens.
+   - Home page widgets showing selected task categories.
+   - Drawer menu with quick access to settings and filters.
 
-## Step 2: Build and run your app
+![tabBarScreens](./readme-images/tabBarScreens.png)
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+2. **Authentication:**
 
-### Android
+   - User registration and login via **Firebase Authentication**.
+   - Secure storage of user data in **Firebase Realtime Database**.
+   - Automatic session recovery after app restart.
 
-```sh
-# Using npm
-npm run android
+![auth](./readme-images/authentication.png)
 
-# OR using Yarn
-yarn android
-```
+3. **Task Management:**
 
-### iOS
+   - Create new tasks with detailed parameters:
+     - **Title**
+     - **Description**
+     - **Type**
+     - **Category**
+     - **Deadline**
+     - **Priority**
+   - Edit, update, or delete tasks anytime.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+![tasks](./readme-images/add-update-tasks.png)
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+4. **Widgets and Filters:**
 
-```sh
-bundle install
-```
+   - Configure widgets in the Drawer menu to display specific categories on the Home screen.
+   - Advanced **filter system** for sorting tasks by category, type, priority, or deadline.
+   - User preferences are automatically saved for future sessions.
 
-Then, and every time you update your native dependencies, run:
+![filter](./readme-images/details-filters.png)
 
-```sh
-bundle exec pod install
-```
+5. **Customization:**
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+   - Light and dark mode themes.
+   - Language selection (English / Ukrainian).
+   - Flexible customization of app appearance.
+   - All settings are saved locally using **Redux Persist**.
 
-```sh
-# Using npm
-npm run ios
+![settings](./readme-images//settings.png)
 
-# OR using Yarn
-yarn ios
-```
+6. **Performance and UX:**
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+   - Built-in **loader** to visually indicate loading states.
+   - Smooth animations and optimized performance even with large data sets.
+   - Responsive interface for various screen sizes.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+### Stages of Implementation:
 
-Now that you have successfully run the app, let's make changes!
+1. **Interface Design:**
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+   - Creating screen layouts, choosing colors and fonts, building navigation and the drawer menu.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+2. **Functionality Development:**
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+   - Implementing task creation, editing, deletion, and filtering logic.
+   - Integrating Firebase Authentication and Realtime Database.
 
-## Congratulations! :tada:
+3. **State Management:**
 
-You've successfully run and modified your React Native App. :partying_face:
+   - Setting up **Redux Toolkit** for managing tasks, user data, and app settings.
 
-### Now what?
+4. **Testing:**
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+   - Conducting tests to ensure app stability and smooth operation on Android devices.
+   - Verifying persistence of data and settings after restart.
 
-# Troubleshooting
+5. **Release:**
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+   - Building a release APK and publishing the project on GitHub.
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
+### Advantages of Using:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Organized task management.
+- Flexible interface customization.
+- Convenient deadline control.
+- Data synchronization via Firebase.
+- Smooth user experience with loading indicators and animations.
+
+---
+
+### Technologies Used:
+
+1. **Languages:**
+
+   - **TypeScript**
+   - **CSS**
+
+2. **Frameworks & Libraries:**
+
+   - **React Native**
+   - **Redux Toolkit**
+   - **React Navigation**
+
+3. **Backend / Database:**
+
+   - **Firebase Authentication**
+   - **Firebase Realtime Database**
+
+4. **Storage:**
+
+   - **Redux Persist**
+
+5. **Version Control:**
+
+   - **Git & GitHub**
+
+6. **Design & Responsiveness:**
+   - **Flexbox**
+   - **React Native Stylesheet**
+
+---
+
+**Tasks App** — a convenient and customizable mobile solution for managing your daily and work-related tasks.  
+It helps you stay organized, motivated, and productive every day.
