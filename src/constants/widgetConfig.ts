@@ -22,7 +22,7 @@ export const getSwitchBlocks = (t: (key: string) => string): SwitchBlock[] => [
     ],
   },
   {
-    title: t('drawer.widget.byPriorityTitle'),
+    title: t('drawer:widget.byPriorityTitle'),
     items: [
       { key: 'isLow', listKey: 'low', label: t('drawer:widget.byPriority.low') },
       { key: 'isMedium', listKey: 'medium', label: t('drawer:widget.byPriority.medium') },
@@ -30,7 +30,7 @@ export const getSwitchBlocks = (t: (key: string) => string): SwitchBlock[] => [
     ],
   },
   {
-    title: t('drawer.widget.byDatesTitle'),
+    title: t('drawer:widget.byDatesTitle'),
     items: [
       { key: 'isToday', listKey: 'today', label: t('drawer:widget.byDates.today') },
       { key: 'isWeek', listKey: 'week', label: t('drawer:widget.byDates.thisWeek') },
