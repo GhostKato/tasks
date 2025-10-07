@@ -52,15 +52,15 @@ android {
     }
     
     applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            if (variant.buildType.name == "release") {
-                outputFileName = "Tasks-v${variant.versionName}.apk"
-            }
-            if (variant.buildType.name == "debug") {
-                outputFileName = "Tasks-Debug.apk"
-            }
+    variant.outputs.all { output ->
+        if (variant.buildType.name == "release") {
+            output.outputFileName = "Tasks-v${variant.versionName}.apk"
+        } else {
+            output.outputFileName = "Tasks-v${variant.versionName}-${variant.buildType.name}.apk"
         }
     }
+}
+
 }
 
 dependencies {
