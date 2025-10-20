@@ -1,11 +1,10 @@
-import AuthLayout from '../components/AuthLayout/index';
-import AuthHeader from '../components/AuthHeader/index';
+import AuthLayout from '../components/AuthLayout';
+import AuthHeader from '../components/AuthHeader';
 import { View, Text, StyleSheet } from 'react-native';
 import Input from '../../../components/Input';
 import { Formik } from 'formik';
-import { RegistrationSchema } from '../utils/validations';
+import { RegistrationSchema } from '../validations/registrationSchema';
 import DefaultButton from '../../../components/buttons/DefaultButton';
-import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { registerUser } from '../../../redux/auth/operations';
 import { selectAuthLoading, selectAuthError } from '../../../redux/auth/selectors';
@@ -13,34 +12,29 @@ import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../../redux/theme/selectors';
 import { useTranslation } from 'react-i18next';
 
-type InputTouchedType = {
-  email: boolean;
-  password: boolean;
-  confirmPassword: boolean;
-};
-
 type RegistrationValues = {
   email: string;
   password: string;
   confirmPassword: string;
 };
 
-export default function Registration() {  
+export default function Registration() {
   const { t } = useTranslation('screenAuth');
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectAuthLoading);
   const error = useAppSelector(selectAuthError);
 
-  const [touched, setTouched] = useState<InputTouchedType>({
-    email: false,
-    password: false,
-    confirmPassword: false,
+  const styles = StyleSheet.create({
+    formContainer: {
+      marginTop: 28,
+      marginBottom: 68
+    },
+    error: {
+      color: color.nonary,
+      marginTop: 8
+    }
   });
-
-  const styles = StyleSheet.create({    
-      formContainer: {marginTop: 28, marginBottom: 68},  
-    });
 
   return (
     <AuthLayout>
@@ -51,51 +45,47 @@ export default function Registration() {
           password: '',
           confirmPassword: '',
         }}
+        validationSchema={RegistrationSchema()}
         onSubmit={values => {
           dispatch(registerUser({ email: values.email, password: values.password }));
         }}
-        validationSchema={RegistrationSchema()}
       >
-        {({ values, setFieldValue, handleSubmit, isValid, errors }) => (
+        {({ handleChange, handleSubmit, values, errors, touched, setFieldTouched, isValid }) => (
           <>
             <View style={styles.formContainer}>
               <Input
-                onFocus={() => setTouched(prev => ({ ...prev, email: true }))}
+                onFocus={() => setFieldTouched('email', true)}
                 value={values.email}
-                onChangeText={value => setFieldValue('email', value)}
+                onChangeText={handleChange('email')}
                 placeholder={t('placeholderEmail')}
                 error={touched.email ? errors.email : undefined}
               />
               <Input
-                onFocus={() => setTouched(prev => ({ ...prev, password: true }))}
+                onFocus={() => setFieldTouched('password', true)}
                 value={values.password}
-                onChangeText={value => setFieldValue('password', value)}
+                onChangeText={handleChange('password')}
                 secureTextEntry
                 placeholder={t('placeholderPassword')}
                 error={touched.password ? errors.password : undefined}
               />
               <Input
-                onFocus={() => setTouched(prev => ({ ...prev, confirmPassword: true }))}
+                onFocus={() => setFieldTouched('confirmPassword', true)}
                 value={values.confirmPassword}
-                onChangeText={value => setFieldValue('confirmPassword', value)}
+                onChangeText={handleChange('confirmPassword')}
                 secureTextEntry
                 placeholder={t('placeholderConfirmPassword')}
                 error={touched.confirmPassword ? errors.confirmPassword : undefined}
               />
             </View>
+
             <DefaultButton
               onPress={handleSubmit}
-              disabled={
-                !isValid ||
-                !values.email ||
-                !values.password ||
-                !values.confirmPassword ||
-                loading
-              }
+              disabled={!isValid || loading}
               text={loading ? 'Loading...' : t('registerBtn')}
               backgroundColor={color.secondary}
             />
-            {error && <Text style={{ color: color.nonary }}>{error}</Text>}
+
+            {error && <Text style={styles.error}>{error}</Text>}
           </>
         )}
       </Formik>

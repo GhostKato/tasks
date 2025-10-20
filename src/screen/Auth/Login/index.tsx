@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import AuthHeader from '../components/AuthHeader';
 import Input from '../../../components/Input';
 import DefaultButton from '../../../components/buttons/DefaultButton';
@@ -10,94 +10,71 @@ import { selectAuthLoading, selectAuthError } from '../../../redux/auth/selector
 import { useSelector } from 'react-redux';
 import { selectThemeColors } from '../../../redux/theme/selectors';
 import { useTranslation } from 'react-i18next';
+import { Formik } from 'formik';
+import { LoginSchema } from '../validations/loginSchema';
 
-type InputValueType = {
-  email: string;
-  password: string;
-  errorEmail?: string;
-  errorPassword?: string;
-};
-
-export default function LoginPage() {  
+export default function LoginPage() {
   const { t } = useTranslation('screenAuth');
   const color = useSelector(selectThemeColors);
   const dispatch = useAppDispatch();
   const loading = useAppSelector(selectAuthLoading);
   const error = useAppSelector(selectAuthError);
 
-  const [inputValues, setInputValues] = useState<InputValueType>({
-    email: '',
-    password: '',
-    errorEmail: undefined,
-    errorPassword: undefined,
-  });
-
-  const handleChangeInput = (key: keyof InputValueType, value: string | undefined) => {
-    setInputValues(prev => ({ ...prev, [key]: value }));
-  };
-
-  const checkEmail = () => {
-    const emailValidator = /^[a-z0-9._%-]+@[a-z0-9.-]+\.[a-z]{2,6}$/;
-    if (!emailValidator.test(inputValues.email)) {
-      handleChangeInput('errorEmail', 'Not valid email');
-    } else {
-      handleChangeInput('errorEmail', undefined);
+  const styles = StyleSheet.create({
+    formContainer: {
+      marginTop: 28,
+      marginBottom: 68,
+    },
+    error: {
+      color: color.nonary,
+      marginTop: 8,      
     }
-  };
-
-  const checkPassword = (text: string) => {
-    if (text.length < 8) {
-      handleChangeInput('errorPassword', 'Password must be more than 8 symbols');
-    } else {
-      handleChangeInput('errorPassword', undefined);
-    }
-  };
-
-  const onLogin = () => {
-    dispatch(loginUser({ email: inputValues.email, password: inputValues.password }));
-  };
-
-  const isDisabledLoginBtn = Boolean(
-    inputValues.errorEmail ||
-      inputValues.errorPassword ||
-      !inputValues.email ||
-      !inputValues.password ||
-      loading
-  );
-
-  const styles = StyleSheet.create({    
-    formContainer: {marginTop: 28, marginBottom: 68},  
   });
 
   return (
     <AuthLayout>
       <AuthHeader activeBtn="login" />
-      <View style={styles.formContainer}>
-        <Input
-          onBlur={checkEmail}
-          value={inputValues.email}
-          onChangeText={text => handleChangeInput('email', text)}
-          error={inputValues.errorEmail}
-          placeholder={t('placeholderEmail')}
-        />
-        <Input
-          placeholder={t('placeholderPassword')}
-          value={inputValues.password}
-          onChangeText={text => {
-            handleChangeInput('password', text);
-            checkPassword(text);
-          }}
-          error={inputValues.errorPassword}
-          secureTextEntry
-        />
-      </View>
-      <DefaultButton
-        onPress={onLogin}
-        disabled={isDisabledLoginBtn}
-        text={loading ? 'Loading...' : t('logInBtn')}
-        backgroundColor={color.secondary}
-      />
-      {error && <Text style={{ color: color.nonary }}>{error}</Text>}
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+        }}
+        validationSchema={LoginSchema}
+        onSubmit={values => {
+          dispatch(loginUser({ email: values.email, password: values.password }));
+        }}
+      >
+        {({ handleChange, handleSubmit, values, errors, touched, setFieldTouched, isValid }) => (
+          <>
+            <View style={styles.formContainer}>
+              <Input
+                onFocus={() => setFieldTouched('email', true)}
+                value={values.email}
+                onChangeText={handleChange('email')}
+                placeholder={t('placeholderEmail')}
+                error={touched.email ? errors.email : undefined}
+              />
+              <Input
+                onFocus={() => setFieldTouched('password', true)}
+                value={values.password}
+                onChangeText={handleChange('password')}
+                placeholder={t('placeholderPassword')}
+                secureTextEntry
+                error={touched.password ? errors.password : undefined}
+              />
+            </View>            
+
+            <DefaultButton
+              onPress={handleSubmit}
+              disabled={!isValid || loading}
+              text={loading ? 'Loading...' : t('logInBtn')}
+              backgroundColor={color.secondary}
+            />
+
+            {error && <Text style={styles.error}>{error}</Text>}
+          </>
+        )}
+      </Formik>
     </AuthLayout>
   );
 }
